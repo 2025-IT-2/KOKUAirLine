@@ -10,6 +10,7 @@
     <title>オンライン·チェックイン</title>
   </head>
   <body>
+  <%@ include file="header.jsp" %> 
     <div class="screen">
       <div class="view-wrapper">
         <div class="view">
