@@ -1,15 +1,16 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
+   <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
     <link rel="stylesheet" href="<c:url value='/css/onlinecheckin.css'/>"/>
     <title>オンライン·チェックイン</title>
   </head>
   <body>
+  <%@ include file="header.jsp" %> 
     <div class="screen">
       <div class="view-wrapper">
         <div class="view">
@@ -22,12 +23,7 @@
               </div>
             </div>
             <div class="overlap-wrapper">
-              <div class="overlap-2">
-                <img class="img" src="img/rectangle-57.svg" />
-                <div class="text-wrapper-2">空港団</div>
-                <img class="rectangle-2" src="img/image.svg" />
-                <div class="text-wrapper-3">ログイン</div>
-              </div>
+
             </div>
             <div class="group-2">
               <div class="frame">
@@ -78,15 +74,7 @@
             </div>
             <img class="rectangle-4" src="img/rectangle-58.svg" />
             <div class="text-wrapper-20">チェックイン</div>
-            <div class="text-wrapper-21">予約</div>
-            <div class="text-wrapper-22">オンライン·チェックイン</div>
-            <div class="text-wrapper-23">予約確認</div>
-            <div class="text-wrapper-21">予約</div>
-            <div class="text-wrapper-22">オンライン·チェックイン</div>
-            <div class="text-wrapper-23">予約確認</div>
-            <div class="text-wrapper-21">予約</div>
-            <div class="text-wrapper-22">オンライン·チェックイン</div>
-            <div class="text-wrapper-23">予約確認</div>
+
           </div>
         </div>
       </div>
