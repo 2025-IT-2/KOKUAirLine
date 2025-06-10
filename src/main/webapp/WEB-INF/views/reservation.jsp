@@ -10,6 +10,7 @@
     <title>航空券検索</title>
   </head>
   <body>
+  <%@ include file="header.jsp" %>
     <div class="div-wrapper">
       <div class="overlap-wrapper">
         <div class="overlap">
