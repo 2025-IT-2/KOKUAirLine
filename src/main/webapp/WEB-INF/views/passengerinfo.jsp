@@ -10,14 +10,12 @@
     <title>搭乗者情報入力</title>
   </head>
   <body>
+  <%@ include file="header.jsp" %>  
     <div class="screen">
       <div class="overlap-wrapper">
         <div class="overlap">
           <div class="view"></div>
-          <img class="rectangle" src="img/rectangle-57.svg" />
-          <div class="text-wrapper">空港団</div>
-          <img class="img" src="img/rectangle-58.svg" />
-          <div class="div">ログイン</div>
+
           <div class="text-wrapper-2">搭乗者情報</div>
 
           <div class="group">
@@ -68,13 +66,6 @@
           <div class="rectangle-9"></div>
           <div class="text-wrapper-16">010-5555-6666</div>
           <div class="element">50,000&nbsp;&nbsp; 円</div>
-
-          <div class="text-wrapper-17">予約</div>
-          <div class="text-wrapper-18">オンライン·チェックイン</div>
-          <div class="text-wrapper-19">予約確認</div>
-          <div class="text-wrapper-17">予約</div>
-          <div class="text-wrapper-18">オンライン·チェックイン</div>
-          <div class="text-wrapper-19">予約確認</div>
 
           <div class="ellipse"></div>
           <div class="ellipse-2"></div>
