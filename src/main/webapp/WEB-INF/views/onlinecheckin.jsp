@@ -23,12 +23,7 @@
               </div>
             </div>
             <div class="overlap-wrapper">
-              <div class="overlap-2">
-                <img class="img" src="img/rectangle-57.svg" />
-                <div class="text-wrapper-2">空港団</div>
-                <img class="rectangle-2" src="img/image.svg" />
-                <div class="text-wrapper-3">ログイン</div>
-              </div>
+
             </div>
             <div class="group-2">
               <div class="frame">
@@ -79,9 +74,7 @@
             </div>
             <img class="rectangle-4" src="img/rectangle-58.svg" />
             <div class="text-wrapper-20">チェックイン</div>
-            <div class="text-wrapper-21">予約</div>
-            <div class="text-wrapper-22">オンライン·チェックイン</div>
-            <div class="text-wrapper-23">予約確認</div>
+
           </div>
         </div>
       </div>
