@@ -20,7 +20,7 @@
 		
 		    classButtons.forEach(button => {
 		        button.addEventListener("click", () => {
-		            classButtons.forEach(btn => btn.classList.remove("selected"));
+		        	classButtons.forEach(btn => btn.classList.remove("selected"));
 		            button.classList.add("selected");
 		        });
 		    });
@@ -49,11 +49,26 @@
 	        });
 	    });
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			flatpickr("#departureDate", {
+			    dateFormat: "Y.m.d",
+			    minDate: "today"
+			});
+			
+			flatpickr("#returnDate", {
+			    dateFormat: "Y.m.d",
+			    minDate: "today"
+			});
+		});
+	</script>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="<c:url value='/css/global.css' />" />
 		<link rel="stylesheet" href="<c:url value='/css/reservation.css'/>"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 		<title>航空券検索</title>
 	</head>
 	<body>
@@ -65,11 +80,20 @@
 	            <button class = "trip-option" data-type = "oneway">片道</button>
 	            <button class = "trip-option" data-type = "multiway">多区間</button>
 	        </div>
-	
-	        <div class = "route">
-	            <div class = "airport from">ICN 仁川</div>
-	            <div class = "airport to">OKA 沖縄</div>
-	            <div class = "date-range">25.06.09–25.06.15</div>
+	        
+	        <div class = "airport-selection">
+	        	<select id = "departireAirport" class = "airport-select">
+	        		<option value = "INC">ICN 仁川</option>
+	        		<option value = "OKA">OKA 沖縄</option>
+	        	</select>
+	        	
+	        	<select id = "arrivalAirport" class = "airport-select">
+	        		<option value = "OKA">OKA 沖縄</option>
+	        		<option value = "INC">ICN 仁川</option>
+	        	</select>
+	        	
+	        	<input type="text" id="departureDate" class="date-input" placeholder="出発日を選択" readonly>
+	        	<input type="text" id="returnDate" class="date-input" placeholder="帰りの日を選択" readonly>
 	        </div>
 	
 	        <h3>搭乗人員選択</h3>
@@ -102,14 +126,14 @@
 	
 	        <h3>座席クラス選択</h3>
 	        <div class = "class-type">
-	            <button class = "class-option">エコノミー特価</button>
-	            <button class = "class-option">エコノミー一般</button>
-	            <button class = "class-option">ビジネス</button>
-	            <button class = "class-option">ファースト</button>
+	            <button class = "class-option" data-type = "eco-spec">エコノミー特価</button>
+	            <button class = "class-option" data-type = "eco-norm">エコノミー一般</button>
+	            <button class = "class-option" data-type = "buis">ビジネス</button>
+	            <button class = "class-option" data-type = "first">ファースト</button>
 	        </div>
 	
 	        <div class = "confirm-button">
-	            <button>航空券検索</button>
+	            <button onclick = "location.href='confirm'">航空券検索</button>
 	        </div>
 	    </div>
 	</body>
