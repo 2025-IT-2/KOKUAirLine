@@ -15,7 +15,7 @@
       <div class="overlap-wrapper">
         <div class="overlap">
           <div class="view"></div>
-
+          
           <div class="text-wrapper-2">搭乗者情報</div>
 
           <div class="group">
