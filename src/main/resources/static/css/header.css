@@ -1,0 +1,46 @@
+@charset "UTF-8";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+body {
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+}
+
+.nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+.login button {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login button:hover {
+    background-color: #f0f0f0;
+}
