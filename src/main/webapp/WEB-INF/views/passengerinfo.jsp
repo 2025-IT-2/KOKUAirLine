@@ -5,7 +5,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
-   <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
+    <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
     <link rel="stylesheet" href="<c:url value='/css/passengerinfo.css'/>"/>
     <title>搭乗者情報入力</title>
   </head>
@@ -55,7 +55,10 @@
 
                   <div class="group-4">
                     <div class="div-wrapper"><div class="text-wrapper-9">生年月日</div></div>
-                    <div class="div-2"></div>
+                    <div class="div-2">
+                      <!-- 날짜 선택 input 추가 -->
+                      <input type="date" id="birthdate" name="birthdate" value="1990-01-01" />
+                    </div>
                   </div>
                 </div>
 
@@ -65,9 +68,6 @@
 
               <div class="rectangle-3"></div>
               <div class="rectangle-4"></div>
-              <div class="rectangle-5"></div>
-              <div class="rectangle-6"></div>
-              <div class="text-wrapper-12">1980.08.08</div>
             </div>
           </div>
 

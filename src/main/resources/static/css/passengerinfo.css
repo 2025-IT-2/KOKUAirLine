@@ -181,6 +181,22 @@
   background-color: #d9d9d9;
   border: 1px solid #000000;
   position: relative;
+  
+    /* 중앙 정렬을 위한 flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+    /* 생년월일 달력 생성 */
+.screen .div-2 input[type="date"] {
+  width: 180px; /* 원하시는 너비로 조정 가능 */
+  height: 36px;
+  font-size: 16px;
+  padding: 4px 8px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 /* 라디오 버튼 스타일 */
@@ -293,6 +309,7 @@
   left: 1px;
 }
 
+
 .screen .text-wrapper-9 {
   width: 131px;
   height: 21px;
@@ -355,40 +372,6 @@
   top: 122px;
   left: 477px;
   background-color: #ffffff;
-}
-
-.screen .rectangle-5 {
-  position: absolute;
-  width: 41px;
-  height: 33px;
-  top: 194px;
-  left: 169px;
-  background-color: #a6a6a6;
-}
-
-.screen .rectangle-6 {
-  position: absolute;
-  width: 337px;
-  height: 33px;
-  top: 194px;
-  left: 227px;
-  background-color: #ffffff;
-}
-
-.screen .text-wrapper-12 {
-  position: absolute;
-  width: 179px;
-  height: 21px;
-  top: 200px;
-  left: 307px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 32px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  white-space: nowrap;
 }
 
 .screen .text-wrapper-13 {
