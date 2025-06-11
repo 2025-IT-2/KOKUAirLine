@@ -126,6 +126,7 @@
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="<c:url value='/css/global.css' />" />
 		<link rel="stylesheet" href="<c:url value='/css/reservation.css'/>"/>
+		<link rel="stylesheet" href="<c:url value='/css/header.css'/>"/>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 		<title>航空券検索</title>
 	</head>
