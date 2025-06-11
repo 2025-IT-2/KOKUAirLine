@@ -439,15 +439,6 @@
   letter-spacing: 0.50px;
 }
 
-.screen .rectangle-8 {
-  position: absolute;
-  width: 267px;
-  height: 45px;
-  top: 482px;
-  left: 193px;
-  background-color: #ffffff;
-}
-
 .screen .rectangle-9 {
   position: absolute;
   width: 189px;
@@ -470,6 +461,19 @@
   letter-spacing: 0.50px;
   line-height: 33px;
   white-space: nowrap;
+
+  /* 전화번호 입력창 */
+  input[type="tel"] {
+  width: 200px;
+  height: 50px;
+  font-size: 15px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  top: -10px; /* 10px 위로 이동 */
+  }
 }
 
 .screen .element {
