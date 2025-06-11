@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ログイン<</title>
+  <title>ログイン</title>
 
   <!-- CSS 경로 정리 -->
   <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
