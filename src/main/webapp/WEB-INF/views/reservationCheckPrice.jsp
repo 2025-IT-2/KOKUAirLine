@@ -10,14 +10,12 @@
 <title>航空券価格を確認</title>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <div class="screen">
       <div class="overlap-wrapper">
         <div class="overlap">
           <div class="view"></div>
-          <img class="rectangle" src="img/rectangle-57.svg" />
-          <div class="text-wrapper">空港団</div>
-          <img class="img" src="img/rectangle-58.svg" />
-          <div class="div">ログイン</div>
+          <div class="text-wrapper"></div>
           <div class="rectangle-2"></div>
           <div class="overlap-group-wrapper">
             <div class="overlap-group"><div class="text-wrapper-2">ソウル/仁川</div></div>
@@ -136,9 +134,6 @@
           <div class="view-15">
             <div class="overlap-6"><div class="text-wrapper-26">次へ</div></div>
           </div>
-          <div class="text-wrapper-27">予約</div>
-          <div class="text-wrapper-28">オンライン·チェックイン</div>
-          <div class="text-wrapper-29">予約確認</div>
         </div>
       </div>
     </div>
