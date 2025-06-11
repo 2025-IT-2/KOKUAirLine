@@ -1,807 +1,127 @@
 @charset "UTF-8";
+
+/* 전체 배경 및 정렬 */
 .screen {
   background-color: #7d7983;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   width: 100%;
 }
 
-
+/* 메인 콘텐츠 영역 */
 .screen .overlap {
   position: relative;
   width: 922px;
   height: 582px;
-  top: 12px;
-  left: 2px;
+  margin-top: 12px;
 }
 
-.screen .view {
+/* 배경 박스 */
+.background-box {
   position: absolute;
   width: 922px;
   height: 558px;
   background-color: #d9d9d9;
-}
-
-.screen .rectangle {
-  position: absolute;
-  width: 873px;
-  height: 63px;
-  top: 3px;
-  left: 9px;
-}
-
-.screen .text-wrapper {
-  position: absolute;
-  width: 170px;
-  height: 68px;
   top: 0;
   left: 0;
-  font-family: "Adamina-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000c7;
-  font-size: 36px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  text-decoration: underline;
 }
 
-.screen .img {
+/* 상단 정보 바 */
+.top-bar {
   position: absolute;
-  width: 91px;
-  height: 45px;
-  top: 13px;
-  left: 764px;
-}
-
-.screen .div {
-  position: absolute;
-  width: 120px;
-  height: 48px;
-  top: 10px;
-  left: 750px;
-  font-family: "Adamina-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  text-decoration: underline;
-}
-
-.screen .rectangle-2 {
-  position: absolute;
-  width: 922px;
+  width: 100%;
   height: 49px;
-  top: 0px;
-  left: 0px;
   background-color: #939090;
-}
-
-.screen .overlap-group-wrapper {
-  position: absolute;
-  width: 134px;
-  height: 24px;
-  top: 12px;
-  left: 13px;
-}
-
-.screen .overlap-group {
-  position: relative;
-  width: 132px;
-  height: 24px;
-  background-color: #b6b6b6;
-}
-
-.screen .text-wrapper-2 {
-  position: absolute;
-  width: 109px;
-  height: 24px;
-  top: 0;
-  left: 12px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .div-wrapper {
-  position: absolute;
-  width: 134px;
-  height: 24px;
-  top: 12px;
-  left: 147px;
-}
-
-.screen .text-wrapper-3 {
-  position: absolute;
-  width: 40px;
-  height: 24px;
-  top: 0;
-  left: 47px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-2 {
-  position: absolute;
-  width: 134px;
-  height: 24px;
-  top: 12px;
-  left: 415px;
-}
-
-.screen .text-wrapper-4 {
-  position: absolute;
-  width: 58px;
-  height: 24px;
-  top: 0;
-  left: 37px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-3 {
-  position: absolute;
-  width: 140px;
-  height: 24px;
-  top: 12px;
-  left: 547px;
-}
-
-.screen .overlap-2 {
-  position: relative;
-  width: 138px;
-  height: 24px;
-}
-
-.screen .rectangle-3 {
-  position: absolute;
-  width: 132px;
-  height: 24px;
-  top: 0;
-  left: 2px;
-  background-color: #b6b6b6;
-}
-
-.screen .text-wrapper-5 {
-  position: absolute;
-  width: 138px;
-  height: 24px;
   top: 0;
   left: 0;
+}
+
+/* 상단 정보 요소 공통 스타일 */
+.info-bar {
+  display: flex;
+  gap: 12px; /* 요소 간 간격 */
+  padding: 12px;
+  background-color: #b6b6b6;
   font-family: "Lohit Tamil-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
+}
+
+.info-box {
+  background-color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #000;
+  white-space: nowrap;
+}
+
+.info-text {
   text-align: center;
-  letter-spacing: 0.50px;
   line-height: 24px;
 }
 
-.screen .view-4 {
-  position: absolute;
-  width: 134px;
-  height: 24px;
-  top: 12px;
-  left: 281px;
-}
 
-.screen .text-wrapper-6 {
+/* 라우팅 텍스트 */
+.route-title {
   position: absolute;
-  width: 126px;
-  height: 24px;
-  top: 0;
-  left: 4px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 11px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .ICN-OKA {
-  position: absolute;
-  height: 24px;
   top: 75px;
   left: 321px;
   font-family: "Lohit Tamil-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
   font-size: 24px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
+  font-weight: 400;
+  color: #000;
   white-space: nowrap;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 
-.screen .view-5 {
+/* 날짜 박스 */
+.date-box {
   position: absolute;
-  width: 157px;
-  height: 32px;
   top: 115px;
   left: 365px;
-}
-
-.screen .overlap-3 {
-  position: relative;
   width: 155px;
   height: 32px;
   background-color: #ababab;
-}
-
-.screen .text-wrapper-7 {
-  position: absolute;
-  height: 24px;
-  top: 4px;
-  left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 16px;
   font-family: "ABeeZee-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
   font-size: 20px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
+  color: #000;
   white-space: nowrap;
+  letter-spacing: 0.5px;
 }
 
-.screen .view-6 {
-  position: absolute;
-  width: 572px;
-  height: 130px;
-  top: 170px;
-  left: 165px;
+/* 예약 폼 영역 */
+.reservation-form {
+  margin-top: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
 }
 
-.screen .overlap-4 {
-  position: relative;
-  width: 566px;
-  height: 130px;
+.form-section label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
 }
 
-.screen .rectangle-4 {
-  position: absolute;
-  width: 560px;
-  height: 130px;
-  top: 0;
-  left: 0;
-  background-color: #e8e8e8;
+.form-section select,
+.form-section button {
+  padding: 8px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.screen .rectangle-5 {
-  position: absolute;
-  width: 280px;
-  height: 130px;
-  top: 0;
-  left: 0;
-  background-color: #d9d9d9;
+.form-section button {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
 }
 
-.screen .rectangle-6 {
-  position: absolute;
-  width: 280px;
-  height: 60px;
-  top: 0;
-  left: 0;
-  background-color: #ffffff;
-}
-
-.screen .rectangle-7 {
-  position: absolute;
-  width: 280px;
-  height: 40px;
-  top: 0;
-  left: 280px;
-  background-color: #c1c1c1;
-}
-
-.screen .view-7 {
-  position: absolute;
-  width: 86px;
-  height: 92px;
-  top: 38px;
-  left: 280px;
-}
-
-.screen .overlap-group-2 {
-  position: relative;
-  width: 80px;
-  height: 92px;
-}
-
-.screen .rectangle-8 {
-  position: absolute;
-  width: 80px;
-  height: 20px;
-  top: 2px;
-  left: 0;
-  background-color: #d9d9d9;
-  border: 1px solid;
-  border-color: #000000;
-}
-
-.screen .rectangle-9 {
-  position: absolute;
-  width: 80px;
-  height: 70px;
-  top: 22px;
-  left: 0;
-  background-color: #fffbf0;
-  border: 1px solid;
-  border-color: #000000;
-}
-
-.screen .text-wrapper-8 {
-  position: absolute;
-  height: 24px;
-  top: 57px;
-  left: 29px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 12px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  white-space: nowrap;
-}
-
-.screen .text-wrapper-9 {
-  height: 24px;
-  top: 30px;
-  left: 15px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-10 {
-  height: 24px;
-  top: 0;
-  left: 15px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-8 {
-  position: absolute;
-  width: 186px;
-  height: 92px;
-  top: 38px;
-  left: 380px;
-}
-
-.screen .overlap-5 {
-  position: absolute;
-  width: 80px;
-  height: 92px;
-  top: 0;
-  left: 100px;
-}
-
-.screen .rectangle-10 {
-  background-color: #959288;
-  position: absolute;
-  width: 80px;
-  height: 70px;
-  top: 22px;
-  left: 0;
-  border: 1px solid;
-  border-color: #000000;
-}
-
-.screen .text-wrapper-11 {
-  height: 24px;
-  top: 0;
-  left: 9px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-9 {
-  position: absolute;
-  width: 86px;
-  height: 92px;
-  top: 0;
-  left: 0;
-}
-
-.screen .rectangle-11 {
-  background-color: #c4c0b6;
-  position: absolute;
-  width: 80px;
-  height: 70px;
-  top: 22px;
-  left: 0;
-  border: 1px solid;
-  border-color: #000000;
-}
-
-.screen .text-wrapper-12 {
-  height: 24px;
-  top: 0;
-  left: 3px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-13 {
-  height: 24px;
-  top: 8px;
-  left: 359px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  color: #000000;
-  font-size: 24px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-14 {
-  position: absolute;
-  width: 40px;
-  height: 20px;
-  top: 92px;
-  left: 231px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 10px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  white-space: nowrap;
-}
-
-.screen .text-wrapper-15 {
-  position: absolute;
-  width: 40px;
-  height: 20px;
-  top: 72px;
-  left: 231px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 10px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  white-space: nowrap;
-}
-
-.screen .view-10 {
-  position: absolute;
-  width: 58px;
-  height: 24px;
-  top: 78px;
-  left: 155px;
-}
-
-.screen .text-wrapper-16 {
-  height: 24px;
-  top: 0;
-  left: 0;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 20px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .arrow {
-  position: absolute;
-  width: 77px;
-  height: 15px;
-  top: 83px;
-  left: 76px;
-}
-
-.screen .view-11 {
-  position: absolute;
-  width: 66px;
-  height: 34px;
-  top: 78px;
-  left: 15px;
-}
-
-.screen .text-wrapper-17 {
-  width: 62px;
-  height: 10px;
-  top: 24px;
-  left: 0;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 10px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-18 {
-  height: 24px;
-  top: 0;
-  left: 8px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 20px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-19 {
-  height: 24px;
-  top: 17px;
-  left: 51px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 20px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-20 {
-  height: 24px;
-  top: 17px;
-  left: 224px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 11px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-21 {
-  width: 62px;
-  height: 10px;
-  top: 102px;
-  left: 153px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 10px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-12 {
-  position: absolute;
-  width: 570px;
-  height: 130px;
-  top: 325px;
-  left: 165px;
-}
-
-.screen .view-13 {
-  position: absolute;
-  width: 353px;
-  height: 92px;
-  top: 38px;
-  left: 17px;
-}
-
-.screen .overlap-group-3 {
-  position: absolute;
-  width: 80px;
-  height: 92px;
-  top: 0;
-  left: 263px;
-}
-
-.screen .text-wrapper-22 {
-  height: 24px;
-  top: 57px;
-  left: 25px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-23 {
-  height: 24px;
-  top: 30px;
-  left: 19px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-24 {
-  width: 62px;
-  height: 10px;
-  top: 62px;
-  left: 0;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 10px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-25 {
-  width: 62px;
-  height: 10px;
-  top: 62px;
-  left: 134px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 10px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-14 {
-  position: absolute;
-  width: 58px;
-  height: 24px;
-  top: 78px;
-  left: 17px;
-}
-
-.screen .view-15 {
-  position: absolute;
-  width: 152px;
-  height: 50px;
-  top: 480px;
-  left: 675px;
-}
-
-.screen .overlap-6 {
-  position: relative;
-  width: 150px;
-  height: 50px;
-  background-color: #949494;
-  border-radius: 5px;
-}
-
-.screen .text-wrapper-26 {
-  height: 24px;
-  top: 13px;
-  left: 50px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  color: #000000;
-  font-size: 24px;
-  text-decoration: underline;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-27 {
-  width: 120px;
-  height: 48px;
-  top: 11px;
-  left: 222px;
-  font-family: "Adamina-Regular", Helvetica;
-  color: #000000c7;
-  font-size: 16px;
-  text-decoration: underline;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-28 {
-  width: 187px;
-  height: 48px;
-  top: 12px;
-  left: 342px;
-  font-family: "Adamina-Regular", Helvetica;
-  color: #000000;
-  font-size: 16px;
-  text-decoration: underline;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-29 {
-  width: 120px;
-  height: 48px;
-  top: 11px;
-  left: 538px;
-  font-family: "Adamina-Regular", Helvetica;
-  color: #000000;
-  font-size: 16px;
-  text-decoration: underline;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
+.form-section button:hover {
+  background-color: #45a049;
 }
