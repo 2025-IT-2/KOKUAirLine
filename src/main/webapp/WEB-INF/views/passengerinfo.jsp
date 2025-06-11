@@ -19,7 +19,7 @@
           <div class="text-wrapper-2">搭乗者情報</div>
           <div class="group">
             <div class="overlap-group">
-              <div class="view-2">
+              <div class="view-2"> 
                 <div class="overlap-2">
                   <div class="rectangle-2"></div>
 
