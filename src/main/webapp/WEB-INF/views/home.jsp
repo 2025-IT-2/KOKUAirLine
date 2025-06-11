@@ -10,17 +10,30 @@
   </head>
   <body>
     <div class="screen">
-      <div class="view-wrapper">
+      <div class="view-wrapper">        
         <div class="header-bar">
-          <div class="logo">空港団</div>
-          <div class="nav-links">
-            <div>予約</div>
-            <div>オンライン·チェックイン</div>
-            <div>予約確認</div>
-          </div>
-          <button class="login-button">ログイン</button>
-        </div>
-        <div class="chatgpt-image-wrapper">
+		  <div class="logo">空港団</div>
+		  <div class="nav-links">
+		    <div>予約</div>
+		    <div>オンライン·チェックイン</div>
+		    <div>予約確認</div>
+		  </div>
+		
+		  <c:choose>
+		    <c:when test="${not empty sessionScope.loginUserId}">
+		      <!-- 로그인된 경우 -->
+		      <div class="user-info">
+		        ${sessionScope.loginUserId}님
+		        <a href="<c:url value='/logout' />">로그아웃</a>
+		      </div>
+		    </c:when>
+		    <c:otherwise>
+		      <!-- 로그인되지 않은 경우 -->
+		      <button class="login-button" onclick="location.href='<c:url value="/login" />'">ログイン</button>
+		    </c:otherwise>
+		  </c:choose>
+		</div>
+		<div class="chatgpt-image-wrapper">
           <img src="<c:url value='/img/homepageImage.png' />" alt="Main Visual" />
         </div>
       </div>
