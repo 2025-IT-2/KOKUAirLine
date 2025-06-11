@@ -10,6 +10,27 @@
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="styleguide.css" />
     <link rel="stylesheet" href="style.css" />
+	
+	<!-- ① jQuery, jQuery UI CSS/JS 추가 -->
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+	
+	<script>
+		//캘린더 스크립트
+	  $(function() {
+	    // 캘린더 버튼 클릭 시 달력 표시
+	    $("#calendarBtn").click(function() {
+	      $("#caldateField").datepicker("show");
+	    });
+
+	    // 날짜 선택 시 해당 input에 값 설정
+	    $("#caldateField").datepicker({
+	      dateFormat: "yy-mm-dd"  // 원하는 포맷
+	    });
+	  });
+	</script>
+	
 </head>
 <body>
 	<%@ include file="header.jsp" %> 
@@ -111,11 +132,18 @@
 				</div>
                 <div class="group-4">
                   <div class="overlap-group-2">
-                    <div class="text-wrapper-6">年 月 日</div>
+                    <div class="umaretahi">
+						<div class="umaretahi-wrap">
+							<input type="text" id="caldateField" readonly >
+						</div>
+					</div>
                   </div>
                 </div>
                 <div class="calender-nen">
-                  <div class="text-wrapper-7">ダ</div>
+                  <div class="text-wrapper-7">
+					<!-- ② 날짜 입력 input + 캘린더 버튼 -->
+					<button id="calendarBtn">📅</button>
+					</div>
                 </div>
 				
                 <!-- 버튼은 form 내부로 이동 -->

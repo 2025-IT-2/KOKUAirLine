@@ -155,7 +155,7 @@
   border-radius: 10px;
 }
 
-.screen .text-wrapper-6 {
+.screen .umaretahi {
   top: 11px;
   left: 64px;
   font-family: "Inter-Regular", Helvetica;
@@ -561,5 +561,25 @@ input[type='radio']:checked {
   background-color: #111; 
   border: 3px solid #fff; 
   box-shadow: 0 0 0 1px #111; 
+}
+
+#caldateField{
+	position: absolute;
+	border: 0;
+	outline: none;
+	width: 150px;
+	height: 36px;
+	top: -10.5px;
+	left: -60px;
+	border-radius: 9.5px;
+}
+
+#calendarBtn{
+	position: absolute;
+	border: 0;
+	outline: none;
+	background-color: white;
+	left: -7px;
+	top: -2px;
 }
 
