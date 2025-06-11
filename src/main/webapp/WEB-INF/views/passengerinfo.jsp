@@ -76,9 +76,20 @@
           <div class="text-wrapper-14">위에 표 반복...</div>
           <div class="rectangle-7"></div>
           <div class="text-wrapper-15">決定</div>
-          <div class="rectangle-8"></div>
           <div class="rectangle-9"></div>
-          <div class="text-wrapper-16">010-5555-6666</div>
+          
+          <!-- 전화번호 입력창 -->
+          <div class="text-wrapper-16">
+            <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="090-1234-5678"
+            pattern="[0-9\-]{10,13}"
+            required
+            autocomplete="tel">
+          </div>
+          
           <div class="element">50,000&nbsp;&nbsp; 円</div>
 
         </div>
