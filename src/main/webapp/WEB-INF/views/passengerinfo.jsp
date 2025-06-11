@@ -48,8 +48,12 @@
                   <div class="group-3">
                     <div class="div-wrapper"><div class="text-wrapper-6">名前</div></div>
                     <div class="div-2">
-                      <div class="text-wrapper-7">名</div>
-                      <div class="text-wrapper-8">姓</div>
+                      <div class="text-wrapper-7">名
+                        <input type="text" id="name" name="name" placeholder="お名を入力してください">
+                      </div>
+                      <div class="text-wrapper-8">姓
+                        <input type="text" id="name" name="name" placeholder="お姓を入力してください">
+                      </div>
                     </div>
                   </div>
 
@@ -65,9 +69,6 @@
                 <div class="text-wrapper-10">成人1</div>
                 <div class="text-wrapper-11">成人2</div>
               </div>
-
-              <div class="rectangle-3"></div>
-              <div class="rectangle-4"></div>
             </div>
           </div>
 

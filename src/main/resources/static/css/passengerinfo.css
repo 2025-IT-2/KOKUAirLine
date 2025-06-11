@@ -267,6 +267,7 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0.50px;
+  
 }
 
 .screen .text-wrapper-7 {
@@ -283,6 +284,20 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0.50px;
+
+    /* 이름 입력 부분 */
+  input[type="text"] {
+  width: 200px;
+  height: 36px;
+  font-size: 15px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  top: -4px; /* 4px 위로 이동 */
+  }
+
 }
 
 .screen .text-wrapper-8 {
@@ -299,6 +314,19 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0.50px;
+
+  /* 성 입력 부분 */
+  input[type="text"] {
+  width: 200px;
+  height: 36px;
+  font-size: 15px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  top: -4px; /* 4px 위로 이동 */
+  }
 }
 
 .screen .group-4 {
@@ -354,24 +382,6 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0.50px;
-}
-
-.screen .rectangle-3 {
-  position: absolute;
-  width: 185px;
-  height: 33px;
-  top: 122px;
-  left: 222px;
-  background-color: #ffffff;
-}
-
-.screen .rectangle-4 {
-  position: absolute;
-  width: 242px;
-  height: 33px;
-  top: 122px;
-  left: 477px;
-  background-color: #ffffff;
 }
 
 .screen .text-wrapper-13 {
