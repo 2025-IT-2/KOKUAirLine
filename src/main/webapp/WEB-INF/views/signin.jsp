@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="styleguide.css" />
     <link rel="stylesheet" href="style.css" />
-
 </head>
 <body>
+	<%@ include file="header.jsp" %> 
   <div class="screen">
     <div class="view-wrapper">
       <div class="view">
@@ -20,7 +20,6 @@
           <div class="overlap-wrapper">
             <div class="overlap-2">
               <div class="rectangle-2"></div>
-
               <!-- 회원가입 form 시작 -->
               <form action="home.jsp" method="get" id="signin">
                 <div class="group-wrapper">
@@ -142,7 +141,6 @@
               <div class="rectangle-8"></div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
