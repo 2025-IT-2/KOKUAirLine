@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
+    <link rel="stylesheet" href="<c:url value='/css/global.css' />" /> <!-- url 변환을 해주는 jstl 하이퍼링크 기능 -->
     <link rel="stylesheet" href="<c:url value='/css/main.css' />" />
   </head>
   <body>
