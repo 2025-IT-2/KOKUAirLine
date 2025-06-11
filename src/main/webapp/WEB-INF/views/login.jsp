@@ -8,11 +8,16 @@
   <title>ログイン<</title>
 
   <!-- CSS 경로 정리 -->
-  <link rel="stylesheet" href="<c:url value='/css/globals.css' />" />
+  <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
   <link rel="stylesheet" href="<c:url value='/css/login.css' />" />
 </head>
 <body>
   <%@ include file="header.jsp" %>
+
+	<c:if test="${not empty loginError}">
+	    <input type="hidden" id="loginErrorMessage" value="${loginError}" />
+	</c:if>
+	
 
   <main class="login-screen">
     <section class="login-container">
@@ -50,5 +55,7 @@
 
     </section>
   </main>
+  <!-- JS 파일 링크 -->
+  <script src="/js/login.js"></script>
 </body>
 </html>
