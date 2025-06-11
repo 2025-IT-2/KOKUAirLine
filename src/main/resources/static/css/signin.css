@@ -44,8 +44,8 @@
   position: absolute;
   width: 122px;
   height: 48px;
-  top: 515px;
-  left: 371px;
+  margin-top: 15px;
+  left: 50px;
 }
 
 .screen .overlap-2 {
@@ -54,22 +54,13 @@
   height: 48px;
 }
 
-.screen .rectangle-2 {
-  position: absolute;
-  width: 95px;
-  height: 38px;
-  top: 5px;
-  left: 13px;
-  background-color: #ffffff;
-  border-radius: 10px;
-}
 
 .screen .group-wrapper {
   position: absolute;
   width: 55px;
   height: 38px;
-  top: 217px;
-  left: 329px;
+  top: 70px;
+  left: 288px;
 }
 
 .screen .overlap-group-wrapper {
@@ -101,7 +92,7 @@
   position: absolute;
   width: 880px;
   height: 48px;
-  top: 65px;
+  top: 10px;
   left: 4px;
 }
 
@@ -189,6 +180,8 @@
     position: absolute;
     width: 38px;
     height: 38px;
+	top: 205px;
+	left: 65px;
     background-color: #ffffff;
     border-radius: 10px;
 }
@@ -206,12 +199,25 @@
   text-align: center;
 }
 
+.screen .groupoveroutline{
+	background-color: rgb(249, 252, 255);
+	position: absolute;
+	width: 608px;
+	height: 408px;
+	top: 56px;
+	margin-left: 96px;
+	margin-right: 96px;	
+	padding: 4px;
+	border-radius: 10px;
+}
+
 .screen .group-6 {
   position: absolute;
-  width: 561px;
-  height: 312px;
-  top: 0;
-  left: 0;
+  width: 600px;
+  height: 400px;
+  background-color: #d6d6d6;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .screen .rectangle-4 {
@@ -219,7 +225,7 @@
   width: 205px;
   height: 38px;
   top: 0;
-  left: 356px;
+  left: 63px;
   background-color: #ffffff;
   border-radius: 10px;
 }
@@ -237,7 +243,7 @@
   width: 205px;
   height: 38px;
   top: 0;
-  left: 66px;
+  left: 63px;
   background-color: #ffffff;
   border-radius: 10px;
 }
@@ -246,8 +252,8 @@
   position: absolute;
   width: 205px;
   height: 38px;
-  top: 68px;
-  left: 65px;
+  top: 0px;
+  left: 63px;
   background-color: #ffffff;
   border-radius: 10px;
 }
@@ -256,8 +262,8 @@
   position: absolute;
   width: 205px;
   height: 38px;
-  top: 137px;
-  left: 356px;
+  top: 0px;
+  left: 63px;
   background-color: #ffffff;
   border-radius: 10px;
 }
@@ -436,8 +442,8 @@
   position: absolute;
   width: 205px;
   height: 38px;
-  top: 68px;
-  left: 356px;
+  top: 0px;
+  left: 63px;
   background-color: #ffffff;
   border-radius: 10px;
 }
@@ -529,12 +535,31 @@
 .screen .signin{
   z-index: 1;
   position: absolute;
-  top: 6px;
   border: 0;
   outline: none;
   width: 95px;
   height: 38px;
-  margin-left: 13px;
+  top: 400px;
+  margin-left: 240px;
   border-radius: 9.5px;
-  background-color: #ffffff;
+  background-color: aliceblue;
 }
+
+input[type='radio'] {
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  appearance: none; 
+  width: 13px;
+  height: 13px;
+  border: 1px solid #ccc; 
+  border-radius: 50%;
+  outline: none; 
+  cursor: pointer;
+}
+
+input[type='radio']:checked {
+  background-color: #111; 
+  border: 3px solid #fff; 
+  box-shadow: 0 0 0 1px #111; 
+}
+
