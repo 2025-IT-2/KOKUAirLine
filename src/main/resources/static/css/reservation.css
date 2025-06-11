@@ -65,18 +65,25 @@ h2, h3 {
     color: white;
     width: 334px;
     cursor: pointer;
+    border: 1px solid black;
     border-radius: 4px;
 }
 
+.airport-option {
+	background-color: #90a19d;
+	color: white;
+	border-radius: 5px;
+}
+
 .date-input {
-    background-color: #ccc;
-    border: none;
+    background-color: white;
+    border: 1px solid;
     padding: 10px 15px;
     border-radius: 5px;
     font-size: 16px;
     margin-right: 10px;
     margin-left: 20px;
-    color: white;
+    color: black;
     width: 180px;
     cursor: pointer;
 }
