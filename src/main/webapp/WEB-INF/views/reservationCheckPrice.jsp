@@ -1,142 +1,101 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%
+    request.setCharacterEncoding("UTF-8");
+
+    String departure = request.getParameter("departure");
+    String arrival = request.getParameter("arrival");
+    String travelDate = request.getParameter("travelDate");
+    String passengerCount = request.getParameter("passengerCount");
+    String tripType = request.getParameter("tripType");
+
+    request.setAttribute("departure", departure);
+    request.setAttribute("arrival", arrival);
+    request.setAttribute("travelDate", travelDate);
+    request.setAttribute("passengerCount", passengerCount);
+    request.setAttribute("tripType", tripType);
+%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta charset="UTF-8">
-<link rel="stylesheet" href="<c:url value='/css/global.css'/>" />
-<link rel="stylesheet" href="<c:url value='/css/reservationCheckPrice.css'/>" />
-<title>航空券価格を確認</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="<c:url value='/css/global.css'/>" />
+    <link rel="stylesheet" href="<c:url value='/css/reservationCheckPrice.css'/>" />
+    <title>航空券価格を確認</title>
 </head>
 <body>
 <%@ include file="header.jsp" %>
+
 <div class="screen">
-      <div class="overlap-wrapper">
-        <div class="overlap">
-          <div class="view"></div>
-          <div class="text-wrapper"></div>
-          <div class="rectangle-2"></div>
-          <div class="overlap-group-wrapper">
-            <div class="overlap-group"><div class="text-wrapper-2">ソウル/仁川</div></div>
-          </div>
-          <div class="div-wrapper">
-            <div class="overlap-group"><div class="text-wrapper-3">沖縄</div></div>
-          </div>
-          <div class="view-2">
-            <div class="overlap-group"><div class="text-wrapper-4">成人 2</div></div>
-          </div>
-          <div class="view-3">
-            <div class="overlap-2">
-              <div class="rectangle-3"></div>
-              <div class="text-wrapper-5">エコノミー特価</div>
+    <div class="overlap">
+
+        <!-- 배경 박스 -->
+        <div class="background-box"></div>
+
+        <!-- 상단 바 -->
+        <div class="top-bar"></div>
+
+        <div class="info-bar">
+	    <div class="info-box departure">
+		<span class="info-text">${departure}</span>
+		</div>
+		<div class="info-box arrival">
+			<span class="info-text">${arrival}</span>
+		</div>
+		<div class="info-box date-range">
+			<span class="info-text">${travelDate}</span>
+		</div>
+		<div class="info-box passenger-count">
+			<span class="info-text">성인 ${passengerCount}</span>
+		</div>
+		<div class="info-box seat-type">
+			<span class="info-text">エコノミー特価</span>
+		</div>
+		</div>
+
+        <!-- 노선 정보 -->
+        <p class="route-title">ICN 인천 &gt; ${arrival}</p>
+
+        <!-- 출발일 -->
+        <div class="date-box">06.09. 화요일</div>
+
+        <!-- 예약 폼 -->
+        <form action="/confirmReservation" method="post" class="reservation-form">
+
+            <!-- 운항 시간 -->
+            <div class="form-section">
+                <label for="flightTime">운항 시간 선택:</label>
+                <select name="flightTime" id="flightTime">
+                    <c:forEach var="f" items="${flightList}">
+                        <option value="${f.flightTime}">${f.flightTime}</option>
+                    </c:forEach>
+                </select>
             </div>
-          </div>
-          <div class="view-4">
-            <div class="overlap-group"><div class="text-wrapper-6">25.06.09-25.06.15</div></div>
-          </div>
-          <p class="ICN-OKA">ICN 仁川 &gt; OKA 沖縄</p>
-          <div class="view-5">
-            <div class="overlap-3"><div class="text-wrapper-7">06.09.火曜日</div></div>
-          </div>
-          <div class="view-6">
-            <div class="overlap-4">
-              <div class="rectangle-4"></div>
-              <div class="rectangle-5"></div>
-              <div class="rectangle-6"></div>
-              <div class="rectangle-7"></div>
-              <div class="view-7">
-                <div class="overlap-group-2">
-                  <div class="rectangle-8"></div>
-                  <div class="rectangle-9"></div>
-                  <div class="text-wrapper-8">9席</div>
-                  <div class="text-wrapper-9">16200円</div>
-                  <div class="text-wrapper-10">セイバー</div>
-                </div>
-              </div>
-              <div class="view-8">
-                <div class="overlap-5">
-                  <div class="rectangle-8"></div>
-                  <div class="rectangle-10"></div>
-                  <div class="text-wrapper-8">9席</div>
-                  <div class="text-wrapper-9">37000円</div>
-                  <div class="text-wrapper-11">フラックス</div>
-                </div>
-                <div class="view-9">
-                  <div class="overlap-group-2">
-                    <div class="rectangle-8"></div>
-                    <div class="rectangle-11"></div>
-                    <div class="text-wrapper-8">9席</div>
-                    <div class="text-wrapper-9">20600円</div>
-                    <div class="text-wrapper-12">スタンダード</div>
-                  </div>
-                </div>
-              </div>
-              <div class="text-wrapper-13">エコノミー</div>
-              <div class="text-wrapper-14">A32Q</div>
-              <div class="text-wrapper-15">OZ172</div>
-              <div class="view-10"><div class="text-wrapper-16">11:15</div></div>
-              <img class="arrow" src="img/image.svg" />
-              <div class="view-11">
-                <div class="text-wrapper-17">ターミナル1</div>
-                <div class="text-wrapper-18">8:50</div>
-              </div>
-              <div class="text-wrapper-19">出着/到着時間</div>
-              <div class="text-wrapper-20">便名/機種</div>
-              <div class="text-wrapper-21">ターミナル1</div>
+
+            <!-- 좌석 타입 -->
+            <div class="form-section">
+                <label for="seatType">좌석 타입 선택:</label>
+                <select name="seatType" id="seatType">
+                    <option value="economy">이코노미</option>
+                    <option value="business">비즈니스</option>
+                    <option value="first">퍼스트</option>
+                </select>
             </div>
-          </div>
-          <div class="view-12">
-            <div class="overlap-4">
-              <div class="rectangle-4"></div>
-              <div class="rectangle-5"></div>
-              <div class="rectangle-6"></div>
-              <div class="rectangle-7"></div>
-              <div class="view-13">
-                <div class="overlap-group-3">
-                  <div class="rectangle-8"></div>
-                  <div class="rectangle-9"></div>
-                  <div class="text-wrapper-22">15席</div>
-                  <div class="text-wrapper-23">1300円</div>
-                  <div class="text-wrapper-10">セイバー</div>
-                </div>
-                <div class="text-wrapper-24">ターミナル1</div>
-                <div class="text-wrapper-25">ターミナル1</div>
-              </div>
-              <div class="view-8">
-                <div class="overlap-5">
-                  <div class="rectangle-8"></div>
-                  <div class="rectangle-10"></div>
-                  <div class="text-wrapper-8">4席</div>
-                  <div class="text-wrapper-9">32000円</div>
-                  <div class="text-wrapper-11">フラックス</div>
-                </div>
-                <div class="view-9">
-                  <div class="overlap-group-2">
-                    <div class="rectangle-8"></div>
-                    <div class="rectangle-11"></div>
-                    <div class="text-wrapper-8">5席</div>
-                    <div class="text-wrapper-9">15000円</div>
-                    <div class="text-wrapper-12">スタンダード</div>
-                  </div>
-                </div>
-              </div>
-              <div class="text-wrapper-13">エコノミー</div>
-              <div class="text-wrapper-14">A32Q</div>
-              <div class="text-wrapper-15">OZ172</div>
-              <div class="view-10"><div class="text-wrapper-16">01:05</div></div>
-              <img class="arrow" src="img/arrow-3.svg" />
-              <div class="view-14"><div class="text-wrapper-16">10:00</div></div>
-              <div class="text-wrapper-19">出着/到着時間</div>
-              <div class="text-wrapper-20">便名/機種</div>
+
+            <!-- 숨겨진 값 -->
+            <input type="hidden" name="departure" value="${departure}" />
+            <input type="hidden" name="arrival" value="${arrival}" />
+            <input type="hidden" name="tripType" value="${tripType}" />
+
+            <!-- 제출 버튼 -->
+            <div class="form-section">
+                <button type="submit">예약 확인</button>
             </div>
-          </div>
-          <div class="view-15">
-            <div class="overlap-6"><div class="text-wrapper-26">次へ</div></div>
-          </div>
-        </div>
-      </div>
+
+        </form>
     </div>
+</div>
 
 </body>
 </html>
