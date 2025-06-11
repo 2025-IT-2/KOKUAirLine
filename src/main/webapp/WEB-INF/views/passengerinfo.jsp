@@ -76,7 +76,6 @@
           <div class="text-wrapper-14">위에 표 반복...</div>
           <div class="rectangle-7"></div>
           <div class="text-wrapper-15">決定</div>
-          <div class="rectangle-9"></div>
           
           <!-- 전화번호 입력창 -->
           <div class="text-wrapper-16">
@@ -90,7 +89,17 @@
             autocomplete="tel">
           </div>
           
-          <div class="element">50,000&nbsp;&nbsp; 円</div>
+          <div class="element">
+            <input
+            type="text"
+            id="amount"
+            name="amount"
+            placeholder="例: 10,000 円"
+            inputmode="numeric"
+            required
+            autocomplete="off"
+            oninput="formatCurrency(this)">
+          </div>
 
         </div>
       </div>

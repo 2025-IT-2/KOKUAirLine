@@ -439,15 +439,6 @@
   letter-spacing: 0.50px;
 }
 
-.screen .rectangle-9 {
-  position: absolute;
-  width: 189px;
-  height: 45px;
-  top: 481px;
-  left: 488px;
-  background-color: #ffffff;
-}
-
 .screen .text-wrapper-16 {
   position: absolute;
   height: 33px;
@@ -466,7 +457,7 @@
   input[type="tel"] {
   width: 200px;
   height: 50px;
-  font-size: 15px;
+  font-size: 25px;
   padding: 4px 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -478,8 +469,8 @@
 
 .screen .element {
   height: 33px;
-  top: 489px;
-  left: 504px;
+  top: 488px;
+  left: 470px;
   font-family: "ABeeZee-Regular", Helvetica;
   font-size: 32px;
   line-height: 33px;
@@ -489,6 +480,20 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0.50px;
+
+   /* 금액 입력창 */ 
+  input[type="text"]#amount {
+  width: 200px;
+  height: 50px;
+  font-size: 25px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  top: -10px; /* 10px 위로 이동 */
+}
+
 }
 
 .screen .text-wrapper-17 {
