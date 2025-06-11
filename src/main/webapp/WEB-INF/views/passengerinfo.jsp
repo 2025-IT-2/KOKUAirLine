@@ -23,13 +23,27 @@
                 <div class="overlap-2">
                   <div class="rectangle-2"></div>
 
-                  <div class="group-2">
-                    <div class="div-wrapper"><div class="text-wrapper-3">性別</div></div>
-                    <div class="div-2">
-                      <div class="text-wrapper-4">男</div>
-                      <div class="text-wrapper-5">女</div>
-                    </div>
+              <div class="screen">
+                <div class="group-2">
+                  <!-- 라벨 박스 -->
+                  <div class="div-wrapper">
+                    <div class="text-wrapper-3">性別</div>
                   </div>
+
+                  <!-- 선택 영역 -->
+                  <div class="div-2">
+                  <!-- 남성 선택 -->
+                    <label class="radio-label" style="left: 60px;">
+                      <input type="radio" name="gender" value="male" class="radio-input" checked> 男
+                    </label>
+
+                  <!-- 여성 선택 -->
+                    <label class="radio-label" style="left: 200px;">
+                      <input type="radio" name="gender" value="female" class="radio-input"> 女
+                    </label>
+                  </div>
+                </div>
+              </div>
 
                   <div class="group-3">
                     <div class="div-wrapper"><div class="text-wrapper-6">名前</div></div>
@@ -66,9 +80,6 @@
           <div class="text-wrapper-16">010-5555-6666</div>
           <div class="element">50,000&nbsp;&nbsp; 円</div>
 
-          <div class="ellipse"></div>
-          <div class="ellipse-2"></div>
-          <div class="ellipse-3"></div>
         </div>
       </div>
     </div>
