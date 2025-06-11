@@ -150,8 +150,10 @@
   top: 0;
   left: 0;
   background-color: #d9d9d9;
-  border: 1px solid;
-  border-color: #000000;
+  border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .screen .text-wrapper-3 {
@@ -177,8 +179,22 @@
   top: 0;
   left: 150px;
   background-color: #d9d9d9;
-  border: 1px solid;
-  border-color: #000000;
+  border: 1px solid #000000;
+  position: relative;
+}
+
+/* 라디오 버튼 스타일 */
+.radio-label {
+  position: absolute;
+  top: 20px;
+  font-size: 32px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  cursor: pointer;
+}
+
+.radio-input {
+  margin-right: 10px;
+  transform: scale(1.4); /* 버튼 크기 살짝 키우기 */
 }
 
 .screen .text-wrapper-4 {
@@ -524,34 +540,4 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0.50px;
-}
-
-.screen .ellipse {
-  position: absolute;
-  width: 27px;
-  height: 27px;
-  top: 206px;
-  left: 231px;
-  background-color: #ffffff;
-  border-radius: 13.5px;
-}
-
-.screen .ellipse-2 {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  top: 212px;
-  left: 237px;
-  background-color: #000000;
-  border-radius: 7.5px;
-}
-
-.screen .ellipse-3 {
-  position: absolute;
-  width: 27px;
-  height: 27px;
-  top: 206px;
-  left: 375px;
-  background-color: #ffffff;
-  border-radius: 13.5px;
 }
