@@ -1,144 +1,139 @@
-@charset "UTF-8";
-
-/* 전체 배경 및 정렬 */
-.screen {
-  background-color: #7d7983;
-  display: flex;
-  justify-content: center;
-  width: 100%;
+body {
+    margin: 0;
+    padding: 0px;
+    background-color: #e5e5e5;
+    font-family: "Noto Sans JP", sans-serif;
 }
 
-/* 메인 콘텐츠 영역 */
-.screen .overlap {
-  position: relative;
-  width: 922px;
-  height: 582px;
-  margin-top: 12px;
+.container {
+    background-color: #e0e0e0;
+    padding: 80px;
+    max-width: 1800px;
+    margin: auto;
+    border-radius: 8px;
 }
 
-/* 배경 박스 */
-.background-box {
-  position: absolute;
-  width: 922px;
-  height: 558px;
-  background-color: #d9d9d9;
-  top: 0;
-  left: 0;
-}
-
-/* 상단 정보 바 */
+/* 상단 바 */
 .top-bar {
-  position: absolute;
-  width: 100%;
-  height: 49px;
-  background-color: #939090;
-  top: 0;
-  left: 0;
+    position: absolute;
+    width: 100%;
+    height: 49px;
+    background-color: #939090;
+    top: 0;
+    left: 0;
 }
 
-/* 상단 정보 요소 공통 스타일 */
+/* 정보 박스 */
 .info-bar {
-  display: flex;
-  gap: 12px; /* 요소 간 간격 */
-  padding: 12px;
-  background-color: #b6b6b6;
-  font-family: "Lohit Tamil-Regular", Helvetica;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px;
+    background-color: #b6b6b6;
+    font-family: "Lohit Tamil-Regular", Helvetica;
+    border-radius: 4px;
 }
 
 .info-box {
-  background-color: #fff;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #000;
-  white-space: nowrap;
+    background-color: rgb(255, 255, 255);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #000;
+    white-space: nowrap;
 }
 
 .info-text {
-  text-align: center;
-  line-height: 24px;
+    text-align: center;
+    line-height: 24px;
 }
 
+/* 버튼 정렬 */
+.trip-type,
+.trip-type2,
+.class-type {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+/* 버튼 공통 스타일 */
 .trip-type button,
+.trip-type2 button,
 .class-type button {
-    margin: 5px;
+    margin: 5px 10px 5px 0;
     padding: 8px 16px;
     border: 1px solid #000;
     border-radius: 4px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     cursor: pointer;
+    font-size: 14px;
 }
 
-.trip-type .selected {
-    background-color: #ccc;
+.button-groups {
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    gap: 20px; /* 위아래 간격 */
 }
 
+.trip-type .selected,
+.trip-type2 .selected,
 .class-type .selected {
     background-color: #ccc;
 }
 
-/* 라우팅 텍스트 */
-.route-title {
-  position: absolute;
-  top: 75px;
-  left: 321px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  font-size: 24px;
-  font-weight: 400;
-  color: #000;
-  white-space: nowrap;
-  text-align: center;
-  letter-spacing: 0.5px;
-}
-
-/* 날짜 박스 */
-.date-box {
-  position: absolute;
-  top: 115px;
-  left: 365px;
-  width: 155px;
-  height: 32px;
-  background-color: #ababab;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: 16px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-size: 20px;
-  color: #000;
-  white-space: nowrap;
-  letter-spacing: 0.5px;
-}
-
-/* 예약 폼 영역 */
+/* 예약 폼 */
 .reservation-form {
-  margin-top: 180px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: flex-start;
+    margin-top: -40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
 }
 
+/* 개별 폼 섹션 */
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 라벨 */
 .form-section label {
-  font-weight: bold;
-  margin-bottom: 5px;
-  display: block;
+    font-weight: bold;
+    font-size: 16px;
 }
 
-.form-section select,
-.form-section button {
-  padding: 8px;
-  width: 200px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+/* 셀렉트박스 */
+.form-section select {
+    padding: 10px;
+    font-size: 15px;
+    width: 260px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
 }
 
+/* 확인 버튼 */
 .form-section button {
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .form-section button:hover {
-  background-color: #45a049;
+    background-color: #45a049;
+}
+
+.class-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
