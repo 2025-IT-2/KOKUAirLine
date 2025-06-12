@@ -437,6 +437,7 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0.50px;
+  cursor: pointer; /* 마우스 커서 손가락 모양 */
 }
 
 .screen .text-wrapper-16 {

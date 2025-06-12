@@ -75,7 +75,7 @@
           <div class="text-wrapper-13">予約者<br />連絡先</div>
           <div class="text-wrapper-14">위에 표 반복...</div>
           <div class="rectangle-7"></div>
-          <div class="text-wrapper-15">決定</div>
+          <div class="text-wrapper-15" onclick="location.href='/nextpage'">決定</div>
           
           <!-- 전화번호 입력창 -->
           <div class="text-wrapper-16">
