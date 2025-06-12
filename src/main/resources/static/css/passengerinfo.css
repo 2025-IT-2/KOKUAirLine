@@ -4,6 +4,7 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  position: relative; /* 기준점 설정 */
 }
 
 .screen .overlap-wrapper {
@@ -18,16 +19,17 @@
   position: relative;
   width: 882px;
   height: 580px;
-  top: 12px;
-  left: 7px;
+  top: -30px;
+  left: 0px;
 }
 
 .screen .view {
   position: absolute;
   width: 873px;
   height: 577px;
-  top: 3px;
-  left: 9px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #d9d9d9;
 }
 
@@ -437,6 +439,7 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0.50px;
+  cursor: pointer; /* 마우스 커서 손가락 모양 */
 }
 
 .screen .text-wrapper-16 {
