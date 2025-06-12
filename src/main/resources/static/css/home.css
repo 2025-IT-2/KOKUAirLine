@@ -37,39 +37,3 @@ body {
   max-height: 100%;
   object-fit: cover;
 }
-
-.header-bar {
-  background-color: #fff;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #ccc;
-}
-
-.logo {
-  font-size: 32px;
-  font-weight: bold;
-  color: #333;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links div {
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
-}
-
-.login-button {
-  background-color: white;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  color: #333;
-}

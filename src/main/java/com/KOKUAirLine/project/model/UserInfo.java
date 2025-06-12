@@ -14,15 +14,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor // 파라미터가 다 있거나 다 없는 생성자 2가지 생성됨
 public class UserInfo { // 유저 데이터 저장용 클래스. 이거에 맞는 테이블 생성됨
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	private String email;
 	private String userId;
 	private String password;
+	
+	private String email;
 	
 	private String userLastName;
 	private String userFirstName;

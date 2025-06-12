@@ -7,28 +7,19 @@
   width: 100%;
 }
 
-.screen .overlap-wrapper {
-  background-color: var(--m3syslight-medium-contrastoutline-variant);
-  border: 8px solid;
-  border-color: #ffffff;
-  width: 905px;
-  height: 610px;
-}
 
 .screen .overlap {
   position: relative;
-  width: 882px;
+  width: 922px;
   height: 582px;
   top: 12px;
-  left: 7px;
+  left: 2px;
 }
 
 .screen .view {
   position: absolute;
-  width: 873px;
-  height: 579px;
-  top: 3px;
-  left: 9px;
+  width: 922px;
+  height: 558px;
   background-color: #d9d9d9;
 }
 
@@ -82,19 +73,18 @@
 
 .screen .rectangle-2 {
   position: absolute;
-  width: 870px;
+  width: 922px;
   height: 49px;
-  top: 68px;
-  left: 9px;
+  top: 0px;
+  left: 0px;
   background-color: #939090;
-  border-radius: 5px;
 }
 
 .screen .overlap-group-wrapper {
   position: absolute;
   width: 134px;
   height: 24px;
-  top: 81px;
+  top: 12px;
   left: 13px;
 }
 
@@ -124,8 +114,8 @@
   position: absolute;
   width: 134px;
   height: 24px;
-  top: 81px;
-  left: 159px;
+  top: 12px;
+  left: 147px;
 }
 
 .screen .text-wrapper-3 {
@@ -147,8 +137,8 @@
   position: absolute;
   width: 134px;
   height: 24px;
-  top: 81px;
-  left: 448px;
+  top: 12px;
+  left: 415px;
 }
 
 .screen .text-wrapper-4 {
@@ -170,8 +160,8 @@
   position: absolute;
   width: 140px;
   height: 24px;
-  top: 81px;
-  left: 672px;
+  top: 12px;
+  left: 547px;
 }
 
 .screen .overlap-2 {
@@ -208,8 +198,8 @@
   position: absolute;
   width: 134px;
   height: 24px;
-  top: 81px;
-  left: 306px;
+  top: 12px;
+  left: 281px;
 }
 
 .screen .text-wrapper-6 {
@@ -230,8 +220,8 @@
 .screen .ICN-OKA {
   position: absolute;
   height: 24px;
-  top: 153px;
-  left: 301px;
+  top: 75px;
+  left: 321px;
   font-family: "Lohit Tamil-Regular", Helvetica;
   font-weight: 400;
   color: #000000;
@@ -246,8 +236,8 @@
   position: absolute;
   width: 157px;
   height: 32px;
-  top: 193px;
-  left: 345px;
+  top: 115px;
+  left: 365px;
 }
 
 .screen .overlap-3 {
@@ -276,8 +266,8 @@
   position: absolute;
   width: 572px;
   height: 130px;
-  top: 228px;
-  left: 145px;
+  top: 170px;
+  left: 165px;
 }
 
 .screen .overlap-4 {
@@ -646,8 +636,8 @@
   position: absolute;
   width: 570px;
   height: 130px;
-  top: 374px;
-  left: 145px;
+  top: 325px;
+  left: 165px;
 }
 
 .screen .view-13 {
@@ -740,7 +730,7 @@
   position: absolute;
   width: 152px;
   height: 50px;
-  top: 519px;
+  top: 480px;
   left: 675px;
 }
 
