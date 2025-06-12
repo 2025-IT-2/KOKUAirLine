@@ -75,7 +75,7 @@
             <div class="group-6">
             <div class="overlap-2">
               <!-- 회원가입 form 시작 -->
-              <form action="home.jsp" method="get" id="signin">
+              <form action="/signin" method="post" id="signin">
 				<!-- 버튼은 form 내부로 이동 -->
 				  <button type="submit" class="signin">会員登録</button>
 				</form>
@@ -213,7 +213,7 @@
                   <div class="overlap-group-2">
                     <div class="umaretahi">
 						<div class="umaretahi-wrap">
-							<input type="text" id="caldateField" readonly >
+							<input type="text" id="caldateField" name="birthdate" readonly >
 						</div>
 					</div>
                   </div>
