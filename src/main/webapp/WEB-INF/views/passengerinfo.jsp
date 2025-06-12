@@ -89,16 +89,17 @@
             autocomplete="tel">
           </div>
           
-          <div class="element">
-            <input
-            type="text"
-            id="amount"
-            name="amount"
-            placeholder="例: 10,000 円"
-            inputmode="numeric"
-            required
-            autocomplete="off"
-            oninput="formatCurrency(this)">
+          <div class="box">
+            <div class="element">
+              <c:choose>
+                <c:when test="${not empty amount}">
+                  ${amount} 円
+                </c:when>
+                <c:otherwise>
+                  金額が見つかりません。
+                </c:otherwise>
+              </c:choose>
+            </div>
           </div>
 
         </div>
