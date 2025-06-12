@@ -7,12 +7,16 @@ import java.util.Arrays;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.KOKUAirLine.project.model.Flight;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 //import com.KOKUAirLine.project.service.FlightScheduleService;
 
@@ -20,7 +24,7 @@ import com.KOKUAirLine.project.model.Flight;
 public class ReservationCheckPriceController {
 
     @GetMapping("/reservationCheckPrice")
-    public String mockReservationCheckPrice(Model model) {
+    public String mockReservationCheckPrice(@ModelAttribute("departure") String dep , HttpServletResponse resp, HttpServletRequest request) {
 
         List<Flight> flightList = new ArrayList<>();
 
@@ -37,11 +41,11 @@ public class ReservationCheckPriceController {
         flightList.add(flight1);
         flightList.add(flight2);
 
-        model.addAttribute("flightList", flightList);
-        model.addAttribute("departure", "仁川");
-        model.addAttribute("arrival", "沖縄");
-        model.addAttribute("travelDate", "25.06.09-25.06.15");
-        model.addAttribute("passengerCount", 2);
+        request.setAttribute("flightList", flightList);
+        request.setAttribute("departure", "仁川");
+        request.setAttribute("arrival", "沖縄");
+        request.setAttribute("travelDate", "25.06.09-25.06.15");
+        request.setAttribute("passengerCount", 2);
 
         return "reservationCheckPrice"; // => /WEB-INF/views/reservationCheckPrice.jsp
     }
@@ -53,7 +57,7 @@ public class ReservationCheckPriceController {
         @RequestParam String tripType,
         @RequestParam String travelDate,
         @RequestParam String passengerCount,
-        Model model
+        RedirectAttributes attri
     ) {
         // 실제 구현 시 DB에서 flightList를 가져오는 서비스 호출 예정
 
@@ -65,13 +69,12 @@ public class ReservationCheckPriceController {
         );
         flightList.add(mockFlight);
 
-        model.addAttribute("departure", departure);
-        model.addAttribute("arrival", arrival);
-        model.addAttribute("tripType", tripType);
-        model.addAttribute("travelDate", travelDate);
-        model.addAttribute("passengerCount", passengerCount);
-        model.addAttribute("flightList", flightList);
+        attri.addFlashAttribute("departure", departure);
+        attri.addFlashAttribute("arrival", arrival);
+        attri.addFlashAttribute("tripType", tripType);
+        attri.addFlashAttribute("travelDate", travelDate);
+        attri.addFlashAttribute("passengerCount", passengerCount);
 
-        return "reservationCheckPrice";
+        return "redirect:/reservationCheckPrice";
     }
 }
