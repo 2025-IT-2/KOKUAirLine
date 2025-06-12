@@ -48,7 +48,6 @@ public class Flight {
     public String getAircraftType() { return aircraftType; }
     public String getDepartureTime() { return departureTime; }
     public String getArrivalTime() { return arrivalTime; }
-
     public int getSaverPrice() { return saverPrice; }
     public int getSaverSeats() { return saverSeats; }
     public int getStandardPrice() { return standardPrice; }

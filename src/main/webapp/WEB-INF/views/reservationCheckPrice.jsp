@@ -39,25 +39,33 @@
    <div class = "container">
    
    <!-- 예약 폼 -->
-   <form action="/confirmReservation" method="post" class="reservation-form">
-   
-   <div class="info-bar">
-       <div class="info-box departure">
-           <span class="info-text">${departure}</span>
-   </div>
-   <div class="info-box arrival">
-       <span class="info-text">${arrival}</span>
-   </div>
-   <div class="info-box date-range">
-       <span class="info-text">${travelDate}</span>
-   </div>
-   <div class="info-box passenger-count">
-       <span class="info-text">성인 ${passengerCount}</span>
-       </div>
-       <div class="info-box seat-type">
-           <span class="info-text">エコノミー特価</span>
-       </div>
-   </div>
+   <form action="/reservationCheckPrice" method="post">
+
+  출발지: <input type="text" name="departireAirport" value="${departireAirport}"/> <br/>
+  도착지: <input type="text" name="arrivalAirport" value="${arrivalAirport}"/> <br/>
+  
+  출발일: <input type="date" name="departureDate" value="${departureDate}"/> <br/>
+  돌아오는 날 (왕복일 경우): <input type="date" name="returnDate" value="${returnDate}"/> <br/>
+  
+  성인: <input type="number" name="adultCount" value="${adultCount}" min="0"/> <br/>
+  어린이: <input type="number" name="childCount" value="${childCount}" min="0"/> <br/>
+  유아: <input type="number" name="infantCount" value="${infantCount}" min="0"/> <br/>
+  
+  여행 유형: 
+  <select name="tripType">
+    <option value="oneway" ${tripType == 'oneway' ? 'selected' : ''}>편도</option>
+    <option value="round" ${tripType == 'round' ? 'selected' : ''}>왕복</option>
+  </select> <br/>
+  
+  클래스: 
+  <select name="classType">
+    <option value="eco-spec" ${classType == 'eco-spec' ? 'selected' : ''}>이코노미</option>
+    <option value="business" ${classType == 'business' ? 'selected' : ''}>비즈니스</option>
+  </select> <br/>
+  
+  <button type="submit">조회</button>
+</form>
+
    
    
    
@@ -175,7 +183,7 @@
 	<%@ include file="header.jsp" %>
 	<div class = "container">
 	
-	<!-- 예약 폼 -->
+	<!-- 예약 폼 
 	<form action="/reservation" method="post">
 	<div class="info-bar">
 	    <div class="info-box departure">
@@ -193,7 +201,7 @@
 	    <div class="info-box seat-type">
 	        <span class="info-text">エコノミー特価</span>
 	    </div>
-	</div>
+	</div>-->
 	
 	<div class="flight-list">
   <c:forEach var="flight" items="${flightList}">
