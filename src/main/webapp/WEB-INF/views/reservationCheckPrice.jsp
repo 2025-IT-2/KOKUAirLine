@@ -39,7 +39,7 @@
    <div class = "container">
    
    <!-- 예약 폼 -->
-   <form action="/reservationCheckPrice" method="post">
+   <form action="reservationCheckPrice" method="post">
 
   출발지: <input type="text" name="departireAirport" value="${departireAirport}"/> <br/>
   도착지: <input type="text" name="arrivalAirport" value="${arrivalAirport}"/> <br/>
@@ -171,10 +171,65 @@
 			initFlatpickr(type);
 		}
 </script>
-	
-	
-	<!-- 제출 버튼 -->
-	           
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	    <link rel="stylesheet" href="<c:url value='/css/global.css'/>" />
+		<link rel="stylesheet" href="<c:url value='/css/reservationCheckPrice.css'/>" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	    <title>航空券価格を確認</title>
+	</head>
+	<body>
+	<%@ include file="header.jsp" %>
+	<div class = "container">
+	<div class="flight-list">
+  <c:forEach var="flight" items="${flightList}">
+    <div class="flight-card">
+      <!-- 출발/도착 정보 -->
+      <div class="flight-info">
+        <div class="time">
+          <span>${flight.departureTime}</span> → <span>${flight.arrivalTime}</span>
+        </div>
+        <div class="detail">
+          <span>${flight.flightNumber}</span> / <span>${flight.aircraftType}</span>
+        </div>
+      </div>
+
+      <!-- 좌석 타입 선택 -->
+      <div class="seat-options">
+        <label class="seat-option">
+          <input type="radio" name="selectedFlight" value="${flight.id}_saver" required />
+          <div class="seat-box saver">
+            <div>セイバー</div>
+            <div>${flight.saverPrice}円</div>
+            <div>${flight.saverSeats}席</div>
+          </div>
+        </label>
+
+        <label class="seat-option">
+          <input type="radio" name="selectedFlight" value="${flight.id}_standard" />
+          <div class="seat-box standard">
+            <div>スタンダード</div>
+            <div>${flight.standardPrice}円</div>
+            <div>${flight.standardSeats}席</div>
+          </div>
+        </label>
+
+        <label class="seat-option">
+          <input type="radio" name="selectedFlight" value="${flight.id}_flex" />
+          <div class="seat-box flex">
+            <div>フラックス</div>
+            <div>${flight.flexPrice}円</div>
+            <div>${flight.flexSeats}席</div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </c:forEach>
+</div>
+<div class="confirm-button">
+	                <button type="submit">예약 확인</button>
+	            </div>
 	
 	        </form>
 	    </div>

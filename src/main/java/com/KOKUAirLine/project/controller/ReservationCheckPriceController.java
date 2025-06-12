@@ -22,6 +22,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class ReservationCheckPriceController {
 
+    
 	@GetMapping("/reservationCheckPrice")
 	public String mockReservationCheckPrice(
 	    @ModelAttribute("departireAirport") String departure,  // 오타까지 맞춰야 함
@@ -46,10 +47,12 @@ public class ReservationCheckPriceController {
 	    if (tripType == null) tripType = "round";
 	    if (classType == null) classType = "eco-spec";
 
+        
 	    String travelDate = departureDate + (tripType.equals("round") ? "-" + returnDate : "");
 
-	    // 비행편 리스트 준비 (생략)
+       
 
+        
 	    model.addAttribute("departure", departure);
 	    model.addAttribute("arrival", arrival);
 	    model.addAttribute("travelDate", travelDate);
@@ -59,9 +62,11 @@ public class ReservationCheckPriceController {
 	    model.addAttribute("tripType", tripType);
 	    model.addAttribute("classType", classType);
 
+   
 	    return "reservationCheckPrice";
 	}
 
+       
 	@PostMapping("/reservationCheckPrice")
 	public String reservationCheckPrice(
 	    @RequestParam("departireAirport") String departure,
@@ -86,6 +91,7 @@ public class ReservationCheckPriceController {
 	    attri.addFlashAttribute("tripType", tripType);
 	    attri.addFlashAttribute("classType", classType);
 
+        
 	    return "redirect:/reservationCheckPrice";
 	}
 }
