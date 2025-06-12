@@ -97,7 +97,7 @@
 }
 
 .screen .group {
-  position: absolute;
+  position: relative;
   width: 758px;
   height: 298px;
   top: 147px;
@@ -359,7 +359,7 @@
 .screen .text-wrapper-10 {
   width: 124px;
   height: 30px;
-  top: 0;
+  top: -40px;
   left: 9px;
   font-family: "ABeeZee-Regular", Helvetica;
   font-size: 40px;
