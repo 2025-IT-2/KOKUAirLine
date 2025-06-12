@@ -48,19 +48,61 @@ body {
     line-height: 24px;
 }
 
-/* 버튼 정렬 */
-.trip-type,
-.trip-type2,
+.flight-card {
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 10px;
+}
+
+.flight-info {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.seat-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.seat-option {
+  flex: 1;
+  margin: 0 0.5em;
+  cursor: pointer;
+}
+
+.seat-box {
+  padding: 1em;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+input[type="radio"]:checked + .seat-box {
+  border: 2px solid #007BFF;
+  background-color: #e6f0ff;
+}
+
+
+
+
+
+
+
+/* 버튼 정렬 
+.seat-type,
+.seat-type2,
 .class-type {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 10px;
-}
+}*/
 
-/* 버튼 공통 스타일 */
-.trip-type button,
-.trip-type2 button,
+/* 버튼 공통 스타일 
+.seat-type button,
+.seat-type2 button,
 .class-type button {
     margin: 5px 10px 5px 0;
     padding: 8px 16px;
@@ -71,35 +113,36 @@ body {
     font-size: 14px;
 }
 
-.trip-type .selected,
-.trip-type2 .selected,
+.seat-type .selected,
+.seat-type2 .selected,
 .class-type .selected {
     background-color: #ccc;
 }
 
-/* 예약 폼 */
-.reservation-form {
-    margin-top: -40px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
+.class-type .selected {
+    background-color: #ccc;
 }
 
-/* 개별 폼 섹션 */
+.route {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+}*/
+
+/* 개별 폼 섹션 
 .form-section {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
+}*/
 
-/* 라벨 */
+/* 라벨 
 .form-section label {
     font-weight: bold;
     font-size: 16px;
-}
+}*/
 
-/* 셀렉트박스 */
+/* 셀렉트박스 
 .form-section select {
     padding: 10px;
     font-size: 15px;
@@ -107,19 +150,60 @@ body {
     border: 1px solid #ccc;
     border-radius: 6px;
     background-color: rgb(255, 255, 255);
-}
+}*/
 
 /* 확인 버튼 */
-.form-section button {
+.confirm-button {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.confirm-button button {
     padding: 10px 20px;
-    background-color: #4caf50;
+    font-size: 16px;
+    background-color: #444;
     color: white;
-    font-size: 15px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
 }
 
-.form-section button:hover {
-    background-color: #45a049;
+/* 방금 추가한 거 
+.flight-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    padding: 16px 24px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+
+.flight-info {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.class-type {
+    display: flex;
+    gap: 10px;
+}
+
+.class-type input[type="radio"] {
+    display: none;
+}
+
+.class-type label {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.class-type input[type="radio"]:checked + label {
+    background-color: #ccc;
+}*/
