@@ -3,29 +3,7 @@
 
 <!DOCTYPE html>
 <html>
-   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-   <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/rangePlugin.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
    
-   <script> // 항공편 종류 버튼 selected
-      document.addEventListener("DOMContentLoaded", function () {
-          const tripButtons = document.querySelectorAll(".trip-option");
-      
-          tripButtons.forEach(button => {
-              button.addEventListener("click", () => {
-                  tripButtons.forEach(btn => btn.classList.remove("selected"));
-                  button.classList.add("selected");
-              });
-          });
-      });
-// 버튼 스타일 업데이트
-      function selectTripType(type) {
-         currentTripType = type;
-         document.getElementById("tripTypeInput").value = type;
-         toggleReturnDate(type);
-         initFlatpickr(type);
-      }
-</script>
    <head>
        <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -63,10 +41,10 @@
    
    <!-- 출발 항공편 시간 -->
    <div class="form-section">
-       <label for="flightTime">출발 항공편 시간 선택:</label>
-       <select name="flightTime" id="flightTime">
+       <label for="departureTime">출발 항공편 시간 선택:</label>
+       <select name="departureTime" id="departureTime">
            <c:forEach var="f" items="${flightList}">
-   <option value="${f.flightTime}">${f.flightTime}</option>
+   <option value="${f.departureTime}">${f.departureTime}</option>
    </c:forEach>
            <option value="time1">09:00 ~ 11:00</option>
            <option value="time2">10:00 ~ 12:00</option>
@@ -89,10 +67,10 @@
    
    <!-- 도착 항공편 시간 -->
    <div class="form-section">
-       <label for="flightTime2">도착 항공편 시간 선택:</label>
-       <select name="flightTime2" id="flightTime2">
+       <label for="arrivalTime">도착 항공편 시간 선택:</label>
+       <select name="arrivalTime" id="arrivalTime">
            <c:forEach var="f" items="${flightList}">
-   <option value="${f.flightTime}">${f.flightTime}</option>
+   <option value="${f.arrivalTime}">${f.arrivalTime}</option>
    </c:forEach>
            <option value="time1">09:00 ~ 11:00</option>
            <option value="time2">10:00 ~ 12:00</option>
@@ -300,6 +278,30 @@
 	        </form>
 	    </div>
 	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+   <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/rangePlugin.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
+   
+   <script> // 항공편 종류 버튼 selected
+      document.addEventListener("DOMContentLoaded", function () {
+          const tripButtons = document.querySelectorAll(".trip-option");
+      
+          tripButtons.forEach(button => {
+              button.addEventListener("click", () => {
+                  tripButtons.forEach(btn => btn.classList.remove("selected"));
+                  button.classList.add("selected");
+              });
+          });
+      });
+	// 버튼 스타일 업데이트
+	      function selectTripType(type) {
+	         currentTripType = type;
+	         document.getElementById("tripTypeInput").value = type;
+	         toggleReturnDate(type);
+	         initFlatpickr(type);
+	      }
+	</script>
 	
 	</body>
 </html>
