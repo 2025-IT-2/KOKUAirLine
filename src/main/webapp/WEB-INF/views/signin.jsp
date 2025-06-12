@@ -49,7 +49,7 @@
       <option value="DE">ドイツ</option>
       <option value="CA">カナダ</option>
       <option value="AU">オーストラリア</option>
-      <option value="AT">オースト리아</option>
+      <option value="AT">オーストリア</option>
       <option value="ETC">他の国</option>
     </select>
 
@@ -78,19 +78,19 @@
 
 		    // 기본 검사 조건
 		    if (id === '' || pw === '' || email === '' || firstname === '' || lastname === '') {
-		      alert('모든 필드를 입력해주세요.');
+		      alert('全部入力してください。');
 		      e.preventDefault();
 		      return;
 		    }
 
 		    if (pw.length < 8 || pw.length > 16) {
-		      alert('비밀번호는 최소 8자 이상, 최대 16자 이하로 입력해주세요.');
+		      alert('パスワードは最小８文字以上、最大１６文字以上で入力してください。');
 		      e.preventDefault();
 		      return;
 		    }
 
 		    if (!emailRegex.test(email)) {
-		      alert('올바른 이메일 형식을 입력해주세요.');
+		      alert('正しいメールを入力してください。');
 		      e.preventDefault();
 		      return;
 		    }
