@@ -49,7 +49,7 @@
       <hr class="separator" />
 
       <p class="signup-question">まだ会員ではありませんか？</p>
-      <form id="registerBtn" action="register.do" method="get">
+      <form id="registerBtn" action="/signin" method="get">
         <button type="submit" class="btn signup-btn">会員登録</button>
       </form>
 
