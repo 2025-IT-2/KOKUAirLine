@@ -7,16 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
 //import com.KOKUAirLine.project.service.FlightScheduleService;
 
 @Controller
+//@RequestMapping("/reservation")
 public class ReservationCheckPriceController {
 
 //    private final FlightScheduleService service;
-
+//
 //    public ReservationCheckPriceController(FlightScheduleService service) {
 //        this.service = service;
 //    }
@@ -24,12 +26,7 @@ public class ReservationCheckPriceController {
     // ✅ 테스트용 가상 데이터 (개발 초기 단계에서 GET으로 JSP 확인 시 유용)
     @GetMapping("/reservationCheckPrice")
     public String mockReservationCheckPrice(Model model) {
-
-//        List<FlightDTO> flightList = Arrays.asList(
-//            new FlightDTO("KE123", "2025-06-15 10:00", "ICN", "NRT"),
-//            new FlightDTO("JL456", "2025-06-15 14:30", "ICN", "NRT")
-//        );
-//        model.addAttribute("flightList", flightList);
+        
 
         return "reservationCheckPrice"; // => /WEB-INF/views/reservationCheckPrice.jsp
     }
