@@ -1,22 +1,30 @@
 package com.KOKUAirLine.project.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.KOKUAirLine.project.service.HomeService;
+
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	private HomeService service;
 
     @GetMapping("/home")
-    public String home() {
+    public String home(HttpServletRequest request,
+    		HttpSession session) {
+    	// 현재 로그인 상태가 아니고, 자동 로그인 쿠키가 활성화 되어있으면 자동 로그인
+    	if (session.getAttribute("loginUserId") == null) {
+    		System.out.println("AutoLogging in??");
+    		service.autoLogin(request, session);
+    	}
+    	
         return "home"; // -> /WEB-INF/views/home.jsp 로 이동
-    }
-    
-    // 로그아웃시 세션을 제거하고 홈으로 리턴
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-    	session.invalidate();
-    	return "home";
     }
 }
