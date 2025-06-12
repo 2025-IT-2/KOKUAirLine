@@ -3,105 +3,118 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
     <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
     <link rel="stylesheet" href="<c:url value='/css/passengerinfo.css'/>"/>
     <title>搭乗者情報入力</title>
   </head>
   <body>
   <%@ include file="header.jsp" %>  
-    <div class="screen">
-      <div class="overlap-wrapper">
-        <div class="overlap">
-          <div class="view"></div>
+
+  <div class="screen">
+    <div class="overlap-wrapper">
+      <div class="view"></div>
+      <div class="overlap">
           
-          <div class="text-wrapper-2">搭乗者情報</div>
-          <div class="group">
-            <div class="overlap-group">
-              <div class="view-2"> 
-                <div class="overlap-2">
-                  <div class="rectangle-2"></div>
+        <!-- 제목 -->        
+        <div class="text-wrapper-2">搭乗者情報</div>
+        
+        <!-- 탑승자 정보 영역 -->       
+        <div class="group">
+          <div class="overlap-group">
+            <div class="view-2"> 
+              <div class="overlap-2">
+                <div class="rectangle-2"></div>
 
-              <div class="screen">
-                <div class="group-2">
-                  <!-- 라벨 박스 -->
-                  <div class="div-wrapper">
-                    <div class="text-wrapper-3">性別</div>
-                  </div>
+            <div class="screen">
+              <!-- 성별 입력 -->
+              <div class="group-2">
+                <!-- 라벨 박스 -->
+                <div class="div-wrapper">
+                  <div class="text-wrapper-3">性別</div>
+                </div>
 
-                  <!-- 선택 영역 -->
+                <!-- 선택 영역 -->
+                <div class="div-2">
+                <!-- 남성 선택 -->
+                  <label class="radio-label" style="left: 60px;">
+                    <input type="radio" name="gender" value="male" class="radio-input" checked> 男
+                  </label>
+
+                <!-- 여성 선택 -->
+                  <label class="radio-label" style="left: 200px;">
+                    <input type="radio" name="gender" value="female" class="radio-input"> 女
+                  </label>
+                </div>
+              </div>
+            </div>
+
+                <!-- 이름 입력 -->
+                <div class="group-3">
+                  <div class="div-wrapper"><div class="text-wrapper-6">名前</div></div>
                   <div class="div-2">
-                  <!-- 남성 선택 -->
-                    <label class="radio-label" style="left: 60px;">
-                      <input type="radio" name="gender" value="male" class="radio-input" checked> 男
-                    </label>
-
-                  <!-- 여성 선택 -->
-                    <label class="radio-label" style="left: 200px;">
-                      <input type="radio" name="gender" value="female" class="radio-input"> 女
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-                  <div class="group-3">
-                    <div class="div-wrapper"><div class="text-wrapper-6">名前</div></div>
-                    <div class="div-2">
-                      <div class="text-wrapper-7">名
-                        <input type="text" id="name" name="name" placeholder="お名を入力してください">
-                      </div>
-                      <div class="text-wrapper-8">姓
-                        <input type="text" id="name" name="name" placeholder="お姓を入力してください">
-                      </div>
+                    <div class="text-wrapper-7">名
+                      <input type="text" id="name" name="name" placeholder="お名を入力してください">
                     </div>
-                  </div>
-
-                  <div class="group-4">
-                    <div class="div-wrapper"><div class="text-wrapper-9">生年月日</div></div>
-                    <div class="div-2">
-                      <!-- 날짜 선택 input 추가 -->
-                      <input type="date" id="birthdate" name="birthdate" value="1990-01-01" />
+                    <div class="text-wrapper-8">姓
+                      <input type="text" id="name" name="name" placeholder="お姓を入力してください">
                     </div>
                   </div>
                 </div>
 
-                <div class="text-wrapper-10">成人1</div>
-                <div class="text-wrapper-11">成人2</div>
+                <!-- 생년월일 입력 -->
+                <div class="group-4">
+                  <div class="div-wrapper"><div class="text-wrapper-9">生年月日</div></div>
+                  <div class="div-2">
+                    <!-- 날짜 선택 input 추가 -->
+                    <input type="date" id="birthdate" name="birthdate" value="1990-01-01" />
+                  </div>
+                </div>
               </div>
+
+              <!-- 성인 구분 -->              
+              <div class="text-wrapper-10">成人1</div>
+              <div class="text-wrapper-11">成人2</div>
             </div>
           </div>
+        </div>
 
-          <div class="text-wrapper-13">予約者<br />連絡先</div>
-          <div class="text-wrapper-14">위에 표 반복...</div>
-          <div class="rectangle-7"></div>
-          <div class="text-wrapper-15" onclick="location.href='/nextpage'">決定</div>
-          
-          <!-- 전화번호 입력창 -->
-          <div class="text-wrapper-16">
-            <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="090-1234-5678"
-            pattern="[0-9\-]{10,13}"
-            required
-            autocomplete="tel">
-          </div>
-          
-          <div class="box">
-            <div class="element">
-              <c:choose>
-                <c:when test="${not empty amount}">
-                  ${amount} 円
-                </c:when>
-                <c:otherwise>
-                  金額が見つかりません。
-                </c:otherwise>
-              </c:choose>
-            </div>
-          </div>
+        <!-- 예약자 연락처 -->
+        <div class="text-wrapper-13">予約者<br />連絡先</div>
+        <div class="text-wrapper-14">위에 표 반복...</div>
+        <div class="rectangle-7"></div>
 
+        
+        <!-- 전화번호 입력 -->
+        <div class="text-wrapper-16">
+          <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="090-1234-5678"
+          pattern="[0-9\-]{10,13}"
+          required
+          autocomplete="tel">
+        </div>
+
+        <!-- 금액 표시 박스 -->        
+        <div class="box">
+          <div class="element">
+            <c:choose>
+              <c:when test="${not empty amount}">
+                ${amount} 円
+              </c:when>
+              <c:otherwise>
+                金額が見つかりません。
+              </c:otherwise>
+            </c:choose>
+          </div>
+        </div>
+
+        <!-- 다음 페이지로 이동하는 결정 버튼 -->        
+        <div class="text-wrapper-15" onclick="location.href='/nextpage'">決定</div>        
+        
         </div>
       </div>
     </div>
