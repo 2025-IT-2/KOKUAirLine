@@ -4,6 +4,7 @@
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  position: relative; /* 기준점 설정 */
 }
 
 .screen .overlap-wrapper {
@@ -18,16 +19,17 @@
   position: relative;
   width: 882px;
   height: 580px;
-  top: 12px;
-  left: 7px;
+  top: -30px;
+  left: 0px;
 }
 
 .screen .view {
   position: absolute;
   width: 873px;
   height: 577px;
-  top: 3px;
-  left: 9px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #d9d9d9;
 }
 
@@ -95,7 +97,7 @@
 }
 
 .screen .group {
-  position: absolute;
+  position: relative;
   width: 758px;
   height: 298px;
   top: 147px;
@@ -357,7 +359,7 @@
 .screen .text-wrapper-10 {
   width: 124px;
   height: 30px;
-  top: 0;
+  top: -40px;
   left: 9px;
   font-family: "ABeeZee-Regular", Helvetica;
   font-size: 40px;
@@ -437,6 +439,7 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0.50px;
+  cursor: pointer; /* 마우스 커서 손가락 모양 */
 }
 
 .screen .text-wrapper-16 {
@@ -467,33 +470,30 @@
   }
 }
 
-.screen .element {
-  height: 33px;
-  top: 488px;
-  left: 470px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-size: 32px;
-  line-height: 33px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  color: #000000;
-  text-align: center;
-  letter-spacing: 0.50px;
-
-   /* 금액 입력창 */ 
-  input[type="text"]#amount {
+.screen .box {
   width: 200px;
   height: 50px;
-  font-size: 25px;
-  padding: 4px 8px;
+  top: 478px;
+  left: 470px;
+  background-color: #ffffff;
+  border-radius: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+  text-align: center;
+
+  display: flex;               /* Flexbox 활성화 */
+  align-items: center;         /* 수직 중앙 정렬 */
+  justify-content: center;     /* 수평 중앙 정렬 */
   position: relative;
-  top: -10px; /* 10px 위로 이동 */
+  padding: 0;                  /* 패딩 제거 (정렬 방해 가능성 있음) */
 }
 
+.screen .box .element {
+  font-size: 15px;
+  line-height: 1;              /* 정확한 라인 높이 조정 */
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .screen .text-wrapper-17 {

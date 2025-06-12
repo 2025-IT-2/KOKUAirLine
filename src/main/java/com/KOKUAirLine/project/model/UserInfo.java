@@ -29,6 +29,6 @@ public class UserInfo { // 유저 데이터 저장용 클래스. 이거에 맞�
 	private boolean gender;
 	
 	private String national;
-	private int userPhone;
+	private String userPhone;
 	private LocalDateTime createDate;
 }
