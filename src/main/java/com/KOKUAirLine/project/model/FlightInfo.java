@@ -14,17 +14,17 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "FlightInfo")
-//@Data
+@Data
 //@AllArgsConstructor
 @NoArgsConstructor // 파라미터가 다 있거나 다 없는 생성자 2가지 생성됨
 public class FlightInfo {
 
     @Id 
 //    @Column(name = "FLIGHTNO")
-    private String flightNo;
+    private String flightNo; //운항코드
 
 //    @Column(name = "FLIGHTMEAL")
-    private String FlightMeal;
+    private String FlightMeal; //기내식
 
 //    @Column(name = "DEPARTURE")
     private String departure; //출발지
