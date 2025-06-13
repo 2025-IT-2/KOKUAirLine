@@ -21,7 +21,6 @@ public class HomeController {
     		HttpSession session) {
     	// 현재 로그인 상태가 아니고, 자동 로그인 쿠키가 활성화 되어있으면 자동 로그인
     	if (session.getAttribute("loginUserId") == null) {
-    		System.out.println("AutoLogging in??");
     		service.autoLogin(request, session);
     	}
     	
