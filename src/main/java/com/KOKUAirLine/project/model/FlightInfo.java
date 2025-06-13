@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor // 파라미터가 다 있거나 다 없는 생성자 2가지 생성됨
 public class FlightInfo {
 
-    @Id
+    @Id 
 //    @Column(name = "FLIGHTNO")
     private String flightNo;
 
