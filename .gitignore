@@ -32,5 +32,6 @@ build/
 ### VS Code ###
 .vscode/
 
-### Ignore Test Codes ##
-src/test/java/**/*.java
+# Ignore Java test files under local subdirectories only
+src/test/java/local/*/**/*.java
+
