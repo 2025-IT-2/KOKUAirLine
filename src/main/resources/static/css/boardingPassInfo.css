@@ -16,7 +16,7 @@
 
       .header {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         border-bottom: 2px solid #eee;
         padding-bottom: 12px;
@@ -28,6 +28,7 @@
         color: #333;
         margin: 0;
         text-decoration: underline;
+		text-align: center;
       }
 
       .section-title {
@@ -35,13 +36,16 @@
         margin: 16px 0;
         color: #444;
         font-weight: bold;
+		text-align: center;
       }
 
       .card {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+		margin: auto;
         gap: 16px;
         margin-top: 20px;
+		max-width: 500px;
       }
 
       .card-box {
@@ -85,3 +89,114 @@
       .btn:hover {
         background: #0056b3;
       }
+	  
+	  /* 체크인 카드 스타일 */
+	  .boarding-pass-card {
+	    background-color: #fff;
+	    border-radius: 12px;
+	    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	    padding: 30px 20px;
+	    max-width: 500px;
+	    margin: 0 auto;
+	    animation: fadeIn 0.8s ease-out;
+	  }
+
+	  .boarding-title {
+	    text-align: center;
+	    font-size: 20px;
+	    margin-bottom: 30px;
+	    letter-spacing: 1px;
+	  }
+
+	  .boarding-info {
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	    flex-wrap: wrap;
+	  }
+
+	  .info-card {
+	    width: 45%;
+	    border: 1px solid #ddd;
+	    border-radius: 10px;
+	    padding: 15px;
+	    background-color: #f9f9f9;
+	    box-sizing: border-box;
+	    text-align: center;
+	    margin-bottom: 10px;
+	  }
+
+	  .label {
+	    font-size: 14px;
+	    font-weight: bold;
+	    color: #666;
+	    margin-bottom: 8px;
+	  }
+
+	  .label .jp {
+	    font-size: 12px;
+	    color: #999;
+	  }
+
+	  .location {
+	    font-size: 18px;
+	    font-weight: bold;
+	    color: #222;
+	  }
+
+	  .code {
+	    font-size: 14px;
+	    border-bottom: 1px dotted #333;
+	    margin: 8px 0;
+	    display: inline-block;
+	    padding-bottom: 3px;
+	  }
+
+	  .time {
+	    font-size: 14px;
+	    color: #444;
+	  }
+
+	  .separator {
+	    font-size: 24px;
+	    font-weight: bold;
+	    color: #aaa;
+	    margin: 0 10px;
+	  }
+
+	  /* 상태 */
+	  .status {
+	    text-align: center;
+	    margin-top: 20px;
+	    font-size: 16px;
+	    color: #444;
+	  }
+
+	  /* 애니메이션 */
+	  @keyframes fadeIn {
+	    from {
+	      opacity: 0;
+	      transform: translateY(15px);
+	    }
+	    to {
+	      opacity: 1;
+	      transform: translateY(0);
+	    }
+	  }
+
+	  /* 반응형 */
+	  @media (max-width: 480px) {
+	    .boarding-info {
+	      flex-direction: column;
+	      align-items: center;
+	    }
+
+	    .info-card {
+	      width: 100%;
+	      margin-bottom: 15px;
+	    }
+
+	    .separator {
+	      display: none;
+	    }
+	  }
