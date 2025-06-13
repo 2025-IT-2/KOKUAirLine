@@ -11,11 +11,16 @@
       <link rel="stylesheet" href="<c:url value='/css/reservationCheckPrice.css'/>" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
        <title>航空券価格を確認</title>
+       
+       <link rel="stylesheet" type="text/css" href="style.css">
+    <title>항공편 선택</title>
+       
    </head>
    <body>
    <%@ include file="header.jsp" %>
    <div class = "container">
    
+<<<<<<< Updated upstream
    <!-- 예약 폼 -->
    <form action="/confirmReservation" method="post" class="reservation-form">
    
@@ -40,6 +45,37 @@
    
    
    <!-- 출발 항공편 시간 -->
+=======
+<%--    <!-- 예약 폼 -->
+   <form action="/reservationCheckPrice" method="post">
+
+  출발지: <input type="text" name="departireAirport" value="${departireAirport}"/> <br/>
+  도착지: <input type="text" name="arrivalAirport" value="${arrivalAirport}"/> <br/>
+  
+  출발일: <input type="date" name="departureDate" value="${departureDate}"/> <br/>
+  돌아오는 날 (왕복일 경우): <input type="date" name="returnDate" value="${returnDate}"/> <br/>
+  
+  성인: <input type="number" name="adultCount" value="${adultCount}" min="0"/> <br/>
+  어린이: <input type="number" name="childCount" value="${childCount}" min="0"/> <br/>
+  유아: <input type="number" name="infantCount" value="${infantCount}" min="0"/> <br/>
+  
+  여행 유형: 
+  <select name="tripType">
+    <option value="oneway" ${tripType == 'oneway' ? 'selected' : ''}>편도</option>
+    <option value="round" ${tripType == 'round' ? 'selected' : ''}>왕복</option>
+  </select> <br/>
+  
+  클래스: 
+  <select name="classType">
+    <option value="eco-spec" ${classType == 'eco-spec' ? 'selected' : ''}>이코노미</option>
+    <option value="business" ${classType == 'business' ? 'selected' : ''}>비즈니스</option>
+  </select> <br/>
+  
+  <button type="submit">조회</button> --%>
+  
+<%-- </form>
+<!-- 출발 항공편 시간 -->
+>>>>>>> Stashed changes
    <div class="form-section">
        <label for="departureTime">출발 항공편 시간 선택:</label>
        <select name="departureTime" id="departureTime">
@@ -83,16 +119,6 @@
    
    <div class="container">
 
-   <!-- 첫 번째 좌석 타입 -->
-   <div class="class-box">
-      <h2>出発便：エコノミー</h2>
-      <div class="trip-type" id="tripType">
-         <button type="button" class="trip-option selected" data-type="round" onclick="selectTripType('round')">セイバー</button>
-         <button type="button" class="trip-option" data-type="oneway" onclick="selectTripType('oneway')">スタンダード</button>
-         <button type="button" class="trip-option" data-type="multiway" onclick="selectTripType('multiway')">フラックス</button>
-      </div>
-   </div>
-
    <!-- 두 번째 좌석 타입 -->
    <div class="class-box">
       <h2>到着便：エコノミー</h2>
@@ -103,16 +129,75 @@
       </div>
    </div>
 
-</div>
+<!-- </div>
    
-   <!-- 제출 버튼 -->
+   제출 버튼
                <div class="form-section">
                    <button type="submit">예약 확인</button>
-               </div>
+               </div> -->
    
            </form>
        </div>
-   </div>
+   </div> --%>
+   
+   <div class="flight-options">
+    <div class="flight">
+        <div class="time-info">
+            <div class="time">8:50<br><span>터미널1</span></div>
+            <div class="arrow">→</div>
+            <div class="time">11:15<br><span>터미널1</span></div>
+        </div>
+        <div class="flight-details">
+            <div class="flight-info">OZ172<br>A320</div>
+            <div class="economy">
+                <div class="fare">
+                    <div class="type">セイバー</div>
+                    <div class="price">16200円</div>
+                    <div class="seats">9席</div>
+                </div>
+                <div class="fare">
+                    <div class="type">スタンダード</div>
+                    <div class="price">20600円</div>
+                    <div class="seats">9席</div>
+                </div>
+                <div class="fare">
+                    <div class="type">フラックス</div>
+                    <div class="price">37000円</div>
+                    <div class="seats">9席</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flight">
+        <div class="time-info">
+            <div class="time">10:00<br><span>터미널1</span></div>
+            <div class="arrow">→</div>
+            <div class="time">01:05<br><span>터미널1</span></div>
+        </div>
+        <div class="flight-details">
+            <div class="flight-info">OZ172<br>A320</div>
+            <div class="economy">
+                <div class="fare">
+                    <div class="type">セイバー</div>
+                    <div class="price">1300円</div>
+                    <div class="seats">15席</div>
+                </div>
+                <div class="fare">
+                    <div class="type">スタンダード</div>
+                    <div class="price">15000円</div>
+                    <div class="seats">5席</div>
+                </div>
+                <div class="fare">
+                    <div class="type">フラックス</div>
+                    <div class="price">32000円</div>
+                    <div class="seats">4席</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
    
    </body>
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -150,6 +235,7 @@
 	    <title>航空券価格を確認</title>
 	</head>
 	<body>
+<<<<<<< Updated upstream
 	<%@ include file="header.jsp" %>
 	<div class = "container">
 	
@@ -173,6 +259,9 @@
 	    </div>
 	</div>
 	
+=======
+	<div class = "container">
+>>>>>>> Stashed changes
 	<div class="flight-list">
   <c:forEach var="flight" items="${flightList}">
     <div class="flight-card">
@@ -218,6 +307,7 @@
     </div>
   </c:forEach>
 </div>
+<<<<<<< Updated upstream
 	
 	
 	<!-- 출발 항공편 선택 (시간 + 클래스) 
@@ -272,6 +362,9 @@
 	
 	<!-- 제출 버튼 -->
 	            <div class="confirm-button">
+=======
+<div class="confirm-button">
+>>>>>>> Stashed changes
 	                <button type="submit">예약 확인</button>
 	            </div>
 	
