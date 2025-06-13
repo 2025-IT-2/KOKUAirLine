@@ -11,28 +11,25 @@
   </head>
   <body>
     <%@ include file="header.jsp" %>  
+    <form action="/submitPassengerInfo" method="post">     
+      <div class="screen">
+        <!-- 제목 -->        
+        <div class="title">搭乗者情報</div>
+          <c:forEach var="i" begin="1" end="${adultCount}">
+            <div class="overlap-wrapper">
+              <div class="view"></div>
+              <div class="overlap">
 
-    <div class="screen">
-      <div class="overlap-wrapper">
-        <div class="view"></div>
-        <div class="overlap">
-            
-          <!-- 제목 -->        
-          <div class="text-wrapper-2">搭乗者情報</div>
+                <!-- 탑승자 정보 영역 -->
+                <div class="group">
+                  <div class="overlap-group">
 
-          <form action="/submitPassengerInfo" method="post">
-            <!-- 탑승자 정보 영역 -->
-            <c:forEach var="i" begin="1" end="${adultCount}">     
-              <div class="group">
-                <div class="overlap-group">
-                  <div class="view-2"> 
                     <div class="overlap-2">
                       <div class="rectangle-2"></div>
 
                       <!-- 성인 구분 -->
-                      <div class="text-wrapper-10">成人${i}</div>
-
-                  <div class="screen">
+                      <div class="adult">成人${i}</div>
+              
                     <!-- 성별 입력 -->
                     <div class="group-2">
                       <!-- 라벨 박스 -->
@@ -53,8 +50,7 @@
                         </label>
                       </div>
                     </div>
-                  </div>
-
+                  
                       <!-- 이름 입력 -->
                       <div class="group-3">
                         <div class="div-wrapper"><div class="text-wrapper-6">名前</div></div>
@@ -76,47 +72,49 @@
                         </div>
                       </div>
                     </div>
-
                   </div>
                 </div>
-              </div>
-            </c:forEach>
-
-            <!-- 예약자 연락처 텍스트 -->
-            <div class="Reservation-PhoneNumber">予約者<br />連絡先</div>
-            
-            <!-- 전화번호 입력창 -->
-            <div class="PhoneNumber">
-              <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="090-1234-5678"
-              pattern="[0-9\-]{10,13}"
-              required
-              autocomplete="tel">
+              </div> 
             </div>
+          </c:forEach>                     
 
-            <!-- 금액 표시창 -->        
-            <div class="box">
-              <div class="element">
-                <c:choose>
-                  <c:when test="${not empty amount}">
-                    ${amount} 円
-                  </c:when>
-                  <c:otherwise>
-                    金額が見つかりません。
-                  </c:otherwise>
-                </c:choose>
-              </div>
-            </div>
-            
-            <!-- 결정 버튼 -->
-            <button type="submit" class="text-wrapper-15" onclick="location.href='/home'">決定</button>                
-          </form>
+
           
-        </div>
+          <div class="container">        
+                <!-- 예약자 연락처 텍스트 -->
+                <div class="Reservation-PhoneNumber">予約者<br />連絡先</div>
+                
+                <!-- 전화번호 입력창 -->
+                <div class="PhoneNumber">
+                  <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="090-1234-5678"
+                  pattern="[0-9\-]{10,13}"
+                  required
+                  autocomplete="tel">
+                </div>
+
+                <!-- 금액 표시창 -->        
+                <div class="box">
+                  <div class="element">
+                    <c:choose>
+                      <c:when test="${not empty amount}">
+                        ${amount} 円
+                      </c:when>
+                      <c:otherwise>
+                        金額が見つかりません。
+                      </c:otherwise>
+                    </c:choose>
+                  </div>
+                </div>
+                
+                <!-- 결정 버튼 -->
+                <button type="submit" class="text-wrapper-15" onclick="location.href='/home'">決定</button>                
+          </div>  
+
       </div>
-    </div>
+    </form>
   </body>
 </html>
