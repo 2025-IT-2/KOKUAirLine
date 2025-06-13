@@ -2,11 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
     <div class="header">
-	    <div class="logo">空港団</div>
+    <!-- 로고를 누르면 홈으로 이동 -->
+	    <a href="<c:url value='/home' />">空港団</a>
 	    <div class="nav">
-	        <a href="#">予約</a>
-	        <a href="#">オンライン・チェックイン</a>
-	        <a href="#">予約確認</a>
+	    <!-- 각 상단 버튼을 누르면 해당 화면으로 이동 -->
+	        <a href="<c:url value='/reservation' />">予約</a>
+	        <a href="<c:url value='/onlinecheckin' />">オンライン・チェックイン</a>
+	        <a href="<c:url value='/reservationCheck' />">予約確認</a>
 	    </div>
 	    <c:choose>
 		    <c:when test="${not empty sessionScope.loginUserId}">

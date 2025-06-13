@@ -9,6 +9,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.KOKUAirLine.project.service.LoginService;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -26,13 +29,19 @@ public class LoginController {
     // Login 가능한지 정보를 LoginService로 전달
     // 로그인 성공시 home으로 전송, 실패시 화면을 다시 로드하고 알림 출력
     @PostMapping("/login")
-    public String submitLogin(
+    public String login(
     		@RequestParam String userId,
     		@RequestParam String password,
+    		@RequestParam(required = false) String autoLogin,
     		HttpSession session,
+    		HttpServletResponse response,
     		RedirectAttributes redirectAttributes){
-    	if(service.LoginCheck(userId, password)) {
-    		session.setAttribute("loginUserId", userId);
+    	
+    	if(service.loginCheck(userId, password, session)) {
+    		if(autoLogin != null) { // 자동 로그인 활성화시 24시간 동안 쿠키에 유저 id 저장
+    			response.addCookie(service.setAutoLogin(autoLogin, userId));
+    		}
+    		
     		return "redirect:/home";
     	}
     	else {
@@ -40,5 +49,14 @@ public class LoginController {
     		redirectAttributes.addFlashAttribute("loginError", "아이디 또는 비밀번호가 틀렸습니다.");
             return "redirect:/login";  // 스프링부트에서 지원하는 get 방식 redirect 호출문
     	}
+    }
+    
+ // 로그아웃시 세션을 제거하고 홈으로 리턴
+    @GetMapping("/logout")
+    public String logout(HttpSession session, 
+    		HttpServletRequest request,
+    		HttpServletResponse response) {
+    	service.logout(session, request, response);
+    	return "home";
     }
 }
