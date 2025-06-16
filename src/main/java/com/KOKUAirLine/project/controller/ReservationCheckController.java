@@ -10,13 +10,13 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class ReservationCheckController {
-	@Autowired
-	private ReservationCheckService service;
-	
-	@GetMapping("/reservationCheck")
-	public String reservationCheck(
-			HttpServletResponse response) {
-		
-		return "reservationCheck";
-	}
+   @Autowired
+   private ReservationCheckService service;
+   
+   @GetMapping("/reservationCheck")
+   public String reservationCheck(
+         HttpServletResponse response) {
+      
+      return "reservationCheck";
+   }
 }
