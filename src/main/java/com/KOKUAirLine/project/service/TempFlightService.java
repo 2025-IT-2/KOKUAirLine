@@ -13,13 +13,13 @@ public class TempFlightService {
         List<FlightTime> flightList = new ArrayList<>();
 
         flightList.add(new FlightTime(
-                1L, "OZ172", "A320", "08:50", "11:15",
-                "saver" , "standard"
+                1L, "OZ172", "A320", "08:50", "11:15"
+                
         ));
 
         flightList.add(new FlightTime(
-                2L, "OZ999", "B737", "12:00", "14:30",
-                "standard" , "flex"
+                2L, "OZ999", "B737", "12:00", "14:30"
+                
         ));
 
         return flightList;

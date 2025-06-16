@@ -14,8 +14,6 @@ public class FlightTime {
     private String aircraftType;
     private String departureTime;
     private String arrivalTime;
-    private String departureSeatOption;
-	private String arrivalSeatOption;
 	
 	
 }
