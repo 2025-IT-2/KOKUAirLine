@@ -1,251 +1,261 @@
 body {
-    margin: 0;
-    padding: 0px;
-    background-color: #e5e5e5;
-    font-family: "Noto Sans JP", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e5e5e5;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 .container {
-    background-color: #e0e0e0;
-    padding: 80px;
-    max-width: 1800px;
-    margin: auto;
-    border-radius: 8px;
+  background-color: #e0e0e0;
+  padding: 80px;
+  max-width: 1800px;
+  margin: auto;
+  border-radius: 8px;
+  position: relative;
 }
 
 /* 상단 바 */
 .top-bar {
-    position: absolute;
-    width: 100%;
-    height: 49px;
-    background-color: #939090;
-    top: 0;
-    left: 0;
+  position: absolute;
+  width: 100%;
+  height: 49px;
+  background-color: #939090;
+  top: 0;
+  left: 0;
 }
 
 /* 정보 박스 */
 .info-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 12px;
-    background-color: #b6b6b6;
-    font-family: "Lohit Tamil-Regular", Helvetica;
-    border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px;
+  background-color: #b6b6b6;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  border-radius: 4px;
 }
 
 .info-box {
-    background-color: rgb(255, 255, 255);
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #000;
-    white-space: nowrap;
+  background-color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #000;
+  white-space: nowrap;
 }
 
 .info-text {
-    text-align: center;
-    line-height: 24px;
+  text-align: center;
+  line-height: 24px;
 }
 
-.flight-card {
-  border: 1px solid #ccc;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-radius: 10px;
-}
-
-.flight-info {
-  font-weight: bold;
-  margin-bottom: 0.5em;
-}body {
-    margin: 0;
-    padding: 0px;
-    background-color: #e5e5e5;
-    font-family: "Noto Sans JP", sans-serif;
-}
-
-.container {
-    background-color: #e0e0e0;
-    padding: 80px;
-    max-width: 1800px;
-    margin: auto;
-    border-radius: 8px;
-}
-
-/* 상단 바 */
-.top-bar {  
-	position: absolute;
-    width: 100%;
-    height: 49px;
-    background-color: #939090;
-    top: 0;
-    left: 0;
-}
-
-/* 정보 박스 */
-.info-bar {
-	display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 12px;
-    background-color: #b6b6b6;
-    font-family: "Lohit Tamil-Regular", Helvetica;
-    border-radius: 4px;
-}
-
-.info-box {
-	  background-color: rgb(255, 255, 255);
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #000;
-    white-space: nowrap;
-}
-
-.info-text {
-	    text-align: center;
-    line-height: 24px;
-}
-
-/* 예약 폼 */
+/* 예약 폼 기본 */
 .reservation-form {
-    margin-top: -40px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
+  margin-top: -40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
 }
-    
+
 /* 확인 버튼 */
-.confirm-button {
-    display: flex;
-    justify-content: flex-end; /* 오른쪽 정렬 */
-    margin-top: 20px;
-}
-
 .confirm-button button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #444;
-    color: white;
-     border: none;
-    border-radius: 6px;
-    cursor: pointer;
+  position: absolute;
+  right: 1;
+  bottom: 0;
+  
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
+/* 비행기 옵션 박스 */
 .flight-options {
-    padding: 15px;
-    background-color: white;
-    width: 750px;
+  padding: 15px;
+  background-color: white;
+  width: 750px;
 }
 
+/* 비행기 한 줄 */
 .flight {
-    display: flex;
-    border: 1px solid #aaa;
-    margin-bottom: 15px;
-    background-color: #f0f0f0;
+  display: flex;
+  border: 1px solid #aaa;
+  margin-bottom: 15px;
+  background-color: #f0f0f0;
+  gap: 1rem;
+  align-items: stretch;
 }
 
+/* 시간 정보 */
 .time-info {
-    width: 200px;
-    background-color: #ddd;
-    text-align: center;
-    padding: 10px;
-    font-size: 18px;
+  width: 200px;
+  background-color: #ddd;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
 }
 
 .time-info .time span {
-    font-size: 12px;
-    color: #555;
+  font-size: 12px;
+  color: #555;
 }
 
+/* 화살표 */
 .arrow {
-    font-size: 24px;
-    margin: 10px 0;
+  font-size: 24px;
+  margin: 10px 0;
 }
 
+/* 비행 상세 */
 .flight-details {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    padding: 10px;
-    background-color: #fff;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 10px;
+  background-color: #fff;
 }
 
 .flight-info {
-    width: 100px;
-    text-align: center;
-    border-right: 1px solid #ccc;
-    padding: 10px;
-    font-size: 14px;
+  width: 100px;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center; /* 가로 가운데 */
+  align-items: center;     /* 세로 가운데 */
+  height: 100%;            /* 부모 높이에 맞추려면 */
 }
 
 .economy {
-    display: flex;
-    flex: 1;
-    justify-content: space-around;
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  align-items: stretch;
 }
 
+/* 좌석 타입 선택 영역 */
 .fare {
-    text-align: center;
-    background-color: #e6e6e6;
-    padding: 10px;
-    width: 100px;
-    margin: 5px;
-    border-radius: 5px;
-}
-
-.type {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.price {
-    font-size: 16px;
-    color: #222;
-}
-
-.seats {
-    font-size: 12px;
-    color: #666;
-}
-
-
-/* 좌석 타입 선택 */
-.fare {
+  position: relative; /* input 위치를 위한 기준 */
+  cursor: pointer;
   border: 1px solid #ccc;
   border-radius: 6px;
-  padding: 10px;
+  padding: 12px;
   margin: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
   user-select: none;
-  display: inline-block;
+  display: block;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  background-color: #e6e6e6;
+  text-align: center;
+  white-space: normal;       /* 줄바꿈 허용 */
+  word-break: break-word;    /* 긴 단어 줄바꿈 */
+  min-height: 110px;
+  box-sizing: border-box;
 }
 
+.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.fare .type {
+  display: block;              /* 블록 요소로 변경 → 줄바꿈 허용 */
+  white-space: normal;         /* 줄바꿈 허용 */
+  word-break: break-word;      /* 길면 끊어서 줄바꿈 */
+  font-size: 14px;             /* 필요하면 줄이기 */
+  line-height: 1.3;            /* 줄 간격 조정 */
+  max-width: 80px;             /* 너무 길면 줄바꿈 유도 */
+  margin: 0 auto;              /* 가운데 정렬 */
+}
+
+/* 라디오 버튼 숨기기 */
+.fare input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 마우스 올렸을 때 */
 .fare:hover {
   background-color: #f0f8ff;
+  border-color: #007bff;
 }
 
-/* input 숨기기 */
-.fare input[type="radio"] {
-  display: none;
-}
-
-/* ✅ 체크된 input을 포함한 .fare 전체 강조 */
+/* 선택된 항목 스타일 */
 .fare:has(input[type="radio"]:checked) {
   background-color: #e6f0ff;
   border: 2px solid #007bff;
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
 }
 
-/* 텍스트 강조 */
+/* 선택된 텍스트 강조 */
 .fare:has(input[type="radio"]:checked) .type,
 .fare:has(input[type="radio"]:checked) .price,
 .fare:has(input[type="radio"]:checked) .seats {
   color: #007bff;
   font-weight: bold;
+}
+
+/* 텍스트 스타일 */
+.type {
+  font-weight: bold;
+  margin-bottom: 6px;  /* 글자 아래 간격 추가 */
+  display: block;      /* 줄바꿈 보장 */
+}
+
+.price {
+  font-size: 16px;
+  color: #222;
+  margin-bottom: 10px;  /* 가격 아래 간격 추가 */
+  display: block;      /* 줄바꿈 보장 */
+}
+
+.seats {
+  font-size: 12px;
+  color: #666;
+  display: block;      /* 줄바꿈 보장 */
+}
+
+/* 출국편 박스 스타일 */
+.flight-section {
+  flex: 1;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  margin-bottom: 0;
+}
+
+/* 출국편 제목 */
+.section-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+  border-left: 4px solid #007bff;
+  padding-left: 3px;
+}
+
+/* 확인 버튼 박스 */
+.confirm-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* 출국, 귀국 편 박스 레이아웃 */
+.flights-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: flex-start;
 }
