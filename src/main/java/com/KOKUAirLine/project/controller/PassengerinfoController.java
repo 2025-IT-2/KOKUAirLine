@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class PassengerInfoController {
+public class PassengerinfoController {
 
-	@GetMapping("/passengerInfo")
+	@GetMapping("/passengerinfo")
 	public String passengerinfo() {	
-		return "passengerInfo";
+		return "passengerinfo";
 		
 	}
 
@@ -22,7 +22,7 @@ public class PassengerInfoController {
     
 
 //    // 탑승자 정보 입력 페이지로 이동
-//    @GetMapping("/passengerInfo")
+//    @GetMapping("/passengerinfo")
 //    public String showPassengerInfo(
 //            @RequestParam(name="adultCount", defaultValue = "1") int adultCount,
 //            @RequestParam(name="childCount", defaultValue = "0") int childCount,
@@ -41,6 +41,6 @@ public class PassengerInfoController {
 //        int amount = (adultCount * pricePerAdult) + (childCount * pricePerChild) + (infantCount * pricePerInfant);
 //        model.addAttribute("amount", amount);
 //
-//        return "passengerInfo"; // passengerinfo.jsp로 이동
+//        return "passengerinfo"; // passengerinfo.jsp로 이동
 //    }
 }		

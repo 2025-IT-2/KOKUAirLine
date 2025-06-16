@@ -6,12 +6,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
-    <link rel="stylesheet" href="<c:url value='/css/passengerInfo.css'/>"/>
+    <link rel="stylesheet" href="<c:url value='/css/passengerinfo.css'/>"/>
     <title>搭乗者情報入力</title>
   </head>
   <body>
     <%@ include file="header.jsp" %>  
-    <form action="/submitPassengerInfo" method="post">     
+    <form action="/submitpassengerinfo" method="post">     
       <div class="screen">
         <!-- 제목 -->        
         <h2 class="title">搭乗者情報</h2>
