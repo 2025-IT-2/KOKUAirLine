@@ -1,90 +1,23 @@
 .screen {
   background-color: #7d7983;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  text-align: center;
+  align-items: center; /* 🔥 추가: 세로 중앙 정렬 */
   width: 100%;
-  position: relative; /* 기준점 설정 */
+
+  position: relative;  /* 기준점 설정 */
 }
 
-.screen .overlap-wrapper {
-  background-color: var(--m3syslight-medium-contrastoutline-variant);
-  border: 8px solid;
-  border-color: #ffffff;
-  width: 905px;
-  height: 610px;
-}
-
-.screen .overlap {
-  position: relative;
-  width: 882px;
-  height: 580px;
-  top: -30px;
-  left: 0px;
-}
-
-.screen .view {
-  position: absolute;
-  width: 873px;
-  height: 577px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #d9d9d9;
-}
-
-.screen .rectangle {
-  position: absolute;
-  width: 873px;
-  height: 63px;
-  top: 3px;
-  left: 9px;
-}
-
-.screen .text-wrapper {
-  position: absolute;
-  width: 170px;
-  height: 68px;
-  top: 0;
-  left: 0;
-  font-family: "Adamina-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000c7;
-  font-size: 36px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  text-decoration: underline;
-}
-
-.screen .img {
-  position: absolute;
-  width: 91px;
-  height: 45px;
-  top: 13px;
-  left: 764px;
-}
-
-.screen .div {
-  position: absolute;
-  width: 120px;
-  height: 48px;
-  top: 10px;
-  left: 750px;
-  font-family: "Adamina-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  text-decoration: underline;
-}
-
-.screen .text-wrapper-2 {
+.screen .title {
+  display: flex;
+  justify-content: center;   /* 텍스트 내부 가로 정렬 */
+  align-items: center;       /* 텍스트 내부 세로 정렬 */
   height: 24px;
-  top: 107px;
-  left: 329px;
+  top: 70px;                /* 🔥 세로 위치는 그대로 유지 */
+  left: 50%;                 /* 가로 가운데로 이동 */
+  transform: translateX(-50%); /* 🔥 정확히 중앙 정렬 */
   font-family: "ABeeZee-Regular", Helvetica;
   font-size: 40px;
   line-height: 24px;
@@ -94,10 +27,37 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0.50px;
+  z-index: 9999;             /* 충분히 큰 숫자 지정 */
+}
+
+.screen .overlap-wrapper {
+  display: flex;              /* 🔥 자식들을 겹치게 쌓기 위해 flex 사용 */
+  justify-content: center;
+  align-items: center;
+  position: relative;         /* 🔥 기준점 */
+  background-color: var(--m3syslight-medium-contrastoutline-variant);
+  border: 8px solid;
+  border-color: #ffffff;
+  width: 905px;
+  height: 610px;
+  margin-top: 10px;
+}
+
+.screen .view {
+  position: absolute;         /* 🔥 배경처럼 고정 */
+  width: 873px;
+  height: 577px;
+  background-color: #d9d9d9;
+}
+
+.screen .overlap {
+  position: relative;         /* 🔥 view 위에 자연스럽게 올라옴 */
+  width: 882px;
+  height: 580px;
 }
 
 .screen .group {
-  position: absolute;
+  position: relative;
   width: 758px;
   height: 298px;
   top: 147px;
@@ -110,16 +70,8 @@
   height: 298px;
 }
 
-.screen .view-2 {
-  position: absolute;
-  width: 760px;
-  height: 298px;
-  top: 0;
-  left: 0;
-}
-
 .screen .overlap-2 {
-  position: absolute;
+  position: relative;
   width: 761px;
   height: 208px;
   top: 38px;
@@ -127,7 +79,7 @@
 }
 
 .screen .rectangle-2 {
-  position: absolute;
+  position: relative;
   width: 756px;
   height: 208px;
   top: 0;
@@ -137,6 +89,23 @@
   border-color: #000000;
 }
 
+  /* 대인 구분 */
+.screen .adult {
+  width: 124px;
+  height: 30px;
+  top: -40px;
+  left: 9px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 40px;
+  line-height: 24px;
+  position: absolute;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.50px;
+}
+
+    /* 성별 입력 */
 .screen .group-2 {
   position: absolute;
   width: 760px;
@@ -158,6 +127,7 @@
   justify-content: center;
 }
 
+    /* 성별 선택 영역 */
 .screen .text-wrapper-3 {
   width: 65px;
   height: 21px;
@@ -190,17 +160,6 @@
   align-items: center;
 }
 
-    /* 생년월일 달력 생성 */
-.screen .div-2 input[type="date"] {
-  width: 180px; /* 원하시는 너비로 조정 가능 */
-  height: 36px;
-  font-size: 16px;
-  padding: 4px 8px;
-  border: 1px solid #000;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
 /* 라디오 버튼 스타일 */
 .radio-label {
   position: absolute;
@@ -215,38 +174,7 @@
   transform: scale(1.4); /* 버튼 크기 살짝 키우기 */
 }
 
-.screen .text-wrapper-4 {
-  width: 40px;
-  height: 21px;
-  top: 22px;
-  left: 61px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-size: 40px;
-  line-height: 24px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  color: #000000;
-  text-align: center;
-  letter-spacing: 0.50px;
-}
-
-.screen .text-wrapper-5 {
-  width: 40px;
-  height: 21px;
-  top: 23px;
-  left: 204px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-size: 40px;
-  line-height: 24px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  color: #000000;
-  text-align: center;
-  letter-spacing: 0.50px;
-}
-
+    /* 성명 입력 */
 .screen .group-3 {
   position: absolute;
   width: 760px;
@@ -272,6 +200,7 @@
   
 }
 
+    /* 이름 입력 부분 */
 .screen .text-wrapper-7 {
   width: 32px;
   height: 21px;
@@ -287,7 +216,6 @@
   text-align: center;
   letter-spacing: 0.50px;
 
-    /* 이름 입력 부분 */
   input[type="text"] {
   width: 200px;
   height: 36px;
@@ -302,6 +230,7 @@
 
 }
 
+    /* 성 입력 부분 */
 .screen .text-wrapper-8 {
   width: 32px;
   height: 21px;
@@ -316,8 +245,7 @@
   color: #000000;
   text-align: center;
   letter-spacing: 0.50px;
-
-  /* 성 입력 부분 */
+  
   input[type="text"] {
   width: 200px;
   height: 36px;
@@ -339,7 +267,6 @@
   left: 1px;
 }
 
-
 .screen .text-wrapper-9 {
   width: 131px;
   height: 21px;
@@ -356,190 +283,101 @@
   letter-spacing: 0.50px;
 }
 
-.screen .text-wrapper-10 {
-  width: 124px;
-  height: 30px;
-  top: 0;
-  left: 9px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-size: 40px;
-  line-height: 24px;
-  position: absolute;
-  font-weight: 400;
-  color: #000000;
-  text-align: center;
-  letter-spacing: 0.50px;
-}
-
-.screen .text-wrapper-11 {
-  width: 124px;
-  height: 30px;
-  top: 268px;
-  left: 10px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-size: 40px;
-  line-height: 24px;
-  position: absolute;
-  font-weight: 400;
-  color: #000000;
-  text-align: center;
-  letter-spacing: 0.50px;
-}
-
-.screen .text-wrapper-13 {
-  height: 66px;
-  top: 469px;
-  left: 57px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-size: 32px;
-  line-height: 33px;
-  position: absolute;
-  font-weight: 400;
-  color: #000000;
-  text-align: center;
-  letter-spacing: 0.50px;
-}
-
-.screen .text-wrapper-14 {
-  height: 24px;
-  top: 421px;
-  left: 196px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-size: 20px;
-  line-height: 24px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  color: #000000;
-  text-align: center;
-  letter-spacing: 0.50px;
-}
-
-.screen .rectangle-7 {
-  position: absolute;
-  width: 132px;
-  height: 62px;
-  top: 473px;
-  left: 687px;
-  background-color: #7d7d7d;
-  border-radius: 10px;
-}
-
-.screen .text-wrapper-15 {
-  height: 33px;
-  top: 489px;
-  left: 720px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-size: 32px;
-  line-height: 33px;
-  text-decoration: underline;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  color: #000000;
-  text-align: center;
-  letter-spacing: 0.50px;
-  cursor: pointer; /* 마우스 커서 손가락 모양 */
-}
-
-.screen .text-wrapper-16 {
-  position: absolute;
-  height: 33px;
-  top: 488px;
-  left: 198px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 32px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 33px;
-  white-space: nowrap;
-
-  /* 전화번호 입력창 */
-  input[type="tel"] {
-  width: 200px;
-  height: 50px;
-  font-size: 25px;
+    /* 생년월일 달력 생성 */
+.screen .div-2 input[type="date"] {
+  width: 180px; /* 원하시는 너비로 조정 가능 */
+  height: 36px;
+  font-size: 16px;
   padding: 4px 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #000;
   border-radius: 4px;
   box-sizing: border-box;
-  position: relative;
-  top: -10px; /* 10px 위로 이동 */
+}
+
+/* 부모 컨테이너 */
+.screen .container {
+  display: flex;
+  flex-direction: row;    /* 가로 정렬 */
+  align-items: center;    /* 세로 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  gap: 40px;              /* 요소 사이 간격 */
+  width: 100%;            /* 전체 너비 */
+  height: 150px;
+  /* 🔥 아래로 자연스럽게 배치 */
+  margin-top: 50px;       /* 위 요소와의 간격만 주기 */
+  
+  /* 🔥 중앙 고정 제거 */
+  position: static;       /* 기본 배치로 복귀 */
+  background-color: #d9d9d9;
+}
+
+/* 예약자 연락처 텍스트 */
+.screen .Reservation-PhoneNumber {
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 32px;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.50px;
+  width: 100px;
+}
+
+/* 전화번호 입력창 */
+.screen .PhoneNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input[type="tel"] {
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
   }
 }
 
+/* 금액 표시창 */
 .screen .box {
   width: 200px;
   height: 50px;
-  top: 478px;
-  left: 470px;
   background-color: #ffffff;
   border-radius: 10px;
   border: 1px solid #ccc;
-  text-align: center;
 
-  display: flex;               /* Flexbox 활성화 */
-  align-items: center;         /* 수직 중앙 정렬 */
-  justify-content: center;     /* 수평 중앙 정렬 */
-  position: relative;
-  padding: 0;                  /* 패딩 제거 (정렬 방해 가능성 있음) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .screen .box .element {
   font-size: 15px;
-  line-height: 1;              /* 정확한 라인 높이 조정 */
   font-weight: 400;
   color: #000000;
   letter-spacing: 0.5px;
   white-space: nowrap;
 }
 
-.screen .text-wrapper-17 {
-  position: absolute;
-  width: 120px;
-  height: 48px;
-  top: 13px;
-  left: 215px;
-  font-family: "Adamina-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000c7;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
+/* 결정 버튼 */
+.screen .text-wrapper-15 {
+  width: 132px;
+  height: 62px;
+  background-color: #7d7d7d;
+  border-radius: 10px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 32px;
+  line-height: 33px;
   text-decoration: underline;
-}
-
-.screen .text-wrapper-18 {
-  width: 187px;
-  height: 48px;
-  top: 14px;
-  left: 335px;
-  font-family: "Adamina-Regular", Helvetica;
-  font-size: 16px;
-  line-height: 24px;
-  text-decoration: underline;
-  position: absolute;
+  white-space: nowrap;
   font-weight: 400;
   color: #000000;
   text-align: center;
   letter-spacing: 0.50px;
-}
+  cursor: pointer;
 
-.screen .text-wrapper-19 {
-  width: 120px;
-  height: 48px;
-  top: 13px;
-  left: 531px;
-  font-family: "Adamina-Regular", Helvetica;
-  font-size: 16px;
-  line-height: 24px;
-  text-decoration: underline;
-  position: absolute;
-  font-weight: 400;
-  color: #000000;
-  text-align: center;
-  letter-spacing: 0.50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
