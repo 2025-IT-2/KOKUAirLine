@@ -3,87 +3,6 @@
 <%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
-	
-
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta charset="utf-8" />
-		<link rel="stylesheet" href="<c:url value='/css/global.css' />" />
-		<link rel="stylesheet" href="<c:url value='/css/reservation.css'/>"/>
-		<link rel="stylesheet" href="<c:url value='/css/header.css'/>"/>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-		<title>航空券検索</title>
-	</head>
-	<body>
-		<form method = "post" action = "reservationCheckPrice">
-	    <div class = "container">
-	        <h2>旅程/日付選択</h2>
-			<!-- 여행 종류 선택 -->
-	        <div class = "trip-type" id = tripType>
-	            <button type="button" class = "trip-option selected" data-type = "round">往復</button>
-	            <button type="button" class = "trip-option" data-type = "oneway">片道</button>
-	            <button type="button" class = "trip-option" data-type = "multiway">多区間</button>
-	        </div>
-	        <input type = "hidden" name = "tripType" id = "tripTypeInput" value = "round">
-			<!-- 공항 선택 -->
-	        <div class = "airport-selection">
-	        	<select name = "departireAirport" id = "departireAirport" class = "airport-select">
-	        		<option class = "airport-option" value = "INC">ICN 仁川</option>
-	        		<option class = "airport-option" value = "OKA">OKA 沖縄</option>
-	        	</select>
-	        	
-	        	<select name = "arrivalAirport" id = "arrivalAirport" class = "airport-select">
-	        		<option class = "airport-option" value = "OKA">OKA 沖縄</option>
-	        		<option class = "airport-option" value = "INC">ICN 仁川</option>
-	        	</select>
-	        	<input type="text" id="departureDate" class="date-input" placeholder="出発日を選択" readonly>
-	        	<input type="text" id="returnDate" class="date-input" placeholder="帰りの日を選択" readonly>
-	        </div>
-			<!-- 탑승객 선택 -->
-	        <h3>搭乗人員選択</h3>
-	        <div class = "passengers">
-	            <div class = "passenger-type">
-	                <label>大人（12歳以上）</label>
-	                <div class = "counter">
-	                    <button type = "button">-</button>
-	                    <span>0</span>
-	                    <button type = "button">+</button>
-	                </div>
-	            </div>
-	            <div class = "passenger-type">
-	                <label>小児（2歳〜12歳未満）</label>
-	                <div class = "counter">
-	                    <button type = "button">-</button>
-	                    <span>0</span>
-	                    <button type = "button">+</button>
-	                </div>
-	            </div>
-	            <div class = "passenger-type">
-	                <label>幼児（2歳未満）</label>
-	                <div class = "counter">
-	                    <button type = "button">-</button>
-	                    <span>0</span>
-	                    <button type = "button">+</button>
-	                </div>
-	            </div>
-	        </div>
-			<input type = "hidden" name = "adultCount" id = "adultCount" value = "0">
-			<input type = "hidden" name = "childCount" id = "childCount" value = "0">
-			<input type = "hidden" name = "infantCount" id = "infantCount" value = "0">
-			<!-- 클래스 선택 -->	
-	        <h3>座席クラス選択</h3>
-	        <div class = "class-type">
-	            <button type="button" class = "class-option" data-type = "eco-spec">エコノミー特価</button>
-	            <button type="button" class = "class-option" data-type = "eco-norm">エコノミー一般</button>
-	            <button type="button" class = "class-option" data-type = "buis">ビジネス</button>
-	            <button type="button" class = "class-option" data-type = "first">ファースト</button>
-	        </div>
-	        <input type = "hidden" name = "classType" id = "classTypeInput" value = "">
-	        <div class = "confirm-button">
-	            <button type = "submit">航空券検索</button>
-	        </div>
-	    </div>
-		</form>
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/rangePlugin.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
@@ -219,5 +138,121 @@
 		    }
 		});
 	</script>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="<c:url value='/css/global.css' />" />
+		<link rel="stylesheet" href="<c:url value='/css/reservation.css'/>"/>
+		<link rel="stylesheet" href="<c:url value='/css/header.css'/>"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+		<title>航空券検索</title>
+	</head>
+	<body>
+		<form method = "get" action = "reservationCheckPrice">
+	    <div class = "container">
+	        <h2>旅程/日付選択</h2>
+			<!-- 여행 종류 선택 -->
+	        <div class = "trip-type" id = tripType>
+	            <button type="button" class = "trip-option selected" data-type = "round">往復</button>
+	            <button type="button" class = "trip-option" data-type = "oneway">片道</button>
+	            <button type="button" class = "trip-option" data-type = "multiway">多区間</button>
+	        </div>
+	        <input type = "hidden" name = "tripType" id = "tripTypeInput" value = "round">
+			<!-- 공항 선택 -->
+			<c:choose>
+    <c:when test="${not empty flights}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>항공사</th>
+                    <th>공항</th>
+                    <th>편명</th>
+                    <th>예정시간</th>
+                    <th>예상시간</th>
+                    <th>선택</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="flight" items="${flights}">
+                    <tr>
+                        <td>${flight.getAirlineKorean()}</td>
+                        <td>${flight.getAirport()}</td>
+                        <td>${flight.getFlightId()}</td>
+                        <td>${flight.getScheduleDateTime()}</td>
+                        <td>${flight.getEstimatedDateTime()}</td>
+                        <td>
+                            <form action="/confirm" method="post">
+                                <input type="hidden" name="flightId" value="${flight.getFlightId()}" />
+                                <button type="submit">선택</button>
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </c:when>
+    <c:otherwise>
+        <p>검색된 항공편이 없습니다.</p>
+    </c:otherwise>
+</c:choose>
+	        <div class = "airport-selection">
+	        	<select name = "departireAirport" id = "departireAirport" class = "airport-select">
+	        		<option class = "airport-option" value = "INC">ICN 仁川</option>
+	        		<option class = "airport-option" value = "OKA">OKA 沖縄</option>
+	        	</select>
+	        	
+	        	<select name = "arrivalAirport" id = "arrivalAirport" class = "airport-select">
+	        		<option class = "airport-option" value = "OKA">OKA 沖縄</option>
+	        		<option class = "airport-option" value = "INC">ICN 仁川</option>
+	        	</select>
+	        	<input type="text" id="departureDate" class="date-input" placeholder="出発日を選択" readonly>
+	        	<input type="text" id="returnDate" class="date-input" placeholder="帰りの日を選択" readonly>
+	        </div>
+			<!-- 탑승객 선택 -->
+	        <h3>搭乗人員選択</h3>
+	        <div class = "passengers">
+	            <div class = "passenger-type">
+	                <label>大人（12歳以上）</label>
+	                <div class = "counter">
+	                    <button type = "button">-</button>
+	                    <span>0</span>
+	                    <button type = "button">+</button>
+	                </div>
+	            </div>
+	            <div class = "passenger-type">
+	                <label>小児（2歳〜12歳未満）</label>
+	                <div class = "counter">
+	                    <button type = "button">-</button>
+	                    <span>0</span>
+	                    <button type = "button">+</button>
+	                </div>
+	            </div>
+	            <div class = "passenger-type">
+	                <label>幼児（2歳未満）</label>
+	                <div class = "counter">
+	                    <button type = "button">-</button>
+	                    <span>0</span>
+	                    <button type = "button">+</button>
+	                </div>
+	            </div>
+	        </div>
+			<input type = "hidden" name = "adultCount" id = "adultCount" value = "0">
+			<input type = "hidden" name = "childCount" id = "childCount" value = "0">
+			<input type = "hidden" name = "infantCount" id = "infantCount" value = "0">
+			<!-- 클래스 선택 -->	
+	        <h3>座席クラス選択</h3>
+	        <div class = "class-type">
+	            <button type="button" class = "class-option" data-type = "eco-spec">エコノミー特価</button>
+	            <button type="button" class = "class-option" data-type = "eco-norm">エコノミー一般</button>
+	            <button type="button" class = "class-option" data-type = "buis">ビジネス</button>
+	            <button type="button" class = "class-option" data-type = "first">ファースト</button>
+	        </div>
+	        <input type = "hidden" name = "classType" id = "classTypeInput" value = "">
+	        <div class = "confirm-button">
+	            <button type = "submit">航空券検索</button>
+	        </div>
+	    </div>
+		</form>
 	</body>
 </html>
