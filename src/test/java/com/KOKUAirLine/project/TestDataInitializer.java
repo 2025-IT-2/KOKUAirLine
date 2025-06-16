@@ -1,5 +1,6 @@
 package com.KOKUAirLine.project;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.KOKUAirLine.project.model.InFlightMeal;
@@ -25,41 +27,38 @@ public class TestDataInitializer {
 	@Autowired
 	TaxFreeItemRepo textFreeRepo;
 	
-	public static byte[] readImageAsBytes(String resourcePath) {
-	    try {
-	        return Files.readAllBytes(new File(
-	            TestDataInitializer.class.getResource(resourcePath).toURI()
-	        ).toPath());
+	public static byte[] readImageAsBytes(String filePath) {
+	    byte[] byteFile = null;
+	    
+		try {
+			byteFile = Files.readAllBytes(new File(filePath).toPath());
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-	    return null;
+		
+	    return byteFile;
 	}
 
 
     @BeforeEach
     void setUp() {
-    	flightMealRepo.deleteAll();
         textFreeRepo.deleteAll();
-        
-    	flightMealRepo.save(new InFlightMeal("야채식"));
-        flightMealRepo.save(new InFlightMeal("저지방식"));
-        
-        textFreeRepo.save(new TaxFreeItem("건강 식품", readImageAsBytes("/static/img/HealthFood.png"), 100000));
-        textFreeRepo.save(new TaxFreeItem("화장품", readImageAsBytes("/static/img/Cosmetics.png"), 200000));
-        textFreeRepo.save(new TaxFreeItem("와인", readImageAsBytes("/static/img/Wine.png"), 990000));
-    }
-    
-    @Test
-    void main() {
-    	System.out.println(flightMealRepo.searchMeal(1) + "\n" + flightMealRepo.searchMeal(2));
+        textFreeRepo.save(new TaxFreeItem("건강 식품", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/HealthFood.png"), 100000));
+        textFreeRepo.save(new TaxFreeItem("화장품", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/Cosmetics.png"), 200000));
+        textFreeRepo.save(new TaxFreeItem("와인", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/Wine.png"), 990000));
     }
     
     @Test
     void testTaxFreeItemSaved() {
-        List<TaxFreeItem> items = textFreeRepo.findAll();
-        assertEquals(3, items.size());
-        assertEquals("건강 식품", items.get(0).getProduct_name());
+    	List<TaxFreeItem> items = textFreeRepo.findAll();
+    	List<String> names = items.stream().map(TaxFreeItem::getName).toList();
+
+    	assertEquals(3, names.size());
+    	assertTrue(names.contains("건강 식품"));
+    	assertTrue(names.contains("화장품"));
+    	assertTrue(names.contains("와인"));
+    	
+    	
     }
 
 }

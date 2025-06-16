@@ -17,13 +17,17 @@
     </div>
 
     <!-- 상품 리스트 영역 -->
+    <div>
+	  <h2 class="product-title">면세품 판매 목록</h2>
+	</div>
+
     <div class="product-container">
       <c:forEach var="product" items="${productList}">
         <div class="product-card">
-          <img src="<c:url value='${product.image}' />" alt="상품 이미지" />
+          <img src="data:image/png;base64,${product.imageBase64}" alt="상품 이미지" />
           <div class="product-info">
             <h3>${product.name}</h3>
-            <p>${product.description}</p>
+            <p>${product.price}</p>
           </div>
         </div>
       </c:forEach>
