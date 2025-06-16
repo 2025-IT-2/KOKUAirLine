@@ -1,5 +1,7 @@
 package com.KOKUAirLine.project.model;
 
+import java.util.Base64;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,26 +13,41 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @NoArgsConstructor
 public class TaxFreeItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
     @SequenceGenerator(name = "product_seq", sequenceName = "PRODUCT_SEQ", allocationSize = 1)
-	private int product_id;
+	private int id;
 	
-	private String product_name;
+	private String name;
 	
 	@Lob
-	private byte[] imageData;
+	private byte[] image;
 	
 	private int price;
 	private int count;
 	
 	public TaxFreeItem(String name, byte[] image, int price) {
-		this.product_name = name;
-		this.imageData = image;
+		this.name = name;
+		this.image = image;
 		this.price = price;
 		this.count = 100;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getImageBase64() {
+		return Base64.getEncoder().encodeToString(this.image);
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+	
+	public int getCount() {
+		return count;
 	}
 }
