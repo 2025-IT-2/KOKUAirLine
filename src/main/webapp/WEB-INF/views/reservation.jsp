@@ -160,55 +160,36 @@
 	        </div>
 	        <input type = "hidden" name = "tripType" id = "tripTypeInput" value = "round">
 			<!-- 공항 선택 -->
-			<c:choose>
-    <c:when test="${not empty flights}">
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>항공사</th>
-                    <th>공항</th>
-                    <th>편명</th>
-                    <th>예정시간</th>
-                    <th>예상시간</th>
-                    <th>선택</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="flight" items="${flights}">
-                    <tr>
-                        <td>${flight.getAirlineKorean()}</td>
-                        <td>${flight.getAirport()}</td>
-                        <td>${flight.getFlightId()}</td>
-                        <td>${flight.getScheduleDateTime()}</td>
-                        <td>${flight.getEstimatedDateTime()}</td>
-                        <td>
-                            <form action="/confirm" method="post">
-                                <input type="hidden" name="flightId" value="${flight.getFlightId()}" />
-                                <button type="submit">선택</button>
-                            </form>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-    </c:when>
-    <c:otherwise>
-        <p>검색된 항공편이 없습니다.</p>
-    </c:otherwise>
-</c:choose>
+			<div class = "airport-selection">
+			<select name="departureAirport" id = "departireAirport" class = "airport-select">		    
+			    <c:forEach var="flight" items="${flights}">
+			        <option  class = "airport-option" value="${flight.airport}">
+			            ${flight.airport}
+			        </option>
+			    </c:forEach>
+			</select>
+			<select name="arrivalAirport" id = "arrivalAirport" class = "airport-select">		    
+			    <c:forEach var="flight" items="${flights}">
+			        <option  class = "airport-option" value="${flight.airport}">
+			            ${flight.airport}
+			        </option>
+			    </c:forEach>
+			</select>
+	        	<input type="text" id="departureDate" class="date-input" placeholder="出発日を選択" readonly>
+	        	<input type="text" id="returnDate" class="date-input" placeholder="帰りの日を選択" readonly>
+			</div>
+			<!--
 	        <div class = "airport-selection">
 	        	<select name = "departireAirport" id = "departireAirport" class = "airport-select">
 	        		<option class = "airport-option" value = "INC">ICN 仁川</option>
 	        		<option class = "airport-option" value = "OKA">OKA 沖縄</option>
 	        	</select>
-	        	
 	        	<select name = "arrivalAirport" id = "arrivalAirport" class = "airport-select">
 	        		<option class = "airport-option" value = "OKA">OKA 沖縄</option>
 	        		<option class = "airport-option" value = "INC">ICN 仁川</option>
 	        	</select>
-	        	<input type="text" id="departureDate" class="date-input" placeholder="出発日を選択" readonly>
-	        	<input type="text" id="returnDate" class="date-input" placeholder="帰りの日を選択" readonly>
 	        </div>
+	         -->
 			<!-- 탑승객 선택 -->
 	        <h3>搭乗人員選択</h3>
 	        <div class = "passengers">

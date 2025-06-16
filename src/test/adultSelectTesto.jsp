@@ -4,12 +4,13 @@
 <html>
 <head>
     <title>인원 선택</title>
+    <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
     <link rel="stylesheet" type="text/css" href="resources/css/adultSelectTesto.css">
 </head>
 <body>
 <div class="container">
     <h1>탑승 인원 선택</h1>
-    <form action="passengerInfo" method="get">
+    <form action="passengerinfo" method="get">
         <div class="select-group">
             <label for="adultCount">대인:</label>
             <select name="adultCount" id="adultCount">
