@@ -12,13 +12,12 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class TaxFreeItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
     @SequenceGenerator(name = "product_seq", sequenceName = "PRODUCT_SEQ", allocationSize = 1)
-	private String product_id;
+	private int product_id;
 	
 	private String product_name;
 	
@@ -27,4 +26,11 @@ public class TaxFreeItem {
 	
 	private int price;
 	private int count;
+	
+	public TaxFreeItem(String name, byte[] image, int price) {
+		this.product_name = name;
+		this.imageData = image;
+		this.price = price;
+		this.count = 100;
+	}
 }

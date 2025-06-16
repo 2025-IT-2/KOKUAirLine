@@ -24,6 +24,9 @@ public class HomeController {
     		service.autoLogin(request, session);
     	}
     	
+    	// 상품 이미지 전달
+    	
+    	
         return "home"; // -> /WEB-INF/views/home.jsp 로 이동
     }
 }
