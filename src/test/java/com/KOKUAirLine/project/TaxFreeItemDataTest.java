@@ -20,7 +20,7 @@ import com.KOKUAirLine.project.repo.InFlightMealRepository;
 import com.KOKUAirLine.project.repo.TaxFreeItemRepo;
 
 @SpringBootTest
-public class TestDataInitializer {
+public class TaxFreeItemDataTest {
 	@Autowired
     InFlightMealRepository flightMealRepo;
 	
@@ -57,8 +57,6 @@ public class TestDataInitializer {
     	assertTrue(names.contains("건강 식품"));
     	assertTrue(names.contains("화장품"));
     	assertTrue(names.contains("와인"));
-    	
-    	
     }
 
 }
