@@ -38,6 +38,10 @@
         font-weight: bold;
 		text-align: center;
       }
+	  
+	  .space{
+		height: 15px;
+	  }
 
       .card {
         display: flex;
@@ -200,3 +204,25 @@
 	      display: none;
 	    }
 	  }
+	  
+	  /*인쇄 범위 지정*/
+	  @media print {
+	    body * {
+	      visibility: hidden; /* 전체 요소 숨기기 */
+	    }
+
+	    #print-area, #print-area * {
+	      visibility: visible; /* 인쇄 영역과 자식 요소만 보이게 */
+	    }
+
+	    #print-area {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%; /* 또는 원하는 너비로 지정 가능 */
+			max-width: 100%;
+			text-align: center;
+	    }
+	  }
+

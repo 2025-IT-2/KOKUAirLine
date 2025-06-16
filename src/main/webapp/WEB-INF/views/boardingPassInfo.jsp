@@ -20,10 +20,11 @@
           <h1>搭乗券情報</h1>
         </div>
 
-        <div class="section-title">搭乗券発行</div>
+        <div class="section-title">搭乗券<br><div class='space'></div>発行完了</div>
 
         <div class="card">
-			<div class="card-box">
+			<div class="card-box" >
+				<div id="print-area">
 			  <h2>搭乗券</h2>
 			  <div class="boarding-pass-card">
 			    <h3 class="boarding-title">BOARDING PASS</h3>
@@ -45,17 +46,22 @@
 			        <div class="time"><fmt:formatDate value="${arrivalTime}" pattern="HH:mm" /></div>
 			      </div>
 			    </div>
-			    
+			    </div>
 				
 			</div>
 				<div class="card">
 				        <div class="card-box">
 				          <h2>搭乗券送信</h2>
 				          <div class="btn-group">
-							<a href="mailto:someone@example.com?subject=搭乗券のお知らせ&body=搭乗券が発行されました。詳細は以下のURLをご確認ください。https://yourdomain.com/boardingpass" class="btn">
+							<!--<a href="mailto:someone@example.com?subject=搭乗券のお知らせ&body=搭乗券が発行されました。詳細は以下のURLをご確認ください。https://yourdomain.com/boardingpass" class="btn">
+							  メールで送信
+							</a>-->
+							<a href="#" class="btn" onclick="openPopup()" title="クリックするとメール送信画面が開きます。（まだです。）">
 							  メールで送信
 							</a>
+							<br>
 							<a href="https://social-plugins.line.me/lineit/share?url=https://example.com" class="btn" target="_blank">LINEで送信</a>
+							<br>
 							<a href="#" class="btn" onclick="window.print(); return false;">印刷する</a>
 				          </div>
 				        </div>

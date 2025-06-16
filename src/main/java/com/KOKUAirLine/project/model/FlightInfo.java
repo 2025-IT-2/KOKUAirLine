@@ -2,10 +2,7 @@ package com.KOKUAirLine.project.model;
 
 import java.util.Date;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -17,7 +14,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor // 파라미터가 다 있거나 다 없는 생성자 2가지 생성됨
+
+//@Entity
+//@Table("flight_info")
 public class FlightInfo {
+//static class FlightInfo {
 
     @Id 
 //    @Column(name = "FLIGHTNO")
