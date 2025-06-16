@@ -44,8 +44,8 @@ public class HomeService {
 	}
 	
 	public void loadTaxFreeItems(Model model) {
-		List<TaxFreeItem> itemList = taxFreeRepo.findAll();
+		List<TaxFreeItem> productList = taxFreeRepo.findAll();
 		
-		model.addAttribute("itemList", itemList);
+		model.addAttribute("productList", productList);
 	}
 }
