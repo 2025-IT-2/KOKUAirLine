@@ -12,10 +12,15 @@
   <link rel="stylesheet" href="<c:url value='/css/boardingPassInfo.css'/>">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <% if (selectedRes != null) { %>
+      <%@ include file="boardingPassInfo.jsp" %>
+  <% } %>
+
+  
 </head>
 <body>
-  <%@ include file="header.jsp" %>
-  <div class="container">
+  <div class="container" id="boardingFrame">
         <div class="header">
           <h1>搭乗券情報</h1>
         </div>
