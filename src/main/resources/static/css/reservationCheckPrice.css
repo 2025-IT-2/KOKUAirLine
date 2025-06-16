@@ -1,807 +1,261 @@
-@charset "UTF-8";
-.screen {
-  background-color: #7d7983;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e5e5e5;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.container {
+  background-color: #e0e0e0;
+  padding: 80px;
+  max-width: 1800px;
+  margin: auto;
+  border-radius: 8px;
+  position: relative;
+}
+
+/* 상단 바 */
+.top-bar {
+  position: absolute;
   width: 100%;
-}
-
-
-.screen .overlap {
-  position: relative;
-  width: 922px;
-  height: 582px;
-  top: 12px;
-  left: 2px;
-}
-
-.screen .view {
-  position: absolute;
-  width: 922px;
-  height: 558px;
-  background-color: #d9d9d9;
-}
-
-.screen .rectangle {
-  position: absolute;
-  width: 873px;
-  height: 63px;
-  top: 3px;
-  left: 9px;
-}
-
-.screen .text-wrapper {
-  position: absolute;
-  width: 170px;
-  height: 68px;
-  top: 0;
-  left: 0;
-  font-family: "Adamina-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000c7;
-  font-size: 36px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  text-decoration: underline;
-}
-
-.screen .img {
-  position: absolute;
-  width: 91px;
-  height: 45px;
-  top: 13px;
-  left: 764px;
-}
-
-.screen .div {
-  position: absolute;
-  width: 120px;
-  height: 48px;
-  top: 10px;
-  left: 750px;
-  font-family: "Adamina-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  text-decoration: underline;
-}
-
-.screen .rectangle-2 {
-  position: absolute;
-  width: 922px;
   height: 49px;
-  top: 0px;
-  left: 0px;
   background-color: #939090;
+  top: 0;
+  left: 0;
 }
 
-.screen .overlap-group-wrapper {
-  position: absolute;
-  width: 134px;
-  height: 24px;
-  top: 12px;
-  left: 13px;
-}
-
-.screen .overlap-group {
-  position: relative;
-  width: 132px;
-  height: 24px;
+/* 정보 박스 */
+.info-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px;
   background-color: #b6b6b6;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  border-radius: 4px;
 }
 
-.screen .text-wrapper-2 {
+.info-box {
+  background-color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #000;
+  white-space: nowrap;
+}
+
+.info-text {
+  text-align: center;
+  line-height: 24px;
+}
+
+/* 예약 폼 기본 */
+.reservation-form {
+  margin-top: -40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* 확인 버튼 */
+.confirm-button button {
   position: absolute;
-  width: 109px;
-  height: 24px;
-  top: 0;
-  left: 12px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
+  right: 1;
+  bottom: 0;
+  
+  padding: 10px 20px;
   font-size: 16px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* 비행기 옵션 박스 */
+.flight-options {
+  padding: 15px;
+  background-color: white;
+  width: 750px;
+}
+
+/* 비행기 한 줄 */
+.flight {
+  display: flex;
+  border: 1px solid #aaa;
+  margin-bottom: 15px;
+  background-color: #f0f0f0;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+/* 시간 정보 */
+.time-info {
+  width: 200px;
+  background-color: #ddd;
   text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
+  padding: 10px;
+  font-size: 18px;
 }
 
-.screen .div-wrapper {
-  position: absolute;
-  width: 134px;
-  height: 24px;
-  top: 12px;
-  left: 147px;
+.time-info .time span {
+  font-size: 12px;
+  color: #555;
 }
 
-.screen .text-wrapper-3 {
-  position: absolute;
-  width: 40px;
-  height: 24px;
-  top: 0;
-  left: 47px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-2 {
-  position: absolute;
-  width: 134px;
-  height: 24px;
-  top: 12px;
-  left: 415px;
-}
-
-.screen .text-wrapper-4 {
-  position: absolute;
-  width: 58px;
-  height: 24px;
-  top: 0;
-  left: 37px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-3 {
-  position: absolute;
-  width: 140px;
-  height: 24px;
-  top: 12px;
-  left: 547px;
-}
-
-.screen .overlap-2 {
-  position: relative;
-  width: 138px;
-  height: 24px;
-}
-
-.screen .rectangle-3 {
-  position: absolute;
-  width: 132px;
-  height: 24px;
-  top: 0;
-  left: 2px;
-  background-color: #b6b6b6;
-}
-
-.screen .text-wrapper-5 {
-  position: absolute;
-  width: 138px;
-  height: 24px;
-  top: 0;
-  left: 0;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 16px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-4 {
-  position: absolute;
-  width: 134px;
-  height: 24px;
-  top: 12px;
-  left: 281px;
-}
-
-.screen .text-wrapper-6 {
-  position: absolute;
-  width: 126px;
-  height: 24px;
-  top: 0;
-  left: 4px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 11px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .ICN-OKA {
-  position: absolute;
-  height: 24px;
-  top: 75px;
-  left: 321px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
+/* 화살표 */
+.arrow {
   font-size: 24px;
+  margin: 10px 0;
+}
+
+/* 비행 상세 */
+.flight-details {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.flight-info {
+  width: 100px;
   text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  white-space: nowrap;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center; /* 가로 가운데 */
+  align-items: center;     /* 세로 가운데 */
+  height: 100%;            /* 부모 높이에 맞추려면 */
 }
 
-.screen .view-5 {
-  position: absolute;
-  width: 157px;
-  height: 32px;
-  top: 115px;
-  left: 365px;
+.economy {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  align-items: stretch;
 }
 
-.screen .overlap-3 {
-  position: relative;
-  width: 155px;
-  height: 32px;
-  background-color: #ababab;
-}
-
-.screen .text-wrapper-7 {
-  position: absolute;
-  height: 24px;
-  top: 4px;
-  left: 16px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 20px;
+/* 좌석 타입 선택 영역 */
+.fare {
+  position: relative; /* input 위치를 위한 기준 */
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 12px;
+  margin: 5px;
+  user-select: none;
+  display: block;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  background-color: #e6e6e6;
   text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  white-space: nowrap;
+  white-space: normal;       /* 줄바꿈 허용 */
+  word-break: break-word;    /* 긴 단어 줄바꿈 */
+  min-height: 110px;
+  box-sizing: border-box;
 }
 
-.screen .view-6 {
+.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.fare .type {
+  display: block;              /* 블록 요소로 변경 → 줄바꿈 허용 */
+  white-space: normal;         /* 줄바꿈 허용 */
+  word-break: break-word;      /* 길면 끊어서 줄바꿈 */
+  font-size: 14px;             /* 필요하면 줄이기 */
+  line-height: 1.3;            /* 줄 간격 조정 */
+  max-width: 80px;             /* 너무 길면 줄바꿈 유도 */
+  margin: 0 auto;              /* 가운데 정렬 */
+}
+
+/* 라디오 버튼 숨기기 */
+.fare input[type="radio"] {
   position: absolute;
-  width: 572px;
-  height: 130px;
-  top: 170px;
-  left: 165px;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
 }
 
-.screen .overlap-4 {
-  position: relative;
-  width: 566px;
-  height: 130px;
+/* 마우스 올렸을 때 */
+.fare:hover {
+  background-color: #f0f8ff;
+  border-color: #007bff;
 }
 
-.screen .rectangle-4 {
-  position: absolute;
-  width: 560px;
-  height: 130px;
-  top: 0;
-  left: 0;
-  background-color: #e8e8e8;
+/* 선택된 항목 스타일 */
+.fare:has(input[type="radio"]:checked) {
+  background-color: #e6f0ff;
+  border: 2px solid #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
 }
 
-.screen .rectangle-5 {
-  position: absolute;
-  width: 280px;
-  height: 130px;
-  top: 0;
-  left: 0;
-  background-color: #d9d9d9;
+/* 선택된 텍스트 강조 */
+.fare:has(input[type="radio"]:checked) .type,
+.fare:has(input[type="radio"]:checked) .price,
+.fare:has(input[type="radio"]:checked) .seats {
+  color: #007bff;
+  font-weight: bold;
 }
 
-.screen .rectangle-6 {
-  position: absolute;
-  width: 280px;
-  height: 60px;
-  top: 0;
-  left: 0;
-  background-color: #ffffff;
+/* 텍스트 스타일 */
+.type {
+  font-weight: bold;
+  margin-bottom: 6px;  /* 글자 아래 간격 추가 */
+  display: block;      /* 줄바꿈 보장 */
 }
 
-.screen .rectangle-7 {
-  position: absolute;
-  width: 280px;
-  height: 40px;
-  top: 0;
-  left: 280px;
-  background-color: #c1c1c1;
-}
-
-.screen .view-7 {
-  position: absolute;
-  width: 86px;
-  height: 92px;
-  top: 38px;
-  left: 280px;
-}
-
-.screen .overlap-group-2 {
-  position: relative;
-  width: 80px;
-  height: 92px;
-}
-
-.screen .rectangle-8 {
-  position: absolute;
-  width: 80px;
-  height: 20px;
-  top: 2px;
-  left: 0;
-  background-color: #d9d9d9;
-  border: 1px solid;
-  border-color: #000000;
-}
-
-.screen .rectangle-9 {
-  position: absolute;
-  width: 80px;
-  height: 70px;
-  top: 22px;
-  left: 0;
-  background-color: #fffbf0;
-  border: 1px solid;
-  border-color: #000000;
-}
-
-.screen .text-wrapper-8 {
-  position: absolute;
-  height: 24px;
-  top: 57px;
-  left: 29px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 12px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  white-space: nowrap;
-}
-
-.screen .text-wrapper-9 {
-  height: 24px;
-  top: 30px;
-  left: 15px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-10 {
-  height: 24px;
-  top: 0;
-  left: 15px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-8 {
-  position: absolute;
-  width: 186px;
-  height: 92px;
-  top: 38px;
-  left: 380px;
-}
-
-.screen .overlap-5 {
-  position: absolute;
-  width: 80px;
-  height: 92px;
-  top: 0;
-  left: 100px;
-}
-
-.screen .rectangle-10 {
-  background-color: #959288;
-  position: absolute;
-  width: 80px;
-  height: 70px;
-  top: 22px;
-  left: 0;
-  border: 1px solid;
-  border-color: #000000;
-}
-
-.screen .text-wrapper-11 {
-  height: 24px;
-  top: 0;
-  left: 9px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-9 {
-  position: absolute;
-  width: 86px;
-  height: 92px;
-  top: 0;
-  left: 0;
-}
-
-.screen .rectangle-11 {
-  background-color: #c4c0b6;
-  position: absolute;
-  width: 80px;
-  height: 70px;
-  top: 22px;
-  left: 0;
-  border: 1px solid;
-  border-color: #000000;
-}
-
-.screen .text-wrapper-12 {
-  height: 24px;
-  top: 0;
-  left: 3px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-13 {
-  height: 24px;
-  top: 8px;
-  left: 359px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  color: #000000;
-  font-size: 24px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-14 {
-  position: absolute;
-  width: 40px;
-  height: 20px;
-  top: 92px;
-  left: 231px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 10px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  white-space: nowrap;
-}
-
-.screen .text-wrapper-15 {
-  position: absolute;
-  width: 40px;
-  height: 20px;
-  top: 72px;
-  left: 231px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 10px;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-  white-space: nowrap;
-}
-
-.screen .view-10 {
-  position: absolute;
-  width: 58px;
-  height: 24px;
-  top: 78px;
-  left: 155px;
-}
-
-.screen .text-wrapper-16 {
-  height: 24px;
-  top: 0;
-  left: 0;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 20px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .arrow {
-  position: absolute;
-  width: 77px;
-  height: 15px;
-  top: 83px;
-  left: 76px;
-}
-
-.screen .view-11 {
-  position: absolute;
-  width: 66px;
-  height: 34px;
-  top: 78px;
-  left: 15px;
-}
-
-.screen .text-wrapper-17 {
-  width: 62px;
-  height: 10px;
-  top: 24px;
-  left: 0;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 10px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-18 {
-  height: 24px;
-  top: 0;
-  left: 8px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 20px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-19 {
-  height: 24px;
-  top: 17px;
-  left: 51px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 20px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-20 {
-  height: 24px;
-  top: 17px;
-  left: 224px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 11px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-21 {
-  width: 62px;
-  height: 10px;
-  top: 102px;
-  left: 153px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 10px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-12 {
-  position: absolute;
-  width: 570px;
-  height: 130px;
-  top: 325px;
-  left: 165px;
-}
-
-.screen .view-13 {
-  position: absolute;
-  width: 353px;
-  height: 92px;
-  top: 38px;
-  left: 17px;
-}
-
-.screen .overlap-group-3 {
-  position: absolute;
-  width: 80px;
-  height: 92px;
-  top: 0;
-  left: 263px;
-}
-
-.screen .text-wrapper-22 {
-  height: 24px;
-  top: 57px;
-  left: 25px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-23 {
-  height: 24px;
-  top: 30px;
-  left: 19px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 12px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-24 {
-  width: 62px;
-  height: 10px;
-  top: 62px;
-  left: 0;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 10px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-25 {
-  width: 62px;
-  height: 10px;
-  top: 62px;
-  left: 134px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  color: #000000;
-  font-size: 10px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .view-14 {
-  position: absolute;
-  width: 58px;
-  height: 24px;
-  top: 78px;
-  left: 17px;
-}
-
-.screen .view-15 {
-  position: absolute;
-  width: 152px;
-  height: 50px;
-  top: 480px;
-  left: 675px;
-}
-
-.screen .overlap-6 {
-  position: relative;
-  width: 150px;
-  height: 50px;
-  background-color: #949494;
-  border-radius: 5px;
-}
-
-.screen .text-wrapper-26 {
-  height: 24px;
-  top: 13px;
-  left: 50px;
-  font-family: "Lohit Tamil-Regular", Helvetica;
-  color: #000000;
-  font-size: 24px;
-  text-decoration: underline;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
-}
-
-.screen .text-wrapper-27 {
-  width: 120px;
-  height: 48px;
-  top: 11px;
-  left: 222px;
-  font-family: "Adamina-Regular", Helvetica;
-  color: #000000c7;
+.price {
   font-size: 16px;
-  text-decoration: underline;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
+  color: #222;
+  margin-bottom: 10px;  /* 가격 아래 간격 추가 */
+  display: block;      /* 줄바꿈 보장 */
 }
 
-.screen .text-wrapper-28 {
-  width: 187px;
-  height: 48px;
-  top: 12px;
-  left: 342px;
-  font-family: "Adamina-Regular", Helvetica;
-  color: #000000;
-  font-size: 16px;
-  text-decoration: underline;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
+.seats {
+  font-size: 12px;
+  color: #666;
+  display: block;      /* 줄바꿈 보장 */
 }
 
-.screen .text-wrapper-29 {
-  width: 120px;
-  height: 48px;
-  top: 11px;
-  left: 538px;
-  font-family: "Adamina-Regular", Helvetica;
-  color: #000000;
-  font-size: 16px;
-  text-decoration: underline;
-  position: absolute;
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 0.50px;
-  line-height: 24px;
+/* 출국편 박스 스타일 */
+.flight-section {
+  flex: 1;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  margin-bottom: 0;
+}
+
+/* 출국편 제목 */
+.section-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+  border-left: 4px solid #007bff;
+  padding-left: 3px;
+}
+
+/* 확인 버튼 박스 */
+.confirm-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* 출국, 귀국 편 박스 레이아웃 */
+.flights-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: flex-start;
 }

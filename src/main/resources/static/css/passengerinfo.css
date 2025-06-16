@@ -1,92 +1,68 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f8;
+}
+
 .screen {
-  background-color: #7d7983;
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
   justify-content: center;
-  text-align: center;
-  align-items: center; /* 🔥 추가: 세로 중앙 정렬 */
-  width: 100%;
+  align-items: center;
+  padding: 40px 20px;
 
   position: relative;  /* 기준점 설정 */
 }
 
-.screen .title {
-  display: flex;
-  justify-content: center;   /* 텍스트 내부 가로 정렬 */
-  align-items: center;       /* 텍스트 내부 세로 정렬 */
-  height: 24px;
-  top: 70px;                /* 🔥 세로 위치는 그대로 유지 */
-  left: 50%;                 /* 가로 가운데로 이동 */
-  transform: translateX(-50%); /* 🔥 정확히 중앙 정렬 */
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-size: 40px;
-  line-height: 24px;
-  white-space: nowrap;
-  position: absolute;
-  font-weight: 400;
-  color: #000000;
-  text-align: center;
-  letter-spacing: 0.50px;
-  z-index: 9999;             /* 충분히 큰 숫자 지정 */
+.title {
+  font-size: 28px;
+  margin-top: 30px;
+  font-weight: bold;
+  color: #333;
 }
 
-.screen .overlap-wrapper {
-  display: flex;              /* 🔥 자식들을 겹치게 쌓기 위해 flex 사용 */
-  justify-content: center;
-  align-items: center;
-  position: relative;         /* 🔥 기준점 */
-  background-color: var(--m3syslight-medium-contrastoutline-variant);
-  border: 8px solid;
-  border-color: #ffffff;
-  width: 905px;
-  height: 610px;
-  margin-top: 10px;
+.overlap-wrapper {
+  width: 100%;
+  max-width: 900px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin-top: 40px;
 }
 
-.screen .view {
-  position: absolute;         /* 🔥 배경처럼 고정 */
-  width: 873px;
-  height: 577px;
-  background-color: #d9d9d9;
+.overlap {
+  position: relative;
+  width: 100%;
+  max-height: 600px; /* 원하는 높이로 설정 */
+  overflow-y: auto;   /* 내부 스크롤 활성화 */
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.screen .overlap {
-  position: relative;         /* 🔥 view 위에 자연스럽게 올라옴 */
-  width: 882px;
-  height: 580px;
-}
-
-.screen .group {
+.group {
   position: relative;
   width: 758px;
   height: 298px;
-  top: 147px;
   left: 57px;
 }
 
-.screen .overlap-group {
+.overlap-group {
   position: relative;
   width: 760px;
   height: 298px;
+  top: 40px;
 }
 
-.screen .overlap-2 {
+.overlap-2 {
   position: relative;
   width: 761px;
   height: 208px;
-  top: 38px;
+  top: 40px;
   left: 0;
-}
-
-.screen .rectangle-2 {
-  position: relative;
-  width: 756px;
-  height: 208px;
-  top: 0;
-  left: 0;
-  background-color: #d9d9d9;
-  border: 1px solid;
-  border-color: #000000;
 }
 
   /* 대인 구분 */
@@ -114,17 +90,35 @@
   left: 1px;
 }
 
-.screen .div-wrapper {
+.screen .gender-wrapper {
   position: absolute;
   width: 150px;
   height: 70px;
   top: 0;
   left: 0;
-  background-color: #d9d9d9;
+  background-color: #f0f4f7;
   border: 1px solid #000000;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 12px;
+}
+
+.screen .gender {
+  position: absolute;
+  width: 603px;
+  height: 70px;
+  top: 0;
+  left: 150px;
+  background-color: #f0f4f7;
+  border: 1px solid #000000;
+  position: relative;
+  
+    /* 중앙 정렬을 위한 flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
 }
 
     /* 성별 선택 영역 */
@@ -144,22 +138,6 @@
   letter-spacing: 0.50px;
 }
 
-.screen .div-2 {
-  position: absolute;
-  width: 603px;
-  height: 70px;
-  top: 0;
-  left: 150px;
-  background-color: #d9d9d9;
-  border: 1px solid #000000;
-  position: relative;
-  
-    /* 중앙 정렬을 위한 flex */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 /* 라디오 버튼 스타일 */
 .radio-label {
   position: absolute;
@@ -172,6 +150,37 @@
 .radio-input {
   margin-right: 10px;
   transform: scale(1.4); /* 버튼 크기 살짝 키우기 */
+}
+
+.screen .name-wrapper {
+  position: absolute;
+  width: 150px;
+  height: 70px;
+  top: 0;
+  left: 0;
+  background-color: #f0f4f7;
+  border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.screen .name {
+  position: absolute;
+  width: 603px;
+  height: 70px;
+  top: 0;
+  left: 150px;
+  background-color: #f0f4f7;
+  border: 1px solid #000000;
+  position: relative;
+  
+    /* 중앙 정렬을 위한 flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
 }
 
     /* 성명 입력 */
@@ -267,6 +276,48 @@
   left: 1px;
 }
 
+.screen .birth-wrapper {
+  position: absolute;
+  width: 150px;
+  height: 70px;
+  top: 0;
+  left: 0;
+  background-color: #f0f4f7;
+  border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.screen .birth {
+  position: absolute;
+  width: 603px;
+  height: 70px;
+  top: 0;
+  left: 150px;
+  background-color: #f0f4f7;
+  border: 1px solid #000000;
+  position: relative;
+  
+    /* 중앙 정렬을 위한 flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+
+  /* 생년월일 달력 생성 */
+  input[type="date"] {
+  width: 180px; /* 원하시는 너비로 조정 가능 */
+  height: 36px;
+  font-size: 16px;
+  padding: 4px 8px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-sizing: border-box;
+  }
+}
+
 .screen .text-wrapper-9 {
   width: 131px;
   height: 21px;
@@ -283,16 +334,6 @@
   letter-spacing: 0.50px;
 }
 
-    /* 생년월일 달력 생성 */
-.screen .div-2 input[type="date"] {
-  width: 180px; /* 원하시는 너비로 조정 가능 */
-  height: 36px;
-  font-size: 16px;
-  padding: 4px 8px;
-  border: 1px solid #000;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
 
 /* 부모 컨테이너 */
 .screen .container {
@@ -308,7 +349,9 @@
   
   /* 🔥 중앙 고정 제거 */
   position: static;       /* 기본 배치로 복귀 */
-  background-color: #d9d9d9;
+  background-color: #fffbe6;
+  border: 1px solid #ffe58f;
+  border-radius: 12px;
 }
 
 /* 예약자 연락처 텍스트 */
