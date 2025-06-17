@@ -15,9 +15,19 @@
 	<%@ include file="header.jsp" %>
 	<div class="container">
 	   <!-- 예약 폼 -->
-	   <form action="/confirmReservation" method="post" class="reservation-form">
+	   <form action="/reservation" method="post" class="reservation-form">
 	
 		<div class="info-bar">
+			<div class="info-box triptype">
+				<span class="info-text">
+				  <c:choose>
+				    <c:when test="${param.tripType eq 'round'}">往復</c:when>
+				    <c:when test="${param.tripType eq 'oneway'}">片道</c:when>
+				    <c:when test="${param.tripType eq 'multiway'}">多区間</c:when>
+				    <c:otherwise>未選択</c:otherwise>
+				  </c:choose>
+				</span>
+			</div>
 			<div class="info-box departure">
 				<span class="info-text">${param.departureAirport}</span>
 			</div>
