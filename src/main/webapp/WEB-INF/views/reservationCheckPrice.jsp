@@ -17,26 +17,40 @@
 	   <!-- 예약 폼 -->
 	   <form action="/confirmReservation" method="post" class="reservation-form">
 	
-	      <div class="info-bar">
-	         <div class="info-box departure">
-	            <span class="info-text">${departure}</span>
-	         </div>
-	         <div class="info-box arrival">
-	            <span class="info-text">${arrival}</span>
-	         </div>
-	         <div class="info-box date-range">
-	            <span class="info-text">${travelDate}</span>
-	         </div>
-	         <div class="info-box passenger-count">
-	            <span class="info-text">성인 ${passengerCount}</span>
-	         </div>
-	         <div class="info-box seat-type">
-	            <span class="info-text">エコノミー特価</span>
-	         </div>
-	      </div>
+		<div class="info-bar">
+			<div class="info-box departure">
+				<span class="info-text">${param.departureAirport}</span>
+			</div>
+			<div class="info-box arrival">
+				<span class="info-text">${param.arrivalAirport}</span>
+			</div>
+			<div class="info-box date-range">
+				<c:choose>
+				<c:when test="${param.tripType eq 'round'}">
+				<span class="info-text">${param.departureDate} ~ ${param.returnDate}</span>
+				</c:when>
+				<c:otherwise>
+				<span class="info-text">${param.departureDate}</span>
+				</c:otherwise>
+				</c:choose>
+			</div>
+			<div class="info-box passenger-count">
+			   <span class="info-text">
+			      大人 ${param.adultCount}・小児 ${param.childCount}・幼児 ${param.infantCount}
+			   </span>
+			</div>
+			<div class="info-box seat-type">
+			   <c:choose>
+				<c:when test="${param.classType eq 'eco-spec'}">エコノミー特価</c:when>
+				<c:when test="${param.classType eq 'eco-norm'}">エコノミー一般</c:when>
+				<c:when test="${param.classType eq 'buis'}">ビジネス</c:when>
+				<c:when test="${param.classType eq 'first'}">ファースト</c:when>
+				<c:otherwise>未選択</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
 
-            
-            
+           
             <div class="flights-container">
             <!-- 출국편 -->
             <div class="flight-section">
