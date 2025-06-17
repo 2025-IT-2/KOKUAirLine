@@ -19,15 +19,15 @@
 	
 		<div class="info-bar">
 			<div class="info-box triptype">
-				<span class="info-text">
-				  <c:choose>
-				    <c:when test="${param.tripType eq 'round'}">往復</c:when>
-				    <c:when test="${param.tripType eq 'oneway'}">片道</c:when>
-				    <c:when test="${param.tripType eq 'multiway'}">多区間</c:when>
-				    <c:otherwise>未選択</c:otherwise>
-				  </c:choose>
-				</span>
-			</div>
+            <span class="info-text">
+              <c:choose>
+                <c:when test="${param.tripType eq 'round'}">往復</c:when>
+                <c:when test="${param.tripType eq 'oneway'}">片道</c:when>
+                <c:when test="${param.tripType eq 'multiway'}">多区間</c:when>
+                <c:otherwise>未選択</c:otherwise>
+              </c:choose>
+            </span>
+       		</div>
 			<div class="info-box departure">
 				<span class="info-text">${param.departureAirport}</span>
 			</div>
@@ -37,7 +37,7 @@
 			<div class="info-box date-range">
 				<c:choose>
 				<c:when test="${param.tripType eq 'round'}">
-				<span class="info-text">${param.departureDate} ~ ${param.returnDate}</span>
+				<span class="info-text">${param.departureDate} ~ ${param.arrivalDate}</span>
 				</c:when>
 				<c:otherwise>
 				<span class="info-text">${param.departureDate}</span>
@@ -234,8 +234,8 @@
                   <div class="flight-details">
                      <div class="flight-info">OZ172<br>A320</div>
                      <div class="economy">
-                        <label class="fare" for="returnFareType1-saver">
-                              <input id="returnFareType1-saver" type="radio" name="returnFare" value="セイバー" style="display:none;" />
+                        <label class="fare" for="arrivalFareType1-saver">
+                              <input id="arrivalFareType1-saver" type="radio" name="arrivalFare" value="セイバー" style="display:none;" />
 						  <div class="content">
 						    <div class="type">セイバー</div>
 						    <div class="price">12500円</div>
@@ -243,8 +243,8 @@
 						  </div>
 						</label>
 						
-						<label class="fare" for="returnFareType1-standard">
-                              <input id="returnFareType1-standard" type="radio" name="returnFare" value="スタンダード" style="display:none;" />
+						<label class="fare" for="arrivalFareType1-standard">
+                              <input id="arrivalFareType1-standard" type="radio" name="arrivalFare" value="スタンダード" style="display:none;" />
 						  <div class="content">
 						    <div class="type">スタンダード</div>
 						    <div class="price">19100円</div>
@@ -252,8 +252,8 @@
 						  </div>
 						</label>
 						
-						<label class="fare" for="returnFareType1-flux">
-                              <input id="returnFareType1-flux" type="radio" name="returnFare" value="フラックス" style="display:none;" />
+						<label class="fare" for="arrivalFareType1-flux">
+                              <input id="arrivalFareType1-flux" type="radio" name="arrivalFare" value="フラックス" style="display:none;" />
 						  <div class="content">
 						    <div class="type">フラックス</div>
 						    <div class="price">35700円</div>
@@ -273,24 +273,24 @@
                   <div class="flight-details">
                      <div class="flight-info">OZ172<br>A320</div>
                      <div class="economy">
-                        <label class="fare" for="returnFareType2-saver">
-                              <input id="returnFareType2-saver" type="radio" name="returnFare" value="セイバー" style="display:none;" />
+                        <label class="fare" for="arrivalFareType2-saver">
+                              <input id="arrivalFareType2-saver" type="radio" name="arrivalFare" value="セイバー" style="display:none;" />
                        	<div class="content">
                            <div class="type">セイバー</div>
                            <div class="price">14700円</div>
                            <div class="seats">12席</div>
                         </div>
                         </label>
-                        <label class="fare" for="returnFareType2-standard">
-                              <input id="returnFareType2-standard" type="radio" name="returnFare" value="スタンダード" style="display:none;" />
+                        <label class="fare" for="arrivalFareType2-standard">
+                              <input id="arrivalFareType2-standard" type="radio" name="arrivalFare" value="スタンダード" style="display:none;" />
                        	<div class="content">
                            <div class="type">スタンダード</div>
                            <div class="price">18800円</div>
                            <div class="seats">11席</div>
                         </div>
                         </label>
-                        <label class="fare" for="returnFareType2-flux">
-                              <input id="returnFareType2-flux" type="radio" name="returnFare" value="フラックス" style="display:none;" />
+                        <label class="fare" for="arrivalFareType2-flux">
+                              <input id="arrivalFareType2-flux" type="radio" name="arrivalFare" value="フラックス" style="display:none;" />
                        	<div class="content">
                            <div class="type">フラックス</div>
                            <div class="price">35100円</div>
@@ -310,8 +310,8 @@
                   <div class="flight-details">
                      <div class="flight-info">OZ172<br>A320</div>
                      <div class="economy">
-                        <label class="fare" for="returnFareType3-saver">
-                              <input id="returnFareType3-saver" type="radio" name="returnFare" value="セイバー" style="display:none;" />
+                        <label class="fare" for="arrivalFareType3-saver">
+                              <input id="arrivalFareType3-saver" type="radio" name="arrivalFare" value="セイバー" style="display:none;" />
 						  <div class="content">
 						    <div class="type">セイバー</div>
 						    <div class="price">15100円</div>
@@ -319,8 +319,8 @@
 						  </div>
 						</label>
 						
-						<label class="fare" for="returnFareType3-standard">
-                              <input id="returnFareType3-standard" type="radio" name="returnFare" value="スタンダード" style="display:none;" />
+						<label class="fare" for="arrivalFareType3-standard">
+                              <input id="arrivalFareType3-standard" type="radio" name="arrivalFare" value="スタンダード" style="display:none;" />
 						  <div class="content">
 						    <div class="type">スタンダード</div>
 						    <div class="price">18500円</div>
@@ -328,8 +328,8 @@
 						  </div>
 						</label>
 						
-						<label class="fare" for="returnFareType3-flux">
-                              <input id="returnFareType3-flux" type="radio" name="returnFare" value="フラックス" style="display:none;" />
+						<label class="fare" for="arrivalFareType3-flux">
+                              <input id="arrivalFareType3-flux" type="radio" name="arrivalFare" value="フラックス" style="display:none;" />
 						  <div class="content">
 						    <div class="type">フラックス</div>
 						    <div class="price">36800円</div>
@@ -349,8 +349,8 @@
                   <div class="flight-details">
                      <div class="flight-info">OZ172<br>A320</div>
                      <div class="economy">
-                        <label class="fare" for="returnFareType4-saver">
-                              <input id="returnFareType4-saver" type="radio" name="returnFare" value="セイバー" style="display:none;" />
+                        <label class="fare" for="arrivalFareType4-saver">
+                              <input id="arrivalFareType4-saver" type="radio" name="arrivalFare" value="セイバー" style="display:none;" />
 						  <div class="content">
 						    <div class="type">セイバー</div>
 						    <div class="price">15100円</div>
@@ -358,8 +358,8 @@
 						  </div>
 						</label>
 						
-						<label class="fare" for="returnFareType4-standard">
-                              <input id="returnFareType4-standard" type="radio" name="returnFare" value="スタンダード" style="display:none;" />
+						<label class="fare" for="arrivalFareType4-standard">
+                              <input id="arrivalFareType4-standard" type="radio" name="arrivalFare" value="スタンダード" style="display:none;" />
 						  <div class="content">
 						    <div class="type">スタンダード</div>
 						    <div class="price">19900円</div>
@@ -367,8 +367,8 @@
 						  </div>
 						</label>
 						
-						<label class="fare" for="returnFareType4-flux">
-                              <input id="returnFareType4-flux" type="radio" name="returnFare" value="フラックス" style="display:none;" />
+						<label class="fare" for="arrivalFareType4-flux">
+                              <input id="arrivalFareType4-flux" type="radio" name="arrivalFare" value="フラックス" style="display:none;" />
 						  <div class="content">
 						    <div class="type">フラックス</div>
 						    <div class="price">35100円</div>
@@ -407,10 +407,10 @@
     	  });
 
     	  // 귀국편 라디오 버튼 처리
-    	  const returnRadios = document.querySelectorAll('input[name="returnFare"]');
-    	  returnRadios.forEach(radio => {
+    	  const arrivalRadios = document.querySelectorAll('input[name="arrivalFare"]');
+    	  arrivalRadios.forEach(radio => {
     	    radio.addEventListener("change", () => {
-    	      returnRadios.forEach(r => {
+    	    	arrivalRadios.forEach(r => {
     	        const label = r.closest("label");
     	        if (label) label.classList.toggle("selected", r.checked);
     	      });
@@ -422,7 +422,7 @@
          function selectSeatType(type) {
             currentSeatType = type;
             document.getElementById("seatTypeInput").value = type;
-            toggleReturnDate(type);
+            togglearrivalDate(type);
             initFlatpickr(type);
          }
       </script>
@@ -444,7 +444,7 @@
          function selectTripType(type) {
             currentTripType = type;
             document.getElementById("tripTypeInput").value = type;
-            toggleReturnDate(type);
+            togglearrivalDate(type);
             initFlatpickr(type);
          }
       </script>
