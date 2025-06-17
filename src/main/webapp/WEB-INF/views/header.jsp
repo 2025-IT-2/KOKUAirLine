@@ -8,7 +8,7 @@
 	    <!-- 각 상단 버튼을 누르면 해당 화면으로 이동 -->
 	        <a href="<c:url value='/reservation' />">予約</a>
 	        <a href="<c:url value='/onlinecheckin' />">オンライン・チェックイン</a>
-	        <a href="<c:url value='/reservationCheck' />">予約確認</a>
+	        <a href="<c:url value='/reservationCheckPrice' />">予約確認</a>
 	    </div>
 	    <c:choose>
 		    <c:when test="${not empty sessionScope.loginUserId}">

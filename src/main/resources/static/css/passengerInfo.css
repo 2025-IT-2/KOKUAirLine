@@ -1,0 +1,426 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f8;
+}
+
+.screen {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+
+  position: relative;  /* 기준점 설정 */
+}
+
+.title {
+  font-size: 28px;
+  margin-top: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+.overlap-wrapper {
+  width: 100%;
+  max-width: 900px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin-top: 40px;
+}
+
+.overlap {
+  position: relative;
+  width: 100%;
+  max-height: 600px; /* 원하는 높이로 설정 */
+  overflow-y: auto;   /* 내부 스크롤 활성화 */
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.group {
+  position: relative;
+  width: 758px;
+  height: 298px;
+  left: 57px;
+}
+
+.overlap-group {
+  position: relative;
+  width: 760px;
+  height: 298px;
+  top: 40px;
+}
+
+.overlap-2 {
+  position: relative;
+  width: 761px;
+  height: 208px;
+  top: 40px;
+  left: 0;
+}
+
+  /* 대인 구분 */
+.screen .adult {
+  width: 124px;
+  height: 30px;
+  top: -40px;
+  left: 9px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 40px;
+  line-height: 24px;
+  position: absolute;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.50px;
+}
+
+    /* 성별 입력 */
+.screen .group-2 {
+  position: absolute;
+  width: 760px;
+  height: 70px;
+  top: 0;
+  left: 1px;
+}
+
+.screen .gender-wrapper {
+  position: absolute;
+  width: 150px;
+  height: 70px;
+  top: 0;
+  left: 0;
+  background-color: #f0f4f7;
+  border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.screen .gender {
+  position: absolute;
+  width: 603px;
+  height: 70px;
+  top: 0;
+  left: 150px;
+  background-color: #f0f4f7;
+  border: 1px solid #000000;
+  position: relative;
+  
+    /* 중앙 정렬을 위한 flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+    /* 성별 선택 영역 */
+.screen .text-wrapper-3 {
+  width: 65px;
+  height: 21px;
+  top: 23px;
+  left: 39px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 32px;
+  line-height: 24px;
+  white-space: nowrap;
+  position: absolute;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.50px;
+}
+
+/* 라디오 버튼 스타일 */
+.radio-label {
+  position: absolute;
+  top: 20px;
+  font-size: 32px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  cursor: pointer;
+}
+
+.radio-input {
+  margin-right: 10px;
+  transform: scale(1.4); /* 버튼 크기 살짝 키우기 */
+}
+
+.screen .name-wrapper {
+  position: absolute;
+  width: 150px;
+  height: 70px;
+  top: 0;
+  left: 0;
+  background-color: #f0f4f7;
+  border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.screen .name {
+  position: absolute;
+  width: 603px;
+  height: 70px;
+  top: 0;
+  left: 150px;
+  background-color: #f0f4f7;
+  border: 1px solid #000000;
+  position: relative;
+  
+    /* 중앙 정렬을 위한 flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+    /* 성명 입력 */
+.screen .group-3 {
+  position: absolute;
+  width: 760px;
+  height: 70px;
+  top: 69px;
+  left: 1px;
+}
+
+.screen .text-wrapper-6 {
+  width: 65px;
+  height: 21px;
+  top: 23px;
+  left: 41px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 32px;
+  line-height: 24px;
+  white-space: nowrap;
+  position: absolute;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.50px;
+  
+}
+
+    /* 이름 입력 부분 */
+.screen .text-wrapper-7 {
+  width: 32px;
+  height: 21px;
+  top: 20px;
+  left: 283px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 32px;
+  line-height: 24px;
+  white-space: nowrap;
+  position: absolute;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.50px;
+
+  input[type="text"] {
+  width: 200px;
+  height: 36px;
+  font-size: 15px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  top: -4px; /* 4px 위로 이동 */
+  }
+
+}
+
+    /* 성 입력 부분 */
+.screen .text-wrapper-8 {
+  width: 32px;
+  height: 21px;
+  top: 20px;
+  left: 27px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 32px;
+  line-height: 24px;
+  white-space: nowrap;
+  position: absolute;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.50px;
+  
+  input[type="text"] {
+  width: 200px;
+  height: 36px;
+  font-size: 15px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  top: -4px; /* 4px 위로 이동 */
+  }
+}
+
+.screen .group-4 {
+  position: absolute;
+  width: 756px;
+  height: 70px;
+  top: 138px;
+  left: 1px;
+}
+
+.screen .birth-wrapper {
+  position: absolute;
+  width: 150px;
+  height: 70px;
+  top: 0;
+  left: 0;
+  background-color: #f0f4f7;
+  border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.screen .birth {
+  position: absolute;
+  width: 603px;
+  height: 70px;
+  top: 0;
+  left: 150px;
+  background-color: #f0f4f7;
+  border: 1px solid #000000;
+  position: relative;
+  
+    /* 중앙 정렬을 위한 flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+
+  /* 생년월일 달력 생성 */
+  input[type="date"] {
+  width: 180px; /* 원하시는 너비로 조정 가능 */
+  height: 36px;
+  font-size: 16px;
+  padding: 4px 8px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-sizing: border-box;
+  }
+}
+
+.screen .text-wrapper-9 {
+  width: 131px;
+  height: 21px;
+  top: 23px;
+  left: 6px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 32px;
+  line-height: 24px;
+  white-space: nowrap;
+  position: absolute;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.50px;
+}
+
+
+/* 부모 컨테이너 */
+.screen .container {
+  display: flex;
+  flex-direction: row;    /* 가로 정렬 */
+  align-items: center;    /* 세로 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  gap: 40px;              /* 요소 사이 간격 */
+  width: 100%;            /* 전체 너비 */
+  height: 150px;
+  /* 🔥 아래로 자연스럽게 배치 */
+  margin-top: 50px;       /* 위 요소와의 간격만 주기 */
+  
+  /* 🔥 중앙 고정 제거 */
+  position: static;       /* 기본 배치로 복귀 */
+  background-color: #fffbe6;
+  border: 1px solid #ffe58f;
+  border-radius: 12px;
+}
+
+/* 예약자 연락처 텍스트 */
+.screen .Reservation-PhoneNumber {
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 32px;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.50px;
+  width: 100px;
+}
+
+/* 전화번호 입력창 */
+.screen .PhoneNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input[type="tel"] {
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+}
+
+/* 금액 표시창 */
+.screen .box {
+  width: 200px;
+  height: 50px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen .box .element {
+  font-size: 15px;
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* 결정 버튼 */
+.screen .text-wrapper-15 {
+  width: 132px;
+  height: 62px;
+  background-color: #7d7d7d;
+  border-radius: 10px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 32px;
+  line-height: 33px;
+  text-decoration: underline;
+  white-space: nowrap;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.50px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
