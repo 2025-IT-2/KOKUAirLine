@@ -19,7 +19,7 @@
 	
 		<div class="info-bar">
 			<div class="info-box departure">
-				<span class="info-text">${param.departireAirport}</span>
+				<span class="info-text">${param.departureAirport}</span>
 			</div>
 			<div class="info-box arrival">
 				<span class="info-text">${param.arrivalAirport}</span>
