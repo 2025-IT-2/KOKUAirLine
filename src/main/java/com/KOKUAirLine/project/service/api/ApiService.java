@@ -19,7 +19,7 @@ public class ApiService {
         List<ApiInfo> flightList = new ArrayList<>();
 
         try {
-            String apiUrl = "https://apis.data.go.kr/B551177/statusOfAllFltDeOdp/getFltDeparturesDeOdp?serviceKey=RXojluH%2BtgWvwW%2B6087NqGyn%2BB0u45bD%2BEPbNu4fyLBAAv3Chk%2FnL9r1gYBcYRhB3tyyBGVXUIkYtqPoIztHvA%3D%3D&numOfRows=100&passengerOrCargo=P&type=xml";
+            String apiUrl = "https://apis.data.go.kr/B551177/statusOfAllFltDeOdp/getFltDeparturesDeOdp?serviceKey=RXojluH%2BtgWvwW%2B6087NqGyn%2BB0u45bD%2BEPbNu4fyLBAAv3Chk%2FnL9r1gYBcYRhB3tyyBGVXUIkYtqPoIztHvA%3D%3D&searchDate=20250617&numOfRows=100&passengerOrCargo=P&type=xml";
 
             URI uri = URI.create(apiUrl);
             URL url = uri.toURL();
