@@ -57,6 +57,6 @@ public class LoginController {
     		HttpServletRequest request,
     		HttpServletResponse response) {
     	service.logout(session, request, response);
-    	return "home";
+    	return "redirect:/home";
     }
 }
