@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class PassengerinfoController {
+public class PassengerInfoController {
 
-	@GetMapping("/passengerinfo")
-	public String passengerinfo() {	
-		return "passengerinfo";
+	@GetMapping("/passengerInfo")
+	public String passengerInfo() {	
+		return "passengerInfo";
 		
 	}
 

@@ -8,12 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class ReservationCheckController {
-
-	
-	@GetMapping("/reservationCheck")
-	public String reservationCheck(
-			HttpServletResponse response) {
-		
-		return "reservationCheck";
-	}
+   
+   @GetMapping("/reservationCheck")
+   public String reservationCheck(
+         HttpServletResponse response) {
+      
+      return "reservationCheck";
+   }
 }
