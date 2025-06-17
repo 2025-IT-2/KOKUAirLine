@@ -19,7 +19,8 @@ public class ReservationController {
 
     @GetMapping("/reservation")
     public String showReservationPage(Model model) {
-        List<ApiInfo> flightList = apiService.getFlightDataFromApi();
+    	apiService.saveAirportDataFromApi();
+    	List<ApiInfo> flightList = apiService.getFlightDataFromApi();
         model.addAttribute("flights", flightList);
         
         List<ApiInfo> distinctList = flightList.stream()
