@@ -62,3 +62,67 @@
   background-color: #f0f8ff;
   border-radius: 8px;
 }
+
+/* 여기서 부턴 팝업창 디자인 */
+.popup {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.popup-content img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  margin-top: 8px;
+}
+
+.popup-item strong {
+  font-size: 15px;
+  color: #444;
+}
+
+.popup-item p, .popup-item h2 {
+  margin: 4px 0 0 0;
+  font-weight: normal;
+}
+
+.close {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #888;
+}
+
+.product-card {
+  cursor: pointer; /* 마우스 커서를 손가락으로 변경 */
+  /* 아래는 예시 스타일 */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  transition: box-shadow 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 호버 시 약간 강조 */
+}

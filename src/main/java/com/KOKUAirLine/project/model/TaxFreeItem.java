@@ -27,11 +27,13 @@ public class TaxFreeItem {
 	
 	private int price;
 	private int count;
+	private String description;
 	
-	public TaxFreeItem(String name, byte[] image, int price) {
+	public TaxFreeItem(String name, byte[] image, String desc, int price) {
 		this.name = name;
 		this.image = image;
 		this.price = price;
+		this.description = desc;
 		this.count = 100;
 	}
 	
@@ -49,5 +51,9 @@ public class TaxFreeItem {
 	
 	public int getCount() {
 		return count;
+	}
+	
+	public String getDescription() {
+		return description;
 	}
 }

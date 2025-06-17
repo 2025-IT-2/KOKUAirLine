@@ -20,7 +20,7 @@ import com.KOKUAirLine.project.repo.InFlightMealRepository;
 import com.KOKUAirLine.project.repo.TaxFreeItemRepo;
 
 @SpringBootTest
-public class TestDataInitializer {
+public class TaxFreeItemDataTest {
 	@Autowired
     InFlightMealRepository flightMealRepo;
 	
@@ -43,9 +43,12 @@ public class TestDataInitializer {
     @BeforeEach
     void setUp() {
         textFreeRepo.deleteAll();
-        textFreeRepo.save(new TaxFreeItem("건강 식품", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/HealthFood.png"), 100000));
-        textFreeRepo.save(new TaxFreeItem("화장품", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/Cosmetics.png"), 200000));
-        textFreeRepo.save(new TaxFreeItem("와인", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/Wine.png"), 990000));
+        textFreeRepo.save(new TaxFreeItem("健康食品", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/HealthFood.png"),
+        		"健康に本当にいいのに何と説明する方法がないね", 100000));
+        textFreeRepo.save(new TaxFreeItem("化粧品", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/Cosmetics.png"), 
+        		"絶対落ちない化粧品！", 200000));
+        textFreeRepo.save(new TaxFreeItem("ワイン", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/Wine.png"),
+        		"5000年産のワイン", 990000));
     }
     
     @Test
@@ -54,11 +57,9 @@ public class TestDataInitializer {
     	List<String> names = items.stream().map(TaxFreeItem::getName).toList();
 
     	assertEquals(3, names.size());
-    	assertTrue(names.contains("건강 식품"));
-    	assertTrue(names.contains("화장품"));
-    	assertTrue(names.contains("와인"));
-    	
-    	
+    	assertTrue(names.contains("健康食品"));
+    	assertTrue(names.contains("化粧品"));
+    	assertTrue(names.contains("ワイン"));
     }
 
 }

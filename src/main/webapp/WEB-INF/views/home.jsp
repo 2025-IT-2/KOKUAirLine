@@ -23,7 +23,7 @@
 
     <div class="product-container">
       <c:forEach var="product" items="${productList}">
-        <div class="product-card">
+        <div class="product-card" onclick="showProductPopup('${product.name}', '${product.imageBase64}', '${product.description}', '${product.price}')">
           <img src="data:image/png;base64,${product.imageBase64}" alt="상품 이미지" />
           <div class="product-info">
             <h3>${product.name}</h3>
@@ -32,5 +32,28 @@
         </div>
       </c:forEach>
     </div>
+    
+    <div id="popup" class="popup" style="display: none;">
+	  <div class="popup-content">
+	    <span class="close" onclick="closePopup()">&times;</span>
+	    <div class="popup-item">
+	      <strong>商品名:</strong>
+	      <h2 id="popup-name"></h2>
+	    </div>
+	    <div class="popup-item">
+	      <img id="popup-img" src="" alt="상품 이미지" />
+	    </div>
+	    <div class="popup-item">
+	      <strong>商品説明:</strong>
+	      <p id="popup-desc"></p>
+	    </div>
+	    <div class="popup-item">
+	      <strong>価格:</strong>
+	      <p id="popup-price"></p>
+	    </div>
+	  </div>
+	</div>
+    
+    <script src="/js/home.js"></script>
   </body>
 </html>
