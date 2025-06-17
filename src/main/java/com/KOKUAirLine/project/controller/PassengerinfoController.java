@@ -22,7 +22,7 @@ public class PassengerinfoController {
     
 
 //    // 탑승자 정보 입력 페이지로 이동
-//    @GetMapping("/passengerinfo")
+//    @GetMapping("/passengerInfo")
 //    public String showPassengerInfo(
 //            @RequestParam(name="adultCount", defaultValue = "1") int adultCount,
 //            @RequestParam(name="childCount", defaultValue = "0") int childCount,
@@ -41,6 +41,6 @@ public class PassengerinfoController {
 //        int amount = (adultCount * pricePerAdult) + (childCount * pricePerChild) + (infantCount * pricePerInfant);
 //        model.addAttribute("amount", amount);
 //
-//        return "passengerinfo"; // passengerinfo.jsp로 이동
+//        return "passengerInfo"; // passengerInfo.jsp로 이동
 //    }
 }		
