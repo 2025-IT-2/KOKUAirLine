@@ -15,7 +15,7 @@
 	<%@ include file="header.jsp" %>
 	<div class="container">
 	   <!-- 예약 폼 -->
-	   <form action="/confirmReservation" method="post" class="reservation-form">
+	   <form action="/reservation" method="post" class="reservation-form">
 	
 	      <div class="info-bar">
 	         <div class="info-box departure">
