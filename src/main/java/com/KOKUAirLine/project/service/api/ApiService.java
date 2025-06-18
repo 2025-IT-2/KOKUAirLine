@@ -7,6 +7,7 @@ import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,21 +65,25 @@ public class ApiService {
     }
     
     public void saveAirportDataFromApi() {
-    	List<ApiInfo> flightList = getFlightDataFromApi();
-    	
-    	for (ApiInfo apiInfo : flightList) {
-    		// 변환 후 저장
-    		AirportInfo airportInfo = convertToAirportInfo(apiInfo);
-    		airportRepository.save(airportInfo);
-    	}
-    }
-    
-    private AirportInfo convertToAirportInfo(ApiInfo apiInfo) {
-    	AirportInfo airportInfo = new AirportInfo();
-    	airportInfo.setAirportCode(apiInfo.getAirportCode());
-    	airportInfo.setAirport(apiInfo.getAirport()); // 필요 시
-    	return airportInfo;
-    }
-    
+        List<ApiInfo> flightList = getFlightDataFromApi();
+
+        for (ApiInfo apiInfo : flightList) {
+            Optional<AirportInfo> optionalAirport = airportRepository.findByAirportCode(apiInfo.getAirportCode());
+
+            if (optionalAirport.isPresent()) {
+                AirportInfo existing = optionalAirport.get();
+
+                // airportJp가 null이면 저장 X
+                if (existing.getAirportJp() == null) {
+                    continue;
+                }
+
+                // airportJp가 있으면 나머지드만 갱신
+                existing.setAirport(apiInfo.getAirport());
+                airportRepository.save(existing);
+
+            }
+        }
+    }   
 }
 

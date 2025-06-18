@@ -2,6 +2,7 @@ package com.KOKUAirLine.project.service.api;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import lombok.Data;
@@ -29,6 +30,8 @@ public class ApiInfo {
     private String scheduleDatetime;
     private String terminalId;
     private String typeOfFlight;
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    private String airportJp;
     
     @Override
     public boolean equals(Object o) {
