@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ page import="java.util.*" %>
-<%
+<!--<%
     class Reservation {
         String reservationNumber, departure, arrival, airline, tripType, seatClass, departureDate, arrivalDate, status;
         int totalPeople, totalPrice;
@@ -30,7 +30,7 @@
 
     String customerName = "홍길동";
 %>
-<!--<%
+<%
     String selectedReservation = request.getParameter("selectedReservation");
 
     Reservation selectedRes = null;

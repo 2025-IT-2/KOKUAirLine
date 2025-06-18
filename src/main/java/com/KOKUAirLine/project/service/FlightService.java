@@ -15,8 +15,9 @@ public class FlightService {
 	@Autowired
 	private FlightInfoRepository repo;
 	
-//	public List<FlightInfo> searchFlights(String dep, String arr, Date dDate, Date aDate) {
-//		return repo.searchFlights(dep, arr, dDate, aDate);
+	public List<FlightInfo> searchFlights(String dep, String arr, Date dDate, Date aDate) {
+		return repo.searchFlights(dep, arr, dDate, aDate);
 	}
+}
 	
 
