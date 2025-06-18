@@ -149,7 +149,7 @@
 		<title>航空券検索</title>
 	</head>
 	<body>
-		<form method = "get" action = "reservationCheckPrice">
+		<form method = "post" action = "reservationCheckPrice">
 	    <div class = "container">
 	    	<div class = "reservation-container">
 	        <h2>旅程/日付選択</h2>
