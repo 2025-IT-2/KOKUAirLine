@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>예약 확인</title>
+  <title>予約確認</title>
   <link rel="stylesheet" href="<c:url value='/css/global.css' />"/>
   <link rel="stylesheet" href="<c:url value='/css/reservationCheck.css'/>" />
 </head>
@@ -18,24 +18,25 @@
 
     <!-- 왼쪽: 예약 목록 -->
     <div class="left-panel">
-      <h2 class="title">예약확인</h2>
+      <h2 class="title">予約確認</h2>
       <div class="notice">
-        <h4>주의사항 :</h4>
-        <p>※ 항공권은 환불 불가일 수 있으며, 탑승 시간 2시간 전까지 체크인 바랍니다.</p>
+        <h4>注意事項 :</h4>
+        <p>※ 航空券の払い戻しは不可の場合があります。<br> 搭乗時間の2時間前までにチェックインしてください。</p>
+		<!--한국어 원문 : 항공권은 환불 불가일 수 있으며, 탑승 시간 2시간 전까지 체크인 바랍니다.-->
       </div>
       <div class="view-wrapper">
       	<div class="view">
 		  <c:choose>
 		    <c:when test="${empty resList}">
 		      <p style="text-align: center; font-size: 1.2em; color: gray; margin-top: 50px;">
-		        예약 내역이 없습니다.
+		        予約履歴がありません。
 		      </p>
 		    </c:when>
 		    <c:otherwise>
 		      <c:forEach var="reservation" items="${resList}" varStatus="status">
 	            <div class="reservation-info">
-	              <p><strong>${reservation.reservationHolder.userFirstName}</strong> 님의 예약번호는 
-	                <strong>${reservation.reservationNumber}</strong> 입니다.</p>
+	              <p><strong>${reservation.reservationHolder.userFirstName}</strong> 様の予約番後は 
+	                <strong>${reservation.reservationNumber}</strong> です。</p>
 	              <div class="flight-info">
 	                <div class="location">
 	                  <div class="airport">${reservation.flightInfo.departure}</div>
@@ -43,20 +44,20 @@
 	                  <div class="airport">${reservation.flightInfo.arrival}</div>
 	                </div>
 	                <div class="details">
-	                  <div>항공사: 空港団</div>
-	                  <div>기내식: ${reservation.flightMealYN}</div>
-	                  <div>좌석등급: ${reservation.classType}</div>
-	                  <div>출발일: ${reservation.flightInfo.departureDate} / 도착일: ${reservation.flightInfo.arrivalDate}</div>
+	                  <div>航空会社: 空港団</div>
+	                  <div>機内食: ${reservation.flightMealYN}</div>
+	                  <div>座席クラス: ${reservation.classType}</div>
+	                  <div>出発日: ${reservation.flightInfo.departureDate} / 到着日: ${reservation.flightInfo.arrivalDate}</div>
 	                </div>
 	              </div>
 	            </div>
 	            <div class="summary">
-	              <div>총 인원: ${reservation.resNumL + reservation.resNumM + reservation.resNumS}명</div>
-	              <div>총 결제금액: ${reservation.totalPrice}원</div>
-	              <div>예약상태: ${reservation.cancelStep}</div>
+	              <div>総人数: ${reservation.resNumL + reservation.resNumM + reservation.resNumS}人</div>
+	              <div>合計金額: ${reservation.totalPrice}ウォン</div>
+	              <div>要約状態: ${reservation.cancelStep}</div>
 	            </div>
 	            <form onsubmit="return showBoardingPass('${reservation.reservationNumber}')">
-	              <button type="submit">탑승권 보기</button>
+	              <button type="submit">ボーディング・パス確認</button>
 	            </form>
             	<hr style="margin: 30px 0;" />
           	</c:forEach>
