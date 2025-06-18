@@ -30,5 +30,9 @@ public interface ReservationRepo extends JpaRepository<Reservation, Long> {
     List<Reservation> findAllWithFlightAndMeal();
     
     // 5. 예약자 이름 기준으로 조회
+    @Query("SELECT r FROM Reservation r " +
+	       "JOIN r.reservationHolder u " +
+	       "WHERE u.userId = :reservationHolder")
     List<Reservation> findByReservationHolder(String reservationHolder);
+
 }

@@ -31,7 +31,7 @@ public class Reservation {
     
 //	@OneToOne
 	@JoinColumn(name = "userId")
-	private String reservationHolder; // 예약자 대표 (ID 기준)
+	private UserInfo reservationHolder; // 예약자 대표 (ID 기준)
 	
 	@Column(name = "FLIGHTMEAL")
 	private String FlightMeal;	  
