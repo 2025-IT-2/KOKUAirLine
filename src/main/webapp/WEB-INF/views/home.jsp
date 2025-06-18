@@ -18,7 +18,7 @@
 
     <!-- 상품 리스트 영역 -->
     <div>
-	  <h2 class="product-title">면세품 판매 목록</h2>
+	  <h2 class="product-title">免税品販売リスト</h2>
 	</div>
 
     <div class="product-container">
