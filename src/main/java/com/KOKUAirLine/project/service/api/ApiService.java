@@ -82,8 +82,25 @@ public class ApiService {
                 existing.setAirport(apiInfo.getAirport());
                 airportRepository.save(existing);
 
-            }
+            } 	
+//            else {
+//                
+//                AirportInfo newAirport = new AirportInfo();
+//                newAirport.setAirport(apiInfo.getAirport());
+//                newAirport.setAirportCode(apiInfo.getAirportCode());
+//                newAirport.setAirportJp(apiInfo.getAirport());
+//
+//                airportRepository.save(newAirport);
+//            }
         }
-    }   
+    }
+    
+//    private AirportInfo convertToAirportInfo(ApiInfo apiInfo) {
+//    	AirportInfo airportInfo = new AirportInfo();
+//    	airportInfo.setAirportCode(apiInfo.getAirportCode());
+//    	airportInfo.setAirport(apiInfo.getAirport()); // 필요 시
+//    	return airportInfo;
+//    }
+    
 }
 
