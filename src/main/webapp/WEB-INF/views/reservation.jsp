@@ -54,7 +54,7 @@
 		    });
 	
 		    // 날짜 선택 초기화
-		    toggleReturnDate(currentTripType);
+		    toggleArrivalDate(currentTripType);
 		    initFlatpickr(currentTripType);
 	
 		    // 유효성 검사
@@ -79,12 +79,12 @@
 		    function selectTripType(type) {
 		        currentTripType = type;
 		        document.getElementById("tripTypeInput").value = type;
-		        toggleReturnDate(type);
+		        toggleArrivalDate(type);
 		        initFlatpickr(type);
 		    }
 	
-		    function toggleReturnDate(type) {
-		        const returnInput = document.getElementById("returnDate");
+		    function toggleArrivalDate(type) {
+		        const returnInput = document.getElementById("arrivalDate");
 		        if (type === "round") {
 		            returnInput.style.display = "inline-block";
 		        } else {
@@ -117,7 +117,7 @@
 		                    if (start.getTime() === end.getTime()) {
 		                        alert("出発日と帰国日は同じにできません。");
 		                        document.getElementById("departureDate").value = "";
-		                        document.getElementById("returnDate").value = "";
+		                        document.getElementById("arrivalDate").value = "";
 		                    }
 		                }
 		            }
@@ -127,7 +127,7 @@
 		            datepickerInstance = flatpickr("#departureDate", {
 		                ...baseOptions,
 		                mode: "range",
-		                plugins: [new rangePlugin({ input: "#returnDate" })]
+		                plugins: [new rangePlugin({ input: "#arrivalDate" })]
 		            });
 		        } else if (type === "oneway") {
 		            datepickerInstance = flatpickr("#departureDate", {
@@ -161,22 +161,37 @@
 	        <input type = "hidden" name = "tripType" id = "tripTypeInput" value = "round">
 			<!-- 공항 선택 -->
 			<div class = "airport-selection">
-			<select name="departureAirport" id = "departireAirport" class = "airport-select">		    
+			<select name="departureAirport" id = "departireAirport" class = "airport-select">
 			    <c:forEach var="flight" items="${flights}">
-			        <option  class = "airport-option" value="${flight.airport}">
-			            ${flight.airport}
-			        </option>
+			    	<c:if test="${flight.airportCode == 'NRT'}">
+            			<option selected>${flight.airport}</option>
+       				</c:if>
+			    </c:forEach>
+			    <c:forEach var="flight" items="${flights}" varStatus = "status">
+       				<c:if test="${flight.airportCode != 'NRT' && status.count <= 4}">
+		    	        <option >${flight.airport}</option>
+        			</c:if>
 			    </c:forEach>
 			</select>
 			<select name="arrivalAirport" id = "arrivalAirport" class = "airport-select">		    
 			    <c:forEach var="flight" items="${flights}">
-			        <option  class = "airport-option" value="${flight.airport}">
-			            ${flight.airport}
-			        </option>
-			    </c:forEach>
+				    <c:if test="${flight.airportCode == 'MNL'}">
+				        <option selected>マニラ</option>
+				    </c:if>
+				</c:forEach>
+				<c:forEach var="flight" items="${flights}">
+				    <c:if test="${flight.airportCode == 'NRT'}">
+				        <option>${flight.airport}</option>
+				    </c:if>
+				</c:forEach>
+			    <c:forEach var="flight" items="${flights}" varStatus="status">
+				    <c:if test="${flight.airportCode != 'NRT' && flight.airportCode != 'MNL' && status.count <= 4}">
+				        <option>${flight.airport}</option>
+				    </c:if>
+				</c:forEach>
 			</select>
-	        	<input type="text" id="departureDate" class="date-input" placeholder="出発日を選択" readonly>
-	        	<input type="text" id="returnDate" class="date-input" placeholder="帰りの日を選択" readonly>
+	        	<input type="text" id="departureDate" name = "departureDate" class="date-input" placeholder="出発日を選択">
+	        	<input type="text" id="arrivalDate" name = "arrivalDate" class="date-input" placeholder="帰りの日を選択">
 			</div>
 			<!--
 	        <div class = "airport-selection">

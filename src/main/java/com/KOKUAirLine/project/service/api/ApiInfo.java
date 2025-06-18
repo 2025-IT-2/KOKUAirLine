@@ -43,11 +43,11 @@ public class ApiInfo {
         return Objects.hash(airport);
     }
     
-    public String AircraftRegNo() {
-        return aircraftRegNo;
-    }
-
-    public void setDepAirport(String aircraftRegNo) {
-        this.aircraftRegNo = aircraftRegNo;
-    }
+//    public String AircraftRegNo() {
+//        return aircraftRegNo;
+//    }
+//
+//    public void setDepAirport(String aircraftRegNo) {
+//        this.aircraftRegNo = aircraftRegNo;
+//    }
 }

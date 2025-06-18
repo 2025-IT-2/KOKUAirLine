@@ -8,18 +8,25 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.KOKUAirLine.project.model.AirportInfo;
+import com.KOKUAirLine.project.repo.AirportRepository;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 @Service
 public class ApiService {
-
+	
+	@Autowired
+	private AirportRepository airportRepository;
+	
+	
     public List<ApiInfo> getFlightDataFromApi() {
         List<ApiInfo> flightList = new ArrayList<>();
 
         try {
-            String apiUrl = "https://apis.data.go.kr/B551177/statusOfAllFltDeOdp/getFltDeparturesDeOdp?serviceKey=RXojluH%2BtgWvwW%2B6087NqGyn%2BB0u45bD%2BEPbNu4fyLBAAv3Chk%2FnL9r1gYBcYRhB3tyyBGVXUIkYtqPoIztHvA%3D%3D&numOfRows=100&passengerOrCargo=P&type=xml";
+            String apiUrl = "https://apis.data.go.kr/B551177/statusOfAllFltDeOdp/getFltDeparturesDeOdp?serviceKey=RXojluH%2BtgWvwW%2B6087NqGyn%2BB0u45bD%2BEPbNu4fyLBAAv3Chk%2FnL9r1gYBcYRhB3tyyBGVXUIkYtqPoIztHvA%3D%3D&searchDate=20250617&numOfRows=50&passengerOrCargo=P&type=xml";
 
             URI uri = URI.create(apiUrl);
             URL url = uri.toURL();
@@ -55,4 +62,23 @@ public class ApiService {
 
         return flightList;
     }
+    
+    public void saveAirportDataFromApi() {
+    	List<ApiInfo> flightList = getFlightDataFromApi();
+    	
+    	for (ApiInfo apiInfo : flightList) {
+    		// 변환 후 저장
+    		AirportInfo airportInfo = convertToAirportInfo(apiInfo);
+    		airportRepository.save(airportInfo);
+    	}
+    }
+    
+    private AirportInfo convertToAirportInfo(ApiInfo apiInfo) {
+    	AirportInfo airportInfo = new AirportInfo();
+    	airportInfo.setAirportCode(apiInfo.getAirportCode());
+    	airportInfo.setAirport(apiInfo.getAirport()); // 필요 시
+    	return airportInfo;
+    }
+    
 }
+

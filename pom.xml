@@ -90,11 +90,6 @@
         <artifactId>jaxb-runtime</artifactId>
         <version>4.0.3</version>
     </dependency>
-    <dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>jstl</artifactId>
-    <version>1.2</version>
-</dependency>
 <dependency>
     <groupId>com.fasterxml.jackson.dataformat</groupId>
     <artifactId>jackson-dataformat-xml</artifactId>

@@ -10,7 +10,7 @@
 <body>
 <div class="container">
     <h1>탑승 인원 선택</h1>
-    <form action="passengerinfo" method="get">
+    <form action="passengerInfo" method="get">
         <div class="select-group">
             <label for="adultCount">대인:</label>
             <select name="adultCount" id="adultCount">
