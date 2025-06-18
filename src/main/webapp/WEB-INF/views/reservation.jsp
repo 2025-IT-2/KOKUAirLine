@@ -161,27 +161,34 @@
 	        <input type = "hidden" name = "tripType" id = "tripTypeInput" value = "round">
 			<!-- 공항 선택 -->
 			<div class = "airport-selection">
-			<select name="departureAirport" id = "departireAirport" class = "airport-select">		    
+			<select name="departureAirport" id = "departireAirport" class = "airport-select">
 			    <c:forEach var="flight" items="${flights}">
-			        <%-- <option  class = "airport-option" value="${flight.airport}">
-			            ${flight.airport}
-			        </option> --%>
 			    	<c:if test="${flight.airportCode == 'NRT'}">
             			<option selected>${flight.airport}</option>
        				</c:if>
 			    </c:forEach>
-			    <c:forEach var="flight" items="${flights}">
-       				<c:if test="${flight.airportCode != 'NRT'}">
-		    	        <option value="${flight.airportCode}">${flight.airport}</option>
+			    <c:forEach var="flight" items="${flights}" varStatus = "status">
+       				<c:if test="${flight.airportCode != 'NRT' && status.count <= 4}">
+		    	        <option >${flight.airport}</option>
         			</c:if>
 			    </c:forEach>
 			</select>
 			<select name="arrivalAirport" id = "arrivalAirport" class = "airport-select">		    
 			    <c:forEach var="flight" items="${flights}">
-			        <option  class = "airport-option" value="${flight.airport}">
-			            ${flight.airport}
-			        </option>
-			    </c:forEach>
+				    <c:if test="${flight.airportCode == 'MNL'}">
+				        <option selected>マニラ</option>
+				    </c:if>
+				</c:forEach>
+				<c:forEach var="flight" items="${flights}">
+				    <c:if test="${flight.airportCode == 'NRT'}">
+				        <option>${flight.airport}</option>
+				    </c:if>
+				</c:forEach>
+			    <c:forEach var="flight" items="${flights}" varStatus="status">
+				    <c:if test="${flight.airportCode != 'NRT' && flight.airportCode != 'MNL' && status.count <= 4}">
+				        <option>${flight.airport}</option>
+				    </c:if>
+				</c:forEach>
 			</select>
 	        	<input type="text" id="departureDate" name = "departureDate" class="date-input" placeholder="出発日を選択">
 	        	<input type="text" id="arrivalDate" name = "arrivalDate" class="date-input" placeholder="帰りの日を選択">
