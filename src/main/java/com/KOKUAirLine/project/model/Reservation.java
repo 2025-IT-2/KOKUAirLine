@@ -23,11 +23,11 @@ public class Reservation {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name = "RESINUM")	
-	private Integer resiNum; 		//예약번호
+	private Long resiNum; 		//예약번호
 	
 	@ManyToOne
-	@JoinColumn(name = "FLIGHTNO") // Reservation 테이블의 외래키 컬럼명
-	private FlightInfo flightInfo;		//항공편명
+	@JoinColumn(name = "FLIGHTNO") 	// Reservation 테이블의 외래키 컬럼명
+	private FlightInfo flightInfo;	//항공편명
     
 	@OneToOne
 	@JoinColumn(name = "userId")
@@ -35,7 +35,7 @@ public class Reservation {
 	
 	@Column(name = "FLIGHTMEAL")
 	private String FlightMeal;	  
-	
+
 	@Column(name = "RESNUML")	
 	private Integer resNumL; 		//성인인원
 	
@@ -46,7 +46,7 @@ public class Reservation {
 	private Integer resNumS; 		//유아인원
 	
 	@Column(name = "RESDATE")	
-	private LocalDate resDate;    		// 예매일자
+	private LocalDate resDate;    	// 예매일자
 	
 	@Column(name = "FLIGHTmEALYN")	
 	private String flightMealYN;	// 기내식신청여부

@@ -1,0 +1,54 @@
+package com.KOKUAirLine.project.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "PaymentInfo")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor 
+public class PaymentInfo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PAYMENTID") 		// 고유 PK
+    private Long paymentId;				// 결제ID 
+    
+	@ManyToOne
+	@JoinColumn(name = "RESINUM") 		// PaymentInfo 테이블의 외래키 컬럼명
+	private Reservation reservation; 	//예약번호
+
+	@Column(name = "FLIGHTMEAL")
+	private String FlightMeal;	  		//기내식
+	
+	@Column(name = "AIRFARE")	
+	private Integer airFare; 			//항공요금 
+	
+	@Column(name = "FUELSURCHARGE")	
+	private Integer fuelSurcharge; 		//유류할증료 	
+
+	@Column(name = "TAXCHARGE")	
+	private Integer taxCharge; 			//제세공과금
+	
+	@Column(name = "SERVICECHARGE")	
+	private Integer serviceCharge; 		//발권수수료
+
+	@Column(name = "TRAVELERINSUR")	
+	private Integer travelerInsur; 		//여행자보험
+	
+	@Column(name = "TOTALFARE")	
+	private Integer totalFare; 			//총액운임
+	
+	@Column(name = "PAYMENTSTAT")	
+	private Integer paymentStat; 		//결제상태
+	
+}
