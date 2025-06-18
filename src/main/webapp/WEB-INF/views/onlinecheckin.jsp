@@ -26,25 +26,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>12345678</td>
-            <td>2025/06/16</td>
-            <td>ソウル</td>
-            <td>済州島</td>
-            <td>14:25</td>
-            <td>15:30</td>
-            <td>OZ</td>
-          </tr>
-          <tr>
-            <td>87654321</td>
-            <td>2025/06/23</td>
-            <td>済州島</td>
-            <td>ソウル</td>
-            <td>14:20</td>
-            <td>15:30</td>
-            <td>OZ</td>
-          </tr>
-        </tbody>
+		  <c:forEach var="reservation" items="${resList}">
+		    <tr>
+		      <td>${reservation.resiNum}</td>
+		      <td>${reservation.flightInfo.departureDate}</td>
+		      <td>${reservation.flightInfo.departure}</td>
+		      <td>${reservation.flightInfo.arrival}</td>
+		      <td>${reservation.flightInfo.departureTime}</td>
+		      <td>${reservation.flightInfo.arrivalTime}</td>
+		      <td>${reservation.flightInfo.flightNo}</td>
+		    </tr>
+		  </c:forEach>
+		</tbody>
       </table>
       <div class="checkin-button">
         <a href="https://www.airport.kr/ap_ko/892/subview.do" target="_blank">チェックイン</a>
