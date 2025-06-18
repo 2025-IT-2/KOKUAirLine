@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-public interface ReservationRepo extends JpaRepository<Reservation, Integer> {
+public interface ReservationRepo extends JpaRepository<Reservation, Long> {
 
     // 1. 예약 번호 상세 조회 (항공편 + 기내식 즉시 로딩)
     @Query("SELECT r FROM Reservation r " +
