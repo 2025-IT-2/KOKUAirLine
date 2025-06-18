@@ -80,7 +80,7 @@
     const frame = document.getElementById("boardingFrame");
 
     // 예약 번호를 URL 파라미터로 넘김
-    frame.src = "boardingPass.jsp?reservationNumber=" + res.reservationNumber;
+    frame.src = "boardingPassInfo.jsp?reservationNumber=" + res.reservationNumber;
   }
 </script>
 
