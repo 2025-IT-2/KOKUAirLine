@@ -28,5 +28,7 @@ public interface ReservationRepo extends JpaRepository<Reservation, Integer> {
            "JOIN FETCH r.flightInfo f " +
            "JOIN FETCH f.FlightMeal m")
     List<Reservation> findAllWithFlightAndMeal();
-
+    
+    // 5. 예약자 이름 기준으로 조회
+    List<Reservation> findByReservationHolder(String reservationHolder);
 }
