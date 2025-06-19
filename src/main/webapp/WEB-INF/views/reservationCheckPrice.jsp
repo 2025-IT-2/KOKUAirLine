@@ -87,7 +87,8 @@
 			          <c:choose>
               <c:when test="${selectedClassType == 'eco-spec'}">
                 <div class="eco-spec">
-                  <label class="fare" for="fareType${status.index + 1}-saver">
+                  <label class="fare" for="fareType${status.index + 1}-saver"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="fareType${status.index + 1}-saver" type="radio" name="departureFare" value="セイバー" data-price="16200" style="display:none;" />
                     <div class="content">
                       <div class="type">セイバー</div>
@@ -96,7 +97,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="fareType${status.index + 1}-standard">
+                  <label class="fare" for="fareType${status.index + 1}-standard"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="fareType${status.index + 1}-standard" type="radio" name="departureFare" value="スタンダード" data-price="18400" style="display:none;" />
                     <div class="content">
                       <div class="type">スタンダード</div>
@@ -105,7 +107,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="fareType${status.index + 1}-flex">
+                  <label class="fare" for="fareType${status.index + 1}-flex"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="fareType${status.index + 1}-flex" type="radio" name="departureFare" value="フレックス" data-price="21900" style="display:none;" />
                     <div class="content">
                       <div class="type">フレックス</div>
@@ -118,7 +121,8 @@
 
               <c:when test="${selectedClassType == 'eco-norm'}">
                 <div class="eco-norm">
-                  <label class="fare" for="fareType${status.index + 1}-saver">
+                  <label class="fare" for="fareType${status.index + 1}-saver"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="fareType${status.index + 1}-saver" type="radio" name="departureFare" value="セイバー" data-price="16200" style="display:none;" />
                     <div class="content">
                       <div class="type">セイバー</div>
@@ -127,7 +131,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="fareType${status.index + 1}-standard">
+                  <label class="fare" for="fareType${status.index + 1}-standard"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="fareType${status.index + 1}-standard" type="radio" name="departureFare" value="スタンダード" data-price="18400" style="display:none;" />
                     <div class="content">
                       <div class="type">スタンダード</div>
@@ -136,7 +141,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="fareType${status.index + 1}-flex">
+                  <label class="fare" for="fareType${status.index + 1}-flex"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="fareType${status.index + 1}-flex" type="radio" name="departureFare" value="フレックス" data-price="21900" style="display:none;" />
                     <div class="content">
                       <div class="type">フレックス</div>
@@ -149,7 +155,8 @@
               
               <c:when test="${selectedClassType == 'buis'}">
                 <div class="eco-norm">
-                  <label class="fare" for="fareType${status.index + 1}-saver">
+                  <label class="fare" for="fareType${status.index + 1}-saver"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="fareType${status.index + 1}-saver" type="radio" name="departureFare" value="セイバー" data-price="16200" style="display:none;" />
                     <div class="content">
                       <div class="type">セイバー</div>
@@ -158,7 +165,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="fareType${status.index + 1}-standard">
+                  <label class="fare" for="fareType${status.index + 1}-standard"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="fareType${status.index + 1}-standard" type="radio" name="departureFare" value="スタンダード" data-price="18400" style="display:none;" />
                     <div class="content">
                       <div class="type">スタンダード</div>
@@ -167,7 +175,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="fareType${status.index + 1}-flex">
+                  <label class="fare" for="fareType${status.index + 1}-flex"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="fareType${status.index + 1}-flex" type="radio" name="departureFare" value="フレックス" data-price="21900" style="display:none;" />
                     <div class="content">
                       <div class="type">フレックス</div>
@@ -180,7 +189,8 @@
               
               <c:when test="${selectedClassType == 'first'}">
                 <div class="eco-norm">
-                  <label class="fare" for="fareType${status.index + 1}-saver">
+                  <label class="fare" for="fareType${status.index + 1}-saver"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="fareType${status.index + 1}-saver" type="radio" name="departureFare" value="セイバー" data-price="16200" style="display:none;" />
                     <div class="content">
                       <div class="type">セイバー</div>
@@ -189,7 +199,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="fareType${status.index + 1}-standard">
+                  <label class="fare" for="fareType${status.index + 1}-standard"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="fareType${status.index + 1}-standard" type="radio" name="departureFare" value="スタンダード" data-price="18400" style="display:none;" />
                     <div class="content">
                       <div class="type">スタンダード</div>
@@ -198,7 +209,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="fareType${status.index + 1}-flex">
+                  <label class="fare" for="fareType${status.index + 1}-flex"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="fareType${status.index + 1}-flex" type="radio" name="departureFare" value="フレックス" data-price="21900" style="display:none;" />
                     <div class="content">
                       <div class="type">フレックス</div>
@@ -247,7 +259,8 @@
                      <c:choose>
               <c:when test="${selectedClassType == 'eco-spec'}">
                 <div class="eco-spec">
-                  <label class="fare" for="arrivalfareType${status.index + 1}-saver">
+                  <label class="fare" for="arrivalfareType${status.index + 1}-saver"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="arrivalfareType${status.index + 1}-saver" type="radio" name="arrivalFare" value="セイバー" data-price="16200" style="display:none;" />
                     <div class="content">
                       <div class="type">セイバー</div>
@@ -256,7 +269,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="arrivalfareType${status.index + 1}-standard">
+                  <label class="fare" for="arrivalfareType${status.index + 1}-standard"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="arrivalfareType${status.index + 1}-standard" type="radio" name="arrivalFare" value="スタンダード" data-price="18400" style="display:none;" />
                     <div class="content">
                       <div class="type">スタンダード</div>
@@ -265,7 +279,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="arrivalfareType${status.index + 1}-flex">
+                  <label class="fare" for="arrivalfareType${status.index + 1}-flex"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="arrivalfareType${status.index + 1}-flex" type="radio" name="arrivalFare" value="フレックス" data-price="21900" style="display:none;" />
                     <div class="content">
                       <div class="type">フレックス</div>
@@ -278,7 +293,8 @@
 
               <c:when test="${selectedClassType == 'eco-norm'}">
                 <div class="eco-spec">
-                  <label class="fare" for="arrivalfareType${status.index + 1}-saver">
+                  <label class="fare" for="arrivalfareType${status.index + 1}-saver"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="arrivalfareType${status.index + 1}-saver" type="radio" name="arrivalFare" value="セイバー" data-price="16200" style="display:none;" />
                     <div class="content">
                       <div class="type">セイバー</div>
@@ -287,7 +303,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="arrivalfareType${status.index + 1}-standard">
+                  <label class="fare" for="arrivalfareType${status.index + 1}-standard"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="arrivalfareType${status.index + 1}-standard" type="radio" name="arrivalFare" value="スタンダード" data-price="18400" style="display:none;" />
                     <div class="content">
                       <div class="type">スタンダード</div>
@@ -296,7 +313,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="arrivalfareType${status.index + 1}-flex">
+                  <label class="fare" for="arrivalfareType${status.index + 1}-flex"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="arrivalfareType${status.index + 1}-flex" type="radio" name="arrivalFare" value="フレックス" data-price="21900" style="display:none;" />
                     <div class="content">
                       <div class="type">フレックス</div>
@@ -309,7 +327,8 @@
               
               <c:when test="${selectedClassType == 'buis'}">
                 <div class="eco-spec">
-                  <label class="fare" for="arrivalfareType${status.index + 1}-saver">
+                  <label class="fare" for="arrivalfareType${status.index + 1}-saver"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="arrivalfareType${status.index + 1}-saver" type="radio" name="arrivalFare" value="セイバー" data-price="16200" style="display:none;" />
                     <div class="content">
                       <div class="type">セイバー</div>
@@ -318,7 +337,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="arrivalfareType${status.index + 1}-standard">
+                  <label class="fare" for="arrivalfareType${status.index + 1}-standard"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="arrivalfareType${status.index + 1}-standard" type="radio" name="arrivalFare" value="スタンダード" data-price="18400" style="display:none;" />
                     <div class="content">
                       <div class="type">スタンダード</div>
@@ -327,7 +347,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="arrivalfareType${status.index + 1}-flex">
+                  <label class="fare" for="arrivalfareType${status.index + 1}-flex"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="arrivalfareType${status.index + 1}-flex" type="radio" name="arrivalFare" value="フレックス" data-price="21900" style="display:none;" />
                     <div class="content">
                       <div class="type">フレックス</div>
@@ -340,7 +361,8 @@
               
               <c:when test="${selectedClassType == 'first'}">
                 <div class="eco-spec">
-                  <label class="fare" for="arrivalfareType${status.index + 1}-saver">
+                  <label class="fare" for="arrivalfareType${status.index + 1}-saver"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="arrivalfareType${status.index + 1}-saver" type="radio" name="arrivalFare" value="セイバー" data-price="16200" style="display:none;" />
                     <div class="content">
                       <div class="type">セイバー</div>
@@ -349,7 +371,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="arrivalfareType${status.index + 1}-standard">
+                  <label class="fare" for="arrivalfareType${status.index + 1}-standard"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="arrivalfareType${status.index + 1}-standard" type="radio" name="arrivalFare" value="スタンダード" data-price="18400" style="display:none;" />
                     <div class="content">
                       <div class="type">スタンダード</div>
@@ -358,7 +381,8 @@
                     </div>
                   </label>
 
-                  <label class="fare" for="arrivalfareType${status.index + 1}-flex">
+                  <label class="fare" for="arrivalfareType${status.index + 1}-flex"
+                  		data-seat-available="${flight.seatRemain}">
                     <input id="arrivalfareType${status.index + 1}-flex" type="radio" name="arrivalFare" value="フレックス" data-price="21900" style="display:none;" />
                     <div class="content">
                       <div class="type">フレックス</div>
@@ -449,5 +473,26 @@
             initFlatpickr(type);
          }
       </script>
+      
+		<script>
+		//인원이 좌석 수 보다 많을 경우 선택 안됨
+		document.addEventListener("DOMContentLoaded", function () {
+		  const totalPassengerCount = 
+		    parseInt("${param.adultCount}") + 
+		    parseInt("${param.childCount}") + 
+		    parseInt("${param.infantCount}");
+		
+		  document.querySelectorAll(".fare").forEach(label => {
+		    const seatAvailable = parseInt(label.dataset.seatAvailable || "0");
+		
+		    if (seatAvailable < totalPassengerCount) {
+		      label.classList.add("disabled");
+		      const input = label.querySelector("input");
+		      if (input) input.disabled = true;
+		    }
+		  });
+		});
+		</script>
+
    </body>
 </html>
