@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,12 +25,13 @@ public class PaymentInfo {
     @Column(name = "PAYMENTID") 		// 고유 PK
     private Long paymentId;				// 결제ID 
     
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "RESINUM") 		// PaymentInfo 테이블의 외래키 컬럼명
 	private Reservation reservation; 	//예약번호
-
-	@Column(name = "FLIGHTMEAL")
-	private String FlightMeal;	  		//기내식
+	
+	@ManyToOne
+	@JoinColumn(name = "FLIGHTMEAL")
+	private InFlightMeal FlightMeal;	  		//기내식
 	
 	@Column(name = "AIRFARE")	
 	private Integer airFare; 			//항공요금 

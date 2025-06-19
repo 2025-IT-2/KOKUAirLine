@@ -10,7 +10,7 @@ body {
   flex-direction:column;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
+  padding: 20px 20px;
 }
 
 .view-wrapper {
@@ -100,8 +100,9 @@ body {
 .left-panel {
   flex: 1;
   overflow-y: auto;
-  max-height: 600px;
-  padding: 20px;
+  max-height: 750px;
+  width: 100%;
+  padding: 10px;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -109,6 +110,8 @@ body {
 
 .right-panel {
   flex: 1;
-  padding: 20px;
+  padding: 10px;
+  height: 750px;
+  width: 100%;
 }
 
