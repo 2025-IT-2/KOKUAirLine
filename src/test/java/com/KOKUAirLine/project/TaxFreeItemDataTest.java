@@ -46,12 +46,21 @@ public class TaxFreeItemDataTest {
 	@BeforeEach
     void setUp() {
 		ticketPriceRepo.deleteAll();
-		ticketPriceRepo.save(new TicketPrice("saver", 16000));
-		ticketPriceRepo.save(new TicketPrice("standard", 20600));
-		ticketPriceRepo.save(new TicketPrice("flex", 37000));
+		
+		ticketPriceRepo.save(new TicketPrice("eco-spec", 15000));
+		ticketPriceRepo.save(new TicketPrice("eco-norm", 18000));
+		ticketPriceRepo.save(new TicketPrice("buis", 36000));
+		ticketPriceRepo.save(new TicketPrice("first", 75000));
+		
+		
+		ticketPriceRepo.save(new TicketPrice("saver", 0));
+		ticketPriceRepo.save(new TicketPrice("standard", 3000));
+		ticketPriceRepo.save(new TicketPrice("flex", 8000));
+		
 		ticketPriceRepo.save(new TicketPrice("adult", 100));
 		ticketPriceRepo.save(new TicketPrice("child", 50));
 		ticketPriceRepo.save(new TicketPrice("infant", 30));
+		
 		ticketPriceRepo.save(new TicketPrice("dawn", 80));
 		ticketPriceRepo.save(new TicketPrice("morning", 100));
 		ticketPriceRepo.save(new TicketPrice("afternoon", 80));
