@@ -43,6 +43,12 @@ public class PassengerInfoController {
 //        // 세션에서 로그인된 userId 꺼내기
 //        String loginUserId = (String) session.getAttribute("loginUserId");
 //
+//        // 로그인 안된 경우 로그인 페이지로 리다이렉트
+//        if (loginUserId == null) {
+//
+//            return "redirect:/login";
+//        }
+//        
 //        // DB에서 유저 정보 조회
 //        UserInfo loginUser = userInfoRepo.searchUserById(loginUserId);
 //        
