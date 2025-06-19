@@ -41,8 +41,9 @@
               </jsp:include>
             </c:forEach>
 
-            <!-- 예약자 연락처 -->
-            <div class="container">        
+            <!-- 최하단 부모 컨테이너 -->
+            <div class="container">
+              <!-- 예약자 연락처 -->        
               <div class="Reservation-PhoneNumber">予約者<br />連絡先</div>
               <div class="PhoneNumber">
                 <input

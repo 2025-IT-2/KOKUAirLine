@@ -29,7 +29,7 @@ public class Reservation {
 	@JoinColumn(name = "FLIGHTNO") 	// Reservation 테이블의 외래키 컬럼명
 	private FlightInfo flightInfo;	//항공편명
     
-	@OneToOne
+//	@OneToOne
 	@JoinColumn(name = "userId")
 	private UserInfo reservationHolder; // 예약자 대표 (ID 기준)
 	
