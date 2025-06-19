@@ -1,5 +1,8 @@
 package com.KOKUAirLine.project.service;
 
+import java.time.LocalTime;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,10 +38,33 @@ public class TicketPriceService {
 
         return (int) total;
     }
+    
+    public String getTimeCategory(LocalTime departureTime) {
+        int hour = departureTime.getHour();
 
-    public int applyTimeDiscount(int price, String timeCategory) {
-        double timeRate = getDiscountRate(timeCategory);
-        return (int) (price * timeRate);
+        if (hour >= 1 && hour <= 5) {
+            return "dawn";
+        } else if (hour >= 6 && hour <= 8) {
+            return "morning";
+        } else if (hour >= 13 && hour <= 16) {
+            return "afternoon";
+        } else {
+            return "none";  // 할인 없음
+        }
+    }
+
+    public int applyTimeDiscount(int basePrice, String timeCategory) {
+        if ("none".equals(timeCategory)) {
+            return basePrice;  // 할인 안 함
+        }
+
+        Optional<TicketPrice> discountOpt = ticketPriceRepo.findByPriceName(timeCategory);
+        if (discountOpt.isEmpty()) {
+            return basePrice; // 데이터 없으면 할인 없음 처리
+        }
+
+        int discountPercent = discountOpt.get().getPriceDetail();  // 예: 80, 100
+        return basePrice * discountPercent / 100;
     }
 
     public int applyFareType(int price, String fareType) {

@@ -1,6 +1,8 @@
 package com.KOKUAirLine.project.controller;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -29,10 +31,10 @@ public class ReservationCheckPriceController {
 
 	@GetMapping("/reservationCheckPrice")
     public String reservationCheckPrice(
-    	@RequestParam("dep") String dep,
-    	@RequestParam("arr") String arr,
-    	@RequestParam("dDate") String dDateStr,
-    	@RequestParam("aDate") String aDateStr,
+    	@RequestParam("departureAirport") String dep,
+    	@RequestParam("arrivalAirport") String arr,
+    	@RequestParam("departureDate") String dDateStr,
+    	@RequestParam("arrivalDate") String aDateStr,
     	Model model) throws Exception {
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -53,11 +55,11 @@ public class ReservationCheckPriceController {
 	    @RequestParam("arrivalAirport") String arr,
 	    @RequestParam("departureDate") String departureDate,
 	    @RequestParam("arrivalDate") String arrivalDate,
+	    @RequestParam("departureTime") String departureTimeStr,
 	    @RequestParam("classType") String classType,
 	    @RequestParam("adultCount") int adultCount,
 	    @RequestParam("childCount") int childCount,
 	    @RequestParam("infantCount") int infantCount,
-	    @RequestParam("timeCategory") String timeCategory,  // 예: "morning"
 	    @RequestParam("fareType") String fareType,          // 예: "saver"
 	    Model model
 	) throws Exception {
@@ -68,6 +70,9 @@ public class ReservationCheckPriceController {
 
 	    List<FlightInfo> flights = flightService.searchFlights(dep, arr, dDate, aDate);
 	    model.addAttribute("flights", flights);
+	    
+	    LocalTime departureTime = LocalTime.parse(departureTimeStr, DateTimeFormatter.ofPattern("HH:mm"));
+	    String timeCategory = ticketPriceService.getTimeCategory(departureTime);
 
 	    // 최종 가격 계산
 	    int finalPrice = ticketPriceService.calculateFinalPrice(
