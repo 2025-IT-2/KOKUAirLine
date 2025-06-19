@@ -46,14 +46,15 @@
               <!-- 예약자 연락처 -->        
               <div class="Reservation-PhoneNumber">予約者<br />連絡先</div>
               <div class="PhoneNumber">
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="090-1234-5678"
-                  pattern="[0-9\-]{10,13}"
-                  required
-                  autocomplete="tel">
+				<input
+				  type="tel"
+				  id="phone"
+				  name="phone"
+				  value="${phone}"
+				  placeholder="090-1234-5678"
+				  pattern="[0-9\-]{10,13}"
+				  required
+				  autocomplete="tel">
               </div>
               
               <!-- 금액 표시창 -->
