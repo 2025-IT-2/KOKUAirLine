@@ -33,6 +33,10 @@ public class Reservation {
 	@JoinColumn(name = "userId")
 	private UserInfo reservationHolder; // 예약자 대표 (ID 기준)
 	
+	@OneToOne
+	@JoinColumn(name = "paymentId")
+	private PaymentInfo payment; // 결제 정보
+	
 	@Column(name = "RESNUML")	
 	private Integer resNumL; 		//성인인원
 	

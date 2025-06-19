@@ -13,11 +13,6 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
-  <% if (selectedRes != null) { %>
-      <%@ include file="boardingPassInfo.jsp" %>
-  <% } %>
-
-  
 </head>
 <body>
   <div class="container" id="boardingFrame">
