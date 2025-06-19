@@ -3,6 +3,7 @@ package com.KOKUAirLine.project.controller;
 import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -14,19 +15,14 @@ public class PassengerinfoController {
 		
 	}
 
-    // 인원 선택 페이지로 이동
-    @GetMapping("/adultSelectTesto")
-    public String adultSelectTesto() {
-        return "adultSelectTesto"; // adultSelectTesto.jsp로 이동
-    }
     
 
 //    // 탑승자 정보 입력 페이지로 이동
-//    @GetMapping("/passengerInfo")
-//    public String showPassengerInfo(
-//            @RequestParam(name="adultCount", defaultValue = "1") int adultCount,
-//            @RequestParam(name="childCount", defaultValue = "0") int childCount,
-//            @RequestParam(name="infantCount", defaultValue = "0") int infantCount,
+//    @PostMapping("/passengerInfo")
+//    public String passengerInfo(
+//            @RequestParam("adultCount") int adultCount,
+//            @RequestParam("childCount") int childCount,
+//            @RequestParam("infantCount") int infantCount,
 //            Model model) {
 //
 //        model.addAttribute("adultCount", adultCount);
