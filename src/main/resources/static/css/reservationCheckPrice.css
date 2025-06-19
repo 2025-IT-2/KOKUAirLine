@@ -259,3 +259,9 @@ body {
   justify-content: space-between;
   align-items: flex-start;
 }
+
+/* 좌석 모자를 경우 선택 안되게 하는 것 */
+.fare.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
