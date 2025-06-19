@@ -4,6 +4,8 @@ import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,8 +26,9 @@ public class FlightInfo {
 //    @Column(name = "FLIGHTNO")
     private String flightNo; //운항코드
 
-//    @Column(name = "FLIGHTMEAL")
-    private String FlightMeal; //기내식
+    @ManyToOne
+	@JoinColumn(name = "FlightMeal")
+    private InFlightMeal FlightMeal; //기내식
 
 //    @Column(name = "DEPARTURE")
     private String departure; //출발지
@@ -54,6 +57,8 @@ public class FlightInfo {
     private Integer SeatRemain; //남은 좌석수
     
     private Integer SeatTotal; //전체 좌석수
+    
+    private Integer airplaneNo; //항공기 번호
 
     // Getters and Setters 생략 가능 (Lombok @Data 사용 가능)
 }
