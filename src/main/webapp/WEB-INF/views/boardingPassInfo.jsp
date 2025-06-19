@@ -4,7 +4,7 @@
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="ja">
-<html>
+
 <head>
   <meta charset="utf-8" />
   <title>搭乗券発行</title>
@@ -53,12 +53,7 @@
 				        <div class="card-box">
 				          <h2>搭乗券送信</h2>
 				          <div class="btn-group">
-							<!--<a href="mailto:someone@example.com?subject=搭乗券のお知らせ&body=搭乗券が発行されました。詳細は以下のURLをご確認ください。https://yourdomain.com/boardingpass" class="btn">
-							  メールで送信
-							</a>-->
-							<a href="#" class="btn" onclick="openPopup()" title="クリックするとメール送信画面が開きます。（まだです。）">
-							  メールで送信
-							</a>
+							<a href="https://${mailUrl}" class="btn" target="_blank">メールで送信</a>
 							<br>
 							<a href="https://social-plugins.line.me/lineit/share?url=https://example.com" class="btn" target="_blank">LINEで送信</a>
 							<br>
