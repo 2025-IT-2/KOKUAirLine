@@ -15,6 +15,16 @@
       <div class="card-title">名前</div>
       <div class="name">
         <label>
+          名
+          <input 
+            type="text" 
+            id="${param.type}_firstName${param.index}" 
+            name="${param.type}_firstName${param.index}" 
+            placeholder="お名を入力してください。 ex.Hiroko"
+          >
+        </label>
+        
+        <label>
           姓
           <input 
             type="text" 
@@ -24,15 +34,6 @@
           >
         </label>
 
-        <label>
-          名
-          <input 
-            type="text" 
-            id="${param.type}_firstName${param.index}" 
-            name="${param.type}_firstName${param.index}" 
-            placeholder="お名を入力してください。 ex.Hiroko"
-          >
-        </label>
       </div>
     </div>
 
