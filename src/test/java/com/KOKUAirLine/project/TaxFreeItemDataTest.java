@@ -16,8 +16,10 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.KOKUAirLine.project.model.InFlightMeal;
 import com.KOKUAirLine.project.model.TaxFreeItem;
+import com.KOKUAirLine.project.model.TicketPrice;
 import com.KOKUAirLine.project.repo.InFlightMealRepository;
 import com.KOKUAirLine.project.repo.TaxFreeItemRepo;
+import com.KOKUAirLine.project.repo.TicketPriceRepo;
 
 @SpringBootTest
 public class TaxFreeItemDataTest {
@@ -38,7 +40,6 @@ public class TaxFreeItemDataTest {
 		
 	    return byteFile;
 	}
-
 
     @BeforeEach
     void setUp() {

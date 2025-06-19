@@ -23,7 +23,7 @@ public class ReservationCheckPriceController {
 	@Autowired
 	private  FlightService flightService;
 
-	@PostMapping("/reservationCheckPrice")
+	@GetMapping("/reservationCheckPrice")
     public String reservationCheckPrice(
     	@RequestParam("dep") String dep,
     	@RequestParam("arr") String arr,
@@ -40,11 +40,11 @@ public class ReservationCheckPriceController {
     	return "reservationCheckPrice"; // => /WEB-INF/views/reservationCheckPrice.jsp
     }
     
-    @GetMapping("/reservationCheckPrice")
-	public String reservationCheckPrice(
-			HttpServletResponse response) {
-		
-		return "reservationCheckPrice";
-	}
+//    @PostMapping("/reservationCheckPrice")
+//	public String reservationCheckPrice(
+//			HttpServletResponse response) {
+//		
+//		return "reservationCheckPrice";
+//	}
     
 }

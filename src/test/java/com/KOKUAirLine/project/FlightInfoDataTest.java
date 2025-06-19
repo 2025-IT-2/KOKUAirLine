@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.KOKUAirLine.project.model.FlightInfo;
+import com.KOKUAirLine.project.model.InFlightMeal;
 import com.KOKUAirLine.project.repo.FlightInfoRepository;
+import com.KOKUAirLine.project.repo.InFlightMealRepository;
 
 @SpringBootTest
 public class FlightInfoDataTest {
@@ -20,36 +22,47 @@ public class FlightInfoDataTest {
     @Autowired
     private FlightInfoRepository flightInfoRepo;
 
+    @Autowired
+    private InFlightMealRepository inFlightMealRepo;
+
     @BeforeEach
     void setUp() {
         flightInfoRepo.deleteAll();
 
+        // 저장된 기내식 불러오기
+        InFlightMeal beef = inFlightMealRepo.findAll().stream()
+                .filter(m -> m.getFlightMeal().equals("ビーフステーキ"))
+                .findFirst().orElseThrow();
+        InFlightMeal chicken = inFlightMealRepo.findAll().stream()
+                .filter(m -> m.getFlightMeal().equals("チキンライス"))
+                .findFirst().orElseThrow();
+
+        // 기내식 이름을 가져와서 사용
         FlightInfo flight1 = new FlightInfo(
-            "KOKU123", "ビーフステーキ", "東京",
+            "KOKU123", beef, "東京",
             new Date(), new Date(), 1,
             "大阪", new Date(), new Date(), 2,
-            100, 180
+            100, 180, 300
         );
 
         FlightInfo flight2 = new FlightInfo(
-            "KOKU456", "チキンカレー", "ソウル",
+            "KOKU456", chicken, "ソウル",
             new Date(), new Date(), 1,
             "福岡", new Date(), new Date(), 1,
-            75, 150
+            75, 150, 301
         );
 
         FlightInfo flight3 = new FlightInfo(
-            "KOKU789", "ハンバーグ", "札幌",
+            "KOKU789", beef, "札幌",
             new Date(), new Date(), 2,
             "名古屋", new Date(), new Date(), 2,
-            50, 120
+            50, 120, 302
         );
 
         flightInfoRepo.save(flight1);
         flightInfoRepo.save(flight2);
         flightInfoRepo.save(flight3);
     }
-
 
     @Test
     void testMultipleFlightInfosSaved() {
@@ -61,5 +74,4 @@ public class FlightInfoDataTest {
         assertTrue(ids.contains("KOKU456"));
         assertTrue(ids.contains("KOKU789"));
     }
-
 }
