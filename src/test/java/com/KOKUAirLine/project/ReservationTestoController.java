@@ -1,4 +1,4 @@
-package com.KOKUAirLine.project.controller;
+package com.KOKUAirLine.project;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +14,7 @@ import com.KOKUAirLine.project.service.api.ApiInfo;
 import com.KOKUAirLine.project.service.api.ApiService;
 
 @Controller
-public class ReservationController {
+public class ReservationTestoController {
 
     @Autowired
     private ApiService apiService;
@@ -22,7 +22,7 @@ public class ReservationController {
     @Autowired
     private AirportRepository airportRepository;
 
-    @GetMapping("/reservation")
+    @GetMapping("/reservationTesto")
     public String showReservationPage(Model model) {
     	
     	apiService.saveAirportDataFromApi();// api 정보
@@ -37,6 +37,6 @@ public class ReservationController {
         	.collect(Collectors.toList());
         model.addAttribute("flights", distinctList);
         
-        return "reservation"; // -> reservation.jsp
+        return "reservationTesto"; // -> reservationTesto.jsp
     }
 }

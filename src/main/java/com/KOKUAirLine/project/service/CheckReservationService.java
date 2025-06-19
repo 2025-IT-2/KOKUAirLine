@@ -21,6 +21,7 @@ public class CheckReservationService {
 		if ( userId != null ) {
 			List<Reservation> resList = resrevationRepo.findByReservationHolder(userId);
 			model.addAttribute("resList", resList);
+			
 			return true;
 		}
 		else {

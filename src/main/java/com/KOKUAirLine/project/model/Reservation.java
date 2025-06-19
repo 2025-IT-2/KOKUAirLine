@@ -29,13 +29,14 @@ public class Reservation {
 	@JoinColumn(name = "FLIGHTNO") 	// Reservation 테이블의 외래키 컬럼명
 	private FlightInfo flightInfo;	//항공편명
     
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "userId")
 	private UserInfo reservationHolder; // 예약자 대표 (ID 기준)
 	
-	@Column(name = "FLIGHTMEAL")
-	private String FlightMeal;	  
-
+	@OneToOne
+	@JoinColumn(name = "paymentId")
+	private PaymentInfo payment; // 결제 정보
+	
 	@Column(name = "RESNUML")	
 	private Integer resNumL; 		//성인인원
 	
