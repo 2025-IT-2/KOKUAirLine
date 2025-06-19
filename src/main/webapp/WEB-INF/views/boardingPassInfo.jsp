@@ -38,7 +38,7 @@
 			      <!-- 출발 -->
 			      <div class="info-card">
 			        <div class="label">出発地<br><span class="jp">しゅっぱつち</span></div>
-			        <div class="location"><c:out value="${departure}" default="출발지 없음" /></div>
+			        <div class="location"><c:out value="${departure}" default="出発地無し" /></div>
 			        <div class="time"><fmt:formatDate value="${departureTime}" pattern="HH:mm" /></div>
 			      </div>
 
@@ -47,7 +47,7 @@
 			      <!-- 도착 -->
 			      <div class="info-card">
 			        <div class="label">目的地<br><span class="jp">もくてきち</span></div>
-			        <div class="location"><c:out value="${arrival}" default="도착지 없음" /></div>
+			        <div class="location"><c:out value="${arrival}" default="目的地無し" /></div>
 			        <div class="time"><fmt:formatDate value="${arrivalTime}" pattern="HH:mm" /></div>
 			      </div>
 			    </div>

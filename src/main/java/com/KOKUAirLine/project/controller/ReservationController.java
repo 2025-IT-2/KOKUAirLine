@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.KOKUAirLine.project.model.AirportInfo;
+import com.KOKUAirLine.project.repo.AirportRepository;
 import com.KOKUAirLine.project.service.api.ApiInfo;
 import com.KOKUAirLine.project.service.api.ApiService;
 
@@ -16,14 +18,21 @@ public class ReservationController {
 
     @Autowired
     private ApiService apiService;
+    
+    @Autowired
+    private AirportRepository airportRepository;
 
     @GetMapping("/reservation")
     public String showReservationPage(Model model) {
-    	apiService.saveAirportDataFromApi();
-    	List<ApiInfo> flightList = apiService.getFlightDataFromApi();
+    	
+    	apiService.saveAirportDataFromApi();// api 정보
+    	List<ApiInfo> flightList = apiService.getFlightDataFromApi();// api 정보
         model.addAttribute("flights", flightList);
         
-        List<ApiInfo> distinctList = flightList.stream()
+        List<AirportInfo> airportList = airportRepository.findAll();
+        model.addAttribute("airports", airportList);
+        
+        List<ApiInfo> distinctList = flightList.stream()// 중복 제거
         	.distinct()
         	.collect(Collectors.toList());
         model.addAttribute("flights", distinctList);

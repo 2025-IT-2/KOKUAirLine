@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import java.time.LocalDate;
@@ -28,15 +29,19 @@ public class Reservation {
 	@JoinColumn(name = "FLIGHTNO") 	// Reservation 테이블의 외래키 컬럼명
 	private FlightInfo flightInfo;	//항공편명
     
+//	@OneToOne
+	@JoinColumn(name = "userId")
+	private UserInfo reservationHolder; // 예약자 대표 (ID 기준)
+	
 	@Column(name = "FLIGHTMEAL")
-	private String FlightMeal;	  	//기내식
-		
+	private String FlightMeal;	  
+
 	@Column(name = "RESNUML")	
 	private Integer resNumL; 		//성인인원
-  
+	
 	@Column(name = "RESNUMM")	
 	private Integer resNumM; 		//소아인원 
-
+	
 	@Column(name = "RESNUMS")	
 	private Integer resNumS; 		//유아인원
 	
@@ -45,6 +50,8 @@ public class Reservation {
 	
 	@Column(name = "FLIGHTmEALYN")	
 	private String flightMealYN;	// 기내식신청여부
+	
+	private String classType; // 좌석 등급
 	
 	@Column(name = "CANCELSTEP")	
 	private String cancelStep;		// 취소진행상태

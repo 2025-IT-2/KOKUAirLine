@@ -18,7 +18,6 @@ public class FlightService {
 	public List<FlightInfo> searchFlights(String dep, String arr, Date dDate, Date aDate) {
 		return repo.searchFlights(dep, arr, dDate, aDate);
 	}
-	
-	public int calPrice() {}
-	
 }
+	
+
