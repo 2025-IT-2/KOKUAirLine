@@ -19,4 +19,6 @@ public class FlightService {
 		return repo.searchFlights(dep, arr, dDate, aDate);
 	}
 	
+	public int calPrice() {}
+	
 }

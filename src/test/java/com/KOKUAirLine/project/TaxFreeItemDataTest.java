@@ -16,8 +16,10 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.KOKUAirLine.project.model.InFlightMeal;
 import com.KOKUAirLine.project.model.TaxFreeItem;
+import com.KOKUAirLine.project.model.TicketPrice;
 import com.KOKUAirLine.project.repo.InFlightMealRepository;
 import com.KOKUAirLine.project.repo.TaxFreeItemRepo;
+import com.KOKUAirLine.project.repo.TicketPriceRepo;
 
 @SpringBootTest
 public class TaxFreeItemDataTest {
@@ -38,18 +40,34 @@ public class TaxFreeItemDataTest {
 		
 	    return byteFile;
 	}
-
-
-    @BeforeEach
+	
+	@Autowired
+	TicketPriceRepo ticketPriceRepo;
+	@BeforeEach
     void setUp() {
-        textFreeRepo.deleteAll();
-        textFreeRepo.save(new TaxFreeItem("健康食品", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/HealthFood.png"),
-        		"健康に本当にいいのに何と説明する方法がないね", 100000));
-        textFreeRepo.save(new TaxFreeItem("化粧品", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/Cosmetics.png"), 
-        		"絶対落ちない化粧品！", 200000));
-        textFreeRepo.save(new TaxFreeItem("ワイン", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/Wine.png"),
-        		"5000年産のワイン", 990000));
+		ticketPriceRepo.deleteAll();
+		ticketPriceRepo.save(new TicketPrice("saver", 16000));
+		ticketPriceRepo.save(new TicketPrice("standard", 20600));
+		ticketPriceRepo.save(new TicketPrice("flex", 37000));
+		ticketPriceRepo.save(new TicketPrice("adult", 100));
+		ticketPriceRepo.save(new TicketPrice("child", 50));
+		ticketPriceRepo.save(new TicketPrice("infant", 30));
+		ticketPriceRepo.save(new TicketPrice("dawn", 80));
+		ticketPriceRepo.save(new TicketPrice("morning", 100));
+		ticketPriceRepo.save(new TicketPrice("afternoon", 80));
     }
+
+
+//    @BeforeEach
+//    void setUp() {
+//        textFreeRepo.deleteAll();
+//        textFreeRepo.save(new TaxFreeItem("健康食品", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/HealthFood.png"),
+//        		"健康に本当にいいのに何と説明する方法がないね", 100000));
+//        textFreeRepo.save(new TaxFreeItem("化粧品", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/Cosmetics.png"), 
+//        		"絶対落ちない化粧品！", 200000));
+//        textFreeRepo.save(new TaxFreeItem("ワイン", readImageAsBytes("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/Wine.png"),
+//        		"5000年産のワイン", 990000));
+//    }
     
     @Test
     void testTaxFreeItemSaved() {
