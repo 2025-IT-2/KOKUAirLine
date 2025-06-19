@@ -56,7 +56,7 @@
 	              <div>合計金額: ${reservation.payment.totalFare}ウォン</div>
 	              <div>要約状態: ${reservation.cancelStep}</div>
 	            </div>
-	            <form onsubmit="return showBoardingPass('${reservation.reservationNumber}')">
+	            <form onsubmit="return showBoardingPass('${reservation.resiNum}')">
 	              <button type="submit">ボーディング・パス確認</button>
 	            </form>
             	<hr style="margin: 30px 0;" />
@@ -69,7 +69,7 @@
 
     <!-- 오른쪽: 탑승권 표시 iframe -->
     <div class="right-panel">
-      <iframe id="boardingFrame" src="" width="100%" height="400" style="border:none;"></iframe>
+      <iframe id="boardingFrame" src="" width="100%" height="100%" style="border:none; margin-bottom: 20px;"></iframe>
     </div>
   </div>
 </div>
@@ -77,7 +77,7 @@
 <script>
   function showBoardingPass(reservationNumber) {
     const frame = document.getElementById("boardingFrame");
-    frame.src = "boardingPassInfo.jsp?reservationNumber=" + encodeURIComponent(reservationNumber);
+    frame.src = "<c:url value='/boardingPassInfo'/>?reservationNumber=" + encodeURIComponent(reservationNumber);
     return false; // 폼 전송 방지
   }
 </script>
