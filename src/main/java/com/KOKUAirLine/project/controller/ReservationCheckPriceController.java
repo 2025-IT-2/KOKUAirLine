@@ -25,79 +25,86 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class ReservationCheckPriceController {
-   
-   @Autowired
-   private  FlightService flightService;
+	
+	@Autowired
+	private  FlightService flightService;
 
-   @GetMapping("/reservationCheckPrice")
+	@GetMapping("/reservationCheckPrice")
     public String reservationCheckPrice(
-       @RequestParam("departureAirport") String dep,
-       @RequestParam("arrivalAirport") String arr,
-       @RequestParam("departureDate") String dDateStr,
-       @RequestParam("arrivalDate") String aDateStr,
-       Model model) throws Exception {
-      
-      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-      Date dDate = formatter.parse(dDateStr);
-      Date aDate = formatter.parse(aDateStr);
-      
-      List<FlightInfo> flights = flightService.searchFlights(dep, arr, dDate, aDate);
-      model.addAttribute("flights", flights);
-       return "reservationCheckPrice"; // => /WEB-INF/views/reservationCheckPrice.jsp
+    	@RequestParam("departureAirport") String dep,
+    	@RequestParam("arrivalAirport") String arr,
+    	@RequestParam("departureDate") String dDateStr,
+    	@RequestParam("arrivalDate") String aDateStr,
+    	Model model) throws Exception {
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date dDate = formatter.parse(dDateStr);
+		Date aDate = formatter.parse(aDateStr);
+		
+		List<FlightInfo> flights = flightService.searchFlights(dep, arr, dDate, aDate);
+		model.addAttribute("flights", flights);
+    	return "reservationCheckPrice"; // => /WEB-INF/views/reservationCheckPrice.jsp
     }
-   
-   @Autowired
-   private TicketPriceService ticketPriceService;
+	
+	@Autowired
+	public TicketPriceService ticketPriceService;
 
-   @PostMapping("/reservationCheckPrice")
-   public String reservationCheckPricePost(
-       @RequestParam("departureAirport") String dep,
-       @RequestParam("arrivalAirport") String arr,
-       @RequestParam("departureDate") String departureDate,
-       @RequestParam("arrivalDate") String arrivalDate,
-       @RequestParam("departureTime") String departureTimeStr,
-       @RequestParam("classType") String classType,
-       @RequestParam("adultCount") int adultCount,
-       @RequestParam("childCount") int childCount,
-       @RequestParam("infantCount") int infantCount,
-       @RequestParam("fareType") String fareType,          // 예: "saver"
-       Model model
-   ) throws Exception {
+	@PostMapping("/reservationCheckPrice")
+	public String reservationCheckPricePost(
+	    @RequestParam("departureAirport") String dep,
+	    @RequestParam("arrivalAirport") String arr,
+	    @RequestParam("departureDate") String departureDate,
+	    @RequestParam("arrivalDate") String arrivalDate,
+	    @RequestParam(value = "departureTime", required = false) String departureTimeStr,
+	    @RequestParam("classType") String classType,
+	    @RequestParam("adultCount") int adultCount,
+	    @RequestParam("childCount") int childCount,
+	    @RequestParam("infantCount") int infantCount,
+	    @RequestParam(name = "fareType", required = false) String fareType,          // 예: "saver"
+	    Model model
+	) throws Exception {
 
-       SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-       Date dDate = (departureDate != null && !departureDate.isEmpty()) ? formatter.parse(departureDate) : null;
-       Date aDate = (arrivalDate != null && !arrivalDate.isEmpty()) ? formatter.parse(arrivalDate) : null;
+	    SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd");
+	    Date dDate = (departureDate != null && !departureDate.isEmpty()) ? formatter.parse(departureDate) : null;
+	    Date aDate = (arrivalDate != null && !arrivalDate.isEmpty()) ? formatter.parse(arrivalDate) : null;
 
-       List<FlightInfo> flights = flightService.searchFlights(dep, arr, dDate, aDate);
-       model.addAttribute("flights", flights);
-       
-       LocalTime departureTime = LocalTime.parse(departureTimeStr, DateTimeFormatter.ofPattern("HH:mm"));
-       String timeCategory = ticketPriceService.getTimeCategory(departureTime);
+	    List<FlightInfo> flights = flightService.searchFlights(dep, arr, dDate, aDate);
+	    model.addAttribute("flights", flights);
+	    
+	    LocalTime departureTime;
+	    if (departureTimeStr != null && !departureTimeStr.isEmpty()) {
+	        departureTime = LocalTime.parse(departureTimeStr, DateTimeFormatter.ofPattern("HH:mm"));
+	    } else {
+	        // null 또는 빈 문자열일 때 기본값 설정 (예: 00:00) 또는 적절한 예외 처리
+	        departureTime = LocalTime.of(0, 0);
+	    }
+//	    LocalTime departureTime = LocalTime.parse(departureTimeStr, DateTimeFormatter.ofPattern("HH:mm"));
+	    String timeCategory = ticketPriceService.getTimeCategory(departureTime);
 
-       // 최종 가격 계산
-       int finalPrice = ticketPriceService.calculateFinalPrice(
-           classType, adultCount, childCount, infantCount, timeCategory, fareType
-       );
-       int saverPrice = ticketPriceService.calculateFinalPrice(
-              classType, adultCount, childCount, infantCount, timeCategory, "saver");
-       int standardPrice = ticketPriceService.calculateFinalPrice(
-              classType, adultCount, childCount, infantCount, timeCategory, "standard");
-       int flexPrice = ticketPriceService.calculateFinalPrice(
-              classType, adultCount, childCount, infantCount, timeCategory, "flex");
+	    // 최종 가격 계산
+	    int finalPrice = ticketPriceService.calculateFinalPrice(
+	        classType, adultCount, childCount, infantCount, timeCategory, fareType
+	    );
+	    int saverPrice = ticketPriceService.calculateFinalPrice(
+	    	    classType, adultCount, childCount, infantCount, timeCategory, "saver");
+	    int standardPrice = ticketPriceService.calculateFinalPrice(
+	    	    classType, adultCount, childCount, infantCount, timeCategory, "standard");
+	    int flexPrice = ticketPriceService.calculateFinalPrice(
+	    	    classType, adultCount, childCount, infantCount, timeCategory, "flex");
 
-       // 모델에 값 전달
-       model.addAttribute("totalPrice", finalPrice);
-       model.addAttribute("adultCount", adultCount);
-       model.addAttribute("childCount", childCount);
-       model.addAttribute("infantCount", infantCount);
-       model.addAttribute("classType", classType);
-       model.addAttribute("fareType", fareType);
-       model.addAttribute("timeCategory", timeCategory);
-       model.addAttribute("saverPrice", saverPrice);
-       model.addAttribute("standardPrice", standardPrice);
-       model.addAttribute("flexPrice", flexPrice);
+	    // 모델에 값 전달
+	    model.addAttribute("totalPrice", finalPrice);
+	    model.addAttribute("adultCount", adultCount);
+	    model.addAttribute("childCount", childCount);
+	    model.addAttribute("infantCount", infantCount);
+	    model.addAttribute("classType", classType);
+	    model.addAttribute("fareType", fareType);
+	    model.addAttribute("timeCategory", timeCategory);
+	    model.addAttribute("saverPrice", saverPrice);
+	    model.addAttribute("standardPrice", standardPrice);
+	    model.addAttribute("flexPrice", flexPrice);
 
-       return "reservationCheckPrice";
-   }
+	    return "reservationCheckPrice";
+	}
     
 }

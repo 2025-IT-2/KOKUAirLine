@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
   <link rel="stylesheet" href="<c:url value='/css/signin.css'/>">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/i18n/datepicker-ja.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
@@ -39,6 +40,12 @@
     <input type="text" id="input-phone" name="phone" placeholder="例: 01012345678">
 
     <label for="input-nation">国籍</label>
+	<select id="input-nation" name="nationality">
+	  <option value="">選択してください</option>
+	</select>
+	
+	<!--
+    <label for="input-nation">国籍</label>
     <select id="input-nation" name="nationality">
       <option value="">選択してください</option>
       <option value="KR">韓国</option>
@@ -52,18 +59,78 @@
       <option value="AT">オーストリア</option>
       <option value="ETC">他の国</option>
     </select>
-
+	
+	<div class="etc-nation" style="display: none; margin-top: 10px;">
+	  <label for="input-nation-value">国名を入力してください:</label>
+	  <input type="text" id="input-nation-value" name="nationality_value">
+	</div>
+	 ETC 선택 시 표시될 입력칸 -->
+	
     <label for="caldateField">生年月日</label>
-    <div>
-      <input type="text" id="caldateField" name="birthdate" readonly>
-      <button type="button" id="calendarBtn">📅</button>
-    </div>
+	<div>
+		<p class="birthinfo">会員登録は１２歳以上可能</p>
+		</div>
+	<div>
+	      <input type="text" id="caldateField" name="birthdate" readonly>
+	    </div>
+	
 
+		<!-- 약관 동의 섹션 -->
+		<div class="terms-section">
+		  <label>利用規約</label>
+		  <p class="agree-check" id="priv-check">ㄴ利用規約に同意しました</p>
+		  <div class="terms-box" id="terms-content-1">読み込み中...</div>
+		  <label>
+		    <input type="checkbox" name="terms1" id="terms1"> 利用規約に同意します
+		  </label>
+
+		  <label>キャンセルポリシー</label>
+		  <p class="agree-check" id="priv-check">ㄴキャンセルポリシーに同意しました</p>
+		  <div class="terms-box" id="terms-content-2">読み込み中...</div>
+		  <label>
+		    <input type="checkbox" name="terms2" id="terms2"> キャンセルポリシーに同意します
+		  </label>
+
+		  <label>特定商取引法に基づく表記</label>
+		  <p class="agree-check" id="priv-check">ㄴCookie特定商取引法に基づく表記に同意しました</p>
+		  <div class="terms-box" id="terms-content-3">読み込み中...</div>
+		  <label>
+		    <input type="checkbox" name="terms3" id="terms3"> 特定商取引法に基づく表記に同意します
+		  </label>
+
+		  <label>Cookieポリシー</label>
+		  <p class="agree-check" id="priv-check">ㄴCookieポリシーに同意しました</p>
+		  <div class="terms-box" id="terms-content-4">読み込み中...</div>
+		  <label>
+		    <input type="checkbox" name="terms4" id="terms4"> Cookieポリシーに同意します
+		  </label>
+
+		  <label>安全なご利用のために</label>
+		  <p class="agree-check" id="priv-check">ㄴ安全なご利用に同意しました</p>
+		  <div class="terms-box" id="terms-content-5">読み込み中...</div>
+		  <label>
+		    <input type="checkbox" name="terms5" id="terms5"> 安全なご利用の規約に同意します
+		  </label>
+		  
+		  <label>プライバシーポリシー</label>
+		  <p class="agree-check" id="priv-check">ㄴプライバシーポリシーに同意しました</p>
+		  <div class="terms-box" id="terms-content-6">読み込み中...</div>
+		  <label>
+		    <input type="checkbox" name="terms6" id="terms6"> プライバシーポリシーに同意します
+		  </label>
+	  </div>
+
+
+	<div id="signinbutton">	
     <button type="submit" class="signin">会員登録</button>
+	</div>
+	
   </form>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 	
+
+	<!--내용 검사 스크립트 + alert-->
 	<script>
 			//입력한 내용 검사
 		  document.getElementById('signin').addEventListener('submit', function (e) {
@@ -95,9 +162,104 @@
 		      return;
 		    }
 		  });
+		  
+		  // 이용약관 동의 확인 추가
+		  if (!document.getElementById('terms1').checked) {
+		    alert('「利用規約」に同意してください。');
+		    e.preventDefault();
+		    return;
+		  }
+		  // 취소 정책 동의 확인 추가
+		  if (!document.getElementById('terms2').checked) {
+		    alert('「キャンセルポリシー」に同意してください。');
+		    e.preventDefault();
+		    return;
+		  }
+		  // 전자 상거래 정책 동의 확인 추가
+		  if (!document.getElementById('terms2').checked) {
+		    alert('「特定商取引法に基づく表記」に同意してください。');
+		    e.preventDefault();
+		    return;
+		  }
+		  // Cookie 확인 추가
+		  if (!document.getElementById('terms4').checked) {
+		    alert('「Cookieポリシー」に同意してください。');
+		    e.preventDefault();
+		    return;
+		  }
+		  // 안전이용약관에 동의해주세요
+		  if (!document.getElementById('terms5').checked) {
+		    alert('「安全なご利用のために」に同意してください。');
+		    e.preventDefault();
+		    return;
+		  }
+		  // 개인정보이용동의에 동의해주세요
+		  if (!document.getElementById('terms5').checked) {
+		    alert('「プライバシーポリシー」に同意してください。');
+		    e.preventDefault();
+		    return;
+		  }
+		  
+		  /*
+		  const select = document.getElementById('input-nation');
+		    const etcNationDiv = document.querySelector('.etc-nation');
+
+		    select.addEventListener('change', function () {
+		      if (this.value === 'ETC') {
+		        etcNationDiv.style.display = 'block';
+		      } else {
+		        etcNationDiv.style.display = 'none';
+		      }
+		    });
+			*/
 		</script>
 	
-	<script>
+		<!--동의시 숨김처리
+		<script>
+			
+			checkbox.addEventListener('change', function() {
+					if (!document.getElementById('terms1').checked) {
+					    alert('「利用規約」に同意してください。');
+					    e.preventDefault();
+					    return;
+					  }
+					  // 취소 정책 동의 확인 추가
+					  if (!document.getElementById('terms2').checked) {
+					    alert('「キャンセルポリシー」に同意してください。');
+					    e.preventDefault();
+					    return;
+					  }
+					  // 전자 상거래 정책 동의 확인 추가
+					  if (!document.getElementById('terms2').checked) {
+					    alert('「特定商取引法に基づく表記」に同意してください。');
+					    e.preventDefault();
+					    return;
+					  }
+					  // Cookie 확인 추가
+					  if (!document.getElementById('terms4').checked) {
+					    alert('「Cookieポリシー」に同意してください。');
+					    e.preventDefault();
+					    return;
+					  }
+					  // 안전이용약관에 동의해주세요
+					  if (!document.getElementById('terms5').checked) {
+					    alert('「安全なご利用のために」に同意してください。');
+					    e.preventDefault();
+					    return;
+					  }
+					  // 개인정보이용동의에 동의해주세요
+					  if (!document.getElementById('terms6').checked) {
+						terms-content-6.style.display = 'block'; // 평소에는 보임
+					  }else{
+						terms-content-6.style.display = 'none'; // 체크되면 숨김
+					  }
+				  }
+			</scipt>
+			-->
+	
+
+		<script>
+		/*
 		//캘린더 스크립트
 	  $(function() {
 	    // 캘린더 버튼 클릭 시 달력 표시
@@ -110,6 +272,111 @@
 	      dateFormat: "yy-mm-dd"  // 원하는 포맷
 	    });
 	  });
+	  */
+	
+	  $(function() {
+	    $.datepicker.setDefaults($.datepicker.regional['ja']);
+
+	    // 오늘 날짜 기준으로 만 12세 생일 = 오늘 - 12년
+	    const today = new Date();
+	    const maxYear = today.getFullYear() - 12;
+	    const maxMonth = today.getMonth();
+	    const maxDay = today.getDate();
+
+	    const maxDateObj = new Date(maxYear, maxMonth, maxDay);
+
+	    $("#caldateField").datepicker({
+	      dateFormat: "yy-mm-dd",
+	      changeYear: true,
+		  changeMonth:true,
+	      yearRange: "1900:" + maxYear,
+	      maxDate: maxDateObj,
+	      showAnim: "fadeIn",
+	      showButtonPanel: true,
+	      closeText: "閉じる",
+	      currentText: "今日",
+	      monthNamesShort: ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+	      dayNamesMin: ["日","月","火","水","木","金","土"],
+	      firstDay: 0,
+	      beforeShow: function(input, inst) {
+	        setTimeout(function() {
+	          inst.dpDiv.css({
+	            'font-size': '1rem',
+	            'border-radius': '12px',
+	            'box-shadow': '0 10px 20px rgba(0,0,0,0.2)'
+	          });
+	        }, 0);
+	      }
+	    });
+	  });
+  
+	  
 	</script>
+	
+
+	<!--이용 약관 출력 및 불러오기 스크립트-->
+	<script>
+		const checkbox = document.getElementById('myCheckbox');
+		const elementToHide = document.getElementById('elementToHide');
+		
+	  function loadSectionFromHTML(filePath, sectionId, targetElementId) {
+	    $.get(filePath, function(data) {
+	      const $html = $("<div>").html(data);
+	      const $section = $html.find("#" + sectionId);
+	      if ($section.length > 0) {
+	        $("#" + targetElementId).html($section.html());
+	      } else {
+	        $("#" + targetElementId).html("読み込み失敗");
+	      }
+	    });
+	  }
+
+	  $(function () {
+	    const termsFile = "/html/termsofservice.html";
+
+	    loadSectionFromHTML(termsFile, "terms-of-service", "terms-content-1");
+	    loadSectionFromHTML(termsFile, "cancel-policy", "terms-content-2");
+	    loadSectionFromHTML(termsFile, "torihiki-policy", "terms-content-3");
+	    loadSectionFromHTML(termsFile, "cookie-policy", "terms-content-4");
+	    loadSectionFromHTML(termsFile, "safety-policy", "terms-content-5");
+	    loadSectionFromHTML(termsFile, "privacy-policy", "terms-content-6");
+	  });
+	</script>
+	
+
+	
+	<!--국가 리스트 불러오기 스크립트 / 현재 작동 안함ㅠ 끝까지 미사용시 삭제 예정-->
+	<script>
+	  fetch('https://restcountries.com/v3.1/all')
+	    .then(response => response.json())
+	    .then(data => {
+	      const select = document.getElementById('input-nation');
+
+	      // 국가 이름을 일본어 기준으로 정렬 (없으면 영어 fallback)
+	      const sorted = data.sort((a, b) => {
+	        const nameA = a.translations?.jpn?.common || a.name.common;
+	        const nameB = b.translations?.jpn?.common || b.name.common;
+	        return nameA.localeCompare(nameB, 'ja');
+	      });
+
+	      // 옵션 추가
+	      sorted.forEach(country => {
+	        const option = document.createElement('option');
+	        option.value = country.cca2; // ISO 3166-1 alpha-2 코드
+	        option.textContent = country.translations?.jpn?.common || country.name.common;
+	        select.appendChild(option);
+	      });
+
+	      // 기타 국가 추가
+	      const etc = document.createElement('option');
+	      etc.value = 'ETC';
+	      etc.textContent = '他の国';
+	      select.appendChild(etc);
+	    })
+	    .catch(error => {
+	      console.error("国のリストを取得できませんでした:", error);
+	    });
+	</script>
+
 </body>
 </html>
