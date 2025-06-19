@@ -36,7 +36,7 @@
 		      <c:forEach var="reservation" items="${resList}" varStatus="status">
 	            <div class="reservation-info">
 	              <p><strong>${reservation.reservationHolder.userFirstName}</strong> 様の予約番後は 
-	                <strong>${reservation.reservationNumber}</strong> です。</p>
+	                <strong>${reservation.resiNum}</strong> です。</p>
 	              <div class="flight-info">
 	                <div class="location">
 	                  <div class="airport">${reservation.flightInfo.departure}</div>
@@ -53,7 +53,7 @@
 	            </div>
 	            <div class="summary">
 	              <div>総人数: ${reservation.resNumL + reservation.resNumM + reservation.resNumS}人</div>
-	              <div>合計金額: ${reservation.totalPrice}ウォン</div>
+	              <div>合計金額: ${reservation.payment.totalFare}ウォン</div>
 	              <div>要約状態: ${reservation.cancelStep}</div>
 	            </div>
 	            <form onsubmit="return showBoardingPass('${reservation.reservationNumber}')">
