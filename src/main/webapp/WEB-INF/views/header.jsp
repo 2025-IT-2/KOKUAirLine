@@ -14,8 +14,8 @@
 		    <c:when test="${not empty sessionScope.loginUserId}">
 		      <!-- 로그인된 경우 -->
 		      <div class="user-info">
-		        ${sessionScope.loginUserId}님
-		        <a href="<c:url value='/logout' />">로그아웃</a>
+		        ${sessionScope.loginUserId}様
+		        <a href="<c:url value='/logout' />">ログアウト</a>
 		      </div>
 		    </c:when>
 		    <c:otherwise>
