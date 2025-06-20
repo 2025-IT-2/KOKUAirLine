@@ -18,8 +18,8 @@
           名
           <input 
             type="text" 
-            id="${param.type}_firstName${param.index}" 
-            name="${param.type}_firstName${param.index}" 
+            id="${param.type}_engFirstName${param.index}" 
+            name="${param.type}_engFirstName${param.index}" 
             placeholder="お名を入力してください。 ex.Hiroko"
           >
         </label>
@@ -28,8 +28,8 @@
           姓
           <input 
             type="text" 
-            id="${param.type}_lastName${param.index}" 
-            name="${param.type}_lastName${param.index}" 
+            id="${param.type}_engLastName${param.index}" 
+            name="${param.type}_engLastName${param.index}" 
             placeholder="お姓を入力してください。 ex.Sato"
           >
         </label>
