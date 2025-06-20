@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
     <link rel="stylesheet" href="<c:url value='/css/passengerInfo.css'/>"/>
+
     <title>搭乗者情報入力</title>
   </head>
   <body>
@@ -17,9 +18,9 @@
         <h2 class="title">搭乗者情報</h2>
         
         <!-- 숨겨진 input: 인원수 전달용 -->
-	    <input type="hidden" name="adultCount" value="${adultCount}">
-	    <input type="hidden" name="childCount" value="${childCount}">
-	    <input type="hidden" name="infantCount" value="${infantCount}">
+        <input type="hidden" name="adultCount" value="${adultCount}">
+        <input type="hidden" name="childCount" value="${childCount}">
+        <input type="hidden" name="infantCount" value="${infantCount}">
         
         <div class="overlap-wrapper">
           <div class="overlap">
@@ -52,15 +53,15 @@
               <!-- 예약자 연락처 -->        
               <div class="Reservation-PhoneNumber">予約者<br />連絡先</div>
               <div class="PhoneNumber">
-				<input
-				  type="tel"
-				  id="phone"
-				  name="phone"
-				  value="${phone}"
-				  placeholder="090-1234-5678"
-				  pattern="[0-9\-]{10,13}"
-				  required
-				  autocomplete="tel">
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value="${phone}"
+                placeholder="090-1234-5678"
+                pattern="[0-9\-]{10,13}"
+                required
+                autocomplete="tel">
               </div>
               
               <!-- 금액 표시창 -->
