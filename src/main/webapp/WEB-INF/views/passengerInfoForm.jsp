@@ -3,7 +3,21 @@
 
 <!-- 탑승객 정보 입력 그룹 -->
 <div class="info-group">
-  <div class="card">
+
+  <!-- 클래스명 영문 변환 -->
+  <c:choose>
+    <c:when test="${param.type == '大人'}">
+      <c:set var="cardType" value="Adult" />
+    </c:when>
+    <c:when test="${param.type == '小児'}">
+      <c:set var="cardType" value="Child" />
+    </c:when>
+    <c:otherwise>
+      <c:set var="cardType" value="Infant" />
+    </c:otherwise>
+  </c:choose>
+
+  <div class="card ${cardType}">
     <!-- 대인 / 소아 / 유아 구분 -->
     <div class="adult">
       ${param.type}${param.index}
@@ -18,8 +32,8 @@
           名
           <input 
             type="text" 
-            id="${param.type}_firstName${param.index}" 
-            name="${param.type}_firstName${param.index}" 
+            id="${param.type}_engFirstName${param.index}" 
+            name="${param.type}_engFirstName${param.index}" 
             placeholder="お名を入力してください。 ex.Hiroko"
           >
         </label>
@@ -28,8 +42,8 @@
           姓
           <input 
             type="text" 
-            id="${param.type}_lastName${param.index}" 
-            name="${param.type}_lastName${param.index}" 
+            id="${param.type}_engLastName${param.index}" 
+            name="${param.type}_engLastName${param.index}" 
             placeholder="お姓を入力してください。 ex.Sato"
           >
         </label>
