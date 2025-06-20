@@ -174,50 +174,26 @@
 	        			</c:if>
 				    </c:forEach>
 				</select>
-<%-- 			<select name="departureAirport" id = "departureAirport" class = "airport-select">
-			    <c:forEach var="flight" items="${flights}">
-			    	<c:if test="${flight.airportCode == 'NRT'}">
-            			<option selected>${flight.airport}</option>
-       				</c:if>
-			    </c:forEach>
-			    <c:forEach var="flight" items="${flights}" varStatus = "status">
-       				<c:if test="${flight.airportCode != 'NRT' && status.count <= 4}">
-		    	        <option >${flight.airport}</option>
-        			</c:if>
-			    </c:forEach>
-			</select> --%>
-			<select name="arrivalAirport" id = "arrivalAirport" class = "airport-select">		    
-			    <c:forEach var="airport" items="${airports}">
-				    <c:if test="${airport.airportCode == 'MNL'}">
-				        <option selected>${airport.airportJp} / ${airport.airportCode}</option>
-				    </c:if>
-				</c:forEach>
-				<c:forEach var="airport" items="${airports}">
-				    <c:if test="${airport.airportCode == 'NRT'}">
-				        <option>${airport.airportJp} / ${airport.airportCode}</option>
-				    </c:if>
-				</c:forEach>
-			    <c:forEach var="airport" items="${airports}" varStatus="status">
-				    <c:if test="${airport.airportCode != 'NRT' && airport.airportCode != 'MNL' && status.count <= 4}">
-				        <option>${airport.airportJp} / ${airport.airportCode}</option>
-				    </c:if>
-				</c:forEach>
-			</select>
+				<select name="arrivalAirport" id = "arrivalAirport" class = "airport-select">		    
+				    <c:forEach var="airport" items="${airports}">
+					    <c:if test="${airport.airportCode == 'MNL'}">
+					        <option selected>${airport.airportJp} / ${airport.airportCode}</option>
+					    </c:if>
+					</c:forEach>
+					<c:forEach var="airport" items="${airports}">
+					    <c:if test="${airport.airportCode == 'NRT'}">
+					        <option>${airport.airportJp} / ${airport.airportCode}</option>
+					    </c:if>
+					</c:forEach>
+				    <c:forEach var="airport" items="${airports}" varStatus="status">
+					    <c:if test="${airport.airportCode != 'NRT' && airport.airportCode != 'MNL' && status.count <= 4}">
+					        <option>${airport.airportJp} / ${airport.airportCode}</option>
+					    </c:if>
+					</c:forEach>
+				</select>
 	        	<input type="text" id="departureDate" name = "departureDate" class="date-input" placeholder="出発日を選択">
 	        	<input type="text" id="arrivalDate" name = "arrivalDate" class="date-input" placeholder="帰りの日を選択">
 			</div>
-			<!--
-	        <div class = "airport-selection">
-	        	<select name = "departireAirport" id = "departireAirport" class = "airport-select">
-	        		<option class = "airport-option" value = "INC">ICN 仁川</option>
-	        		<option class = "airport-option" value = "OKA">OKA 沖縄</option>
-	        	</select>
-	        	<select name = "arrivalAirport" id = "arrivalAirport" class = "airport-select">
-	        		<option class = "airport-option" value = "OKA">OKA 沖縄</option>
-	        		<option class = "airport-option" value = "INC">ICN 仁川</option>
-	        	</select>
-	        </div>
-	         -->
 			<!-- 탑승객 선택 -->
 	        <h3>搭乗人員選択</h3>
 	        <div class = "passengers">
