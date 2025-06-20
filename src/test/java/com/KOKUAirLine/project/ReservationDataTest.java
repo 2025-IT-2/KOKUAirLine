@@ -47,9 +47,9 @@ public class ReservationDataTest {
         FlightInfo flight2 = flightInfoRepo.findById("KOKU456").orElseThrow();
 
         // 1. 예약 저장
-        Reservation res1 = new Reservation(null, flight1, user1, null,
+        Reservation res1 = new Reservation(null, flight1, user1, 
                 1, 0, 0, LocalDate.now(), "Y", "eco-spec", "완료");
-        Reservation res2 = new Reservation(null, flight2, user2, null,
+        Reservation res2 = new Reservation(null, flight2, user2, 
                 2, 1, 0, LocalDate.now(), "N", "buis", "완료");
 
         reservationRepo.save(res1);
@@ -65,8 +65,6 @@ public class ReservationDataTest {
         paymentInfoRepo.save(payment2);
 
         // 3. 예약에 결제 연결 후 업데이트
-        res1.setPayment(payment1);
-        res2.setPayment(payment2);
         reservationRepo.save(res1);
         reservationRepo.save(res2);
     }

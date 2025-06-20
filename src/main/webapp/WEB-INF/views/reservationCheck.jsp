@@ -53,7 +53,7 @@
 	            </div>
 	            <div class="summary">
 	              <div>総人数: ${reservation.resNumL + reservation.resNumM + reservation.resNumS}人</div>
-	              <div>合計金額: ${reservation.payment.totalFare}ウォン</div>
+	              <div>合計金額: ${resPayMap[reservation.resiNum].totalFare}ウォン</div>
 	              <div>要約状態: ${reservation.cancelStep}</div>
 	            </div>
 	            <form onsubmit="return showBoardingPass('${reservation.resiNum}')">
