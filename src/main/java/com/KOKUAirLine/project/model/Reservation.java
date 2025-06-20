@@ -1,5 +1,6 @@
 package com.KOKUAirLine.project.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,10 +33,6 @@ public class Reservation {
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private UserInfo reservationHolder; // 예약자 대표 (ID 기준)
-	
-	@OneToOne
-	@JoinColumn(name = "paymentId")
-	private PaymentInfo payment; // 결제 정보
 	
 	@Column(name = "RESNUML")	
 	private Integer resNumL; 		//성인인원

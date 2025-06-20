@@ -1,5 +1,6 @@
 package com.KOKUAirLine.project.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,9 +26,9 @@ public class PaymentInfo {
     @Column(name = "PAYMENTID") 		// 고유 PK
     private Long paymentId;				// 결제ID 
     
-	@OneToOne
-	@JoinColumn(name = "RESINUM") 		// PaymentInfo 테이블의 외래키 컬럼명
-	private Reservation reservation; 	//예약번호
+    @OneToOne
+    @JoinColumn(name = "RESINUM")
+    private Reservation reservation;
 	
 	@ManyToOne
 	@JoinColumn(name = "FLIGHTMEAL")
