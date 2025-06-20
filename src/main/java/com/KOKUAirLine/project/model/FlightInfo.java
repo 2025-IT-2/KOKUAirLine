@@ -37,10 +37,10 @@ public class FlightInfo {
     private Date departureDate; //출발 날짜
 
 //    @Column(name = "DEPARTURETIME")
-    private Date departureTime; //출발 시간 
+    private Date DepartureTime; //출발 시간 
 
 //    @Column(name = "DEPARTURETERMINAL")
-    private Integer departureTerminal; //출발 터미널
+    private Integer DepartureTerminal; //출발 터미널
 
 //    @Column(name = "ARRIVAL")
     private String arrival; //도착지 (이름)
@@ -49,16 +49,16 @@ public class FlightInfo {
     private Date arrivalDate; // 도착 날짜
 
 //    @Column(name = "ARRIVALTIME")
-    private Date arrivalTime; //도착 시간
+    private Date ArrivalTime; //도착 시간
 
 //    @Column(name = "ARRIVALTERMINAL")
-    private Integer arrivalTerminal; //도착 터미널
+    private Integer ArrivalTerminal; //도착 터미널
     
     private Integer SeatRemain; //남은 좌석수
     
     private Integer SeatTotal; //전체 좌석수
     
-    private Integer airplaneNo; //항공기 번호
+    private Integer AirplaneNo; //항공기 번호
 
     // Getters and Setters 생략 가능 (Lombok @Data 사용 가능)
 }

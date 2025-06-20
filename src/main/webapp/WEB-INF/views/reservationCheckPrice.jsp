@@ -16,10 +16,6 @@
    <div class="container">
       <!-- 예약 폼 -->
       <form action="/passengerInfo" method="post" class="reservation-form">
-      <input type="hidden" name="departureAirport" value="NRT" />
-  <input type="hidden" name="arrivalAirport" value="ICN" />
-  <input type="hidden" name="departureDate" value="2025-07-01" />
-  <input type="hidden" name="arrivalDate" value="2025-07-05" />
    
       <div class="info-bar">
          <div class="info-box triptype">
@@ -73,7 +69,7 @@
 			<div class="flight-section">
 			  <div class="section-title">出国便</div>
 			  <div class="flight-options">
-			    <c:forEach var="flight" items="${departureFlights}" varStatus="status">
+			    <c:forEach var="flight" items="${Flights}" varStatus="status">
 			      <div class="flight">
 			        <div class="time-info">
 			          <div class="time">
@@ -244,7 +240,7 @@
 			<div class="flight-section">
 			  <div class="section-title">帰国便</div>
 			  <div class="flight-options">
-			    <c:forEach var="flight" items="${arrivalFlights}" varStatus="status">
+			    <c:forEach var="flight" items="${Flights}" varStatus="status">
 			      <div class="flight">
 			        <div class="time-info">
 			          <div class="time">
