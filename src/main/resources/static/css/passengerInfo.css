@@ -62,12 +62,27 @@ body {
 }
 
 /* 카드 스타일 */
+/* 카드 기본 스타일 (기존 유지) */
 .card {
-  background-color: #edf2f7;
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 20px 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 대인 카드 색상 */
+.card.Adult {
+  background-color: #edf2f7; /* 연한 파랑 */
+}
+
+/* 소아 카드 색상 */
+.card.Child {
+  background-color: #fef7e0; /* 연한 노랑 */
+}
+
+/* 유아 카드 색상 */
+.card.Infant {
+  background-color: #fde2e2; /* 연한 핑크 */
 }
 
 .card2-group {

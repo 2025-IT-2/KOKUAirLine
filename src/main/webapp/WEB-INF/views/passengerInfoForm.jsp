@@ -3,7 +3,21 @@
 
 <!-- 탑승객 정보 입력 그룹 -->
 <div class="info-group">
-  <div class="card">
+
+  <!-- 클래스명 영문 변환 -->
+  <c:choose>
+    <c:when test="${param.type == '大人'}">
+      <c:set var="cardType" value="Adult" />
+    </c:when>
+    <c:when test="${param.type == '小児'}">
+      <c:set var="cardType" value="Child" />
+    </c:when>
+    <c:otherwise>
+      <c:set var="cardType" value="Infant" />
+    </c:otherwise>
+  </c:choose>
+
+  <div class="card ${cardType}">
     <!-- 대인 / 소아 / 유아 구분 -->
     <div class="adult">
       ${param.type}${param.index}
