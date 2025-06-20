@@ -125,31 +125,3 @@
   }
 
   
-    #using-check{
-	display: none;
-	}
-    #cancel-check{
-	display: none;
-	}
-    #torihiki-check{
-	display: none;
-	}
-    #cookie-check{
-	display: none;
-	}
-    #safety-check{
-	display: none;
-	}
-    #priv-check{
-	display: none;
-	}
-	
-	
-	/*약관display*/
-	#terms1:checked + terms-content-1{
-		display: none;
-	}
-	#terms1:checked + terms-content-1{
-		display: none;
-	}
-  

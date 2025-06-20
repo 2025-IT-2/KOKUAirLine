@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -27,8 +28,8 @@ public class DataIntegrationTest {
     @BeforeEach
     void setUp() {
         // 초기화
-        paymentInfoRepo.deleteAll();
-        reservationRepo.deleteAll();
+    	paymentInfoRepo.deleteAll();
+    	reservationRepo.deleteAll();
         userInfoRepo.deleteAll();
         flightInfoRepo.deleteAll();
         mealRepo.deleteAll();
@@ -46,18 +47,43 @@ public class DataIntegrationTest {
         mealRepo.saveAll(List.of(beefMeal, chickenMeal));
 
         // 3. 항공편
-        FlightInfo flight1 = new FlightInfo("KOKU123", beefMeal, "東京",
-                new Date(), new Date(), 1, "大阪", new Date(), new Date(), 2, 100, 180, 300);
-        FlightInfo flight2 = new FlightInfo("KOKU456", chickenMeal, "ソウル",
-                new Date(), new Date(), 1, "福岡", new Date(), new Date(), 1, 75, 150, 301);
+        // 1. LocalDateTime 만들기
+        LocalDateTime departure1 = LocalDateTime.of(2025, 7, 1, 3, 30); // 2025-07-01 03:30
+        LocalDateTime arrival1 = LocalDateTime.of(2025, 7, 1, 7, 15);   // 2025-07-01 07:15
+
+        // 2. LocalDateTime을 java.util.Date로 변환
+        Date depDate1 = Date.from(departure1.atZone(ZoneId.systemDefault()).toInstant());
+        Date arrDate1 = Date.from(arrival1.atZone(ZoneId.systemDefault()).toInstant());
+        
+        LocalDateTime departure2 = LocalDateTime.of(2025, 7, 4, 13, 30); // 2025-07-01 03:30
+        LocalDateTime arrival2 = LocalDateTime.of(2025, 7, 4, 17, 15);   // 2025-07-01 07:15
+        
+        // 2. LocalDateTime을 java.util.Date로 변환
+        Date depDate2 = Date.from(departure2.atZone(ZoneId.systemDefault()).toInstant());
+        Date arrDate2 = Date.from(arrival2.atZone(ZoneId.systemDefault()).toInstant());
+
+        // 기내식 이름을 가져와서 사용
+        FlightInfo flight1 = new FlightInfo(
+            "KOKU123", beefMeal, "東京",
+            depDate1, depDate1, 1,
+            "大阪", arrDate1, arrDate1, 2,
+            100, 180, 300
+        );
+
+        FlightInfo flight2 = new FlightInfo(
+            "KOKU456", chickenMeal, "大阪",
+            depDate2, depDate2, 1,
+            "東京", arrDate2, arrDate2, 1,
+            75, 150, 301
+        );
         flightInfoRepo.saveAll(List.of(flight1, flight2));
 
         // 4. 예약 저장 (먼저)
         Reservation res1 = new Reservation(null, flight1, user1,
-                null, 1, 0, 0, LocalDate.now(), "Y", "eco-spec", "완료");
+                1, 0, 0, LocalDate.now(), "Y", "eco-spec", "완료");
 
         Reservation res2 = new Reservation(null, flight2, user2,
-                null, 2, 1, 0, LocalDate.now(), "N", "buis", "완료");
+                2, 1, 0, LocalDate.now(), "N", "buis", "완료");
 
         reservationRepo.saveAll(List.of(res1, res2));
 
@@ -70,9 +96,6 @@ public class DataIntegrationTest {
 
         paymentInfoRepo.saveAll(List.of(payment1, payment2));
 
-        // 6. 예약에 payment 연결 후 다시 저장
-        res1.setPayment(payment1);
-        res2.setPayment(payment2);
         reservationRepo.saveAll(List.of(res1, res2));
     }
 
