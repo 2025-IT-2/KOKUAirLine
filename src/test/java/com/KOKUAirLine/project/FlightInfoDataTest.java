@@ -77,11 +77,11 @@ public class FlightInfoDataTest {
         );
         
         FlightInfo flight4 = new FlightInfo(
-        		"KOKU789", beef, "札幌",
-        		arrDate2, arrDate2, 2,
-        		"名古屋", new Date(), new Date(), 2,
-        		50, 120, 302
-        		);
+			"KOKU101112", beef, "札幌",
+			arrDate2, arrDate2, 2,
+			"名古屋", new Date(), new Date(), 2,
+			50, 120, 302
+		);
 
         flightInfoRepo.save(flight1);
         flightInfoRepo.save(flight2);
