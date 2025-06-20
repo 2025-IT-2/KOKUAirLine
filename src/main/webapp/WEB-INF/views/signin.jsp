@@ -12,7 +12,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
+  <!--헤더 불러오기-->
   <%@ include file="header.jsp" %>
+  <!--국가코드 불러오는 용-->
+  <%@ page import="java.util.*" %>
 
   <form action="/signin" method="post" id="signin" class="form-container">
     <label for="input-id">ID</label>
@@ -39,32 +42,24 @@
     <label for="input-phone">電話番号</label>
     <input type="text" id="input-phone" name="phone" placeholder="例: 01012345678">
 
+	
     <label for="input-nation">国籍</label>
+	<%
+	  String[] countryCodes = Locale.getISOCountries();
+	  Arrays.sort(countryCodes); // 알파벳순(일본어 기준이기 때문에 가나순 정렬) 정렬
+	%>
 	<select id="input-nation" name="nationality">
 	  <option value="">選択してください</option>
+	<%
+	  for (String code : countryCodes) {
+	    Locale locale = new Locale("", code);
+	    String name = locale.getDisplayCountry(Locale.JAPANESE);
+	%>
+	    <option value="<%= code %>"><%= name %></option>
+	<%
+	  }
+	%>
 	</select>
-	
-	<!--
-    <label for="input-nation">国籍</label>
-    <select id="input-nation" name="nationality">
-      <option value="">選択してください</option>
-      <option value="KR">韓国</option>
-      <option value="JP">日本</option>
-      <option value="US">アメリカ</option>
-      <option value="CN">中国</option>
-      <option value="VN">ベトナム</option>
-      <option value="DE">ドイツ</option>
-      <option value="CA">カナダ</option>
-      <option value="AU">オーストラリア</option>
-      <option value="AT">オーストリア</option>
-      <option value="ETC">他の国</option>
-    </select>
-	
-	<div class="etc-nation" style="display: none; margin-top: 10px;">
-	  <label for="input-nation-value">国名を入力してください:</label>
-	  <input type="text" id="input-nation-value" name="nationality_value">
-	</div>
-	 ETC 선택 시 표시될 입력칸 -->
 	
     <label for="caldateField">生年月日</label>
 	<div>
@@ -78,47 +73,43 @@
 		<!-- 약관 동의 섹션 -->
 		<div class="terms-section">
 		  <label>利用規約</label>
-		  <p class="agree-check" id="priv-check">ㄴ利用規約に同意しました</p>
-		  <div class="terms-box" id="terms-content-1">読み込み中...</div>
+			  <div class="terms-box" id="terms-content-1">読み込み中...</div>
 		  <label>
-		    <input type="checkbox" name="terms1" id="terms1"> 利用規約に同意します
+		    <input type="checkbox" name="terms1" id="terms1" class="terms-checkbox"> 利用規約に同意します
 		  </label>
 
 		  <label>キャンセルポリシー</label>
-		  <p class="agree-check" id="priv-check">ㄴキャンセルポリシーに同意しました</p>
 		  <div class="terms-box" id="terms-content-2">読み込み中...</div>
 		  <label>
-		    <input type="checkbox" name="terms2" id="terms2"> キャンセルポリシーに同意します
+		    <input type="checkbox" name="terms2" id="terms2" class="terms-checkbox"> キャンセルポリシーに同意します
 		  </label>
 
 		  <label>特定商取引法に基づく表記</label>
-		  <p class="agree-check" id="priv-check">ㄴCookie特定商取引法に基づく表記に同意しました</p>
 		  <div class="terms-box" id="terms-content-3">読み込み中...</div>
 		  <label>
-		    <input type="checkbox" name="terms3" id="terms3"> 特定商取引法に基づく表記に同意します
+		    <input type="checkbox" name="terms3" id="terms3" class="terms-checkbox"> 特定商取引法に基づく表記に同意します
 		  </label>
 
 		  <label>Cookieポリシー</label>
-		  <p class="agree-check" id="priv-check">ㄴCookieポリシーに同意しました</p>
 		  <div class="terms-box" id="terms-content-4">読み込み中...</div>
 		  <label>
-		    <input type="checkbox" name="terms4" id="terms4"> Cookieポリシーに同意します
+		    <input type="checkbox" name="terms4" id="terms4" class="terms-checkbox"> Cookieポリシーに同意します
 		  </label>
 
 		  <label>安全なご利用のために</label>
-		  <p class="agree-check" id="priv-check">ㄴ安全なご利用に同意しました</p>
 		  <div class="terms-box" id="terms-content-5">読み込み中...</div>
 		  <label>
-		    <input type="checkbox" name="terms5" id="terms5"> 安全なご利用の規約に同意します
+		    <input type="checkbox" name="terms5" id="terms5" class="terms-checkbox"> 安全なご利用の規約に同意します
 		  </label>
 		  
 		  <label>プライバシーポリシー</label>
-		  <p class="agree-check" id="priv-check">ㄴプライバシーポリシーに同意しました</p>
 		  <div class="terms-box" id="terms-content-6">読み込み中...</div>
 		  <label>
-		    <input type="checkbox" name="terms6" id="terms6"> プライバシーポリシーに同意します
+		    <input type="checkbox" name="terms6" id="terms6" class="terms-checkbox"> プライバシーポリシーに同意します
 		  </label>
 	  </div>
+	  	
+
 
 
 	<div id="signinbutton">	
@@ -200,79 +191,14 @@
 		    return;
 		  }
 		  
-		  /*
-		  const select = document.getElementById('input-nation');
-		    const etcNationDiv = document.querySelector('.etc-nation');
-
-		    select.addEventListener('change', function () {
-		      if (this.value === 'ETC') {
-		        etcNationDiv.style.display = 'block';
-		      } else {
-		        etcNationDiv.style.display = 'none';
-		      }
-		    });
-			*/
 		</script>
 	
-		<!--동의시 숨김처리
-		<script>
-			
-			checkbox.addEventListener('change', function() {
-					if (!document.getElementById('terms1').checked) {
-					    alert('「利用規約」に同意してください。');
-					    e.preventDefault();
-					    return;
-					  }
-					  // 취소 정책 동의 확인 추가
-					  if (!document.getElementById('terms2').checked) {
-					    alert('「キャンセルポリシー」に同意してください。');
-					    e.preventDefault();
-					    return;
-					  }
-					  // 전자 상거래 정책 동의 확인 추가
-					  if (!document.getElementById('terms2').checked) {
-					    alert('「特定商取引法に基づく表記」に同意してください。');
-					    e.preventDefault();
-					    return;
-					  }
-					  // Cookie 확인 추가
-					  if (!document.getElementById('terms4').checked) {
-					    alert('「Cookieポリシー」に同意してください。');
-					    e.preventDefault();
-					    return;
-					  }
-					  // 안전이용약관에 동의해주세요
-					  if (!document.getElementById('terms5').checked) {
-					    alert('「安全なご利用のために」に同意してください。');
-					    e.preventDefault();
-					    return;
-					  }
-					  // 개인정보이용동의에 동의해주세요
-					  if (!document.getElementById('terms6').checked) {
-						terms-content-6.style.display = 'block'; // 평소에는 보임
-					  }else{
-						terms-content-6.style.display = 'none'; // 체크되면 숨김
-					  }
-				  }
-			</scipt>
-			-->
+		
+
+	
 	
 
 		<script>
-		/*
-		//캘린더 스크립트
-	  $(function() {
-	    // 캘린더 버튼 클릭 시 달력 표시
-	    $("#calendarBtn").click(function() {
-	      $("#caldateField").datepicker("show");
-	    });
-
-	    // 날짜 선택 시 해당 input에 값 설정
-	    $("#caldateField").datepicker({
-	      dateFormat: "yy-mm-dd"  // 원하는 포맷
-	    });
-	  });
-	  */
 	
 	  $(function() {
 	    $.datepicker.setDefaults($.datepicker.regional['ja']);
