@@ -64,16 +64,16 @@ public class DataIntegrationTest {
 
         // 기내식 이름을 가져와서 사용
         FlightInfo flight1 = new FlightInfo(
-            "KOKU123", beefMeal, "東京",
+            "KOKU123", beefMeal, "NRT",
             depDate1, depDate1, 1,
-            "大阪", arrDate1, arrDate1, 2,
+            "MNL", arrDate1, arrDate1, 2,
             100, 180, 300
         );
 
         FlightInfo flight2 = new FlightInfo(
-            "KOKU456", chickenMeal, "大阪",
+            "KOKU456", chickenMeal, "MNL",
             depDate2, depDate2, 1,
-            "東京", arrDate2, arrDate2, 1,
+            "NRT", arrDate2, arrDate2, 1,
             75, 150, 301
         );
         flightInfoRepo.saveAll(List.of(flight1, flight2));
