@@ -16,8 +16,11 @@ import com.KOKUAirLine.project.service.api.ApiService;
 @Controller
 public class ReservationTestoController {
 
-    @Autowired
-    private ApiService apiService;
+//    @Autowired
+//    private ApiTest apiService;
+	
+
+	private ApiTest apiTest;
     
     @Autowired
     private AirportRepository airportRepository;
@@ -25,8 +28,8 @@ public class ReservationTestoController {
     @GetMapping("/reservationTesto")
     public String showReservationPage(Model model) {
     	
-    	apiService.saveAirportDataFromApi();// api 정보
-    	List<ApiInfo> flightList = apiService.getFlightDataFromApi();// api 정보
+    	apiTest.saveAirportDataFromApi();// api 정보
+    	List<ApiInfo> flightList = apiTest.getFlightDataFromApi();// api 정보
         model.addAttribute("flights", flightList);
         
         List<AirportInfo> airportList = airportRepository.findAll();
