@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -67,14 +68,14 @@
               <!-- 금액 표시창 -->
               <div class="box">
                 <div class="element">
-                  <c:choose>
-                    <c:when test="${not empty amount}">
-                      ${totalPrice} 円
-                    </c:when>
-                    <c:otherwise>
-                      0 円
-                    </c:otherwise>
-                  </c:choose>
+				 <c:choose>
+				   <c:when test="${not empty totalPrice and totalPrice > 0}">
+				     <fmt:formatNumber value="${totalPrice}" type="number" groupingUsed="true" /> 円
+				   </c:when>
+				   <c:otherwise>
+				     0 円
+				   </c:otherwise>
+				 </c:choose>
                 </div>
               </div>
 
@@ -86,7 +87,7 @@
       </div>
     </form>
   </body>
-</html>
+
 
       <!-- 유효성 검사 -->     
       <script>
@@ -231,3 +232,4 @@
         });
       });
       </script>
+</html>

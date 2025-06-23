@@ -45,10 +45,14 @@ public class PassengerInfoController {
 	    model.addAttribute("totalPrice", totalPrice);
 //        model.addAttribute("amount", amount);
 
+		System.out.println("💰 totalPrice = " + totalPrice);
+	    
         return "passengerInfo";
 		
 	}
 
+
+	
 			
 	// PassengerInfoService 호출
     @Autowired

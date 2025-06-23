@@ -187,195 +187,8 @@
         </div>
       </c:if>
     </div>
-
-
-                   </div>
-                 </div>
-               </div>
-             </c:forEach>
-           </div>
-         </div>
-          
-            <!-- 귀국편 -->
-         <c:if test="${param.tripType eq 'round'}">
-         <div class="flight-section">
-           <div class="section-title">帰国便</div>
-           <div class="flight-options">
-             <c:forEach var="flight" items="${arrFlights}" varStatus="status">
-               <div class="flight">
-                 <div class="time-info">
-                   <div class="time">
-                     ${flight.departureTime}<br>
-                     <span>터미널${flight.departureTerminal}</span>
-                   </div>
-                   <div class="arrow">↓</div>
-                   <div class="time">
-                     ${flight.arrivalTime}<br>
-                     <span>터미널${flight.arrivalTerminal}</span>
-                   </div>
-                 </div>
-                 <div class="flight-details">
-                   <div class="flight-info">${flight.flightNo}<br>
-                     <span>K${flight.airplaneNo}</span>
-                   </div>
-                     
-                     <c:choose>
-              <c:when test="${param.classType == 'eco-spec'}">
-                <div class="eco-spec">
-                  <label class="fare" for="arrFareType${status.index + 1}-saver"
-                        data-seat-available="${flight.seatRemain}">
-                    <input id="arrFareType${status.index + 1}-saver" type="radio" name="arrFareType" value="${saverPrice}" data-price="16200" style="display:none;" />
-                    <div class="content">
-                      <div class="type">セイバー</div>
-                      <div class="price">${saverPrice}円</div>
-                      <div class="seats">${flight.seatRemain} / ${flight.seatTotal}席</div>
-                    </div>
-                  </label>
-
-                  <label class="fare" for="arrFareType${status.index + 1}-standard"
-                        data-seat-available="${flight.seatRemain}">
-                    <input id="arrFareType${status.index + 1}-standard" type="radio" name="arrFareType" value="${standardPrice}" data-price="18400" style="display:none;" />
-                    <div class="content">
-                      <div class="type">スタンダード</div>
-                      <div class="price">${standardPrice}円</div>
-                      <div class="seats">${flight.seatRemain} / ${flight.seatTotal}席</div>
-                    </div>
-                  </label>
-
-                  <label class="fare" for="arrFareType${status.index + 1}-flex"
-                        data-seat-available="${flight.seatRemain}">
-                    <input id="arrFareType${status.index + 1}-flex" type="radio" name="arrFareType" value="${flexPrice}" data-price="21900" style="display:none;" />
-                    <div class="content">
-                      <div class="type">フレックス</div>
-                      <div class="price">${flexPrice}円</div>
-                      <div class="seats">${flight.seatRemain} / ${flight.seatTotal}席</div>
-                    </div>
-                  </label>
-                </div>
-              </c:when>
-
-              <c:when test="${param.classType == 'eco-norm'}">
-                <div class="eco-spec">
-                  <label class="fare" for="arrFareType${status.index + 1}-saver"
-                        data-seat-available="${flight.seatRemain}">
-                    <input id="arrFareType${status.index + 1}-saver" type="radio" name="arrFareType" value="${saverPrice}" data-price="16200" style="display:none;" />
-                    <div class="content">
-                      <div class="type">セイバー</div>
-                      <div class="price">${saverPrice}円</div>
-                      <div class="seats">${flight.seatRemain} / ${flight.seatTotal}席</div>
-                    </div>
-                  </label>
-
-                  <label class="fare" for="arrFareType${status.index + 1}-standard"
-                        data-seat-available="${flight.seatRemain}">
-                    <input id="arrFareType${status.index + 1}-standard" type="radio" name="arrFareType" value="${standardPrice}" data-price="18400" style="display:none;" />
-                    <div class="content">
-                      <div class="type">スタンダード</div>
-                      <div class="price">${standardPrice}円</div>
-                      <div class="seats">${flight.seatRemain} / ${flight.seatTotal}席</div>
-                    </div>
-                  </label>
-
-                  <label class="fare" for="arrFareType${status.index + 1}-flex"
-                        data-seat-available="${flight.seatRemain}">
-                    <input id="arrFareType${status.index + 1}-flex" type="radio" name="arrFareType" value="${flexPrice}" data-price="21900" style="display:none;" />
-                    <div class="content">
-                      <div class="type">フレックス</div>
-                      <div class="price">${flexPrice}円</div>
-                      <div class="seats">${flight.seatRemain} / ${flight.seatTotal}席</div>
-                    </div>
-                  </label>
-                </div>
-              </c:when>
-              
-              <c:when test="${param.classType == 'buis'}">
-                <div class="eco-spec">
-                  <label class="fare" for="arrFareType${status.index + 1}-saver"
-                        data-seat-available="${flight.seatRemain}">
-                    <input id="arrFareType${status.index + 1}-saver" type="radio" name="arrFareType" value="${saverPrice}" data-price="16200" style="display:none;" />
-                    <div class="content">
-                      <div class="type">セイバー</div>
-                      <div class="price">${saverPrice}円</div>
-                      <div class="seats">${flight.seatRemain} / ${flight.seatTotal}席</div>
-                    </div>
-                  </label>
-
-                  <label class="fare" for="arrFareType${status.index + 1}-standard"
-                        data-seat-available="${flight.seatRemain}">
-                    <input id="arrFareType${status.index + 1}-standard" type="radio" name="arrFareType" value="${standardPrice}" data-price="18400" style="display:none;" />
-                    <div class="content">
-                      <div class="type">スタンダード</div>
-                      <div class="price">${standardPrice}円</div>
-                      <div class="seats">${flight.seatRemain} / ${flight.seatTotal}席</div>
-                    </div>
-                  </label>
-
-                  <label class="fare" for="arrFareType${status.index + 1}-flex"
-                        data-seat-available="${flight.seatRemain}">
-                    <input id="arrFareType${status.index + 1}-flex" type="radio" name="arrFareType" value="${flexPrice}" data-price="21900" style="display:none;" />
-                    <div class="content">
-                      <div class="type">フレックス</div>
-                      <div class="price">${flexPrice}円</div>
-                      <div class="seats">${flight.seatRemain} / ${flight.seatTotal}席</div>
-                    </div>
-                  </label>
-                </div>
-              </c:when>
-              
-              <c:when test="${param.classType == 'first'}">
-                <div class="eco-spec">
-                  <label class="fare" for="arrFareType${status.index + 1}-saver"
-                        data-seat-available="${flight.seatRemain}">
-                    <input id="arrFareType${status.index + 1}-saver" type="radio" name="arrFareType" value="${saverPrice}" data-price="16200" style="display:none;" />
-                    <div class="content">
-                      <div class="type">セイバー</div>
-                      <div class="price">${saverPrice}円</div>
-                      <div class="seats">${flight.seatRemain} / ${flight.seatTotal}席</div>
-                    </div>
-                  </label>
-
-                  <label class="fare" for="arrFareType${status.index + 1}-standard"
-                        data-seat-available="${flight.seatRemain}">
-                    <input id="arrFareType${status.index + 1}-standard" type="radio" name="arrFareType" value="${standardPrice}" data-price="18400" style="display:none;" />
-                    <div class="content">
-                      <div class="type">スタンダード</div>
-                      <div class="price">${standardPrice}円</div>
-                      <div class="seats">${flight.seatRemain} / ${flight.seatTotal}席</div>
-                    </div>
-                  </label>
-
-                  <label class="fare" for="arrFareType${status.index + 1}-flex"
-                        data-seat-available="${flight.seatRemain}">
-                    <input id="arrFareType${status.index + 1}-flex" type="radio" name="arrFareType" value="${flexPrice}" data-price="21900" style="display:none;" />
-                    <div class="content">
-                      <div class="type">フレックス</div>
-                      <div class="price">${flexPrice}円</div>
-                      <div class="seats">${flight.seatRemain} / ${flight.seatTotal}席</div>
-                    </div>
-                  </label>
-                </div>
-              </c:when>
-              
-              <c:otherwise>
-                <p>座席クラスが選択されていません。</p>
-              </c:otherwise>
-            </c:choose>
-
-                   </div>
-                 </div>
-               </div>
-             </c:forEach>
-           </div>
-         </div>
-         </c:if>
-
-
-
- 
- 
- 
             
-	        <!-- ✅ 누락된 필수 파라미터 hidden input으로 추가 -->
+	    <!-- 필수 파라미터 hidden input으로 추가 -->
 			<input type="hidden" name="adultCount" value="${param.adultCount}" />
 			<input type="hidden" name="childCount" value="${param.childCount}" />
 			<input type="hidden" name="infantCount" value="${param.infantCount}" />
@@ -388,7 +201,6 @@
 			<input type="hidden" id="totalPrice" name="totalPrice" value="" />
 
 
-
             <!-- 제출 버튼 -->
             <div class="confirm-button">
                <button type="submit">예약 확인</button>
@@ -399,32 +211,29 @@
 
 </body>
 
-
+    <!-- 총액 계산 -->    
 		<script>
 		document.addEventListener("DOMContentLoaded", function () {
-		  const allFareRadios = document.querySelectorAll('input[name="depFareType"], input[name="arrFareType"]');
-		
-		  allFareRadios.forEach(radio => {
-		    radio.addEventListener("change", () => {
-		      let total = 0;
-		
-		      // 출국편 가격
-		      const selectedDep = document.querySelector('input[name="depFareType"]:checked');
-		      if (selectedDep) {
-		        total += parseInt(selectedDep.dataset.price || "0");
-		      }
-		
-		      // 귀국편 가격 (왕복일 경우만 체크됨)
-		      const selectedArr = document.querySelector('input[name="arrFareType"]:checked');
-		      if (selectedArr) {
-		        total += parseInt(selectedArr.dataset.price || "0");
-		      }
-		
-		      // 합산한 totalPrice를 hidden input에 저장
-		      document.getElementById("totalPrice").value = total;
-		    });
-		  });
-		});
+			  const allFareRadios = document.querySelectorAll('input[name="depFareType"], input[name="arrFareType"]');
+
+			  allFareRadios.forEach(radio => {
+			    radio.addEventListener("change", () => {
+			      let total = 0;
+
+			      const selectedDep = document.querySelector('input[name="depFareType"]:checked');
+			      if (selectedDep) {
+			        total += parseInt(selectedDep.value || "0");
+			      }
+
+			      const selectedArr = document.querySelector('input[name="arrFareType"]:checked');
+			      if (selectedArr) {
+			        total += parseInt(selectedArr.value || "0");
+			      }
+
+			      document.getElementById("totalPrice").value = total;
+			    });
+			  });
+			});
 		</script> 
 
 
