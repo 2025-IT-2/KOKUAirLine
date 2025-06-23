@@ -139,6 +139,10 @@ body {
   outline: none;
 }
 
+input.uppercase {
+  text-transform: uppercase;
+}
+
 /* 생년월일 */
 .birth {
   display: flex;
@@ -218,6 +222,11 @@ body {
   border-color: #4a90e2;
   outline: none;
 }
+
+input.passport {
+  text-transform: uppercase;
+}
+
 /* 탑승객 정보 폼 변경 끝 */
 
 
