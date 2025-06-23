@@ -44,7 +44,7 @@ public class ApiTest {
         try {
             String apiUrl = "https://apis.data.go.kr/B551177/statusOfAllFltDeOdp/getFltDeparturesDeOdp"
                 + "?serviceKey=RXojluH%2BtgWvwW%2B6087NqGyn%2BB0u45bD%2BEPbNu4fyLBAAv3Chk%2FnL9r1gYBcYRhB3tyyBGVXUIkYtqPoIztHvA%3D%3D"
-                + "&searchDate=20250617"
+                + "&searchDate=20250624"
                 + "&numOfRows=50"
                 + "&passengerOrCargo=P"
                 + "&type=xml";
