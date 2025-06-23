@@ -3,6 +3,7 @@ package com.KOKUAirLine.project.controller;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.KOKUAirLine.project.model.AirportInfo;
 import com.KOKUAirLine.project.model.FlightInfo;
+import com.KOKUAirLine.project.model.FlightWithPriceRate;
 import com.KOKUAirLine.project.model.TicketPrice;
 import com.KOKUAirLine.project.repo.TicketPriceRepo;
 import com.KOKUAirLine.project.service.FlightService;
@@ -26,6 +28,8 @@ import com.KOKUAirLine.project.service.TicketPriceService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 
 @Controller
 public class ReservationCheckPriceController {
@@ -63,10 +67,12 @@ public class ReservationCheckPriceController {
 	    @RequestParam("childCount") int childCount,
 	    @RequestParam("infantCount") int infantCount,
 	    
-	    
+	    HttpSession session,
 
 	    Model model
 	) throws Exception {
+		session.setAttribute("departureAirport", dep);
+		
 		
 		System.out.println(dep + "\n" + arr + "\n" + departureDate
 				+ "\n" + arrivalDate
@@ -97,7 +103,21 @@ public class ReservationCheckPriceController {
 	    String airportArr = arr.substring(arr.lastIndexOf("/") + 2);
 	    
 	    List<FlightInfo> depFlights = flightService.searchFlights(airportDep, airportArr, dDate, aDate);
-	    model.addAttribute("flights", depFlights);
+
+	    List<FlightWithPriceRate> flightsWithPrice = new ArrayList<>();
+
+	    for (FlightInfo flight : depFlights) {
+	        Calendar cal = Calendar.getInstance();
+	        cal.setTime(flight.getDepartureTime());
+	        int hour = cal.get(Calendar.HOUR_OF_DAY);
+
+	        float rate = (hour < 6 || hour >= 12) ? 0.8f : 1.0f;
+
+	        FlightWithPriceRate flightData = new FlightWithPriceRate(flight, rate);
+	        flightsWithPrice.add(flightData);
+	    }
+
+	    model.addAttribute("flightsWithPrice", flightsWithPrice);
 	    
 	    Date ddDate = (arrivalDate != null && !arrivalDate.isEmpty()) ? formatter.parse(arrivalDate) : null;
 	    Date aaDate = null;
@@ -119,7 +139,21 @@ public class ReservationCheckPriceController {
 
 	    
 	    List<FlightInfo> arrFlights = flightService.searchFlights(airportArr, airportDep, dDate, aDate);
-	    model.addAttribute("arrFlights", arrFlights);
+	    
+	    List<FlightWithPriceRate> aflightsWithPrice = new ArrayList<>();
+
+	    for (FlightInfo flight : arrFlights) {
+	        Calendar cal = Calendar.getInstance();
+	        cal.setTime(flight.getDepartureTime());
+	        int hour = cal.get(Calendar.HOUR_OF_DAY);
+
+	        float rate = (hour < 6 || hour >= 12) ? 0.8f : 1.0f;
+
+	        FlightWithPriceRate flightData = new FlightWithPriceRate(flight, rate);
+	        aflightsWithPrice.add(flightData);
+	    }
+
+	    model.addAttribute("aflightsWithPrice", aflightsWithPrice);
 	    
 	    LocalTime departureTime;
 	    if (departureTimeStr != null && !departureTimeStr.isEmpty()) {
@@ -154,8 +188,6 @@ public class ReservationCheckPriceController {
 	    
     	return "reservationCheckPrice"; // => /WEB-INF/views/reservationCheckPrice.jsp
     }
-	
-	
 	
 	
 
