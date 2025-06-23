@@ -12,9 +12,18 @@
     <%@ include file="header.jsp" %>
 
     <!-- 이미지 영역 -->
-    <div class="chatgpt-image-wrapper">
+	<div class="parentbox">
+	<div class="background-overlay" id=backgroundOverlay></div>
+    <div class="home-image-slide" id="makeImg">
       <img src="<c:url value='/img/homepageImage.png' />" alt="Main Visual" />
+      <img src="<c:url value='/img/homepageImage1.png' />" alt="Main Visual" />
+      <img src="<c:url value='/img/homepageImage2.png' />" alt="Main Visual" />
+      <img src="<c:url value='/img/homepageImage3.png' />" alt="Main Visual" />
+      <img src="<c:url value='/img/homepageImage4.png' />" alt="Main Visual" />
+      <img src="<c:url value='/img/homepageImage5.png' />" alt="Main Visual" />
+      <img src="<c:url value='/img/homepageImage6.png' />" alt="Main Visual" />
     </div>
+	</div>
 
     <!-- 상품 리스트 영역 -->
     <div>
@@ -55,5 +64,35 @@
 	</div>
     
     <script src="/js/home.js"></script>
+	
+	<!--홈 슬라이드용-->
+	<script>
+	  const images = document.querySelectorAll('#makeImg img');
+	  const background = document.getElementById('backgroundOverlay');
+	  let current = 0;
+	  const total = images.length;
+
+	  function showSlide(index) {
+	    images.forEach((img, i) => {
+	      img.classList.remove('active');
+	    });
+
+	    const currentImg = images[index];
+	    currentImg.classList.add('active');
+	    background.style.backgroundImage = `url(${currentImg.src})`;
+	  }
+
+	  function nextSlide() {
+	    current = (current + 1) % total;
+	    showSlide(current);
+	  }
+
+	  // 초기 상태
+	  showSlide(current);
+
+	  // 자동 슬라이드 시작
+	  setInterval(nextSlide, 4000); // 4초마다
+	</script>
+	
   </body>
 </html>
