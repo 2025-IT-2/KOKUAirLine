@@ -46,8 +46,10 @@
         </div>
       </form>
 
+      <hr class="separator" />	  
+	  <button class="btn idpw-btn" onclick="openWindow()">ID・PASSWORDを忘れた方はこちら</button>
+	  
       <hr class="separator" />
-
       <p class="signup-question">まだ会員ではありませんか？</p>
       <form id="registerBtn" action="/signin" method="get">
         <button type="submit" class="btn signup-btn">会員登録</button>
