@@ -41,6 +41,7 @@ public class TicketPriceService {
     
     public String getTimeCategory(LocalTime departureTime) {
         int hour = departureTime.getHour();
+        System.out.println("출발 시간 hour: " + hour);
 
         if (hour >= 1 && hour <= 5) {
             return "dawn";
