@@ -64,19 +64,72 @@ public class DataIntegrationTest {
 
         // 기내식 이름을 가져와서 사용
         FlightInfo flight1 = new FlightInfo(
-            "KOKU123", beefMeal, "東京",
+            "KOKU123", beefMeal, "NRT",
             depDate1, depDate1, 1,
-            "大阪", arrDate1, arrDate1, 2,
+            "MNL", arrDate1, arrDate1, 2,
             100, 180, 300
         );
 
         FlightInfo flight2 = new FlightInfo(
-            "KOKU456", chickenMeal, "大阪",
+            "KOKU456", chickenMeal, "MNL",
             depDate2, depDate2, 1,
-            "東京", arrDate2, arrDate2, 1,
+            "NRT", arrDate2, arrDate2, 1,
             75, 150, 301
         );
-        flightInfoRepo.saveAll(List.of(flight1, flight2));
+        
+     // 3. 추가 항공편
+        LocalDateTime departure3 = LocalDateTime.of(2025, 7, 1, 9, 45);
+        LocalDateTime arrival3 = LocalDateTime.of(2025, 7, 1, 13, 30);
+        Date depDate3 = Date.from(departure3.atZone(ZoneId.systemDefault()).toInstant());
+        Date arrDate3 = Date.from(arrival3.atZone(ZoneId.systemDefault()).toInstant());
+
+        FlightInfo flight3 = new FlightInfo(
+            "KOKU789", beefMeal, "NRT",
+            depDate3, depDate3, 2,
+            "MNL", arrDate3, arrDate3, 1,
+            50, 180, 302
+        );
+
+        LocalDateTime departure4 = LocalDateTime.of(2025, 7, 4, 19, 10);
+        LocalDateTime arrival4 = LocalDateTime.of(2025, 7, 4, 23, 0);
+        Date depDate4 = Date.from(departure4.atZone(ZoneId.systemDefault()).toInstant());
+        Date arrDate4 = Date.from(arrival4.atZone(ZoneId.systemDefault()).toInstant());
+
+        FlightInfo flight4 = new FlightInfo(
+            "KOKU987", chickenMeal, "MNL",
+            depDate4, depDate4, 1,
+            "NRT", arrDate4, arrDate4, 2,
+            80, 160, 303
+        );
+
+        LocalDateTime departure5 = LocalDateTime.of(2025, 7, 1, 6, 30);
+        LocalDateTime arrival5 = LocalDateTime.of(2025, 7, 1, 10, 15);
+        Date depDate5 = Date.from(departure5.atZone(ZoneId.systemDefault()).toInstant());
+        Date arrDate5 = Date.from(arrival5.atZone(ZoneId.systemDefault()).toInstant());
+
+        FlightInfo flight5 = new FlightInfo(
+            "KOKU654", beefMeal, "NRT",
+            depDate5, depDate5, 2,
+            "MNL", arrDate5, arrDate5, 1,
+            60, 170, 304
+        );
+
+        LocalDateTime departure6 = LocalDateTime.of(2025, 7, 4, 21, 0);
+        LocalDateTime arrival6 = LocalDateTime.of(2025, 7, 4, 0, 45);
+        Date depDate6 = Date.from(departure6.atZone(ZoneId.systemDefault()).toInstant());
+        Date arrDate6 = Date.from(arrival6.atZone(ZoneId.systemDefault()).toInstant());
+
+        FlightInfo flight6 = new FlightInfo(
+            "KOKU321", chickenMeal, "MNL",
+            depDate6, depDate6, 1,
+            "NRT", arrDate6, arrDate6, 2,
+            90, 160, 305
+        );
+
+        // 저장
+        
+
+        flightInfoRepo.saveAll(List.of(flight1, flight2, flight3, flight4, flight5, flight6));
 
         // 4. 예약 저장 (먼저)
         Reservation res1 = new Reservation(null, flight1, user1,

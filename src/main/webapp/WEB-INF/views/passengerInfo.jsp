@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
     <link rel="stylesheet" href="<c:url value='/css/passengerInfo.css'/>"/>
+
     <title>搭乗者情報入力</title>
   </head>
   <body>
