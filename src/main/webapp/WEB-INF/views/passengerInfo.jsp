@@ -16,7 +16,7 @@
     <form action="/submitPassengerInfo" method="post">     
       <div class="screen">
         <!-- 제목 -->        
-        <h2 class="title">搭乗者情報</h2>
+        <h2 class="title"><ruby><rb>搭乗者情報</rb><rt>とうじょうしゃじょうほう</rt></ruby></h2>
         
         <!-- 숨겨진 input: 인원수 전달용 -->
         <input type="hidden" name="adultCount" value="${adultCount}">
@@ -52,7 +52,7 @@
             <!-- 최하단 부모 컨테이너 -->
             <div class="container">
               <!-- 예약자 연락처 -->        
-              <div class="Reservation-PhoneNumber">予約者<br />連絡先</div>
+              <div class="Reservation-PhoneNumber"><ruby><rb>予約者</rb><rt>よやくしゃ</rt></ruby><ruby><rb>連絡先</rb><rt>れんらくさき</rt></ruby></div>
               <div class="PhoneNumber">
               <input
                 type="tel"
@@ -80,7 +80,9 @@
               </div>
 
               <!-- 결정 버튼 -->
-              <button type="submit" class="text-wrapper-15">決定</button>                
+			  <div id=finishbtn>
+              <button type="submit" class="text-wrapper-15"><ruby><rb>決定</rb><rt>けってい</rt></ruby></button>                
+            </div>
             </div>
           </div>
         </div>          

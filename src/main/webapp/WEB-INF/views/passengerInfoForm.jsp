@@ -26,10 +26,10 @@
     <div class="card2-group">
     <!-- 성명 입력 -->
     <div class="card2">
-      <div class="card-title">名前</div>
+      <div class="card-title"><ruby><rb>名前</rb><rt>なまえ</rt></ruby></div>
       <div class="name">
         <label>
-          名
+          <ruby><rb>名前</rb><rt>なまえ</rt></ruby>
           <input 
             type="text" 
             class="uppercase"
@@ -40,7 +40,7 @@
         </label>
         
         <label>
-          姓
+          <ruby><rb>苗字</rb><rt>みょうじ</rt></ruby>
           <input 
             type="text"
             class="uppercase"
@@ -55,7 +55,7 @@
 
     <!-- 생년월일 입력 -->
     <div class="card2">
-      <div class="card-title">生年月日</div>
+      <div class="card-title"><ruby><rb>生年月日</rb><rt>せいねんがっぴ</rt></ruby></div>
       <div class="birth">
         <input 
           type="date" 
@@ -68,7 +68,7 @@
 
     <!-- 성별 입력 -->
     <div class="card2">
-      <div class="card-title">性別</div>
+      <div class="card-title"><ruby><rb>性別</rb><rt>せいべつ</rt></ruby></div>
       <div class="gender">
         <label class="radio-label">
           <input 
@@ -93,11 +93,11 @@
 
     <!-- 여권 정보 입력 -->
     <div class="card2">
-      <div class="card-title">パスポート情報</div>
+      <div class="card-title">パスポート<ruby><rb>情報</rb><rt>じょうほう</rt></ruby></div>
       
       <div class="passport">
         <label>
-          パスポート番号
+          パスポート<ruby><rb>番号</rb><rt>ばんごう</rt></ruby>
           <input 
             type="text"
             class="passport"
@@ -109,7 +109,7 @@
         </label>
 
         <label>
-          有効期限
+          <ruby><rb>有効期間</rb><rt>ゆうこうきかん</rt></ruby>
           <input 
             type="date" 
             id="${param.type}_passportExpiry${param.index}" 
@@ -118,7 +118,7 @@
         </label>
 
         <label>
-          国籍
+          <ruby><rb>国籍</rb><rt>こくせき</rt></ruby>
           <input 
             type="text" 
             id="${param.type}_nationality${param.index}" 
@@ -128,7 +128,7 @@
         </label>
 
         <label>
-          発行国
+          <ruby><rb>発行局</rb><rt>はっこうきょく</rt></ruby>
           <input 
             type="text" 
             id="${param.type}_passportCountry${param.index}" 

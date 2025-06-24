@@ -16,13 +16,13 @@
       <table class="checkin-table">
         <thead>
           <tr>
-            <th>予約番号</th>
-            <th>出発日</th>
-            <th>出発地</th>
-            <th>到着地</th>
-            <th>出発時間</th>
-            <th>到着時間</th>
-            <th>航空会社</th>
+            <th><ruby><rb>予約番号</rb><rt>よやくばんごう</rt></ruby></th>
+            <th><ruby><rb>出発日</rb><rt>しゅっぱつび</rt></ruby></th>
+            <th><ruby><rb>出発地</rb><rt>しゅっぱつち</rt></ruby></th>
+            <th><ruby><rb>到着地</rb><rt>とうちゃくち</rt></ruby></th>
+            <th><ruby><rb>出発時間</rb><rt>しゅっぱつじかん</rt></ruby></th>
+            <th><ruby><rb>到着時間</rb><rt>とうちゃくじかん</rt></ruby></th>
+            <th><ruby><rb>航空会社</rb><rt>こうくうがいしゃ</rt></ruby></th>
           </tr>
         </thead>
         <tbody>
