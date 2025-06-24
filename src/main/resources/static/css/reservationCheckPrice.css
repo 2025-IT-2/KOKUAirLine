@@ -60,17 +60,22 @@ body {
 
 /* 확인 버튼 */
 .confirm-button button {
-  position: absolute;
-  right: 1;
-  bottom: 0;
-  
-  padding: 10px 20px;
+  padding: 12px 32px;
   font-size: 16px;
   background-color: #444;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* 확인 버튼 박스 */
+.confirm-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;       /* 버튼 위 여백 넉넉히 */
+  padding-right: 40px;    /* 오른쪽에서 너무 붙지 않도록 여백 추가 */
 }
 
 /* 비행기 옵션 박스 */
@@ -264,13 +269,6 @@ body {
   color: #333;
   border-left: 4px solid #007bff;
   padding-left: 3px;
-}
-
-/* 확인 버튼 박스 */
-.confirm-button {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
 }
 
 /* 출국, 귀국 편 박스 레이아웃 */

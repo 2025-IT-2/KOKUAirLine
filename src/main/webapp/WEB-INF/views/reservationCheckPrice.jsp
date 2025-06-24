@@ -218,6 +218,10 @@
           </div>
         </div>
       </c:if>
+      <!-- 제출 버튼 -->
+            <div class="confirm-button">
+               <button type="submit">予約確認</button>
+            </div>
     </div>
             
 	    <!-- 필수 파라미터 hidden input으로 추가 -->
@@ -233,10 +237,7 @@
 			<input type="hidden" id="totalPrice" name="totalPrice" value="" />
 
 
-            <!-- 제출 버튼 -->
-            <div class="confirm-button">
-               <button type="submit">예약 확인</button>
-            </div>
+            
 
          </form>
    </div>
