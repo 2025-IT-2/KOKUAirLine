@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,10 +22,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor 
 public class PaymentInfo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PAYMENTID") 		// 고유 PK
-    private Long paymentId;				// 결제ID 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payment_seq_gen")
+	@SequenceGenerator(name = "payment_seq_gen", sequenceName = "PAYMENT_SEQ", allocationSize = 1)
+	@Column(name = "PAYMENT_ID")  // 대소문자 및 언더스코어 정확히 맞추기
+	private Long paymentId;				// 결제ID 
     
     @ManyToOne
     @JoinColumn(name = "RESINUM")
