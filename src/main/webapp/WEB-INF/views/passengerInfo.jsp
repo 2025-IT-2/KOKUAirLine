@@ -32,7 +32,9 @@
 		<input type="hidden" name="selectedFlightNo" value="${param.selectedFlightNo}" />
 		<input type="hidden" name="arrivalFlightNo" value="${param.arrivalFlightNo}" />
 		<input type="hidden" name="flightMealYN" value="Y" />
-        
+		<input type="hidden" name="depAirFare" id="depAirFare" />
+		<input type="hidden" name="arrAirFare" id="arrAirFare" />        
+ 
         
         <div class="overlap-wrapper">
           <div class="overlap">

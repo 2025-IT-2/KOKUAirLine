@@ -232,8 +232,10 @@
 			<input type="hidden" name="classType" value="${param.classType}" />
 			<input type="hidden" id="totalPrice" name="totalPrice" value="" />
 			<input type="hidden" name="selectedFlightNo" value="${param.selectedFlightNo}" />
-			<input type="hidden" name="arrivalFlightNo" value="${param.arrivalFlightNo}" />	
+			<input type="hidden" name="arrivalFlightNo" value="${param.arrivalFlightNo}" />
 			<input type="hidden" name="flightMealYN" value="Y" />
+			<input type="hidden" name="depAirFare" id="depAirFare" />
+			<input type="hidden" name="arrAirFare" id="arrAirFare" /> 
 
 			
 
@@ -275,6 +277,24 @@
 			    });
 			  });
 			});
+		
+			document.addEventListener("DOMContentLoaded", function () {
+			  const depRadios = document.querySelectorAll('input[name="depFareType"]');
+			  const arrRadios = document.querySelectorAll('input[name="arrFareType"]');
+			  
+			  depRadios.forEach(radio => {
+			    radio.addEventListener("change", function () {
+			      document.getElementById("depAirFare").value = this.value;
+			    });
+			  });
+
+			  arrRadios.forEach(radio => {
+			    radio.addEventListener("change", function () {
+			      document.getElementById("arrAirFare").value = this.value;
+			    });
+			  });
+			});
+		
 		</script> 
 		
 		<script>

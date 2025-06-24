@@ -7,14 +7,17 @@ import org.springframework.stereotype.Service;
 
 import com.KOKUAirLine.project.model.FlightInfo;
 import com.KOKUAirLine.project.model.PassportInfo;
+import com.KOKUAirLine.project.model.PaymentInfo;
 import com.KOKUAirLine.project.model.Reservation;
 import com.KOKUAirLine.project.model.UserInfo;
 import com.KOKUAirLine.project.repo.FlightInfoRepository;
 import com.KOKUAirLine.project.repo.PassportInfoRepository;
+import com.KOKUAirLine.project.repo.PaymentInfoRepo;
 import com.KOKUAirLine.project.repo.ReservationRepo;
 import com.KOKUAirLine.project.repo.UserInfoRepo;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.transaction.Transactional;
 
 @Service
 public class PassengerInfoService {
@@ -33,6 +36,9 @@ public class PassengerInfoService {
 
     @Autowired
     private FlightInfoRepository flightInfoRepo;
+    
+    @Autowired
+    private PaymentInfoRepo paymentInfoRepo;
     
     // 로그인 유저의 전화번호 조회
     public String getPhoneNumberByUserId(String userId) {       
@@ -70,6 +76,7 @@ public class PassengerInfoService {
     }
     
     // 예약 정보 저장 공통 메서드    
+    @Transactional
     public void saveReservationInfo(HttpServletRequest request, String userId) {
         // 사용자 정보 조회
         UserInfo user = userInfoRepo.searchUserById(userId);
@@ -79,19 +86,21 @@ public class PassengerInfoService {
         int childCount = Integer.parseInt(request.getParameter("childCount"));
         int infantCount = Integer.parseInt(request.getParameter("infantCount"));
 
-        // 좌석 등급
+        // 좌석 등급 및 기내식 여부
         String classType = request.getParameter("classType");
-
-        // 기내식 여부
         String meal = request.getParameter("flightMealYN");
 
-        // ✈️ 출발편 저장
+        // 예약 객체 선언
+        Reservation depReservation = null;
+        Reservation arrReservation = null;
+
+        // ✈️ 출발편 예약 저장
         String depFlightNo = request.getParameter("selectedFlightNo");
         if (depFlightNo != null && !depFlightNo.isBlank()) {
             FlightInfo depFlight = flightInfoRepo.findFlightInfoByFlightNo(depFlightNo)
                 .orElseThrow(() -> new IllegalArgumentException("출발 항공편을 찾을 수 없습니다: " + depFlightNo));
 
-            Reservation depReservation = new Reservation();
+            depReservation = new Reservation();
             depReservation.setFlightInfo(depFlight);
             depReservation.setReservationHolder(user);
             depReservation.setResNumL(adultCount);
@@ -105,13 +114,13 @@ public class PassengerInfoService {
             reservationRepo.save(depReservation);
         }
 
-        // ✈️ 도착편 저장
+        // ✈️ 도착편 예약 저장
         String arrFlightNo = request.getParameter("arrivalFlightNo");
         if (arrFlightNo != null && !arrFlightNo.isBlank()) {
             FlightInfo arrFlight = flightInfoRepo.findFlightInfoByFlightNo(arrFlightNo)
                 .orElseThrow(() -> new IllegalArgumentException("도착 항공편을 찾을 수 없습니다: " + arrFlightNo));
 
-            Reservation arrReservation = new Reservation();
+            arrReservation = new Reservation();
             arrReservation.setFlightInfo(arrFlight);
             arrReservation.setReservationHolder(user);
             arrReservation.setResNumL(adultCount);
@@ -124,6 +133,42 @@ public class PassengerInfoService {
 
             reservationRepo.save(arrReservation);
         }
-    }             
+
+        // 💳 출발편 결제정보 저장
+        if (depReservation != null) {
+            String depFareStr = request.getParameter("depAirFare");
+            int depFare = depFareStr != null && !depFareStr.isBlank() ? Integer.parseInt(depFareStr) : 0;
+
+            PaymentInfo depPayment = new PaymentInfo();
+            depPayment.setReservation(depReservation);
+            depPayment.setAirFare(depFare);
+            depPayment.setFuelSurcharge(0);
+            depPayment.setTaxCharge(0);
+            depPayment.setServiceCharge(0);
+            depPayment.setTravelerInsur(0);
+            depPayment.setTotalFare(depFare);
+            depPayment.setPaymentStat(1);
+
+            paymentInfoRepo.save(depPayment);
+        }
+
+        // 💳 도착편 결제정보 저장
+        if (arrReservation != null) {
+            String arrFareStr = request.getParameter("arrAirFare");
+            int arrFare = arrFareStr != null && !arrFareStr.isBlank() ? Integer.parseInt(arrFareStr) : 0;
+
+            PaymentInfo arrPayment = new PaymentInfo();
+            arrPayment.setReservation(arrReservation);
+            arrPayment.setAirFare(arrFare);
+            arrPayment.setFuelSurcharge(0);
+            arrPayment.setTaxCharge(0);
+            arrPayment.setServiceCharge(0);
+            arrPayment.setTravelerInsur(0);
+            arrPayment.setTotalFare(arrFare);
+            arrPayment.setPaymentStat(1);
+
+            paymentInfoRepo.save(arrPayment);
+        }
+    }
 }
 
