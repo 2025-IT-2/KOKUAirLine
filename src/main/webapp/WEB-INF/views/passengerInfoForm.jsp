@@ -32,19 +32,21 @@
           名
           <input 
             type="text" 
+            class="uppercase"
             id="${param.type}_engFirstName${param.index}" 
             name="${param.type}_engFirstName${param.index}" 
-            placeholder="お名を入力してください。 ex.Hiroko"
+            placeholder="例：HIROKO"
           >
         </label>
         
         <label>
           姓
           <input 
-            type="text" 
+            type="text"
+            class="uppercase"
             id="${param.type}_engLastName${param.index}" 
             name="${param.type}_engLastName${param.index}" 
-            placeholder="お姓を入力してください。 ex.Sato"
+            placeholder="例：SATO"
           >
         </label>
 
@@ -97,10 +99,12 @@
         <label>
           パスポート番号
           <input 
-            type="text" 
+            type="text"
+            class="passport"
+            maxlength="9" 
             id="${param.type}_passportNumber${param.index}" 
             name="${param.type}_passportNumber${param.index}" 
-            placeholder="パスポート番号を入力してください"
+            placeholder="パスポート番号（最大9桁）"
           >
         </label>
 
@@ -110,7 +114,6 @@
             type="date" 
             id="${param.type}_passportExpiry${param.index}" 
             name="${param.type}_passportExpiry${param.index}"
-            value="1990-01-01"
           >
         </label>
 

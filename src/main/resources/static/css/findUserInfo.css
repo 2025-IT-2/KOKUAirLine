@@ -1,0 +1,91 @@
+/*확대 축소 막음*/
+html, body {
+    zoom: 100%;
+    -webkit-text-size-adjust: 100%; /* 모바일 확대 방지 */
+    touch-action: manipulation;
+}
+
+/* 전체 배경 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f2f4f8;
+    margin: 0;
+    padding: 0;
+}
+
+/* 팝업 박스 */
+.popup-container {
+    width: 400px;
+    margin: 60px auto;
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 */
+.popup-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* 라벨 */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* 입력창 */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* 버튼 */
+button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* 결과 박스 */
+.result {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #f0f8ff;
+    border-left: 4px solid #007bff;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* 에러 메시지 */
+.result p {
+    margin: 5px 0;
+}
