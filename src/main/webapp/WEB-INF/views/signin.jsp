@@ -39,7 +39,7 @@
     <form:input path="userFirstName" type="text" id="firstname" name="firstname" placeholder="英語で入力してください"/>
     <form:errors path="userFirstName" cssClass="error-message" />
 
-    <label for="lastname"><ruby><rb>苗字</rb><rt>みょうじ</rt></ruby></label>
+    <label for="lastname"><ruby><rb>姓</rb><rt>せい</rt></ruby></label>
     <form:input path="userLastName" type="text" id="lastname" name="lastname" placeholder="英語で入力してください"/>
     <form:errors path="userLastName" cssClass="error-message" />
 
