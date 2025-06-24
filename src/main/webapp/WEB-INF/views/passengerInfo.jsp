@@ -22,6 +22,17 @@
         <input type="hidden" name="adultCount" value="${adultCount}">
         <input type="hidden" name="childCount" value="${childCount}">
         <input type="hidden" name="infantCount" value="${infantCount}">
+       	<input type="hidden" name="departureAirport" value="${param.departureAirport}" />
+		<input type="hidden" name="arrivalAirport" value="${param.arrivalAirport}" />
+		<input type="hidden" name="tripType" value="${param.tripType}" />
+		<input type="hidden" name="departureDate" value="${param.departureDate}" />
+		<input type="hidden" name="arrivalDate" value="${param.arrivalDate}" />
+		<input type="hidden" name="classType" value="${param.classType}" />
+		<input type="hidden" id="totalPrice" name="totalPrice" value="" />
+		<input type="hidden" name="selectedFlightNo" value="${param.selectedFlightNo}" />
+		<input type="hidden" name="arrivalFlightNo" value="${param.arrivalFlightNo}" />
+		<input type="hidden" name="flightMealYN" value="Y" />
+        
         
         <div class="overlap-wrapper">
           <div class="overlap">
@@ -68,14 +79,14 @@
               <!-- 금액 표시창 -->
               <div class="box">
                 <div class="element">
-				 <c:choose>
-				   <c:when test="${not empty totalPrice and totalPrice > 0}">
-				     <fmt:formatNumber value="${totalPrice}" type="number" groupingUsed="true" /> 円
-				   </c:when>
-				   <c:otherwise>
-				     0 円
-				   </c:otherwise>
-				 </c:choose>
+                  <c:choose>
+                    <c:when test="${not empty totalPrice and totalPrice > 0}">
+                      <fmt:formatNumber value="${totalPrice}" type="number" groupingUsed="true" /> 円
+                    </c:when>
+                    <c:otherwise>
+                      0 円
+                    </c:otherwise>
+                  </c:choose>
                 </div>
               </div>
 
@@ -113,16 +124,20 @@
         const maxInfantBirth = new Date(today);
         maxInfantBirth.setFullYear(today.getFullYear() - 2);
 
-        // 여권 만료일 min/max 계산
-        const minExpiry = new Date(today);
-        minExpiry.setMonth(minExpiry.getMonth() + 3 , minExpiry.getDay() + 10);
+        // 여권 만료일 min/max 계산 (날짜만 비교를 위해 stripTime 적용)
+        function stripTime(date) {
+          return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        }
 
-        const maxExpiry = new Date(today);
+        const minExpiry = stripTime(new Date(today));
+        minExpiry.setMonth(minExpiry.getMonth() + 3);
+
+        const maxExpiry = stripTime(new Date(today));
         maxExpiry.setFullYear(maxExpiry.getFullYear() + 10);
 
+        // 문자열 포맷 (yyyy-MM-dd)로 필요한 경우
         const minExpiryStr = minExpiry.toISOString().split("T")[0];
         const maxExpiryStr = maxExpiry.toISOString().split("T")[0];
-        const maxBirthStr = maxBirthDate.toISOString().split("T")[0];
 
         // 여권 만료일 input 설정 (min, max, default)
         document.querySelectorAll("input[type='date'][id*='passportExpiry']").forEach(input => {
@@ -210,14 +225,17 @@
             }
 
             // 4. 여권 만료일 범위 검사
-            if (name.includes("passportExpiry")) {
-              const expiryDate = new Date(value);
-              if (expiryDate < minExpiry || expiryDate > maxExpiry) {
+            function validatePassportExpiry(value, name, input, e) {
+              const inputDate = stripTime(new Date(value)); // 입력값에서 시간 제거
+
+              if (inputDate <= minExpiry || inputDate > maxExpiry) {
                 alert(`${name} は本日から3ヶ月以降、10年以内の日付を入力してください。`);
                 input.focus();
                 e.preventDefault();
                 return false;
               }
+
+              return true;
             }
             
             // 5. 여권 번호 9자리만 가능
