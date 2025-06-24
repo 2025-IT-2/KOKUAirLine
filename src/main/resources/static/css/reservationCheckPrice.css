@@ -70,12 +70,17 @@ body {
   transition: background-color 0.3s;
 }
 
+/* 확인 버튼 반짝반짝 옵션 추가 */
+.confirm-button button:hover {
+  background-color: #333;
+}
+
 /* 확인 버튼 박스 */
 .confirm-button {
   display: flex;
   justify-content: flex-end;
-  margin-top: 40px;       /* 버튼 위 여백 넉넉히 */
-  padding-right: 40px;    /* 오른쪽에서 너무 붙지 않도록 여백 추가 */
+  margin-top: 20px;       /* 버튼 위 여백 넉넉히 */
+  padding-right: 0px;
 }
 
 /* 비행기 옵션 박스 */
