@@ -55,7 +55,7 @@ public class ReservationDataTest {
         reservationRepo.save(res1);
         reservationRepo.save(res2);
 
-        // 2. 결제 저장
+         //2. 결제 저장
         PaymentInfo payment1 = new PaymentInfo(null, res1, flight1.getFlightMeal(),
                 100000, 10000, 2000, 500, 1500, 114000, 1);
         PaymentInfo payment2 = new PaymentInfo(null, res2, flight2.getFlightMeal(),

@@ -3,6 +3,8 @@ package com.KOKUAirLine.project.model;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -46,13 +48,19 @@ public class Reservation {
 	@Column(name = "RESDATE")	
 	private LocalDate resDate;    	// 예매일자
 	
-	@Column(name = "FLIGHTmEALYN")	
+	@Column(name = "FLIGHTMEALYN")	
 	private String flightMealYN;	// 기내식신청여부
-	
+
+	@Column(name = "CLASSTYPE")
 	private String classType; // 좌석 등급
+
+	@Column(name = "CANCELSTEP")
+	@Enumerated(EnumType.STRING)
+	private CancelStatus cancelStep;		// 취소진행상태
 	
-	@Column(name = "CANCELSTEP")	
-	private String cancelStep;		// 취소진행상태
+	public enum CancelStatus {
+	    예약완료, 취소요청, 취소완료
+	}	
 	
     // Getters and Setters 생략 가능 (Lombok @Data 사용 가능)	
 }

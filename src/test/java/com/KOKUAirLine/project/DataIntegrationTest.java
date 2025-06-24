@@ -131,7 +131,7 @@ public class DataIntegrationTest {
 
         flightInfoRepo.saveAll(List.of(flight1, flight2, flight3, flight4, flight5, flight6));
 
-        // 4. 예약 저장 (먼저)
+         4. 예약 저장 (먼저)
         Reservation res1 = new Reservation(null, flight1, user1,
                 1, 0, 0, LocalDate.now(), "Y", "eco-spec", "완료");
 
