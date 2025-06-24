@@ -18,10 +18,11 @@
 
     <!-- 왼쪽: 예약 목록 -->
     <div class="left-panel">
-      <h2 class="title">予約確認</h2>
+      <h2 class="title"><ruby><rb>予約確認</rb><rt>よやくかくにん</rt></ruby></h2>
       <div class="notice">
-        <h4>注意事項 :</h4>
-        <p>※ 航空券の払い戻しは不可の場合があります。<br> 搭乗時間の2時間前までにチェックインしてください。</p>
+        <h4><ruby><rb>注意事項</rb><rt>ちゅういじこう</rt></ruby> :</h4>
+        <p>※ <ruby><rb>航空券</rb><rt>こうくうけん</rt></ruby>の<ruby><rb>払</rb><rt>はら</rt></ruby>い<ruby><rb>戻</rb><rt>もど</rt></ruby>しは<ruby><rb>不可</rb><rt>ふか</rt></ruby>の<ruby><rb>場合</rb><rt>ばあい</rt></ruby>があります。
+			<br> <ruby><rb>搭乗時間</rb><rt>とうじょうじかん</rt></ruby>の2<ruby><rb>時間前</rb><rt>じかんまえ</rt></ruby>までにチェックインしてください。</p>
 		<!--한국어 원문 : 항공권은 환불 불가일 수 있으며, 탑승 시간 2시간 전까지 체크인 바랍니다.-->
       </div>
       <div class="view-wrapper">
@@ -29,7 +30,7 @@
 		  <c:choose>
 		    <c:when test="${empty resList}">
 		      <p style="text-align: center; font-size: 1.2em; color: gray; margin-top: 50px;">
-		        予約履歴がありません。
+		        <div><ruby><rb>予約履歴</rb><rt>よやくりれき</rt></ruby>がありません。
 		      </p>
 		    </c:when>
 		    <c:otherwise>
@@ -44,20 +45,21 @@
 	                  <div class="airport">${reservation.flightInfo.arrival}</div>
 	                </div>
 	                <div class="details">
-	                  <div>航空会社: 空港団</div>
-	                  <div>機内食: ${reservation.flightMealYN}</div>
-	                  <div>座席クラス: ${reservation.classType}</div>
-	                  <div>出発日: ${reservation.flightInfo.departureDate} / 到着日: ${reservation.flightInfo.arrivalDate}</div>
+	                  <div><ruby><rb>航空会社</rb><rt>こうくうがいしゃ</rt></ruby>: 空港団</div>
+	                  <div><ruby><rb>機内食</rb><rt>きないしょく</rt></ruby>: ${reservation.flightMealYN}</div>
+	                  <div><ruby><rb>座席</rb><rt>ざせき</rt></ruby>クラス: ${reservation.classType}</div>
+	                  <div><ruby><rb>出発日</rb><rt>しゅっぱつび</rt></ruby>: ${reservation.flightInfo.departureDate}
+						<br> <ruby><rb>到着日</rb><rt>とうちゃくび</rt></ruby>: ${reservation.flightInfo.arrivalDate}</div>
 	                </div>
 	              </div>
 	            </div>
 	            <div class="summary">
-	              <div>総人数: ${reservation.resNumL + reservation.resNumM + reservation.resNumS}人</div>
-	              <div>合計金額: ${resPayMap[reservation.resiNum].totalFare}ウォン</div>
-	              <div>要約状態: ${reservation.cancelStep}</div>
+	              <div><ruby><rb>総人数</rb><rt>そうにんず</rt></ruby>: ${reservation.resNumL + reservation.resNumM + reservation.resNumS}人</div>
+	              <div><ruby><rb>総額</rb><rt>そうがく</rt></ruby>: ${resPayMap[reservation.resiNum].totalFare}ウォン</div>
+	              <div><ruby><rb>予約状態</rb><rt>よやくじょうたい</rt></ruby>: ${reservation.cancelStep}</div>
 	            </div>
 	            <form onsubmit="return showBoardingPass('${reservation.resiNum}')">
-	              <button id="toboarding" type="submit">ボーディング・パス確認</button>
+	              <button id="toboarding" type="submit">ボーディング・パス<ruby><rb>確認</rb><rt>かくにん</rt></ruby></button>
 	            </form>
             	<hr style="margin: 30px 0;" />
           	</c:forEach>
@@ -71,15 +73,16 @@
     <div class="right-panel">
       <iframe id="boardingFrame" src="" width="100%" height="100%" style="border:none; margin-bottom: 20px;"></iframe>
     </div>
+	
   </div>
 </div>
 
 <script>
-  function showBoardingPass(reservationNumber) {
+ /* function showBoardingPass(reservationNumber) {
     const frame = document.getElementById("boardingFrame");
     frame.src = "<c:url value='/boardingPassInfo'/>?reservationNumber=" + encodeURIComponent(reservationNumber);
     return false; // 폼 전송 방지
-  }
+  }*/
 </script>
 <script>
   function showBoardingPass(reservationNumber) {
