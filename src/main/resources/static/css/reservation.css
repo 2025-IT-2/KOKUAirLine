@@ -195,8 +195,3 @@ h2, h3 {
   background: linear-gradient(to top,  rgb(217, 237, 255), rgb(210, 225, 255));
   transform: translateY(-3px);
 }
-
-.taxfree-t rt{
-	/*후리가나 크기 줄이기*/
-	font-size:8px;
-}
