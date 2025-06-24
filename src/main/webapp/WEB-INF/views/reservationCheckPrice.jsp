@@ -103,7 +103,7 @@
                   <div class="time">
                     ${flightwP.flight.arrivalTime}<br>
                     <span>터미널${flightwP.flight.arrivalTerminal}</span>
-                  </div>
+                  </div> 
                 </div>
                 <div class="flight-details">
                   <div class="flight-info">
