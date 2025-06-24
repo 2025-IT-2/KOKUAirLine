@@ -63,15 +63,21 @@
     </form:select>
     <form:errors path="national" cssClass="error-message" />
 
-    <label for="caldateField"><ruby><rb>生年月日</rb><rt>せいねんがっぴ</rt></ruby></label>
-    <div>
-      <p class="birthinfo"><ruby><rb>会員登録</rb><rt>かいいんとうろく</rt></ruby>は１２<ruby><rb>歳</rb><rt>さい</rt></ruby><ruby><rb>以上</rb><rt>いじょう</rt></ruby><ruby><rb>可能</rb><rt>かのう</rt></ruby></p>
-    </div>
-    <div>
-      <form:input path="birthDate" type="text" id="caldateField" name="birthdate" readonly=""/>
-      <form:errors path="birthDate" cssClass="error-message" />
-    </div>
-
+    <label for="caldateField">
+	  <ruby><rb>生年月日</rb><rt>せいねんがっぴ</rt></ruby>
+		</label>
+		<div>
+		  <p class="birthinfo">
+		    <ruby><rb>会員登録</rb><rt>かいいんとうろく</rt></ruby>は１２
+		    <ruby><rb>歳</rb><rt>さい</rt></ruby>
+		    <ruby><rb>以上</rb><rt>いじょう</rt></ruby>
+		    <ruby><rb>可能</rb><rt>かのう</rt></ruby>
+		  </p>
+		</div>
+		<div>
+		  <form:input path="birthDate" id="caldateField" readonly="true" />
+		  <form:errors path="birthDate" cssClass="error-message" />
+		</div>
 
       <!-- 약관 동의 자리 -->
       <div class="terms-section">
@@ -133,6 +139,23 @@
       loadSectionFromHTML(termsFile, "privacy-policy", "terms-content-6");
     });
   </script>
+  <script>
+	  $(function () {
+	    $("#caldateField").datepicker({
+	      dateFormat: "yy-mm-dd", // LocalDate와 호환
+	      changeYear: true,
+	      changeMonth: true,
+	      yearRange: "1900:2025",
+	      maxDate: "-12Y", // 12세 이상만 선택 가능
+	      defaultDate: "-20Y",
+	      showAnim: "fadeIn"
+	    });
+	
+	    // 일본어 로케일 적용 (이미 i18n/datepicker-ja.min.js를 불러왔으므로)
+	    $.datepicker.setDefaults($.datepicker.regional["ja"]);
+	  });
+	</script>
+  
 </body>
 </html>
 

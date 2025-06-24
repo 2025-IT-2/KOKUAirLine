@@ -29,5 +29,8 @@ interface FlightInfoRepository extends JpaRepository<FlightInfo, String> {
 	
 	@Query("SELECT f FROM FlightInfo f WHERE f.departure = :dep AND f.arrival = :arr AND f.departureDate BETWEEN :dDate AND :aDate")
 	List<FlightInfo> searchFlights(String dep, String arr, Date dDate, Date aDate);
+
+	Optional<FlightInfo> findByFlightNo(String flightNo);	
+	
 }
 
