@@ -60,9 +60,9 @@
          </div>
          <div class="info-box passenger-count">
             <span class="info-text">
-               <ruby class="taxfree-t"><rb>大人</rb><rt>おとな</rt></ruby> ${param.adultCount}・
-               <ruby class="taxfree-t"><rb>小児</rb><rt>しょうに</rt></ruby> ${param.childCount}・
-               <ruby class="taxfree-t"><rb>幼児</rb><rt>ようじ</rt></ruby> ${param.infantCount}
+               <ruby><rb>大人</rb><rt>おとな</rt></ruby> ${param.adultCount}・
+               <ruby><rb>小児</rb><rt>しょうに</rt></ruby> ${param.childCount}・
+               <ruby><rb>幼児</rb><rt>ようじ</rt></ruby> ${param.infantCount}
             </span>
          </div>
          
@@ -71,15 +71,15 @@
          <div class="info-box seat-type">
             <c:choose>
             <c:when test="${param.classType eq 'eco-spec'}">
-            	エコノミー<ruby class="taxfree-t"><rb>特価</rb><rt>とっか</rt></ruby>
+            	エコノミー<ruby><rb>特価</rb><rt>とっか</rt></ruby>
             </c:when>
             <c:when test="${param.classType eq 'eco-norm'}">
-            	エコノミー<ruby class="taxfree-t"><rb>一般</rb><rt>いっぱん</rt></ruby>
+            	エコノミー<ruby><rb>一般</rb><rt>いっぱん</rt></ruby>
             </c:when>
             <c:when test="${param.classType eq 'buis'}">ビジネス</c:when>
             <c:when test="${param.classType eq 'first'}">ファースト</c:when>
             <c:otherwise>
-            	<ruby class="taxfree-t"><rb>未選択</rb><rt>みせんたく</rt></ruby>
+            	<ruby><rb>未選択</rb><rt>みせんたく</rt></ruby>
             </c:otherwise>
             </c:choose>
          </div>
@@ -89,7 +89,7 @@
         <!-- 출국편 -->
         <div class="flight-section">
           <div class="section-title">
-          	<ruby class="taxfree-t"><rb>出国便</rb><rt>しゅっこくびん</rt></ruby>
+          	<ruby><rb>出国便</rb><rt>しゅっこくびん</rt></ruby>
           </div>
           <div class="flight-options">
             <c:forEach var="flightwP" items="${flightsWithPrice}" varStatus="status">
@@ -97,12 +97,12 @@
                 <div class="time-info">
                   <div class="time">
                     ${flightwP.flight.departureTime}<br>
-                    <span>터미널${flightwP.flight.departureTerminal}</span>
+                    <span>ターミナル${flightwP.flight.departureTerminal}</span>
                   </div>
                   <div class="arrow">↓</div>
                   <div class="time">
                     ${flightwP.flight.arrivalTime}<br>
-                    <span>터미널${flightwP.flight.arrivalTerminal}</span>
+                    <span>ターミナル${flightwP.flight.arrivalTerminal}</span>
                   </div> 
                 </div>
                 <div class="flight-details">
@@ -118,7 +118,7 @@
                         <div class="type">セイバー</div>
                         <div class="price"><fmt:formatNumber value="${saverPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
                         <div class="seats">${flightwP.flight.seatRemain} / ${flightwP.flight.seatTotal}
-                        <ruby class="taxfree-t"><rb>席</rb><rt>せき</rt></ruby>
+                        <ruby><rb>席</rb><rt>せき</rt></ruby>
                         </div>
                       </div>
                     </label>
@@ -129,7 +129,7 @@
                         <div class="type">スタンダード</div>
                         <div class="price"><fmt:formatNumber value="${standardPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
                         <div class="seats">${flightwP.flight.seatRemain} / ${flightwP.flight.seatTotal}
-                        <ruby class="taxfree-t"><rb>席</rb><rt>せき</rt></ruby>
+                        <ruby><rb>席</rb><rt>せき</rt></ruby>
                         </div>
                       </div>
                     </label>
@@ -140,7 +140,7 @@
                         <div class="type">フレックス</div>
                         <div class="price"><fmt:formatNumber value="${flexPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
                         <div class="seats">${flightwP.flight.seatRemain} / ${flightwP.flight.seatTotal}
-                        <ruby class="taxfree-t"><rb>席</rb><rt>せき</rt></ruby>
+                        <ruby><rb>席</rb><rt>せき</rt></ruby>
                         </div>
                       </div>
                     </label>
@@ -156,7 +156,7 @@
       <c:if test="${param.tripType eq 'round'}">
         <div class="flight-section">
           <div class="section-title">
-          <ruby class="taxfree-t"><rb>帰国便</rb><rt>きこくびん</rt></ruby>
+          <ruby><rb>帰国便</rb><rt>きこくびん</rt></ruby>
           </div>
           <div class="flight-options">
             <c:forEach var="flightwP" items="${aflightsWithPrice}" varStatus="status">
@@ -164,12 +164,12 @@
                 <div class="time-info">
                   <div class="time">
                     ${flightwP.flight.departureTime}<br>
-                    <span>터미널${flightwP.flight.departureTerminal}</span>
+                    <span>ターミナル${flightwP.flight.departureTerminal}</span>
                   </div>
                   <div class="arrow">↓</div>
                   <div class="time">
                     ${flightwP.flight.arrivalTime}<br>
-                    <span>터미널${flightwP.flight.arrivalTerminal}</span>
+                    <span>ターミナル${flightwP.flight.arrivalTerminal}</span>
                   </div>
                 </div>
                 <div class="flight-details">
@@ -185,7 +185,7 @@
                         <div class="type">セイバー</div>
                         <div class="price"><fmt:formatNumber value="${saverPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
                         <div class="seats">${flightwP.flight.seatRemain} / ${flightwP.flight.seatTotal}
-                        <ruby class="taxfree-t"><rb>席</rb><rt>せき</rt></ruby>
+                        <ruby><rb>席</rb><rt>せき</rt></ruby>
                         </div>
                       </div>
                     </label>
@@ -196,7 +196,7 @@
                         <div class="type">スタンダード</div>
                         <div class="price"><fmt:formatNumber value="${standardPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
                         <div class="seats">${flightwP.flight.seatRemain} / ${flightwP.flight.seatTotal}
-                        <ruby class="taxfree-t"><rb>席</rb><rt>せき</rt></ruby>
+                        <ruby><rb>席</rb><rt>せき</rt></ruby>
                         </div>
                       </div>
                     </label>
@@ -207,7 +207,7 @@
                         <div class="type">フレックス</div>
                         <div class="price"><fmt:formatNumber value="${flexPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
                         <div class="seats">${flightwP.flight.seatRemain} / ${flightwP.flight.seatTotal}
-                        <ruby class="taxfree-t"><rb>席</rb><rt>せき</rt></ruby>
+                        <ruby><rb>席</rb><rt>せき</rt></ruby>
                         </div>
                       </div>
                     </label>
@@ -235,10 +235,14 @@
 			<input type="hidden" name="arrivalFlightNo" value="${param.arrivalFlightNo}" />	
 			<input type="hidden" name="flightMealYN" value="Y" />
 
+			
+
             <!-- 제출 버튼 -->
             <div class="confirm-button">
-               <button id="btnReserve" type="submit">예약 확인</button>
+               <button id="btnReserve" type="submit"><ruby><rb>予約確認</rb><rt>よやくかくにん</rt></ruby></button>
+
             </div>
+
 
          </form>
    </div>   
@@ -302,8 +306,5 @@
 		</script>
 						
 </body>
-
-	
-
 
 </html>
