@@ -198,12 +198,9 @@
 					</c:forEach>
 				</select>
 	        	<input type="text" id="departureDate" name = "departureDate" class="date-input" 
-	        	placeholder="<ruby class='taxfree-t'><rb>出発日</rb><rt>しゅっぱつび</rt></ruby>を
-	        	<ruby class='taxfree-t'><rb>選択</rb><rt>せんたく</rt></ruby>">
+	        	placeholder="出発日を選択">
 	        	<input type="text" id="arrivalDate" name = "arrivalDate" class="date-input"
-	        	placeholder="<ruby class='taxfree-t'><rb>帰り</rb><rt>かえり</rt></ruby>の
-	        	<ruby class='taxfree-t'><rb>日</rb><rt>ひ</rt></ruby>を
-	        	<ruby class='taxfree-t'><rb>選択</rb><rt>せんたく</rt></ruby>">
+	        	placeholder="帰りの日を選択">
 			</div>
 			<!-- 탑승객 선택 -->
 	        <h3>
