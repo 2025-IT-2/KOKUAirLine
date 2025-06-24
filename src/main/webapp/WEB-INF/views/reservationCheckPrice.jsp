@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -10,473 +12,318 @@
    <link rel="stylesheet" href="<c:url value='/css/reservationCheckPrice.css'/>" />
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
    <title>航空券価格を確認</title>
+   
 </head>
+
 <body>
-	<%@ include file="header.jsp" %>
-	<div class="container">
-	   <!-- 예약 폼 -->
-	   <form action="/reservation" method="post" class="reservation-form">
-	
-		<div class="info-bar">
-			<div class="info-box triptype">
+
+
+   <%@ include file="header.jsp" %>
+   <div class="container">
+      <!-- 예약 폼 -->
+      <form action="/passengerInfo" method="post"> 
+   
+      <div class="info-bar">
+         <div class="info-box triptype">
             <span class="info-text">
               <c:choose>
-                <c:when test="${param.tripType eq 'round'}">往復</c:when>
-                <c:when test="${param.tripType eq 'oneway'}">片道</c:when>
-                <c:when test="${param.tripType eq 'multiway'}">多区間</c:when>
-                <c:otherwise>未選択</c:otherwise>
+                <c:when test="${param.tripType eq 'round'}">
+                	<ruby class="taxfree-t"><rb>往復</rb><rt>おうふく</rt></ruby>
+                </c:when>
+                <c:when test="${param.tripType eq 'oneway'}">
+                	<ruby class="taxfree-t"><rb>片道</rb><rt>かたみち</rt></ruby>
+                </c:when>
+                <c:when test="${param.tripType eq 'multiway'}">
+                	<ruby class="taxfree-t"><rb>多区間</rb><rt>たくかん</rt></ruby>
+                </c:when>
+                <c:otherwise>
+                	<ruby class="taxfree-t"><rb>未選択</rb><rt>みせんたく</rt></ruby>
+                </c:otherwise>
               </c:choose>
             </span>
-       		</div>
-			<div class="info-box departure">
-				<span class="info-text">${param.departureAirport}</span>
-			</div>
-			<div class="info-box arrival">
-				<span class="info-text">${param.arrivalAirport}</span>
-			</div>
-			<div class="info-box date-range">
-				<c:choose>
-				<c:when test="${param.tripType eq 'round'}">
-				<span class="info-text">${param.departureDate} ~ ${param.arrivalDate}</span>
-				</c:when>
-				<c:otherwise>
-				<span class="info-text">${param.departureDate}</span>
-				</c:otherwise>
-				</c:choose>
-			</div>
-			<div class="info-box passenger-count">
-			   <span class="info-text">
-			      大人 ${param.adultCount}・小児 ${param.childCount}・幼児 ${param.infantCount}
-			   </span>
-			</div>
-			<div class="info-box seat-type">
-			   <c:choose>
-				<c:when test="${param.classType eq 'eco-spec'}">エコノミー特価</c:when>
-				<c:when test="${param.classType eq 'eco-norm'}">エコノミー一般</c:when>
-				<c:when test="${param.classType eq 'buis'}">ビジネス</c:when>
-				<c:when test="${param.classType eq 'first'}">ファースト</c:when>
-				<c:otherwise>未選択</c:otherwise>
-				</c:choose>
-			</div>
-		</div>
+             </div>
+         <div class="info-box departure">
+            <span class="info-text">${param.departureAirport}</span>
+         </div>
+         <div class="info-box arrival">
+            <span class="info-text">${param.arrivalAirport}</span>
+         </div>
+         <div class="info-box date-range">
+            <c:choose>
+            <c:when test="${param.tripType eq 'round'}">
+            <span class="info-text">${param.departureDate} ~ ${param.arrivalDate}</span>
+            </c:when>
+            <c:otherwise>
+            <span class="info-text">${param.departureDate}</span>
+            </c:otherwise>
+            </c:choose>
+         </div>
+         <div class="info-box passenger-count">
+            <span class="info-text">
+               <ruby class="taxfree-t"><rb>大人</rb><rt>おとな</rt></ruby> ${param.adultCount}・
+               <ruby class="taxfree-t"><rb>小児</rb><rt>しょうに</rt></ruby> ${param.childCount}・
+               <ruby class="taxfree-t"><rb>幼児</rb><rt>ようじ</rt></ruby> ${param.infantCount}
+            </span>
+         </div>
+         
+         <input type="hidden" name="timeCategory" value="morning" />
+         
+         <div class="info-box seat-type">
+            <c:choose>
+            <c:when test="${param.classType eq 'eco-spec'}">
+            	エコノミー<ruby class="taxfree-t"><rb>特価</rb><rt>とっか</rt></ruby>
+            </c:when>
+            <c:when test="${param.classType eq 'eco-norm'}">
+            	エコノミー<ruby class="taxfree-t"><rb>一般</rb><rt>いっぱん</rt></ruby>
+            </c:when>
+            <c:when test="${param.classType eq 'buis'}">ビジネス</c:when>
+            <c:when test="${param.classType eq 'first'}">ファースト</c:when>
+            <c:otherwise>
+            	<ruby class="taxfree-t"><rb>未選択</rb><rt>みせんたく</rt></ruby>
+            </c:otherwise>
+            </c:choose>
+         </div>
+      </div>
 
-           
-            <div class="flights-container">
-            <!-- 출국편 -->
-            <div class="flight-section">
-			  <div class="section-title">出国便</div>
-            <div class="flight-options">
-               <div class="flight">
-                  <div class="time-info">
-                     <div class="time">8:50<br><span>터미널1</span></div>
-                     <div class="arrow">↓</div>
-                     <div class="time">11:15<br><span>터미널1</span></div>
+      <div class="flights-container">
+        <!-- 출국편 -->
+        <div class="flight-section">
+          <div class="section-title">
+          	<ruby class="taxfree-t"><rb>出国便</rb><rt>しゅっこくびん</rt></ruby>
+          </div>
+          <div class="flight-options">
+            <c:forEach var="flightwP" items="${flightsWithPrice}" varStatus="status">
+              <div class="flight">
+                <div class="time-info">
+                  <div class="time">
+                    ${flightwP.flight.departureTime}<br>
+                    <span>터미널${flightwP.flight.departureTerminal}</span>
                   </div>
-                  <div class="flight-details">
-                     <div class="flight-info">OZ172<br>A320</div>
-                     <div class="economy">
-                        <label class="fare" for="fareType1-saver">
-						  <input id="fareType1-saver" type="radio" name="departureFare" value="セイバー" style="display:none;" />
-						  <div class="content">
-						    <div class="type">セイバー</div>
-						    <div class="price">16200円</div>
-						    <div class="seats">9席</div>
-						  </div>
-						</label>
-						
-						<label class="fare" for="fareType1-standard">
-                              <input id="fareType1-standard" type="radio" name="departureFare" value="スタンダード" style="display:none;" />
-						  <div class="content">
-						    <div class="type">スタンダード</div>
-						    <div class="price">20600円</div>
-						    <div class="seats">9席</div>
-						  </div>
-						</label>
-						
-						<label class="fare" for="fareType1-flux">
-                              <input id="fareType1-flux" type="radio" name="departureFare" value="フラックス" style="display:none;" />
-						  <div class="content">
-						    <div class="type">フラックス</div>
-						    <div class="price">37000円</div>
-						    <div class="seats">9席</div>
-						  </div>
-						</label>
-                     </div>
+                  <div class="arrow">↓</div>
+                  <div class="time">
+                    ${flightwP.flight.arrivalTime}<br>
+                    <span>터미널${flightwP.flight.arrivalTerminal}</span>
+                  </div> 
+                </div>
+                <div class="flight-details">
+                  <div class="flight-info">
+                    ${flightwP.flight.flightNo}<br>
+                    <span>K${flightwP.flight.airplaneNo}</span>
                   </div>
-               </div>
 
-               <div class="flight">
-                  <div class="time-info">
-                     <div class="time">10:20<br><span>터미널1</span></div>
-                     <div class="arrow">↓</div>
-                     <div class="time">13:05<br><span>터미널1</span></div>
-                  </div>
-                  <div class="flight-details">
-                     <div class="flight-info">OZ172<br>A320</div>
-                     <div class="economy">
-                        <label class="fare" for="fareType2-saver">
-						  <input id="fareType2-saver" type="radio" name="departureFare" value="セイバー" style="display:none;" />
-                       	<div class="content">
-                           <div class="type">セイバー</div>
-                           <div class="price">13000円</div>
-                           <div class="seats">15席</div>
+                  <div class="eco-spec">
+                    <label class="fare" for="depFareType${status.index + 1}-saver" data-seat-available="${flightwP.flight.seatRemain}">
+                      <input id="depFareType${status.index + 1}-saver" type="radio" name="depFareType" value="${saverPrice * flightwP.price}" style="display:none;" data-flight-no="${flightwP.flight.flightNo}" />
+                      <div class="content">
+                        <div class="type">セイバー</div>
+                        <div class="price"><fmt:formatNumber value="${saverPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
+                        <div class="seats">${flightwP.flight.seatRemain} / ${flightwP.flight.seatTotal}
+                        <ruby class="taxfree-t"><rb>席</rb><rt>せき</rt></ruby>
                         </div>
-                        </label>
-                        <label class="fare" for="fareType2-standard">
-                              <input id="fareType2-standard" type="radio" name="departureFare" value="スタンダード" style="display:none;" />
-                       	<div class="content">
-                           <div class="type">スタンダード</div>
-                           <div class="price">15000円</div>
-                           <div class="seats">5席</div>
+                      </div>
+                    </label>
+
+                    <label class="fare" for="depFareType${status.index + 1}-standard" data-seat-available="${flightwP.flight.seatRemain}">
+                      <input id="depFareType${status.index + 1}-standard" type="radio" name="depFareType" value="${standardPrice * flightwP.price}" style="display:none;" data-flight-no="${flightwP.flight.flightNo}"/>
+                      <div class="content">
+                        <div class="type">スタンダード</div>
+                        <div class="price"><fmt:formatNumber value="${standardPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
+                        <div class="seats">${flightwP.flight.seatRemain} / ${flightwP.flight.seatTotal}
+                        <ruby class="taxfree-t"><rb>席</rb><rt>せき</rt></ruby>
                         </div>
-                        </label>
-                        <label class="fare" for="fareType2-flux">
-                              <input id="fareType2-flux" type="radio" name="departureFare" value="フラックス" style="display:none;" />
-                       	<div class="content">
-                           <div class="type">フラックス</div>
-                           <div class="price">32000円</div>
-                           <div class="seats">4席</div>
+                      </div>
+                    </label>
+
+                    <label class="fare" for="depFareType${status.index + 1}-flex" data-seat-available="${flightwP.flight.seatRemain}">
+                      <input id="depFareType${status.index + 1}-flex" type="radio" name="depFareType" value="${flexPrice * flightwP.price}" style="display:none;" data-flight-no="${flightwP.flight.flightNo}"/>
+                      <div class="content">
+                        <div class="type">フレックス</div>
+                        <div class="price"><fmt:formatNumber value="${flexPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
+                        <div class="seats">${flightwP.flight.seatRemain} / ${flightwP.flight.seatTotal}
+                        <ruby class="taxfree-t"><rb>席</rb><rt>せき</rt></ruby>
                         </div>
-                        </label>
-                     </div>
+                      </div>
+                    </label>
                   </div>
+                </div>
+              </div>
+            </c:forEach>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 귀국편 -->
+      <c:if test="${param.tripType eq 'round'}">
+        <div class="flight-section">
+          <div class="section-title">
+          <ruby class="taxfree-t"><rb>帰国便</rb><rt>きこくびん</rt></ruby>
+          </div>
+          <div class="flight-options">
+            <c:forEach var="flightwP" items="${aflightsWithPrice}" varStatus="status">
+              <div class="flight">
+                <div class="time-info">
+                  <div class="time">
+                    ${flightwP.flight.departureTime}<br>
+                    <span>터미널${flightwP.flight.departureTerminal}</span>
                   </div>
-                  
-                  <div class="flight">
-                  <div class="time-info">
-                     <div class="time">15:20<br><span>터미널1</span></div>
-                     <div class="arrow">↓</div>
-                     <div class="time">17:50<br><span>터미널1</span></div>
+                  <div class="arrow">↓</div>
+                  <div class="time">
+                    ${flightwP.flight.arrivalTime}<br>
+                    <span>터미널${flightwP.flight.arrivalTerminal}</span>
                   </div>
-                  <div class="flight-details">
-                     <div class="flight-info">OZ172<br>A320</div>
-                     <div class="economy">
-                        <label class="fare" for="fareType3-saver">
-						  <input id="fareType3-saver" type="radio" name="departureFare" value="セイバー" style="display:none;" />
-						  <div class="content">
-						    <div class="type">セイバー</div>
-						    <div class="price">14400円</div>
-						    <div class="seats">8席</div>
-						  </div>
-						</label>
-						
-						<label class="fare" for="fareType3-standard">
-                              <input id="fareType3-standard" type="radio" name="departureFare" value="スタンダード" style="display:none;" />
-						  <div class="content">
-						    <div class="type">スタンダード</div>
-						    <div class="price">16600円</div>
-						    <div class="seats">4席</div>
-						  </div>
-						</label>
-						
-						<label class="fare" for="fareType3-flux">
-                              <input id="fareType3-flux" type="radio" name="departureFare" value="フラックス" style="display:none;" />
-						  <div class="content">
-						    <div class="type">フラックス</div>
-						    <div class="price">36400円</div>
-						    <div class="seats">4席</div>
-						  </div>
-						</label>
-                     </div>
+                </div>
+                <div class="flight-details">
+                  <div class="flight-info">
+                    ${flightwP.flight.flightNo}<br>
+                    <span>K${flightwP.flight.airplaneNo}</span>
                   </div>
-               </div>
-               
-               <div class="flight">
-                  <div class="time-info">
-                     <div class="time">15:20<br><span>터미널1</span></div>
-                     <div class="arrow">↓</div>
-                     <div class="time">17:50<br><span>터미널1</span></div>
+
+                  <div class="eco-spec">
+                    <label class="fare" for="arrFareType${status.index + 1}-saver" data-seat-available="${flightwP.flight.seatRemain}">
+                      <input id="arrFareType${status.index + 1}-saver" type="radio" name="arrFareType" value="${saverPrice * flightwP.price}" style="display:none;" data-flight-no="${flightwP.flight.flightNo}"/>
+                      <div class="content">
+                        <div class="type">セイバー</div>
+                        <div class="price"><fmt:formatNumber value="${saverPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
+                        <div class="seats">${flightwP.flight.seatRemain} / ${flightwP.flight.seatTotal}
+                        <ruby class="taxfree-t"><rb>席</rb><rt>せき</rt></ruby>
+                        </div>
+                      </div>
+                    </label>
+
+                    <label class="fare" for="arrFareType${status.index + 1}-standard" data-seat-available="${flightwP.flight.seatRemain}">
+                      <input id="arrFareType${status.index + 1}-standard" type="radio" name="arrFareType" value="${standardPrice * flightwP.price}" style="display:none;" data-flight-no="${flightwP.flight.flightNo}"/>
+                      <div class="content">
+                        <div class="type">スタンダード</div>
+                        <div class="price"><fmt:formatNumber value="${standardPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
+                        <div class="seats">${flightwP.flight.seatRemain} / ${flightwP.flight.seatTotal}
+                        <ruby class="taxfree-t"><rb>席</rb><rt>せき</rt></ruby>
+                        </div>
+                      </div>
+                    </label>
+
+                    <label class="fare" for="arrFareType${status.index + 1}-flex" data-seat-available="${flightwP.flight.seatRemain}">
+                      <input id="arrFareType${status.index + 1}-flex" type="radio" name="arrFareType" value="${flexPrice * flightwP.price}" style="display:none;" data-flight-no="${flightwP.flight.flightNo}"/>
+                      <div class="content">
+                        <div class="type">フレックス</div>
+                        <div class="price"><fmt:formatNumber value="${flexPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
+                        <div class="seats">${flightwP.flight.seatRemain} / ${flightwP.flight.seatTotal}
+                        <ruby class="taxfree-t"><rb>席</rb><rt>せき</rt></ruby>
+                        </div>
+                      </div>
+                    </label>
                   </div>
-                  <div class="flight-details">
-                     <div class="flight-info">OZ172<br>A320</div>
-                     <div class="economy">
-                        <label class="fare" for="fareType4-saver">
-						  <input id="fareType4-saver" type="radio" name="departureFare" value="セイバー" style="display:none;" />
-						  <div class="content">
-						    <div class="type">セイバー</div>
-						    <div class="price">16000円</div>
-						    <div class="seats">3席</div>
-						  </div>
-						</label>
-						
-						<label class="fare" for="fareType4-standard">
-                              <input id="fareType4-standard" type="radio" name="departureFare" value="スタンダード" style="display:none;" />
-						  <div class="content">
-						    <div class="type">スタンダード</div>
-						    <div class="price">19400円</div>
-						    <div class="seats">9席</div>
-						  </div>
-						</label>
-						
-						<label class="fare" for="fareType4-flux">
-                              <input id="fareType4-flux" type="radio" name="departureFare" value="フラックス" style="display:none;" />
-						  <div class="content">
-						    <div class="type">フラックス</div>
-						    <div class="price">35500円</div>
-						    <div class="seats">5席</div>
-						  </div>
-						</label>
-                     </div>
-                  </div>
-               </div>
-               </div>
-            </div>
+                </div>
+              </div>
+            </c:forEach>
+          </div>
+        </div>
+      </c:if>
+    </div>
             
-            <div class="flight-section">
-			  <div class="section-title">帰国便</div>
-            <div class="flight-options">
-               <div class="flight">
-                  <div class="time-info">
-                     <div class="time">07:10<br><span>터미널1</span></div>
-                     <div class="arrow">↓</div>
-                     <div class="time">09:45<br><span>터미널1</span></div>
-                  </div>
-                  <div class="flight-details">
-                     <div class="flight-info">OZ172<br>A320</div>
-                     <div class="economy">
-                        <label class="fare" for="arrivalFareType1-saver">
-                              <input id="arrivalFareType1-saver" type="radio" name="arrivalFare" value="セイバー" style="display:none;" />
-						  <div class="content">
-						    <div class="type">セイバー</div>
-						    <div class="price">12500円</div>
-						    <div class="seats">2席</div>
-						  </div>
-						</label>
-						
-						<label class="fare" for="arrivalFareType1-standard">
-                              <input id="arrivalFareType1-standard" type="radio" name="arrivalFare" value="スタンダード" style="display:none;" />
-						  <div class="content">
-						    <div class="type">スタンダード</div>
-						    <div class="price">19100円</div>
-						    <div class="seats">13席</div>
-						  </div>
-						</label>
-						
-						<label class="fare" for="arrivalFareType1-flux">
-                              <input id="arrivalFareType1-flux" type="radio" name="arrivalFare" value="フラックス" style="display:none;" />
-						  <div class="content">
-						    <div class="type">フラックス</div>
-						    <div class="price">35700円</div>
-						    <div class="seats">3席</div>
-						  </div>
-						</label>
-                     </div>
-                  </div>
-               </div>
-
-               <div class="flight">
-                  <div class="time-info">
-                     <div class="time">11:05<br><span>터미널1</span></div>
-                     <div class="arrow">↓</div>
-                     <div class="time">13:30<br><span>터미널1</span></div>
-                  </div>
-                  <div class="flight-details">
-                     <div class="flight-info">OZ172<br>A320</div>
-                     <div class="economy">
-                        <label class="fare" for="arrivalFareType2-saver">
-                              <input id="arrivalFareType2-saver" type="radio" name="arrivalFare" value="セイバー" style="display:none;" />
-                       	<div class="content">
-                           <div class="type">セイバー</div>
-                           <div class="price">14700円</div>
-                           <div class="seats">12席</div>
-                        </div>
-                        </label>
-                        <label class="fare" for="arrivalFareType2-standard">
-                              <input id="arrivalFareType2-standard" type="radio" name="arrivalFare" value="スタンダード" style="display:none;" />
-                       	<div class="content">
-                           <div class="type">スタンダード</div>
-                           <div class="price">18800円</div>
-                           <div class="seats">11席</div>
-                        </div>
-                        </label>
-                        <label class="fare" for="arrivalFareType2-flux">
-                              <input id="arrivalFareType2-flux" type="radio" name="arrivalFare" value="フラックス" style="display:none;" />
-                       	<div class="content">
-                           <div class="type">フラックス</div>
-                           <div class="price">35100円</div>
-                           <div class="seats">2席</div>
-                        </div>
-                        </label>
-                     </div>
-                  </div>
-               </div>
-               
-               <div class="flight">
-                  <div class="time-info">
-                     <div class="time">14:55<br><span>터미널1</span></div>
-                     <div class="arrow">↓</div>
-                     <div class="time">17:25<br><span>터미널1</span></div>
-                  </div>
-                  <div class="flight-details">
-                     <div class="flight-info">OZ172<br>A320</div>
-                     <div class="economy">
-                        <label class="fare" for="arrivalFareType3-saver">
-                              <input id="arrivalFareType3-saver" type="radio" name="arrivalFare" value="セイバー" style="display:none;" />
-						  <div class="content">
-						    <div class="type">セイバー</div>
-						    <div class="price">15100円</div>
-						    <div class="seats">6席</div>
-						  </div>
-						</label>
-						
-						<label class="fare" for="arrivalFareType3-standard">
-                              <input id="arrivalFareType3-standard" type="radio" name="arrivalFare" value="スタンダード" style="display:none;" />
-						  <div class="content">
-						    <div class="type">スタンダード</div>
-						    <div class="price">18500円</div>
-						    <div class="seats">5席</div>
-						  </div>
-						</label>
-						
-						<label class="fare" for="arrivalFareType3-flux">
-                              <input id="arrivalFareType3-flux" type="radio" name="arrivalFare" value="フラックス" style="display:none;" />
-						  <div class="content">
-						    <div class="type">フラックス</div>
-						    <div class="price">36800円</div>
-						    <div class="seats">8席</div>
-						  </div>
-						</label>
-                     </div>
-                  </div>
-               </div>
-               
-               <div class="flight">
-                  <div class="time-info">
-                     <div class="time">14:55<br><span>터미널1</span></div>
-                     <div class="arrow">↓</div>
-                     <div class="time">17:25<br><span>터미널1</span></div>
-                  </div>
-                  <div class="flight-details">
-                     <div class="flight-info">OZ172<br>A320</div>
-                     <div class="economy">
-                        <label class="fare" for="arrivalFareType4-saver">
-                              <input id="arrivalFareType4-saver" type="radio" name="arrivalFare" value="セイバー" style="display:none;" />
-						  <div class="content">
-						    <div class="type">セイバー</div>
-						    <div class="price">15100円</div>
-						    <div class="seats">6席</div>
-						  </div>
-						</label>
-						
-						<label class="fare" for="arrivalFareType4-standard">
-                              <input id="arrivalFareType4-standard" type="radio" name="arrivalFare" value="スタンダード" style="display:none;" />
-						  <div class="content">
-						    <div class="type">スタンダード</div>
-						    <div class="price">19900円</div>
-						    <div class="seats">12席</div>
-						  </div>
-						</label>
-						
-						<label class="fare" for="arrivalFareType4-flux">
-                              <input id="arrivalFareType4-flux" type="radio" name="arrivalFare" value="フラックス" style="display:none;" />
-						  <div class="content">
-						    <div class="type">フラックス</div>
-						    <div class="price">35100円</div>
-						    <div class="seats">14席</div>
-						  </div>
-						</label>
-                     </div>
-                  </div>
-               </div>
-               </div>
-            </div>
+	    <!-- 필수 파라미터 hidden input으로 추가 -->
+			<input type="hidden" name="adultCount" value="${param.adultCount}" />
+			<input type="hidden" name="childCount" value="${param.childCount}" />
+			<input type="hidden" name="infantCount" value="${param.infantCount}" />
+			<input type="hidden" name="departureAirport" value="${param.departureAirport}" />
+			<input type="hidden" name="arrivalAirport" value="${param.arrivalAirport}" />
+			<input type="hidden" name="tripType" value="${param.tripType}" />
+			<input type="hidden" name="departureDate" value="${param.departureDate}" />
+			<input type="hidden" name="arrivalDate" value="${param.arrivalDate}" />
+			<input type="hidden" name="classType" value="${param.classType}" />
+			<input type="hidden" id="totalPrice" name="totalPrice" value="" />
+			<input type="hidden" name="selectedFlightNo" value="${param.selectedFlightNo}" />
+			<input type="hidden" name="arrivalFlightNo" value="${param.arrivalFlightNo}" />
+			<input type="hidden" name="flightMealYN" value="Y" />
+			<input type="hidden" name="depAirFare" id="depAirFare" />
+			<input type="hidden" name="arrAirFare" id="arrAirFare" /> 
 
             <!-- 제출 버튼 -->
             <div class="confirm-button">
-               <button type="submit">예약 확인</button>
+               <button id="btnReserve" type="submit">예약 확인</button>
             </div>
 
          </form>
-      </div>
+   </div>   
 
-      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-      <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/rangePlugin.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
+    <!-- 총액 계산 -->    
+		<script>
+		document.getElementById('btnReserve').addEventListener("click", function () {
+			console.log(111);
+		});
+		
+		
+		document.addEventListener("DOMContentLoaded", function () {
+			  const allFareRadios = document.querySelectorAll('input[name="depFareType"], input[name="arrFareType"]');
 
-      <script>
-      document.addEventListener("DOMContentLoaded", function () {
-    	  // 출국편 라디오 버튼 처리
-    	  const departureRadios = document.querySelectorAll('input[name="departureFare"]');
-    	  departureRadios.forEach(radio => {
-    	    radio.addEventListener("change", () => {
-    	      departureRadios.forEach(r => {
-    	        const label = r.closest("label");
-    	        if (label) label.classList.toggle("selected", r.checked);
-    	      });
-    	    });
-    	  });
+			  allFareRadios.forEach(radio => {
+			    radio.addEventListener("change", () => {
+			      let total = 0;
 
-    	  // 귀국편 라디오 버튼 처리
-    	  const arrivalRadios = document.querySelectorAll('input[name="arrivalFare"]');
-    	  arrivalRadios.forEach(radio => {
-    	    radio.addEventListener("change", () => {
-    	    	arrivalRadios.forEach(r => {
-    	        const label = r.closest("label");
-    	        if (label) label.classList.toggle("selected", r.checked);
-    	      });
-    	    });
-    	  });
-    	});
+			      const selectedDep = document.querySelector('input[name="depFareType"]:checked');
+			      if (selectedDep) {
+			        total += parseInt(selectedDep.value || "0");
+			      }
 
-         // 버튼 스타일 업데이트
-         function selectSeatType(type) {
-            currentSeatType = type;
-            document.getElementById("seatTypeInput").value = type;
-            togglearrivalDate(type);
-            initFlatpickr(type);
-         }
-      </script>
+			      const selectedArr = document.querySelector('input[name="arrFareType"]:checked');
+			      if (selectedArr) {
+			        total += parseInt(selectedArr.value || "0");
+			      }
 
-      <script>
-         // 항공편 종류 버튼 selected
-         document.addEventListener("DOMContentLoaded", function () {
-            const tripButtons = document.querySelectorAll(".trip-option");
+			      document.getElementById("totalPrice").value = total;
+			    });
+			  });
+			});
+		
+			document.addEventListener("DOMContentLoaded", function () {
+			  const depRadios = document.querySelectorAll('input[name="depFareType"]');
+			  const arrRadios = document.querySelectorAll('input[name="arrFareType"]');
+			  
+			  depRadios.forEach(radio => {
+			    radio.addEventListener("change", function () {
+			      document.getElementById("depAirFare").value = this.value;
+			    });
+			  });
 
-            tripButtons.forEach(button => {
-               button.addEventListener("click", () => {
-                  tripButtons.forEach(btn => btn.classList.remove("selected"));
-                  button.classList.add("selected");
-               });
-            });
-         });
+			  arrRadios.forEach(radio => {
+			    radio.addEventListener("change", function () {
+			      document.getElementById("arrAirFare").value = this.value;
+			    });
+			  });
+			});
+		
+		</script> 
+		
+		<script>
+		  document.addEventListener("DOMContentLoaded", function () {
+		    // 출발편 선택 시 처리
+		    const depRadios = document.querySelectorAll('input[name="depFareType"]');
+		    const selectedFlightNoInput = document.querySelector('input[name="selectedFlightNo"]');
+		
+		    depRadios.forEach(radio => {
+		      radio.addEventListener("change", function () {
+		        const flightNo = this.dataset.flightNo;
+		        selectedFlightNoInput.value = flightNo;
+		        console.log("✈️ 출발편 selectedFlightNo:", flightNo);
+		      });
+		    });
+		
+		    // 도착편 선택 시 처리
+		    const arrRadios = document.querySelectorAll('input[name="arrFareType"]');
+		    const arrivalFlightNoInput = document.querySelector('input[name="arrivalFlightNo"]');
+		
+		    arrRadios.forEach(radio => {
+		      radio.addEventListener("change", function () {
+		        const flightNo = this.dataset.flightNo;
+		        arrivalFlightNoInput.value = flightNo;
+		        console.log("✈️ 도착편 arrivalFlightNo:", flightNo);
+		      });
+		    });
+		  });
+		</script>
+						
+</body>
 
-         // 버튼 스타일 업데이트
-         function selectTripType(type) {
-            currentTripType = type;
-            document.getElementById("tripTypeInput").value = type;
-            togglearrivalDate(type);
-            initFlatpickr(type);
-         }
-      </script>
-   </body>
+	
+
+
 </html>
-
-
-<%--  
-            <!-- 예약 폼 -->
-            <form action="/reservationCheckPrice" method="post">
-
-            출발지: <input type="text" name="departireAirport" value="${departireAirport}"/> <br/>
-            도착지: <input type="text" name="arrivalAirport" value="${arrivalAirport}"/> <br/>
-            
-            출발일: <input type="date" name="departureDate" value="${departureDate}"/> <br/>
-            돌아오는 날 (왕복일 경우): <input type="date" name="returnDate" value="${returnDate}"/> <br/>
-            
-            성인: <input type="number" name="adultCount" value="${adultCount}" min="0"/> <br/>
-            어린이: <input type="number" name="childCount" value="${childCount}" min="0"/> <br/>
-            유아: <input type="number" name="infantCount" value="${infantCount}" min="0"/> <br/>
-            
-            여행 유형: 
-            <select name="tripType">
-              <option value="oneway" ${tripType == 'oneway' ? 'selected' : ''}>편도</option>
-              <option value="round" ${tripType == 'round' ? 'selected' : ''}>왕복</option>
-            </select> <br/>
-            
-            클래스: 
-            <select name="classType">
-              <option value="eco-spec" ${classType == 'eco-spec' ? 'selected' : ''}>이코노미</option>
-              <option value="business" ${classType == 'business' ? 'selected' : ''}>비즈니스</option>
-            </select> <br/>
-            
-            <button type="submit">조회</button>
-            --%>

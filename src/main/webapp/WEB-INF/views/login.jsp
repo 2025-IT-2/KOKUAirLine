@@ -27,12 +27,12 @@
       <form action="/login" method="post" class="login-form">
         <div class="form-group">
           <label for="username">ID</label>
-          <input type="text" name="userId" id="username" required />
+          <input type="text" name="userId" id="username" minlength="4" maxlength="20" required />
         </div>
 
         <div class="form-group">
           <label for="password">PW</label>
-          <input type="password" name="password" id="password" required />
+          <input type="password" name="password" id="password" minlength="8" maxlength="20" required />
         </div>
 
         <div class="form-options">
@@ -46,8 +46,10 @@
         </div>
       </form>
 
+      <hr class="separator" />	  
+	  <button class="btn idpw-btn" onclick="openWindow()">ID・PASSWORDを忘れた方はこちら</button>
+	  
       <hr class="separator" />
-
       <p class="signup-question">まだ会員ではありませんか？</p>
       <form id="registerBtn" action="/signin" method="get">
         <button type="submit" class="btn signup-btn">会員登録</button>

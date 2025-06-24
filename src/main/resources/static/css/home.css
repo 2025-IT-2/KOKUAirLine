@@ -1,18 +1,67 @@
-.chatgpt-image-wrapper {
-  width: 100%;
-  height: 300px;
-  background-color: #262626;
+body{
+background-color: #f4f6f8;
+font-family: "Noto Sans JP", sans-serif;
+}
+
+.parentbox {
+  position: relative;
+  width: 100vw;
+  height: 60vh;
+  overflow: hidden;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-.chatgpt-image-wrapper img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
+/*
+뒤에 흐릿하게 깔릴 이미지
+ ㄴ 안 나옴.....ㅠ
+*/
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: brightness(0.5) blur(10px);
+  z-index: 0;
+  transition: background-image 1s ease-in-out;
 }
 
+/* 슬라이드 이미지 영역 */
+.home-image-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* 모든 이미지 절대 위치로 겹치되 중앙 정렬 */
+.home-image-slide img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.home-image-slide img.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+
+/*면세품*/
 .product-container {
   display: flex;
   flex-wrap: wrap;
@@ -61,4 +110,73 @@
   padding-bottom: 10px;
   background-color: #f0f8ff;
   border-radius: 8px;
+}
+
+/* 여기서 부턴 팝업창 디자인 */
+.popup {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.popup-content img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  margin-top: 8px;
+}
+
+.popup-item strong {
+  font-size: 15px;
+  color: #444;
+}
+
+.popup-item p, .popup-item h2 {
+  margin: 4px 0 0 0;
+  font-weight: normal;
+}
+
+.close {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #888;
+}
+
+.product-card {
+  cursor: pointer; /* 마우스 커서를 손가락으로 변경 */
+  /* 아래는 예시 스타일 */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  transition: box-shadow 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 호버 시 약간 강조 */
+}
+
+.taxfree-t rt{
+	/*후리가나 크기 줄이기*/
+	font-size:8px;
 }

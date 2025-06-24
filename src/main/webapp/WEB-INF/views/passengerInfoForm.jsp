@@ -1,50 +1,144 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<!-- 탑승객 정보 입력 그룹 -->
+<div class="info-group">
 
-    <div class="group">
-      <div class="overlap-group">
-        <div class="overlap-2">
+  <!-- 클래스명 영문 변환 -->
+  <c:choose>
+    <c:when test="${param.type == '大人'}">
+      <c:set var="cardType" value="Adult" />
+    </c:when>
+    <c:when test="${param.type == '小児'}">
+      <c:set var="cardType" value="Child" />
+    </c:when>
+    <c:otherwise>
+      <c:set var="cardType" value="Infant" />
+    </c:otherwise>
+  </c:choose>
 
-          <!-- 대인 / 소아 / 유아 구분 -->
-          <div class="adult">${param.type}${param.index}</div>
+  <div class="card ${cardType}">
+    <!-- 대인 / 소아 / 유아 구분 -->
+    <div class="adult">
+      ${param.type}${param.index}
+    </div>
 
-          <!-- 성별 입력 -->
-          <div class="group-2">
-            <div class="gender-wrapper">
-              <div class="text-wrapper-3">性別</div>
-            </div>
-            <div class="gender">
-              <label class="radio-label" style="left: 60px;">
-                <input type="radio" name="${param.type}_gender${param.index}" value="male" class="radio-input" checked> 男
-              </label>
+    <div class="card2-group">
+    <!-- 성명 입력 -->
+    <div class="card2">
+      <div class="card-title"><ruby><rb>名前</rb><rt>なまえ</rt></ruby></div>
+      <div class="name">
+        <label>
+          <ruby><rb>名前</rb><rt>なまえ</rt></ruby>
+          <input 
+            type="text" 
+            class="uppercase"
+            id="${param.type}_engFirstName${param.index}" 
+            name="${param.type}_engFirstName${param.index}" 
+            placeholder="例：HIROKO"
+          >
+        </label>
+        
+        <label>
+          <ruby><rb>苗字</rb><rt>みょうじ</rt></ruby>
+          <input 
+            type="text"
+            class="uppercase"
+            id="${param.type}_engLastName${param.index}" 
+            name="${param.type}_engLastName${param.index}" 
+            placeholder="例：SATO"
+          >
+        </label>
 
-              <label class="radio-label" style="left: 200px;">
-                <input type="radio" name="${param.type}_gender${param.index}" value="female" class="radio-input"> 女
-              </label>
-            </div>
-          </div>
-
-          <!-- 성명 입력 -->
-          <div class="group-3">
-            <div class="name-wrapper"><div class="text-wrapper-6">名前</div></div>
-            <div class="name">
-              <div class="text-wrapper-7">名
-                <input type="text" id="${param.type}_firstName${param.index}" name="${param.type}_firstName${param.index}" placeholder="お名を入力してください">
-              </div>
-              <div class="text-wrapper-8">姓
-                <input type="text" id="${param.type}_lastName${param.index}" name="${param.type}_lastName${param.index}" placeholder="お姓を入力してください">
-              </div>
-            </div>
-          </div>
-
-          <!-- 생년월일 입력 -->
-          <div class="group-4">
-            <div class="birth-wrapper"><div class="text-wrapper-9">生年月日</div></div>
-            <div class="birth">
-              <input type="date" id="${param.type}_birthdate${param.index}" name="${param.type}_birthdate${param.index}" value="1990-01-01" />
-            </div>
-          </div>
-        </div>
       </div>
     </div>
+
+    <!-- 생년월일 입력 -->
+    <div class="card2">
+      <div class="card-title"><ruby><rb>生年月日</rb><rt>せいねんがっぴ</rt></ruby></div>
+      <div class="birth">
+        <input 
+          type="date" 
+          id="${param.type}_birthdate${param.index}" 
+          name="${param.type}_birthdate${param.index}" 
+          value="1990-01-01"
+        >
+      </div>
+    </div>
+
+    <!-- 성별 입력 -->
+    <div class="card2">
+      <div class="card-title"><ruby><rb>性別</rb><rt>せいべつ</rt></ruby></div>
+      <div class="gender">
+        <label class="radio-label">
+          <input 
+            type="radio" 
+            name="${param.type}_gender${param.index}" 
+            value="male" 
+            class="radio-input" 
+            checked
+          > 男
+        </label>
+
+        <label class="radio-label">
+          <input 
+            type="radio" 
+            name="${param.type}_gender${param.index}" 
+            value="female" 
+            class="radio-input"
+          > 女
+        </label>
+      </div>
+    </div>
+
+    <!-- 여권 정보 입력 -->
+    <div class="card2">
+      <div class="card-title">パスポート<ruby><rb>情報</rb><rt>じょうほう</rt></ruby></div>
+      
+      <div class="passport">
+        <label>
+          パスポート<ruby><rb>番号</rb><rt>ばんごう</rt></ruby>
+          <input 
+            type="text"
+            class="passport"
+            maxlength="9" 
+            id="${param.type}_passportNumber${param.index}" 
+            name="${param.type}_passportNumber${param.index}" 
+            placeholder="パスポート番号（最大9桁）"
+          >
+        </label>
+
+        <label>
+          <ruby><rb>有効期間</rb><rt>ゆうこうきかん</rt></ruby>
+          <input 
+            type="date" 
+            id="${param.type}_passportExpiry${param.index}" 
+            name="${param.type}_passportExpiry${param.index}"
+          >
+        </label>
+
+        <label>
+          <ruby><rb>国籍</rb><rt>こくせき</rt></ruby>
+          <input 
+            type="text" 
+            id="${param.type}_nationality${param.index}" 
+            name="${param.type}_nationality${param.index}" 
+            placeholder="国籍を入力してください"
+          >
+        </label>
+
+        <label>
+          <ruby><rb>発行局</rb><rt>はっこうきょく</rt></ruby>
+          <input 
+            type="text" 
+            id="${param.type}_passportCountry${param.index}" 
+            name="${param.type}_passportCountry${param.index}" 
+            placeholder="発行国を入力してください"
+          >
+        </label>
+      </div>
+    </div>
+    </div>
+    
+  </div>
+</div>

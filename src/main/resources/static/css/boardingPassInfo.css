@@ -1,17 +1,14 @@
 
       body {
         margin: 0;
-        font-family: "Helvetica Neue", sans-serif;
+        font-family: "Noto Sans JP", sans-serif;
         background-color: #f0f2f5;
       }
 
       .container {
-        max-width: 920px;
-        margin: 40px auto;
         background: #fff;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        padding: 24px;
       }
 
       .header {
@@ -226,3 +223,7 @@
 	    }
 	  }
 
+.taxfree-t rt{
+	/*후리가나 크기 줄이기*/
+	font-size:8px;
+}

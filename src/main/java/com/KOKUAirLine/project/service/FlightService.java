@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FlightService {
@@ -18,5 +19,6 @@ public class FlightService {
 	public List<FlightInfo> searchFlights(String dep, String arr, Date dDate, Date aDate) {
 		return repo.searchFlights(dep, arr, dDate, aDate);
 	}
-	
 }
+	
+

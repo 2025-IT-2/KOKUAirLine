@@ -1,9 +1,14 @@
+.body{
+	background-color: #f4f6f8;
+	font-family: "Noto Sans JP", sans-serif;
+}
+
 .login-screen {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  background-color: #f4f4f4;
+  background-color: #f4f6f8;
 }
 
 .login-container {
@@ -86,5 +91,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.idpw-btn {
+  background-color: #ffffff;
+  color: black;
+}
+
+.idpw-btn:hover {
+  background-color: #ffffff;
 }
 

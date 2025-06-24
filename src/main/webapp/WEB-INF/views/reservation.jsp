@@ -151,58 +151,67 @@
 	<body>
 		<form method = "get" action = "reservationCheckPrice">
 	    <div class = "container">
+	    	<div class = "reservation-container">
 	        <h2>旅程/日付選択</h2>
 			<!-- 여행 종류 선택 -->
 	        <div class = "trip-type" id = tripType>
-	            <button type="button" class = "trip-option selected" data-type = "round">往復</button>
-	            <button type="button" class = "trip-option" data-type = "oneway">片道</button>
-	            <button type="button" class = "trip-option" data-type = "multiway">多区間</button>
+	            <button type="button" class = "trip-option selected" data-type = "round">
+	            <rb>往復</rb><rt>おうふく</rt></ruby>
+	            </button>
+	            <button type="button" class = "trip-option" data-type = "oneway">
+	            <rb>片道</rb><rt>かたみち</rt></ruby>
+	            </button>
+	            <button type="button" class = "trip-option" data-type = "multiway">
+	            <rb>多区間</rb><rt>たくかん</rt></ruby>
+	            </button>
 	        </div>
 	        <input type = "hidden" name = "tripType" id = "tripTypeInput" value = "round">
 			<!-- 공항 선택 -->
 			<div class = "airport-selection">
-			<select name="departureAirport" id = "departireAirport" class = "airport-select">		    
-			    <c:forEach var="flight" items="${flights}">
-			        <%-- <option  class = "airport-option" value="${flight.airport}">
-			            ${flight.airport}
-			        </option> --%>
-			    	<c:if test="${flight.airportCode == 'NRT'}">
-            			<option selected>${flight.airport}</option>
-       				</c:if>
-			    </c:forEach>
-			    <c:forEach var="flight" items="${flights}">
-       				<c:if test="${flight.airportCode != 'NRT'}">
-		    	        <option value="${flight.airportCode}">${flight.airport}</option>
-        			</c:if>
-			    </c:forEach>
-			</select>
-			<select name="arrivalAirport" id = "arrivalAirport" class = "airport-select">		    
-			    <c:forEach var="flight" items="${flights}">
-			        <option  class = "airport-option" value="${flight.airport}">
-			            ${flight.airport}
-			        </option>
-			    </c:forEach>
-			</select>
-	        	<input type="text" id="departureDate" name = "departureDate" class="date-input" placeholder="出発日を選択">
-	        	<input type="text" id="arrivalDate" name = "arrivalDate" class="date-input" placeholder="帰りの日を選択">
+				<select name="departureAirport" id = "departureAirport" class = "airport-select">
+				    <c:forEach var="airport" items="${airports}">
+				    	<c:if test="${airport.airportCode == 'NRT'}">
+	            			<option selected>${airport.airportJp} / ${airport.airportCode}</option>
+	       				</c:if>
+				    </c:forEach>
+				    <c:forEach var="airport" items="${airports}" varStatus = "status">
+	       				<c:if test="${airport.airportCode != 'NRT' && status.count <= 4}">
+			    	        <option >${airport.airportJp} / ${airport.airportCode}</option>
+	        			</c:if>
+				    </c:forEach>
+				</select>
+				<select name="arrivalAirport" id = "arrivalAirport" class = "airport-select">		    
+				    <c:forEach var="airport" items="${airports}">
+					    <c:if test="${airport.airportCode == 'MNL'}">
+					        <option selected>${airport.airportJp} / ${airport.airportCode}</option>
+					    </c:if>
+					</c:forEach>
+					<c:forEach var="airport" items="${airports}">
+					    <c:if test="${airport.airportCode == 'NRT'}">
+					        <option>${airport.airportJp} / ${airport.airportCode}</option>
+					    </c:if>
+					</c:forEach>
+				    <c:forEach var="airport" items="${airports}" varStatus="status">
+					    <c:if test="${airport.airportCode != 'NRT' && airport.airportCode != 'MNL' && status.count <= 4}">
+					        <option>${airport.airportJp} / ${airport.airportCode}</option>
+					    </c:if>
+					</c:forEach>
+				</select>
+	        	<input type="text" id="departureDate" name = "departureDate" class="date-input" 
+	        	placeholder="出発日を選択">
+	        	<input type="text" id="arrivalDate" name = "arrivalDate" class="date-input"
+	        	placeholder="帰りの日を選択">
 			</div>
-			<!--
-	        <div class = "airport-selection">
-	        	<select name = "departireAirport" id = "departireAirport" class = "airport-select">
-	        		<option class = "airport-option" value = "INC">ICN 仁川</option>
-	        		<option class = "airport-option" value = "OKA">OKA 沖縄</option>
-	        	</select>
-	        	<select name = "arrivalAirport" id = "arrivalAirport" class = "airport-select">
-	        		<option class = "airport-option" value = "OKA">OKA 沖縄</option>
-	        		<option class = "airport-option" value = "INC">ICN 仁川</option>
-	        	</select>
-	        </div>
-	         -->
 			<!-- 탑승객 선택 -->
-	        <h3>搭乗人員選択</h3>
+	        <h3>
+	        <ruby class="taxfree-t"><rb>搭乗人員選択</rb><rt>とうじょうじんいんせんたく</rt></ruby>
+	        </h3>
 	        <div class = "passengers">
 	            <div class = "passenger-type">
-	                <label>大人（12歳以上）</label>
+	                <label>
+	                <ruby class="taxfree-t"><rb>大人</rb><rt>おとな</rt></ruby>
+	                （12<ruby class="taxfree-t"><rb>歳以上</rb><rt>さいいじょう</rt></ruby>）
+	                </label>
 	                <div class = "counter">
 	                    <button type = "button">-</button>
 	                    <span>0</span>
@@ -210,7 +219,11 @@
 	                </div>
 	            </div>
 	            <div class = "passenger-type">
-	                <label>小児（2歳〜12歳未満）</label>
+	                <label>
+	                <ruby class="taxfree-t"><rb>小児</rb><rt>しょうに</rt></ruby>
+	                （2<ruby class="taxfree-t"><rb>歳</rb><rt>さい</rt></ruby>
+	                〜12<ruby class="taxfree-t"><rb>歳未満</rb><rt>さいみまん</rt></ruby>）
+	                </label>
 	                <div class = "counter">
 	                    <button type = "button">-</button>
 	                    <span>0</span>
@@ -218,7 +231,10 @@
 	                </div>
 	            </div>
 	            <div class = "passenger-type">
-	                <label>幼児（2歳未満）</label>
+	                <label>
+	                <ruby class="taxfree-t"><rb>幼児</rb><rt>ようじ</rt></ruby>
+	                （2<ruby class="taxfree-t"><rb>歳未満</rb><rt>さいみまん</rt></ruby>）
+	                </label>
 	                <div class = "counter">
 	                    <button type = "button">-</button>
 	                    <span>0</span>
@@ -230,17 +246,27 @@
 			<input type = "hidden" name = "childCount" id = "childCount" value = "0">
 			<input type = "hidden" name = "infantCount" id = "infantCount" value = "0">
 			<!-- 클래스 선택 -->	
-	        <h3>座席クラス選択</h3>
+	        <h3>
+	        <ruby class="taxfree-t"><rb>座席</rb><rt>ざせき</rt></ruby>クラス
+	        <ruby class="taxfree-t"><rb>選択</rb><rt>せんたく</rt></ruby>
+	        </h3>
 	        <div class = "class-type">
-	            <button type="button" class = "class-option" data-type = "eco-spec">エコノミー特価</button>
-	            <button type="button" class = "class-option" data-type = "eco-norm">エコノミー一般</button>
+	            <button type="button" class = "class-option" data-type = "eco-spec">エコノミー
+	            <ruby class="taxfree-t"><rb>特価</rb><rt>とっか</rt></ruby>
+	            </button>
+	            <button type="button" class = "class-option" data-type = "eco-norm">エコノミー
+	            <ruby class="taxfree-t"><rb>一般</rb><rt>いっぱん</rt></ruby>
+	            </button>
 	            <button type="button" class = "class-option" data-type = "buis">ビジネス</button>
 	            <button type="button" class = "class-option" data-type = "first">ファースト</button>
 	        </div>
 	        <input type = "hidden" name = "classType" id = "classTypeInput" value = "">
 	        <div class = "confirm-button">
-	            <button type = "submit">航空券検索</button>
+	            <button type = "submit">
+	            <ruby class="taxfree-t"><rb>航空券検索</rb><rt>こうくうけんけんさく</rt></ruby>
+	            </button>
 	        </div>
+	    </div>
 	    </div>
 		</form>
 	</body>
