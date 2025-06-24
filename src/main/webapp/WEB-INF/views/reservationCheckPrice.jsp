@@ -150,6 +150,10 @@
             </c:forEach>
           </div>
         </div>
+        <!-- 제출 버튼 -->
+            <div class="confirm-button">
+               <button id="btnReserve" type="submit">예약 확인</button>
+            </div>
       </div>
       
       <!-- 귀국편 -->
@@ -234,11 +238,6 @@
 			<input type="hidden" name="selectedFlightNo" value="${param.selectedFlightNo}" />
 			<input type="hidden" name="arrivalFlightNo" value="${param.arrivalFlightNo}" />	
 			<input type="hidden" name="flightMealYN" value="Y" />
-
-            <!-- 제출 버튼 -->
-            <div class="confirm-button">
-               <button id="btnReserve" type="submit">예약 확인</button>
-            </div>
 
          </form>
    </div>   
