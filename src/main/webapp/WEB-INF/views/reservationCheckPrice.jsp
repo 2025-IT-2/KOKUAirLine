@@ -21,7 +21,7 @@
    <%@ include file="header.jsp" %>
    <div class="container">
       <!-- 예약 폼 -->
-      <form action="/passengerInfo" method="get"> 
+      <form action="/passengerInfo" method="post"> 
    
       <div class="info-bar">
          <div class="info-box triptype">
@@ -113,7 +113,7 @@
 
                   <div class="eco-spec">
                     <label class="fare" for="depFareType${status.index + 1}-saver" data-seat-available="${flightwP.flight.seatRemain}">
-                      <input id="depFareType${status.index + 1}-saver" type="radio" name="depFareType" value="${saverPrice * flightwP.price}" style="display:none;" />
+                      <input id="depFareType${status.index + 1}-saver" type="radio" name="depFareType" value="${saverPrice * flightwP.price}" style="display:none;" data-flight-no="${flightwP.flight.flightNo}" />
                       <div class="content">
                         <div class="type">セイバー</div>
                         <div class="price"><fmt:formatNumber value="${saverPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
@@ -124,7 +124,7 @@
                     </label>
 
                     <label class="fare" for="depFareType${status.index + 1}-standard" data-seat-available="${flightwP.flight.seatRemain}">
-                      <input id="depFareType${status.index + 1}-standard" type="radio" name="depFareType" value="${standardPrice * flightwP.price}" style="display:none;" />
+                      <input id="depFareType${status.index + 1}-standard" type="radio" name="depFareType" value="${standardPrice * flightwP.price}" style="display:none;" data-flight-no="${flightwP.flight.flightNo}"/>
                       <div class="content">
                         <div class="type">スタンダード</div>
                         <div class="price"><fmt:formatNumber value="${standardPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
@@ -135,7 +135,7 @@
                     </label>
 
                     <label class="fare" for="depFareType${status.index + 1}-flex" data-seat-available="${flightwP.flight.seatRemain}">
-                      <input id="depFareType${status.index + 1}-flex" type="radio" name="depFareType" value="${flexPrice * flightwP.price}" style="display:none;" />
+                      <input id="depFareType${status.index + 1}-flex" type="radio" name="depFareType" value="${flexPrice * flightwP.price}" style="display:none;" data-flight-no="${flightwP.flight.flightNo}"/>
                       <div class="content">
                         <div class="type">フレックス</div>
                         <div class="price"><fmt:formatNumber value="${flexPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
@@ -180,7 +180,7 @@
 
                   <div class="eco-spec">
                     <label class="fare" for="arrFareType${status.index + 1}-saver" data-seat-available="${flightwP.flight.seatRemain}">
-                      <input id="arrFareType${status.index + 1}-saver" type="radio" name="arrFareType" value="${saverPrice * flightwP.price}" style="display:none;" />
+                      <input id="arrFareType${status.index + 1}-saver" type="radio" name="arrFareType" value="${saverPrice * flightwP.price}" style="display:none;" data-flight-no="${flightwP.flight.flightNo}"/>
                       <div class="content">
                         <div class="type">セイバー</div>
                         <div class="price"><fmt:formatNumber value="${saverPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
@@ -191,7 +191,7 @@
                     </label>
 
                     <label class="fare" for="arrFareType${status.index + 1}-standard" data-seat-available="${flightwP.flight.seatRemain}">
-                      <input id="arrFareType${status.index + 1}-standard" type="radio" name="arrFareType" value="${standardPrice * flightwP.price}" style="display:none;" />
+                      <input id="arrFareType${status.index + 1}-standard" type="radio" name="arrFareType" value="${standardPrice * flightwP.price}" style="display:none;" data-flight-no="${flightwP.flight.flightNo}"/>
                       <div class="content">
                         <div class="type">スタンダード</div>
                         <div class="price"><fmt:formatNumber value="${standardPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
@@ -202,7 +202,7 @@
                     </label>
 
                     <label class="fare" for="arrFareType${status.index + 1}-flex" data-seat-available="${flightwP.flight.seatRemain}">
-                      <input id="arrFareType${status.index + 1}-flex" type="radio" name="arrFareType" value="${flexPrice * flightwP.price}" style="display:none;" />
+                      <input id="arrFareType${status.index + 1}-flex" type="radio" name="arrFareType" value="${flexPrice * flightwP.price}" style="display:none;" data-flight-no="${flightwP.flight.flightNo}"/>
                       <div class="content">
                         <div class="type">フレックス</div>
                         <div class="price"><fmt:formatNumber value="${flexPrice * flightwP.price}" type="number" maxFractionDigits="0" />円</div>
@@ -218,10 +218,6 @@
           </div>
         </div>
       </c:if>
-      <!-- 제출 버튼 -->
-            <div class="confirm-button">
-               <button type="submit">予約確認</button>
-            </div>
     </div>
             
 	    <!-- 필수 파라미터 hidden input으로 추가 -->
@@ -235,14 +231,25 @@
 			<input type="hidden" name="arrivalDate" value="${param.arrivalDate}" />
 			<input type="hidden" name="classType" value="${param.classType}" />
 			<input type="hidden" id="totalPrice" name="totalPrice" value="" />
+			<input type="hidden" name="selectedFlightNo" value="${param.selectedFlightNo}" />
+			<input type="hidden" name="arrivalFlightNo" value="${param.arrivalFlightNo}" />	
+			<input type="hidden" name="flightMealYN" value="Y" />
+
+            <!-- 제출 버튼 -->
+            <div class="confirm-button">
+               <button id="btnReserve" type="submit">예약 확인</button>
+            </div>
 
          </form>
-   </div>
-
-</body>
+   </div>   
 
     <!-- 총액 계산 -->    
 		<script>
+		document.getElementById('btnReserve').addEventListener("click", function () {
+			console.log(111);
+		});
+		
+		
 		document.addEventListener("DOMContentLoaded", function () {
 			  const allFareRadios = document.querySelectorAll('input[name="depFareType"], input[name="arrFareType"]');
 
@@ -265,7 +272,38 @@
 			  });
 			});
 		</script> 
+		
+		<script>
+		  document.addEventListener("DOMContentLoaded", function () {
+		    // 출발편 선택 시 처리
+		    const depRadios = document.querySelectorAll('input[name="depFareType"]');
+		    const selectedFlightNoInput = document.querySelector('input[name="selectedFlightNo"]');
+		
+		    depRadios.forEach(radio => {
+		      radio.addEventListener("change", function () {
+		        const flightNo = this.dataset.flightNo;
+		        selectedFlightNoInput.value = flightNo;
+		        console.log("✈️ 출발편 selectedFlightNo:", flightNo);
+		      });
+		    });
+		
+		    // 도착편 선택 시 처리
+		    const arrRadios = document.querySelectorAll('input[name="arrFareType"]');
+		    const arrivalFlightNoInput = document.querySelector('input[name="arrivalFlightNo"]');
+		
+		    arrRadios.forEach(radio => {
+		      radio.addEventListener("change", function () {
+		        const flightNo = this.dataset.flightNo;
+		        arrivalFlightNoInput.value = flightNo;
+		        console.log("✈️ 도착편 arrivalFlightNo:", flightNo);
+		      });
+		    });
+		  });
+		</script>
+						
+</body>
 
+	
 
 
 </html>

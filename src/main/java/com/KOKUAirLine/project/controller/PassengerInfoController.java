@@ -16,12 +16,13 @@ import jakarta.servlet.http.HttpSession;
 public class PassengerInfoController {
 
     // 탑승자 정보 입력 페이지로 이동
-	@GetMapping("/passengerInfo")
+	@PostMapping("/passengerInfo")
     public String passengerInfo(
             @RequestParam("adultCount") int adultCount,
             @RequestParam("childCount") int childCount,
             @RequestParam("infantCount") int infantCount,
             @RequestParam(defaultValue = "0") int totalPrice,
+            @RequestParam("selectedFlightNo") String flightNo,
             HttpSession session,            
             Model model) {
 
@@ -35,7 +36,6 @@ public class PassengerInfoController {
 
         // 서비스 호출
         String phoneNumber = passengerInfoService.getPhoneNumberByUserId(loginUserId);
-//        int amount = passengerInfoService.calculateAmount(adultCount, childCount, infantCount);
 
         // JSP에 데이터 전달        
         model.addAttribute("adultCount", adultCount);
@@ -43,16 +43,13 @@ public class PassengerInfoController {
         model.addAttribute("infantCount", infantCount);
         model.addAttribute("phone", phoneNumber);
 	    model.addAttribute("totalPrice", totalPrice);
-//        model.addAttribute("amount", amount);
+	    model.addAttribute("selectedFlightNo", flightNo);
 
 		System.out.println("💰 totalPrice = " + totalPrice);
 	    
         return "passengerInfo";
 		
-	}
-
-
-	
+	}	
 			
 	// PassengerInfoService 호출
     @Autowired
@@ -75,6 +72,8 @@ public class PassengerInfoController {
         passengerInfoService.savePassengerInfo(request, "小児", childCount);
         passengerInfoService.savePassengerInfo(request, "幼児", infantCount);
 
+        passengerInfoService.saveReservationInfo(request, loginUserId);
+        
         return "redirect:/home"; // 저장 후 홈으로 이동
     }
 }
