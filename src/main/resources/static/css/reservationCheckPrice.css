@@ -75,9 +75,13 @@ body {
 
 /* 비행기 옵션 박스 */
 .flight-options {
+  flex: 1;
   padding: 15px;
   background-color: white;
-  width: 750px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* 비행기 한 줄 */
@@ -86,8 +90,12 @@ body {
   border: 1px solid #aaa;
   margin-bottom: 15px;
   background-color: #f0f0f0;
-  gap: 1rem;
-  align-items: stretch;
+  gap: 0.5rem;
+  padding: 10px; /* 여백 줄이기 */
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  
 }
 
 /* 시간 정보 */
@@ -139,6 +147,14 @@ body {
   align-items: stretch;
 }
 
+.eco-spec,
+.eco-norm,
+.eco-first {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px; /* 버튼 간격 */
+}
+
 /* 좌석 타입 선택 영역 */
 .fare {
   position: relative; /* input 위치를 위한 기준 */
@@ -156,6 +172,8 @@ body {
   word-break: break-word;    /* 긴 단어 줄바꿈 */
   min-height: 110px;
   box-sizing: border-box;
+  flex: 1; /* 같은 너비 */
+  min-width: 0; /* flex shrink 허용 */
 }
 
 .selected {
@@ -228,11 +246,14 @@ body {
 /* 출국편 박스 스타일 */
 .flight-section {
   flex: 1;
+  min-width: 45%;
+  display: flex;
+  flex-direction: column;
   background-color: white;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  margin-bottom: 0;
+  box-sizing: border-box;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 출국편 제목 */
@@ -255,13 +276,26 @@ body {
 /* 출국, 귀국 편 박스 레이아웃 */
 .flights-container {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 20px;
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
 }
 
 /* 좌석 모자를 경우 선택 안되게 하는 것 */
 .fare.disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .flights-container {
+    flex-direction: column;
+  }
+}
+
+.taxfree-t rt{
+	/*후리가나 크기 줄이기*/
+	font-size:8px;
 }

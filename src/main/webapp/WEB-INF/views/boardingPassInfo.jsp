@@ -33,8 +33,9 @@
 			      <!-- 출발 -->
 			      <div class="info-card">
 			        <div class="label">出発地<br><span class="jp">しゅっぱつち</span></div>
-			        <div class="location"><c:out value="${departure}" default="出発地無し" /></div>
-			        <div class="time"><fmt:formatDate value="${departureTime}" pattern="HH:mm" /></div>
+			        <!--<div class="location"><div class="airport">${reservation.flightInfo.departure}</div></div>-->
+			        <div class="location"><c:out value="${reservation.flightInfo.departure}" default="出発地無し" /></div>
+			        <div class="time"><fmt:formatDate value="${reservation.flightInfo.departureTime}" pattern="HH:mm" /></div>
 			      </div>
 
 			      <div class="separator">-</div>
@@ -42,8 +43,8 @@
 			      <!-- 도착 -->
 			      <div class="info-card">
 			        <div class="label">目的地<br><span class="jp">もくてきち</span></div>
-			        <div class="location"><c:out value="${arrival}" default="目的地無し" /></div>
-			        <div class="time"><fmt:formatDate value="${arrivalTime}" pattern="HH:mm" /></div>
+			        <div class="location"><c:out value="${reservation.flightInfo.arrival}" default="目的地無し" /></div>
+			        <div class="time"><fmt:formatDate value="${reservation.flightInfo.arrivalTime}" pattern="HH:mm" /></div>
 			      </div>
 			    </div>
 			    </div>
@@ -53,11 +54,11 @@
 				        <div class="card-box">
 				          <h2>搭乗券送信</h2>
 				          <div class="btn-group">
-							<a href="https://${mailUrl}" class="btn" target="_blank">メールで送信</a>
+							<a href="https://${mailUrl}" class="btn" target="_blank">メールで<br>送信</a>
 							<br>
-							<a href="https://social-plugins.line.me/lineit/share?url=https://example.com" class="btn" target="_blank">LINEで送信</a>
+							<a href="https://social-plugins.line.me/lineit/share?url=https://example.com" class="btn" target="_blank">LINEで<br>送信</a>
 							<br>
-							<a href="#" class="btn" onclick="window.print(); return false;">印刷する</a>
+							<a href="#" class="btn" onclick="window.print(); return false;">印刷<br>する</a>
 				          </div>
 				        </div>
 			  </div>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.KOKUAirLine.project.model.FlightInfo;
+import com.KOKUAirLine.project.model.Reservation;
 import com.KOKUAirLine.project.repo.FlightInfoRepository;
 import com.KOKUAirLine.project.service.BoardingPassInfoService;
 import com.KOKUAirLine.project.service.FlightInfoService;
@@ -51,7 +52,18 @@ public class BoardingPassInfoController {
 	    return "boardingPassInfo";
 	}
 
-
+//	@GetMapping("/boardingPassInfo")
+//	public String getBoardingPassInfo(@RequestParam String reservationNumber, Model model) {
+//	    Reservation res = CheckReservationService.findByResiNum(reservationNumber);
+//
+//	    model.addAttribute("departure", res.getFlightInfo().getDeparture());
+//	    model.addAttribute("arrival", res.getFlightInfo().getArrival());
+//	    model.addAttribute("departureTime", res.getFlightInfo().getDepartureTime());
+//	    model.addAttribute("arrivalTime", res.getFlightInfo().getArrivalTime());
+//	    model.addAttribute("mailUrl", "메일 전송 URL이나 이메일 주소");
+//
+//	    return "boardingPassInfo"; // JSP 파일 이름
+//	}
     
     
     

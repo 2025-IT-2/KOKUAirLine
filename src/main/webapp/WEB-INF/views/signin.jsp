@@ -27,29 +27,29 @@
     <label for="input-mail">メール</label>
     <input type="text" id="input-mail" name="EMAIL" placeholder="重複検査を行います">
 
-    <label for="firstname">名前</label>
+    <label for="firstname"><ruby><rb>名前</rb><rt>なまえ</rt></ruby></label>
     <input type="text" id="firstname" name="firstname" placeholder="英語で入力してください">
 
-    <label for="lastname">性</label>
+    <label for="lastname"><ruby><rb>苗字</rb><rt>みょうじ</rt></ruby></label>
     <input type="text" id="lastname" name="lastname" placeholder="英語で入力してください">
 
-    <label>性別</label>
+    <label><ruby><rb>性別</rb><rt>せいべつ</rt></ruby></label>
     <div>
-      <input type="radio" name="gender" value="male"> 男性
-      <input type="radio" name="gender" value="female"> 女性
+      <input type="radio" name="gender" value="male"> <ruby><rb>男性</rb><rt>だんせい</rt></ruby>
+      <input type="radio" name="gender" value="female"> <ruby><rb>女性</rb><rt>じょせい</rt></ruby>
     </div>
 
-    <label for="input-phone">電話番号</label>
+    <label for="input-phone"><ruby><rb>電話番号</rb><rt>でんわばんご</rt></ruby></label>
     <input type="text" id="input-phone" name="phone" placeholder="例: 01012345678">
 
 	
-    <label for="input-nation">国籍</label>
+    <label for="input-nation"><ruby><rb>国籍</rb><rt>こくせき</rt></ruby></label>
 	<%
 	  String[] countryCodes = Locale.getISOCountries();
 	  Arrays.sort(countryCodes); // 알파벳순(일본어 기준이기 때문에 가나순 정렬) 정렬
 	%>
 	<select id="input-nation" name="nationality">
-	  <option value="">選択してください</option>
+	  <option value=""><ruby><rb>選択</rb><rt>せんたく</rt></ruby>してください</option>
 	<%
 	  for (String code : countryCodes) {
 	    Locale locale = new Locale("", code);
@@ -61,9 +61,9 @@
 	%>
 	</select>
 	
-    <label for="caldateField">生年月日</label>
+    <label for="caldateField"><ruby><rb>生年月日</rb><rt>せいねんがっぴ</rt></ruby></label>
 	<div>
-		<p class="birthinfo">会員登録は１２歳以上可能</p>
+		<p class="birthinfo"><ruby><rb>会員登録</rb><rt>かいいんとうろく</rt></ruby>は１２<ruby><rb>歳</rb><rt>さい</rt></ruby><ruby><rb>以上</rb><rt>いじょう</rt></ruby><ruby><rb>可能</rb><rt>かのう</rt></ruby></p>
 		</div>
 	<div>
 	      <input type="text" id="caldateField" name="birthdate" readonly>
@@ -72,40 +72,40 @@
 
 		<!-- 약관 동의 섹션 -->
 		<div class="terms-section">
-		  <label>利用規約</label>
+		  <label><ruby><rb>利用規約</rb><rt>りようきやく</rt></ruby></label>
 			  <div class="terms-box" id="terms-content-1">読み込み中...</div>
 		  <label>
-		    <input type="checkbox" name="terms1" id="terms1" class="terms-checkbox"> 利用規約に同意します
+		    <input type="checkbox" name="terms1" id="terms1" class="terms-checkbox"> <ruby><rb>利用規約</rb><rt>りようきやく</rt></ruby>に<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
 		  </label>
 
 		  <label>キャンセルポリシー</label>
 		  <div class="terms-box" id="terms-content-2">読み込み中...</div>
 		  <label>
-		    <input type="checkbox" name="terms2" id="terms2" class="terms-checkbox"> キャンセルポリシーに同意します
+		    <input type="checkbox" name="terms2" id="terms2" class="terms-checkbox"> キャンセルポリシーに<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
 		  </label>
 
-		  <label>特定商取引法に基づく表記</label>
+		  <label><ruby><rb>特定商取引法</rb><rt>とくていしょうとりひきほう</rt></ruby>に<ruby><rb>基</rb><rt>もと</rt></ruby>づく<ruby><rb>表記</rb><rt>ひょうき</rt></ruby></label>
 		  <div class="terms-box" id="terms-content-3">読み込み中...</div>
 		  <label>
-		    <input type="checkbox" name="terms3" id="terms3" class="terms-checkbox"> 特定商取引法に基づく表記に同意します
+		    <input type="checkbox" name="terms3" id="terms3" class="terms-checkbox"> <ruby><rb>特定商取引法</rb><rt>とくていしょうとりひきほう</rt></ruby>に<ruby><rb>基</rb><rt>もと</rt></ruby>づく<ruby><rb>表記</rb><rt>ひょうき</rt></ruby>に<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
 		  </label>
 
 		  <label>Cookieポリシー</label>
 		  <div class="terms-box" id="terms-content-4">読み込み中...</div>
 		  <label>
-		    <input type="checkbox" name="terms4" id="terms4" class="terms-checkbox"> Cookieポリシーに同意します
+		    <input type="checkbox" name="terms4" id="terms4" class="terms-checkbox"> Cookieポリシーに<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
 		  </label>
 
-		  <label>安全なご利用のために</label>
+		  <label><ruby><rb>安全</rb><rt>あんぜん</rt></ruby>なご<ruby><rb>利用</rb><rt>りよう</rt></ruby>のために</label>
 		  <div class="terms-box" id="terms-content-5">読み込み中...</div>
-		  <label>
-		    <input type="checkbox" name="terms5" id="terms5" class="terms-checkbox"> 安全なご利用の規約に同意します
+		  <label id=nowhite>
+		    <input type="checkbox" name="terms5" id="terms5" class="terms-checkbox"> <ruby><rb>安全</rb><rt>あんぜん</rt></ruby>なご<ruby><rb>利用</rb><rt>りよう</rt></ruby>の<ruby><rb>規約</rb><rt>きやく</rt></ruby>に<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
 		  </label>
 		  
 		  <label>プライバシーポリシー</label>
 		  <div class="terms-box" id="terms-content-6">読み込み中...</div>
 		  <label>
-		    <input type="checkbox" name="terms6" id="terms6" class="terms-checkbox"> プライバシーポリシーに同意します
+		    <input type="checkbox" name="terms6" id="terms6" class="terms-checkbox"> プライバシーポリシーに<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
 		  </label>
 	  </div>
 	  	
@@ -113,7 +113,7 @@
 
 
 	<div id="signinbutton">	
-    <button type="submit" class="signin">会員登録</button>
+    <button type="submit" class="signin"><span><ruby><rb>会員登録</rb><rt>かいいんとうろく</rt></ruby></span></button>
 	</div>
 	
   </form>

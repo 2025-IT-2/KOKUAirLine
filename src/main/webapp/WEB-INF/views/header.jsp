@@ -15,16 +15,16 @@
 		-->
 	    <div class="nav">
 	    <!-- 각 상단 버튼을 누르면 해당 화면으로 이동 -->
-		<button class="menubtn" onclick="location.href='<c:url value='/reservation' />'"><span>予約</span></button>
+		<button class="menubtn" onclick="location.href='<c:url value='/reservation' />'"><span><ruby><rb>予約</rb><rt>よやく</rt></ruby></span></button>
 		<button class="menubtn" onclick="location.href='<c:url value='/onlinecheckin' />'"><span>オンライン・チェックイン</span></button>
-		<button class="menubtn" onclick="location.href='<c:url value='/reservationCheck' />'"><span>予約確認</span></button>
+		<button class="menubtn" onclick="location.href='<c:url value='/reservationCheck' />'"><span><ruby><rb>予約確認</rb><rt>よやくかくにん</rt></ruby></span></button>
 
 	    </div>
 	    <c:choose>
 		    <c:when test="${not empty sessionScope.loginUserId}">
 		      <!-- 로그인된 경우 -->
 		      <div class="user-info">
-		        ${sessionScope.loginUserId}様
+		        ${sessionScope.loginUserId}<ruby><rb>様</rb><rt>さま</rt></ruby>
 		      <button class="login-button" onclick="location.href='<c:url value='/logout' />'">ログアウト</button>
 		       <!-- <a href="<c:url value='/logout' />">ログアウト</a>-->
 		      </div>
