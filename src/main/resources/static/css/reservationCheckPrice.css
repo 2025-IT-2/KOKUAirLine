@@ -118,16 +118,20 @@ body {
   display: flex;
   flex-direction: row;
   border-radius: 15px;
+  height: 200px;
+  box-shadow: 0 2px 10px rgb(210, 233, 255);
 }
 
 /* 시간 정보 */
 .time-info {
+  margin:3px;
   width: 200px;
   background-color: rgb(198, 226, 255);
   text-align: center;
   padding: 10px;
   font-size: 18px;
   border-radius: 15px;
+  height: 174px;
 }
 
 .time-info .time span {
@@ -144,18 +148,20 @@ body {
 /* 비행 상세 */
 .flight-details {
   flex: 1;
+  margin-top: 21px;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   padding: 10px;
   background-color: rgb(252, 252, 252);
   border-radius: 15px;
+  height: 132px;
 }
 
 .flight-info {
-  width: 100px;
+  width: 200px;
   text-align: center;
-  border-right: 1px solid #ccc;
+  white-space : pre-wrap;
   padding: 10px;
   font-size: 14px;
   display: flex;
@@ -163,6 +169,38 @@ body {
   align-items: center;     /* 세로 가운데 */
   height: 100%;            /* 부모 높이에 맞추려면 */
   border-radius: 15px;
+  position:relative;
+  text-align: center;
+}
+
+#planeNo, #flightNo{
+	left: 10px;
+	top: 0px;
+	font-size: 14px;
+	border: 1px solid rgb(193, 224, 255);
+	background-color:  rgb(238, 247, 255);
+  border-radius: 15px;
+	text-align: left;
+	padding-bottom: 15px;
+	/*box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);*/
+	margin:5px;
+	padding-left: 10px;
+}
+
+#planeNo{
+	margin-right: 5px;
+	}
+	
+#flightNo{
+	margin-left: 5px;	
+}
+
+
+.explain{
+	text-align: left;
+	margin-top: -25px;
+	padding-bottom: 10px;
+	border-bottom: 2px dotted rgb(193, 224, 255);
 }
 
 .economy {

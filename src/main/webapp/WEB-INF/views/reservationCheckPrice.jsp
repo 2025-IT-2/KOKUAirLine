@@ -107,9 +107,14 @@
                 </div>
                 <div class="flight-details">
                   <div class="flight-info">
-                    ${flightwP.flight.flightNo}<br>
-                    <span>K${flightwP.flight.airplaneNo}</span>
+					<div id=flightNo>
+						<p class="explain"><ruby><rb>空港編</rb><rt>くうこうへん</rt></p>
+                    ${flightwP.flight.flightNo}</div>
+					<div id=planeNo>
+						<p class="explain"><ruby><rb>機種</rb><rt>きしゅ</rt></p>
+                    <span>K${flightwP.flight.airplaneNo}</span></div>
                   </div>
+                  
 
                   <div class="eco-spec">
                     <label class="fare" for="depFareType${status.index + 1}-saver" data-seat-available="${flightwP.flight.seatRemain}">
@@ -174,8 +179,12 @@
                 </div>
                 <div class="flight-details">
                   <div class="flight-info">
-                    ${flightwP.flight.flightNo}<br>
-                    <span>K${flightwP.flight.airplaneNo}</span>
+					<div id=flightNo>
+							<p class="explain"><ruby><rb>空港編</rb><rt>くうこうへん</rt></p>
+	                    ${flightwP.flight.flightNo}</div>
+						<div id=planeNo>
+							<p class="explain"><ruby><rb>機種</rb><rt>きしゅ</rt></p>
+	                    <span>K${flightwP.flight.airplaneNo}</span></div>
                   </div>
 
                   <div class="eco-spec">
