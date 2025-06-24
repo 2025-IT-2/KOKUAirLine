@@ -21,7 +21,7 @@
    <%@ include file="header.jsp" %>
    <div class="container">
       <!-- 예약 폼 -->
-      <form action="/passengerInfo" method="post"> 
+      <form action="/passengerInfo" method="get"> 
    
       <div class="info-bar">
          <div class="info-box triptype">
@@ -229,7 +229,7 @@
       </c:if>
     </div>
             
-	    <!-- 필수 파라미터 hidden input으로 추가 -->
+	    	<!-- 필수 파라미터 hidden input으로 추가 -->
 			<input type="hidden" name="adultCount" value="${param.adultCount}" />
 			<input type="hidden" name="childCount" value="${param.childCount}" />
 			<input type="hidden" name="infantCount" value="${param.infantCount}" />
@@ -239,12 +239,12 @@
 			<input type="hidden" name="departureDate" value="${param.departureDate}" />
 			<input type="hidden" name="arrivalDate" value="${param.arrivalDate}" />
 			<input type="hidden" name="classType" value="${param.classType}" />
-			<input type="hidden" id="totalPrice" name="totalPrice" value="" />
+			<input type="hidden" id="totalPrice" name="totalPrice" value="0" />
 			<input type="hidden" name="selectedFlightNo" value="${param.selectedFlightNo}" />
 			<input type="hidden" name="arrivalFlightNo" value="${param.arrivalFlightNo}" />
 			<input type="hidden" name="flightMealYN" value="Y" />
-			<input type="hidden" name="depAirFare" id="depAirFare" />
-			<input type="hidden" name="arrAirFare" id="arrAirFare" /> 
+		<input type="hidden" name="depAirFare" id="depAirFare" value="${param.depAirFare}" />
+		<input type="hidden" name="arrAirFare" id="arrAirFare" value="${param.arrAirFare}" /> 
 
 			
 
@@ -258,81 +258,65 @@
          </form>
    </div>   
 
-    <!-- 총액 계산 -->    
-		<script>
-		document.getElementById('btnReserve').addEventListener("click", function () {
-			console.log(111);
-		});
-		
-		
-		document.addEventListener("DOMContentLoaded", function () {
-			  const allFareRadios = document.querySelectorAll('input[name="depFareType"], input[name="arrFareType"]');
+	<script>
+	  document.addEventListener("DOMContentLoaded", function () {
+	    const depRadios = document.querySelectorAll('input[name="depFareType"]');
+	    const arrRadios = document.querySelectorAll('input[name="arrFareType"]');
+	
+	    const depAirFareInput = document.getElementById("depAirFare");
+	    const arrAirFareInput = document.getElementById("arrAirFare");
+	    const totalPriceInput = document.getElementById("totalPrice");
+	    const selectedFlightNoInput = document.querySelector('input[name="selectedFlightNo"]');
+	    const arrivalFlightNoInput = document.querySelector('input[name="arrivalFlightNo"]');
+	
+	    // 운임 선택 시 값 갱신 함수
+	    function updateFareAndFlightInfo() {
+	      let depFare = 0;
+	      let arrFare = 0;
+	
+	      const selectedDep = document.querySelector('input[name="depFareType"]:checked');
+	      if (selectedDep) {
+	        depFare = Math.floor(parseFloat(selectedDep.value || "0"));
+	        depAirFareInput.value = depFare;
+	        selectedFlightNoInput.value = selectedDep.dataset.flightNo || "";
+	      }
+	
+	      const selectedArr = document.querySelector('input[name="arrFareType"]:checked');
+	      if (selectedArr) {
+	        arrFare = Math.floor(parseFloat(selectedArr.value || "0"));
+	        arrAirFareInput.value = arrFare;
+	        arrivalFlightNoInput.value = selectedArr.dataset.flightNo || "";
+	      }
+	
+	      totalPriceInput.value = depFare + arrFare;
+	    }
+	
+	    // 각각의 라디오 버튼에 change 이벤트 연결
+	    [...depRadios, ...arrRadios].forEach(radio => {
+	      radio.addEventListener("change", updateFareAndFlightInfo);
+	    });
+	
+	    // 제출 버튼 처리
+	    document.getElementById('btnReserve').addEventListener("click", function (e) {
+	      e.preventDefault(); // 기본 submit 막기
+	
+	      updateFareAndFlightInfo(); // 값 갱신
+	
+	      // 로그 출력
+	      console.log("✈️ depAirFare:", depAirFareInput.value);
+	      console.log("✈️ arrAirFare:", arrAirFareInput.value);
+	      console.log("💰 totalPrice:", totalPriceInput.value);
+	      console.log("🛫 selectedFlightNo:", selectedFlightNoInput.value);
+	      console.log("🛬 arrivalFlightNo:", arrivalFlightNoInput.value);
+	
+	      // 폼 직접 제출
+	      document.querySelector("form").submit();
+	    });
+	  });
+	</script>
 
-			  allFareRadios.forEach(radio => {
-			    radio.addEventListener("change", () => {
-			      let total = 0;
 
-			      const selectedDep = document.querySelector('input[name="depFareType"]:checked');
-			      if (selectedDep) {
-			        total += parseInt(selectedDep.value || "0");
-			      }
 
-			      const selectedArr = document.querySelector('input[name="arrFareType"]:checked');
-			      if (selectedArr) {
-			        total += parseInt(selectedArr.value || "0");
-			      }
-
-			      document.getElementById("totalPrice").value = total;
-			    });
-			  });
-			});
-		
-			document.addEventListener("DOMContentLoaded", function () {
-			  const depRadios = document.querySelectorAll('input[name="depFareType"]');
-			  const arrRadios = document.querySelectorAll('input[name="arrFareType"]');
-			  
-			  depRadios.forEach(radio => {
-			    radio.addEventListener("change", function () {
-			      document.getElementById("depAirFare").value = this.value;
-			    });
-			  });
-
-			  arrRadios.forEach(radio => {
-			    radio.addEventListener("change", function () {
-			      document.getElementById("arrAirFare").value = this.value;
-			    });
-			  });
-			});
-		
-		</script> 
-		
-		<script>
-		  document.addEventListener("DOMContentLoaded", function () {
-		    // 출발편 선택 시 처리
-		    const depRadios = document.querySelectorAll('input[name="depFareType"]');
-		    const selectedFlightNoInput = document.querySelector('input[name="selectedFlightNo"]');
-		
-		    depRadios.forEach(radio => {
-		      radio.addEventListener("change", function () {
-		        const flightNo = this.dataset.flightNo;
-		        selectedFlightNoInput.value = flightNo;
-		        console.log("✈️ 출발편 selectedFlightNo:", flightNo);
-		      });
-		    });
-		
-		    // 도착편 선택 시 처리
-		    const arrRadios = document.querySelectorAll('input[name="arrFareType"]');
-		    const arrivalFlightNoInput = document.querySelector('input[name="arrivalFlightNo"]');
-		
-		    arrRadios.forEach(radio => {
-		      radio.addEventListener("change", function () {
-		        const flightNo = this.dataset.flightNo;
-		        arrivalFlightNoInput.value = flightNo;
-		        console.log("✈️ 도착편 arrivalFlightNo:", flightNo);
-		      });
-		    });
-		  });
-		</script>
 						
 </body>
 
