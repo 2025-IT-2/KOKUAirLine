@@ -17,33 +17,65 @@
 <body>
   <div class="container" id="boardingFrame">
         <div class="header">
-          <h1>搭乗券情報</h1>
+          <h1>
+          <ruby class="taxfree-t"><rb>搭乗券情報</rb><rt>とうじょうけんじょうほう</rt></ruby>
+          </h1>
         </div>
 
-        <div class="section-title">搭乗券<br><div class='space'></div>発行完了</div>
+        <div class="section-title"><ruby class="taxfree-t"><rb>搭乗券</rb><rt>とうじょうけん</rt></ruby><br>
+        <div class='space'></div><ruby class="taxfree-t"><rb>発行完了</rb><rt>はっこうかんりょう</rt></ruby></div>
 
         <div class="card">
 			<div class="card-box" >
 				<div id="print-area">
-			  <h2>搭乗券</h2>
+			  <h2>
+			  <ruby class="taxfree-t"><rb>搭乗券</rb><rt>とうじょうけん</rt></ruby>
+			  </h2>
 			  <div class="boarding-pass-card">
 			    <h3 class="boarding-title">BOARDING PASS</h3>
 				
 			    <div class="boarding-info">
 			      <!-- 출발 -->
 			      <div class="info-card">
-			        <div class="label">出発地<br><span class="jp">しゅっぱつち</span></div>
-			        <div class="location"><c:out value="${departure}" default="出発地無し" /></div>
-			        <div class="time"><fmt:formatDate value="${departureTime}" pattern="HH:mm" /></div>
+			        <div class="label">
+			        <ruby class="taxfree-t"><rb>出発地</rb><rt>しゅっぱつち</rt></ruby>
+			        </div>
+			        <!--<div class="location"><div class="airport">${reservation.flightInfo.departure}</div></div>-->
+			        <div class="location">
+			        <c:choose>
+				      <c:when test="${empty reservation.flightInfo.departure}">
+				        <ruby class="taxfree-t"><rb>出発地無し</rb><rt>しゅっぱつちなし</rt></ruby>
+				      </c:when>
+				      <c:otherwise>
+				        <c:out value="${reservation.flightInfo.departure}" />
+				      </c:otherwise>
+				    </c:choose>
+			        </div>
+			        <div class="time">
+			        <fmt:formatDate value="${reservation.flightInfo.departureTime}" pattern="HH:mm" />
+			        </div>
 			      </div>
 
 			      <div class="separator">-</div>
 
 			      <!-- 도착 -->
 			      <div class="info-card">
-			        <div class="label">目的地<br><span class="jp">もくてきち</span></div>
-			        <div class="location"><c:out value="${arrival}" default="目的地無し" /></div>
-			        <div class="time"><fmt:formatDate value="${arrivalTime}" pattern="HH:mm" /></div>
+			        <div class="label">
+			        <ruby class="taxfree-t"><rb>目的地</rb><rt>もくてきち</rt></ruby>
+			        </div>
+			        <div class="location">
+			        <c:choose>
+				      <c:when test="${empty reservation.flightInfo.arrival}">
+				        <ruby class="taxfree-t"><rb>目的地無し</rb><rt>もくてきちなし</rt></ruby>
+				      </c:when>
+				      <c:otherwise>
+				        <c:out value="${reservation.flightInfo.arrival}" />
+				      </c:otherwise>
+				    </c:choose>
+			        </div>
+			        <div class="time">
+			        <fmt:formatDate value="${reservation.flightInfo.arrivalTime}" pattern="HH:mm" />
+			        </div>
 			      </div>
 			    </div>
 			    </div>
@@ -51,13 +83,22 @@
 			</div>
 				<div class="card">
 				        <div class="card-box">
-				          <h2>搭乗券送信</h2>
+				          <h2>
+				          <ruby class="taxfree-t"><rb>搭乗券送信</rb><rt>とうじょうけんそうしん</rt></ruby>
+				          </h2>
 				          <div class="btn-group">
-							<a href="https://${mailUrl}" class="btn" target="_blank">メールで送信</a>
+							<a href="https://${mailUrl}" class="btn" target="_blank">メールで<br>
+							<ruby class="taxfree-t"><rb>送信</rb><rt>そうしん</rt></ruby>
+							</a>
 							<br>
-							<a href="https://social-plugins.line.me/lineit/share?url=https://example.com" class="btn" target="_blank">LINEで送信</a>
+							<a href="https://social-plugins.line.me/lineit/share?url=https://example.com" class="btn" target="_blank">LINEで<br>
+							<ruby class="taxfree-t"><rb>送信</rb><rt>そうしん</rt></ruby>
+							</a>
 							<br>
-							<a href="#" class="btn" onclick="window.print(); return false;">印刷する</a>
+							<a href="#" class="btn" onclick="window.print(); return false;">
+							<ruby class="taxfree-t"><rb>印刷</rb><rt>いんさつ</rt></ruby><br>
+							<ruby class="taxfree-t"><rb>する</rb><rt>する</rt></ruby>
+							</a>
 				          </div>
 				        </div>
 			  </div>

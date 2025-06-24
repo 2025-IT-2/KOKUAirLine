@@ -1,3 +1,12 @@
+body{
+	background-color: #f4f6f8;
+	font-family: "Noto Sans JP", sans-serif;
+}
+
+rt{
+	font-size: 7px;
+}
+
 .form-container {
   max-width: 500px;
   margin: 50px auto;
@@ -129,4 +138,8 @@
     font-size: 13px;
     border-radius: 8px;
     line-height: 1.5;
+  }
+
+ #nowhite{
+	
   }

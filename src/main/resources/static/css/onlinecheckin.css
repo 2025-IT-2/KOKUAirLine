@@ -1,4 +1,8 @@
 /* onlinecheckin.css */
+body{
+	background-color: #f4f6f8;
+}
+
 .checkin-container {
   max-width: 900px;
   margin: 30px auto;
@@ -24,6 +28,10 @@
   border: 1px solid #aaa;
   padding: 10px;
   text-align: center;
+}
+
+tr th {
+	font-size: 15px;
 }
 
 .checkin-button {
