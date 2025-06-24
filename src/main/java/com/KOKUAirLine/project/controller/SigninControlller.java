@@ -31,6 +31,12 @@ public class SigninControlller {
     public String signin(@RequestParam Map<String, String> params, RedirectAttributes redirectAttributes) {
     	System.out.println("test1");
 
+    	if (params.get("ID").length() < 4 || params.get("ID").length() > 20) {
+    	    throw new IllegalArgumentException("아이디는 4~20자 사이여야 합니다.");
+    	}
+    	if (params.get("pw").length() < 8 || params.get("pw").length() > 20) {
+    	    throw new IllegalArgumentException("비밀번호는 8~20자 사이여야 합니다.");
+    	}
 
         UserInfo user = new UserInfo();
         user.setUserId(params.get("ID"));

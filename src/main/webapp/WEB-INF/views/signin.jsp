@@ -19,10 +19,10 @@
 
   <form action="/signin" method="post" id="signin" class="form-container">
     <label for="input-id">ID</label>
-    <input type="text" id="input-id" name="ID" placeholder="重複検査を行います">
+    <input type="text" id="input-id" name="ID" minlength="4" maxlength="20" placeholder="重複検査を行います">
 
     <label for="input-pw">PW</label>
-    <input type="password" id="input-pw" name="pw" placeholder="最小８文字、最大１６文字">
+    <input type="password" id="input-pw" name="pw" minlength="8" maxlength="20" placeholder="最小８文字、最大１６文字">
 
     <label for="input-mail">メール</label>
     <input type="text" id="input-mail" name="EMAIL" placeholder="重複検査を行います">
