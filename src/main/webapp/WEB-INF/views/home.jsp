@@ -27,7 +27,7 @@
 
     <!-- 상품 리스트 영역 -->
     <div>
-	  <h2 class="product-title">免税品販売リスト</h2>
+	  <h2 class="product-title"><ruby class="taxfree-t"><rb>免税品</rb><rt>めんぜいひん</rt><rb>販売</rb><rt>はんばい</rt>リスト</h2>
 	</div>
 
     <div class="product-container">
