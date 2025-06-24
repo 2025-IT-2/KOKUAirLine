@@ -26,13 +26,13 @@ public class PaymentInfo {
     @Column(name = "PAYMENTID") 		// 고유 PK
     private Long paymentId;				// 결제ID 
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "RESINUM")
     private Reservation reservation;
 	
 	@ManyToOne
 	@JoinColumn(name = "FLIGHTMEAL")
-	private InFlightMeal FlightMeal;	  		//기내식
+	private InFlightMeal FlightMeal;	//기내식
 	
 	@Column(name = "AIRFARE")	
 	private Integer airFare; 			//항공요금 
