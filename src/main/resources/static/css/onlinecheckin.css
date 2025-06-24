@@ -30,6 +30,10 @@ body{
   text-align: center;
 }
 
+tr th {
+	font-size: 15px;
+}
+
 .checkin-button {
   margin-top: 20px;
   display: flex;
