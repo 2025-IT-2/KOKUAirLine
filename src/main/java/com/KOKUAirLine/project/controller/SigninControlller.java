@@ -21,33 +21,37 @@ import jakarta.validation.Valid;
 
 @Controller
 public class SigninControlller {
+	
+	private final UserInfoRepo userInfoRepository;
+
+    public SigninControlller(UserInfoRepo userInfoRepository) {
+        this.userInfoRepository = userInfoRepository;
+    }
+	
+	@ModelAttribute("countryMap")
+	public Map<String, String> countryMap() {
+	    String[] countryCodes = Locale.getISOCountries();
+	    Map<String, String> countryMap = new LinkedHashMap<>();
+	    for (String code : countryCodes) {
+	        Locale locale = new Locale("", code);
+	        countryMap.put(code, locale.getDisplayCountry(Locale.JAPAN));
+	    }
+	    return countryMap;
+	}
 
 	@GetMapping("/signin")
 	public String showSigninForm(Model model) {
 	    model.addAttribute("userInfo", new UserInfo());
 
-	    String[] countryCodes = Locale.getISOCountries();
-	    Map<String, String> countryMap = new LinkedHashMap<>();
-	    for (String code : countryCodes) {
-	        Locale locale = new Locale("", code);
-	        countryMap.put(code, locale.getDisplayCountry(Locale.JAPAN)); // 일본어로 국가명
-	    }
-	    model.addAttribute("countryMap", countryMap);
-
 	    return "signin";
 	}
-    
-    private final UserInfoRepo userInfoRepository;
-
-    public SigninControlller(UserInfoRepo userInfoRepository) {
-        this.userInfoRepository = userInfoRepository;
-    }
 
     @PostMapping("/signin")
     public String signin(
         @Valid @ModelAttribute("userInfo") UserInfo userInfo,
         BindingResult bindingResult,
-        RedirectAttributes redirectAttributes
+        RedirectAttributes redirectAttributes,
+        Model model
     ) {
         // 유효성 검사 실패 시 다시 폼으로
         if (bindingResult.hasErrors()) {
@@ -57,7 +61,7 @@ public class SigninControlller {
 
         // ID 중복 확인
         if (userInfoRepository.existsById(userInfo.getUserId())) {
-            redirectAttributes.addFlashAttribute("error", "이미 사용 중인 ID입니다.");
+            redirectAttributes.addFlashAttribute("error", "すでに使用中のIDです。");
             return "redirect:/signin";
         }
 
