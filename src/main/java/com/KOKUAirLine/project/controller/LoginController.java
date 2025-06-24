@@ -38,12 +38,12 @@ public class LoginController {
     		RedirectAttributes redirectAttributes){
     	
     	if (userId.length() < 4 || userId.length() > 20) {
-    	    throw new IllegalArgumentException("아이디는 4~20자 사이여야 합니다.");
+    	    throw new IllegalArgumentException("비밀번호는 8~20자 사이여야 합니다.");
     	}
+    	
     	if (password.length() < 8 || password.length() > 20) {
     	    throw new IllegalArgumentException("비밀번호는 8~20자 사이여야 합니다.");
     	}
-
     	
     	if(service.loginCheck(userId, password, session)) {
     		if(autoLogin != null) { // 자동 로그인 활성화시 24시간 동안 쿠키에 유저 id 저장
