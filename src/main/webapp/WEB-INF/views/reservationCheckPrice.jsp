@@ -187,14 +187,55 @@
         </div>
       </c:if>
     </div>
+            
+	    <!-- 필수 파라미터 hidden input으로 추가 -->
+			<input type="hidden" name="adultCount" value="${param.adultCount}" />
+			<input type="hidden" name="childCount" value="${param.childCount}" />
+			<input type="hidden" name="infantCount" value="${param.infantCount}" />
+			<input type="hidden" name="departureAirport" value="${param.departureAirport}" />
+			<input type="hidden" name="arrivalAirport" value="${param.arrivalAirport}" />
+			<input type="hidden" name="tripType" value="${param.tripType}" />
+			<input type="hidden" name="departureDate" value="${param.departureDate}" />
+			<input type="hidden" name="arrivalDate" value="${param.arrivalDate}" />
+			<input type="hidden" name="classType" value="${param.classType}" />
+			<input type="hidden" id="totalPrice" name="totalPrice" value="" />
 
-      <!-- 제출 버튼 -->
-      <div class="confirm-button">
-        <button type="submit">예약 확인</button>
-      </div>
 
-      </form>
+            <!-- 제출 버튼 -->
+            <div class="confirm-button">
+               <button type="submit">예약 확인</button>
+            </div>
+
+         </form>
    </div>
 
 </body>
+
+    <!-- 총액 계산 -->    
+		<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			  const allFareRadios = document.querySelectorAll('input[name="depFareType"], input[name="arrFareType"]');
+
+			  allFareRadios.forEach(radio => {
+			    radio.addEventListener("change", () => {
+			      let total = 0;
+
+			      const selectedDep = document.querySelector('input[name="depFareType"]:checked');
+			      if (selectedDep) {
+			        total += parseInt(selectedDep.value || "0");
+			      }
+
+			      const selectedArr = document.querySelector('input[name="arrFareType"]:checked');
+			      if (selectedArr) {
+			        total += parseInt(selectedArr.value || "0");
+			      }
+
+			      document.getElementById("totalPrice").value = total;
+			    });
+			  });
+			});
+		</script> 
+
+
+
 </html>

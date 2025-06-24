@@ -29,14 +29,14 @@ public class PassengerInfoService {
         return loginUser.getUserPhone();
     }
 
-    // 결제 금액 계산
-    public int calculateAmount(int adultCount, int childCount, int infantCount) {
-        int pricePerAdult = 10000;
-        int pricePerChild = 8000;
-        int pricePerInfant = 3000;
-
-        return (adultCount * pricePerAdult) + (childCount * pricePerChild) + (infantCount * pricePerInfant);
-    }
+//    // 결제 금액 계산
+//    public int calculateAmount(int adultCount, int childCount, int infantCount) {
+//        int pricePerAdult = 10000;
+//        int pricePerChild = 8000;
+//        int pricePerInfant = 3000;
+//
+//        return (adultCount * pricePerAdult) + (childCount * pricePerChild) + (infantCount * pricePerInfant);
+//    }
 
     // 탑승객 저장 공통 메서드
     public void savePassengerInfo(HttpServletRequest request, String type, int count) {
