@@ -1,5 +1,5 @@
 body {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック"; 
   margin: 0;
   padding: 0;
   background-color: #f4f6f8;
@@ -231,28 +231,30 @@ input.passport {
 
 
 /* 최하단 부모 컨테이너 */
-.screen .container {
+.container {
   display: flex;
   flex-direction: row;    /* 가로 정렬 */
   align-items: center;    /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
   gap: 40px;              /* 요소 사이 간격 */
   width: 100%;            /* 전체 너비 */
-  height: 150px;
+  padding-top:  30px;
+  padding-bottom: 30px;
+  /*height: 150px;*/
   /* 🔥 아래로 자연스럽게 배치 */
   margin-top: 50px;       /* 위 요소와의 간격만 주기 */
   
   /* 🔥 중앙 고정 제거 */
   position: static;       /* 기본 배치로 복귀 */
-  background-color: #fffbe6;
-  border: 1px solid #ffe58f;
+  background-color: aliceblue;
+  border: 1px solid skyblue;
   border-radius: 12px;
 }
 
 /* 예약자 연락처 텍스트 */
 .screen .Reservation-PhoneNumber {
   font-family: "ABeeZee-Regular", Helvetica;
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 400;
   color: #000000;
   text-align: center;
@@ -271,7 +273,7 @@ input.passport {
     height: 50px;
     font-size: 25px;
     padding: 4px 8px;
-    border: 1px solid #ccc;
+    border: 1px solid aliceblue;
     border-radius: 10px;
     box-sizing: border-box;
   }
@@ -283,7 +285,7 @@ input.passport {
   height: 50px;
   background-color: #ffffff;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid aliceblue;
 
   display: flex;
   align-items: center;
@@ -299,23 +301,35 @@ input.passport {
 }
 
 /* 결정 버튼 */
-.screen .text-wrapper-15 {
-  width: 132px;
-  height: 62px;
-  background-color: #7d7d7d;
-  border-radius: 10px;
-  font-family: "ABeeZee-Regular", Helvetica;
-  font-size: 32px;
+.text-wrapper-15 {
+  padding: 8px 30px;
+  background-color: lightblue;
+  border-radius: 0px;
+  font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック"; 
+  font-size: 18px;
   line-height: 33px;
   text-decoration: underline;
   white-space: nowrap;
   font-weight: 400;
-  color: #000000;
+  color: black;
   text-align: center;
   letter-spacing: 0.50px;
-  cursor: pointer;
-
+  cursor: default;
+  border: 1px solid aliceblue;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 20px;
+}
+
+#finishbtn{
+	border-radius: 20px;
+}
+
+#finishbtn :hover{
+	background: lightskyblue;
+}
+
+rt{
+	font-size: 12px;
 }
