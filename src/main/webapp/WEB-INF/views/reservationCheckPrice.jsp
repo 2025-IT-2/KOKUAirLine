@@ -236,9 +236,6 @@
 			<input type="hidden" name="classType" value="${param.classType}" />
 			<input type="hidden" id="totalPrice" name="totalPrice" value="" />
 
-
-            
-
          </form>
    </div>
 
