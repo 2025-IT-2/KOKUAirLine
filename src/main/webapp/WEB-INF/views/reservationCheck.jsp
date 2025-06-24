@@ -57,7 +57,7 @@
 	              <div>要約状態: ${reservation.cancelStep}</div>
 	            </div>
 	            <form onsubmit="return showBoardingPass('${reservation.resiNum}')">
-	              <button type="submit">ボーディング・パス確認</button>
+	              <button id="toboarding" type="submit">ボーディング・パス確認</button>
 	            </form>
             	<hr style="margin: 30px 0;" />
           	</c:forEach>
@@ -79,6 +79,12 @@
     const frame = document.getElementById("boardingFrame");
     frame.src = "<c:url value='/boardingPassInfo'/>?reservationNumber=" + encodeURIComponent(reservationNumber);
     return false; // 폼 전송 방지
+  }
+</script>
+<script>
+  function showBoardingPass(reservationNumber) {
+    document.getElementById("boardingFrame").src = "<c:url value='/boardingPassInfo'/>?reservationNumber=" + encodeURIComponent(reservationNumber);
+    return false;
   }
 </script>
 

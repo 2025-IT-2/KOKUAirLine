@@ -115,3 +115,25 @@ body {
   width: 100%;
 }
 
+.confirm-button{
+	display: flex;
+}
+
+#toboarding{
+	    text-align: center;
+		justify-content: center;
+        background: #007bff;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+		border: 0px #007bff;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background 0.2s;
+		margin:30px auto;
+		margin-left:85px;
+      }
+
+#toboarding:hover {
+        background: #0056b3;
+      }
