@@ -47,9 +47,11 @@ body {
 
 .reservation-info {
   margin-top: 20px;
+  font-family: "游教科書体","YuKyokasho"; 
 }
 
 .reservation-info p {
+font-family: "UD デジタル 教科書体 N-B","UD Digi Kyokasho N-B";
   font-size: 18px;
   margin-bottom: 20px;
 }
@@ -87,6 +89,7 @@ body {
   padding: 16px;
   border-radius: 12px;
   border: 1px solid #ffe58f;
+  font-family: "UD デジタル 教科書体 N-R","UD Digi Kyokasho N-R";
 }
 
 .notice {
