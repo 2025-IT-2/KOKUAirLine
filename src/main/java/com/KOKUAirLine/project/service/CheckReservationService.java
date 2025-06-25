@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,4 +44,36 @@ public class CheckReservationService {
 			return false;
 		}
 	}
+	public List<Reservation> getUserReservations(HttpSession session) {
+		String userId = (String) session.getAttribute("loginUserId");
+		if (userId != null) {
+			return resrevationRepo.findByReservationHolder(userId);
+		}
+		return new ArrayList<>();
+	}
+	
+	public Reservation getReservationByResiNum(String resiNum, Model model) {
+		try {
+			Integer resiNumInt = Integer.parseInt(resiNum);
+			Optional<Reservation> optionalReservation = resrevationRepo.findDetailByResiNum(resiNumInt);
+
+			if (optionalReservation.isPresent()) {
+				Reservation reservation = optionalReservation.get();
+
+				model.addAttribute("resList", List.of(reservation));
+				model.addAttribute("resPayMap", Map.of(
+					reservation.getResiNum(),
+					paymentInfoRepo.findByReservation_ResiNum(reservation.getResiNum())
+				));
+				return reservation;
+			}
+		} catch (NumberFormatException e) {
+			// 잘못된 형식의 예약번호 (예: 문자열 입력)
+		}
+
+		return null;
+	}
+
 }
+
+

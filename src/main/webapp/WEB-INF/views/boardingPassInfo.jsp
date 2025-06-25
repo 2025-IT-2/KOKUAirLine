@@ -40,19 +40,19 @@
 			        <div class="label">
 			        <ruby class="taxfree-t"><rb>出発地</rb><rt>しゅっぱつち</rt></ruby>
 			        </div>
-			        <!--<div class="location"><div class="airport">${reservation.flightInfo.departure}</div></div>-->
+			        <!--<div class="location"><div class="airport">${res.flightInfo.departure}</div></div>-->
 			        <div class="location">
 			        <c:choose>
-				      <c:when test="${empty reservation.flightInfo.departure}">
+				      <c:when test="${empty res.flightInfo.departure}">
 				        <ruby class="taxfree-t"><rb>出発地無し</rb><rt>しゅっぱつちなし</rt></ruby>
 				      </c:when>
 				      <c:otherwise>
-				        <c:out value="${reservation.flightInfo.departure}" />
+				        <c:out value="${res.flightInfo.departure}" />
 				      </c:otherwise>
 				    </c:choose>
 			        </div>
 			        <div class="time">
-			        <fmt:formatDate value="${reservation.flightInfo.departureTime}" pattern="HH:mm" />
+			        <fmt:formatDate value="${res.flightInfo.departureTime}" pattern="HH:mm" />
 			        </div>
 			      </div>
 
@@ -65,17 +65,17 @@
 			        </div>
 			        <div class="location">
 			        <c:choose>
-				      <c:when test="${empty reservation.flightInfo.arrival}">
+				      <c:when test="${empty res.flightInfo.arrival}">
 				        <ruby class="taxfree-t"><rb>目的地無し</rb><rt>もくてきちなし</rt></ruby>
 				      </c:when>
 				      <c:otherwise>
-				        <c:out value="${reservation.flightInfo.arrival}" />
+				        <c:out value="${res.flightInfo.arrival}" />
 				      </c:otherwise>
 				    </c:choose>
 			        </div>
-			        <div class="time">
-			        <fmt:formatDate value="${reservation.flightInfo.arrivalTime}" pattern="HH:mm" />
-			        </div>
+					<div class="time"> 
+					    <fmt:formatDate value="${res.flightInfo.arrivalTime}" pattern="HH:mm" />
+					</div>
 			      </div>
 			    </div>
 			    </div>
