@@ -3,17 +3,17 @@
 
 body {
     margin: 0;
-    font-family: "Noto Sans JP", sans-serif;
+    font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック"; 
 }
 
 .header {
     font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック"; font-weight: bold;
+	background-color: #f4f6f8;
+    border-bottom: 1px solid #f4f6f8;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 20px;
-    border-bottom: 1px solid #f4f6f8;
-	background-color: #f4f6f8;
     /*background-color: #fff;*/
 }
 

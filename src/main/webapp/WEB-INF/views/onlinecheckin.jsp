@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -13,27 +14,36 @@
     <%@ include file="header.jsp" %>
     <div class="checkin-container">
       <div class="checkin-header">オンライン・チェックイン</div>
-      <table class="checkin-table">
+	  <div class="checkin-infno"></div>
+      <table class="checkin-table" id="reservationTable">
         <thead>
-          <tr>
+          <tr class="reservationN">
             <th><ruby><rb>予約番号</rb><rt>よやくばんごう</rt></ruby></th>
             <th><ruby><rb>出発日</rb><rt>しゅっぱつび</rt></ruby></th>
             <th><ruby><rb>出発地</rb><rt>しゅっぱつち</rt></ruby></th>
             <th><ruby><rb>到着地</rb><rt>とうちゃくち</rt></ruby></th>
             <th><ruby><rb>出発時間</rb><rt>しゅっぱつじかん</rt></ruby></th>
             <th><ruby><rb>到着時間</rb><rt>とうちゃくじかん</rt></ruby></th>
-            <th><ruby><rb>航空会社</rb><rt>こうくうがいしゃ</rt></ruby></th>
+            <th><ruby><rb>航空編</rb><rt>こうくうへん</rt></ruby></th>
           </tr>
         </thead>
         <tbody>
 		  <c:forEach var="reservation" items="${resList}">
-		    <tr>
+			<tr class="reservationS" onclick="console.log('클릭됨'); location.href='/reservationCheck?resiNum=${reservation.resiNum}'">
 		      <td>${reservation.resiNum}</td>
-		      <td>${reservation.flightInfo.departureDate}</td>
+		      <!-- <td>${reservation.flightInfo.departureDate}</td>
+			  날짜: YYYY-MM-DD -->
+			  <td><fmt:formatDate value="${reservation.flightInfo.departureDate}" pattern="yyyy-MM-dd"/></td>
+
 		      <td>${reservation.flightInfo.departure}</td>
 		      <td>${reservation.flightInfo.arrival}</td>
-		      <td>${reservation.flightInfo.departureTime}</td>
-		      <td>${reservation.flightInfo.arrivalTime}</td>
+		      <!-- <td>${reservation.flightInfo.departureTime}</td>
+			  출발 시간: HH:mm:ss -->
+			  <td><fmt:formatDate value="${reservation.flightInfo.departureTime}" pattern="HH:mm"/></td>
+
+		      <!-- <td>${reservation.flightInfo.arrivalTime}</td>
+			  도착 시간: HH:mm:ss -->
+			  <td><fmt:formatDate value="${reservation.flightInfo.arrivalTime}" pattern="HH:mm"/></td>
 		      <td>${reservation.flightInfo.flightNo}</td>
 		    </tr>
 		  </c:forEach>
@@ -43,5 +53,22 @@
         <a href="https://www.airport.kr/ap_ko/892/subview.do" target="_blank">チェックイン</a>
       </div>
     </div>
+	
+	<script>
+	  document.addEventListener("DOMContentLoaded", () => {
+	    const tbody = document.querySelector("tbody");
+	    const rows = Array.from(tbody.querySelectorAll("tr"));
+
+	    rows.sort((a, b) => {
+	      const aVal = parseInt(a.children[0].textContent.trim());
+	      const bVal = parseInt(b.children[0].textContent.trim());
+	      return aVal - bVal; // 오름차순 정렬
+	    });
+
+	    // 기존 내용 제거 후 정렬된 순서대로 다시 추가
+	    tbody.innerHTML = "";
+	    rows.forEach(row => tbody.appendChild(row));
+	  });
+	</script>
   </body>
 </html>
