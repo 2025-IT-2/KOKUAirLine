@@ -1,14 +1,15 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #e5e5e5;
-  font-family: "Noto Sans JP", sans-serif;
+  background-color: #f4f6f8;
+  font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック";
 }
 
 .container {
-  background-color: #e0e0e0;
+  background-color: #f4f6f8;
   padding: 80px;
-  max-width: 1800px;
+  max-width: 1200px;
+  min-width: 1030px;
   margin: auto;
   border-radius: 8px;
   position: relative;
@@ -19,7 +20,7 @@ body {
   position: absolute;
   width: 100%;
   height: 49px;
-  background-color: #939090;
+  background-color: aliceblue;
   top: 0;
   left: 0;
 }
@@ -30,9 +31,9 @@ body {
   flex-wrap: wrap;
   gap: 12px;
   padding: 12px;
-  background-color: #b6b6b6;
-  font-family: "Lohit Tamil-Regular", Helvetica;
+  background-color: rgb(206, 232, 255);
   border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .info-box {
@@ -58,29 +59,40 @@ body {
   gap: 40px;
 }
 
+/* 확인 버튼 박스 
+.confirm-button button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  background-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  cursor: default;
+  color: white;
+  right: 1;
+  bottom: 0;
+  
+}*/
+
+.confirm-button button:hover{
+	background-color: rgb(108, 182, 255);
+}
+
 /* 확인 버튼 */
 .confirm-button button {
-  padding: 12px 32px;
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+  float: right;
+  padding: 10px 20px;
   font-size: 16px;
-  background-color: #444;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-/* 확인 버튼 반짝반짝 옵션 추가 */
-.confirm-button button:hover {
-  background-color: #333;
-}
-
-/* 확인 버튼 박스 */
-.confirm-button {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;       /* 버튼 위 여백 넉넉히 */
-  padding-right: 0px;
+  box-shadow: 0 2px 10px rgb(128, 255, 255);
+  z-index: 2;
 }
 
 /* 비행기 옵션 박스 */
@@ -97,24 +109,29 @@ body {
 /* 비행기 한 줄 */
 .flight {
   display: flex;
-  border: 1px solid #aaa;
+  border: 1px solid skyblue;
   margin-bottom: 15px;
-  background-color: #f0f0f0;
+  background-color: aliceblue;
   gap: 0.5rem;
   padding: 10px; /* 여백 줄이기 */
   align-items: flex-start;
   display: flex;
   flex-direction: row;
-  
+  border-radius: 15px;
+  height: 200px;
+  box-shadow: 0 2px 10px rgb(210, 233, 255);
 }
 
 /* 시간 정보 */
 .time-info {
+  margin:3px;
   width: 200px;
-  background-color: #ddd;
+  background-color: rgb(198, 226, 255);
   text-align: center;
   padding: 10px;
   font-size: 18px;
+  border-radius: 15px;
+  height: 174px;
 }
 
 .time-info .time span {
@@ -131,23 +148,59 @@ body {
 /* 비행 상세 */
 .flight-details {
   flex: 1;
+  margin-top: 21px;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   padding: 10px;
-  background-color: #fff;
+  background-color: rgb(252, 252, 252);
+  border-radius: 15px;
+  height: 132px;
 }
 
 .flight-info {
-  width: 100px;
+  width: 200px;
   text-align: center;
-  border-right: 1px solid #ccc;
+  white-space : pre-wrap;
   padding: 10px;
   font-size: 14px;
   display: flex;
   justify-content: center; /* 가로 가운데 */
   align-items: center;     /* 세로 가운데 */
   height: 100%;            /* 부모 높이에 맞추려면 */
+  border-radius: 15px;
+  position:relative;
+  text-align: center;
+}
+
+#planeNo, #flightNo{
+	left: 10px;
+	top: 0px;
+	font-size: 14px;
+	border: 1px solid rgb(193, 224, 255);
+	background-color:  rgb(238, 247, 255);
+  border-radius: 15px;
+	text-align: left;
+	padding-bottom: 15px;
+	/*box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);*/
+	margin:5px;
+	padding-left: 10px;
+}
+
+#planeNo{
+	margin-right: 5px;
+	}
+	
+#flightNo{
+	margin-left: 5px;	
+}
+
+
+.explain{
+	text-align: left;
+	margin-top: -25px;
+	padding-bottom: 10px;
+	border-bottom: 2px dotted rgb(193, 224, 255);
 }
 
 .economy {
@@ -168,15 +221,15 @@ body {
 /* 좌석 타입 선택 영역 */
 .fare {
   position: relative; /* input 위치를 위한 기준 */
-  cursor: pointer;
-  border: 1px solid #ccc;
+  cursor: default;
+  border: 1px solid lightblue;
   border-radius: 6px;
   padding: 12px;
   margin: 5px;
   user-select: none;
   display: block;
   transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
-  background-color: #e6e6e6;
+  background-color: aliceblue;
   text-align: center;
   white-space: normal;       /* 줄바꿈 허용 */
   word-break: break-word;    /* 긴 단어 줄바꿈 */
@@ -184,6 +237,7 @@ body {
   box-sizing: border-box;
   flex: 1; /* 같은 너비 */
   min-width: 0; /* flex shrink 허용 */
+  min-width: 110px;
 }
 
 .selected {
@@ -191,11 +245,21 @@ body {
   color: white;
 }
 
-.fare .type {
+.fare{
   display: block;              /* 블록 요소로 변경 → 줄바꿈 허용 */
   white-space: normal;         /* 줄바꿈 허용 */
   word-break: break-word;      /* 길면 끊어서 줄바꿈 */
-  font-size: 14px;             /* 필요하면 줄이기 */
+  font-size: 11px;             /* 필요하면 줄이기 */
+  line-height: 1.3;            /* 줄 간격 조정 */
+  max-width: 80px;             /* 너무 길면 줄바꿈 유도 */
+  margin: 0 auto;              /* 가운데 정렬 */
+}
+
+.type {
+  display: block;              /* 블록 요소로 변경 → 줄바꿈 허용 */
+  white-space: normal;         /* 줄바꿈 허용 */
+  word-break: break-word;      /* 길면 끊어서 줄바꿈 */
+  font-size: 13px;             /* 필요하면 줄이기 */
   line-height: 1.3;            /* 줄 간격 조정 */
   max-width: 80px;             /* 너무 길면 줄바꿈 유도 */
   margin: 0 auto;              /* 가운데 정렬 */
@@ -275,6 +339,8 @@ body {
   border-left: 4px solid #007bff;
   padding-left: 3px;
 }
+
+
 
 /* 출국, 귀국 편 박스 레이아웃 */
 .flights-container {

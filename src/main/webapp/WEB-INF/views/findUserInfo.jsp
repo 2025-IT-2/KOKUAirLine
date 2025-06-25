@@ -30,18 +30,29 @@
 </head>
 <body>
 	<div class="popup-container">
-	        <h2>ID / PASSWORDを探す</h2>
+	        <h2>
+	        ID / PASSWORDを
+	        <ruby class="taxfree-t"><rb>探</rb><rt>さが</rt></ruby>す
+	        </h2>
 	        <form method="post" action="/findUserInfo">
-	            <label for="lastname">性</label>
+	            <label for="lastname">
+	            <ruby class="taxfree-t"><rb>性</rb><rt>せい</rt></ruby>
+	            </label>
 	            <input type="text" name="lastname" id="lastname" required>
 
-	            <label for="firstname">名前</label>
+	            <label for="firstname">
+	            <ruby class="taxfree-t"><rb>名前</rb><rt>なまえ</rt></ruby>
+	            </label>
 	            <input type="text" name="firstname" id="firstname" required>
 
-	            <label for="phone">電話番号</label>
+	            <label for="phone">
+	            <ruby class="taxfree-t"><rb>電話番号</rb><rt>でんわばんごう</rt></ruby>
+	            </label>
 	            <input type="text" name="phone" id="phone" required>
 
-	            <button type="submit">探す</button>
+	            <button type="submit">
+	            <ruby class="taxfree-t"><rb>探</rb><rt>さが</rt></ruby>す
+	            </button>
 	        </form>
 
 	        <c:if test="${not empty userId}">
