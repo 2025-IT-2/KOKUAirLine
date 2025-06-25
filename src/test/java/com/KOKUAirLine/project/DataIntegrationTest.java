@@ -36,10 +36,10 @@ public class DataIntegrationTest {
         mealRepo.deleteAll();
 
         // 1. 유저 정보
-        UserInfo user1 = new UserInfo("testuser1", "1234", "test1@example.com", "田中", "太郎",
-                LocalDate.of(1995, 5, 15), true, "日本", "010-1234-5678", LocalDateTime.now());
-        UserInfo user2 = new UserInfo("testuser2", "abcd", "test2@example.com", "李", "美花",
-                LocalDate.of(1990, 10, 30), false, "韓国", "010-2345-6789", LocalDateTime.now());
+        UserInfo user1 = new UserInfo("testuser1", "1234User!!", "test1@example.com", "田中", "太郎",
+                LocalDate.of(1995, 5, 15), true, "日本", "01012345678", LocalDateTime.now());
+        UserInfo user2 = new UserInfo("testuser2", "abcd123!!", "test2@example.com", "李", "美花",
+                LocalDate.of(1990, 10, 30), false, "韓国", "01023456789", LocalDateTime.now());
         userInfoRepo.saveAll(List.of(user1, user2));
 
         // 2. 기내식
