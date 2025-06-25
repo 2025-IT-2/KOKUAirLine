@@ -58,7 +58,7 @@ public class UserInfo {
 
     @NotBlank(message = "電話番号（でんわばんごう）を入力してください。")
     @Pattern(
-        regexp = "^(\\+\\d{1,3}[- ]?)?\\d{7,15}$",
+        regexp = "^(\\+\\d{1,3}[- ]?)?[\\d-]{7,20}$",
         message = "電話番号（でんわばんごう）は国際形式（こくさいけいしき：+82 10 12345678など）または7〜15桁の数字（すうじ）で入力してください。"
     )
     private String userPhone;

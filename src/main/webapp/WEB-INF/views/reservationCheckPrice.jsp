@@ -243,8 +243,8 @@
 			<input type="hidden" name="selectedFlightNo" value="${param.selectedFlightNo}" />
 			<input type="hidden" name="arrivalFlightNo" value="${param.arrivalFlightNo}" />
 			<input type="hidden" name="flightMealYN" value="Y" />
-		<input type="hidden" name="depAirFare" id="depAirFare" value="${param.depAirFare}" />
-		<input type="hidden" name="arrAirFare" id="arrAirFare" value="${param.arrAirFare}" /> 
+			<input type="hidden" name="depAirFare" id="depAirFare" value="${param.depAirFare}" />
+			<input type="hidden" name="arrAirFare" id="arrAirFare" value="${param.arrAirFare}" /> 
 
 			
 

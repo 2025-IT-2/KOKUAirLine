@@ -169,15 +169,8 @@
 			<!-- 공항 선택 -->
 			<div class = "airport-selection">
 				<select name="departureAirport" id = "departureAirport" class = "airport-select">
-				    <c:forEach var="airport" items="${airports}">
-				    	<c:if test="${airport.airportCode == 'NRT'}">
-	            			<option selected>${airport.airportJp} / ${airport.airportCode}</option>
-	       				</c:if>
-				    </c:forEach>
 				    <c:forEach var="airport" items="${airports}" varStatus = "status">
-	       				<c:if test="${airport.airportCode != 'NRT' && status.count <= 4}">
-			    	        <option >${airport.airportJp} / ${airport.airportCode}</option>
-	        			</c:if>
+	       				<option >${airport.airportJp} / ${airport.airportCode}</option>
 				    </c:forEach>
 				</select>
 				<select name="arrivalAirport" id = "arrivalAirport" class = "airport-select">		    
@@ -186,15 +179,8 @@
 					        <option selected>${airport.airportJp} / ${airport.airportCode}</option>
 					    </c:if>
 					</c:forEach>
-					<c:forEach var="airport" items="${airports}">
-					    <c:if test="${airport.airportCode == 'NRT'}">
-					        <option>${airport.airportJp} / ${airport.airportCode}</option>
-					    </c:if>
-					</c:forEach>
 				    <c:forEach var="airport" items="${airports}" varStatus="status">
-					    <c:if test="${airport.airportCode != 'NRT' && airport.airportCode != 'MNL' && status.count <= 4}">
-					        <option>${airport.airportJp} / ${airport.airportCode}</option>
-					    </c:if>
+					    <option>${airport.airportJp} / ${airport.airportCode}</option>
 					</c:forEach>
 				</select>
 	        	<input type="text" id="departureDate" name = "departureDate" class="date-input" 
