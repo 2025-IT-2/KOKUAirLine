@@ -167,9 +167,9 @@ public class FullDataIntegrationTest {
 
         // 면세품
         taxFreeRepo.saveAll(List.of(
-            new TaxFreeItem("健康食品", readImage("C:/.../HealthFood.png"), "健康に本当にいいのに説明方法がない", 100000),
-            new TaxFreeItem("化粧品", readImage("C:/.../Cosmetics.png"), "絶対落ちない化粧品！", 200000),
-            new TaxFreeItem("ワイン", readImage("C:/.../Wine.png"), "5000年産のワイン", 990000)
+            new TaxFreeItem("健康食品", readImage("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/HealthFood.png"), "健康に本当にいいのに説明方法がない", 100000),
+            new TaxFreeItem("化粧品", readImage("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/Cosmetics.png"), "絶対落ちない化粧品！", 200000),
+            new TaxFreeItem("ワイン", readImage("C:/Users/USER/Documents/GitHub/KOKUAirLine/src/main/resources/static/img/Wine.png"), "5000年産のワイン", 990000)
         ));
 
         // 공항
