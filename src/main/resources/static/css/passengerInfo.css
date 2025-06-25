@@ -205,7 +205,8 @@ input.uppercase {
 }
 
 .passport input[type="text"],
-.passport input[type="date"] {
+.passport input[type="date"],
+.passport select {
   width: 100%;
   max-width: 400px;
   height: 40px;
@@ -218,7 +219,8 @@ input.uppercase {
 }
 
 .passport input[type="text"]:focus,
-.passport input[type="date"]:focus {
+.passport input[type="date"]:focus,
+.passport select:focus {
   border-color: #4a90e2;
   outline: none;
 }
