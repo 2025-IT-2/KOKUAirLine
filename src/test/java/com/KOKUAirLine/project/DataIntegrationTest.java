@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.KOKUAirLine.project.model.*;
+import com.KOKUAirLine.project.model.Reservation.CancelStatus;
 import com.KOKUAirLine.project.repo.*;
 
 @SpringBootTest
@@ -133,10 +134,10 @@ public class DataIntegrationTest {
 
          //4. 예약 저장 (먼저)
         Reservation res1 = new Reservation(null, flight1, user1,
-                1, 0, 0, LocalDate.now(), "Y", "eco-spec", "완료");
+                1, 0, 0, LocalDate.now(), "Y", "eco-spec", CancelStatus.예약완료);
 
         Reservation res2 = new Reservation(null, flight2, user2,
-                2, 1, 0, LocalDate.now(), "N", "buis", "완료");
+                2, 1, 0, LocalDate.now(), "N", "buis", CancelStatus.예약완료);
 
         reservationRepo.saveAll(List.of(res1, res2));
 
