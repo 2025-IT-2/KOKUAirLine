@@ -4,6 +4,7 @@ body{
 }
 
 .checkin-container {
+	min-width: 650px;
   max-width: 900px;
   margin: 30px auto;
   padding: 20px;
@@ -57,7 +58,7 @@ tr th {
 }
 
 .reservationS{
-	cursor: default;
+	cursor: pointer;
 }
 
 .reservationS:hover{

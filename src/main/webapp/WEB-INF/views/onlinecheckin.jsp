@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -23,18 +24,26 @@
             <th><ruby><rb>到着地</rb><rt>とうちゃくち</rt></ruby></th>
             <th><ruby><rb>出発時間</rb><rt>しゅっぱつじかん</rt></ruby></th>
             <th><ruby><rb>到着時間</rb><rt>とうちゃくじかん</rt></ruby></th>
-            <th><ruby><rb>航空会社</rb><rt>こうくうがいしゃ</rt></ruby></th>
+            <th><ruby><rb>航空編</rb><rt>こうくうへん</rt></ruby></th>
           </tr>
         </thead>
         <tbody>
 		  <c:forEach var="reservation" items="${resList}">
 			<tr class="reservationS" onclick="console.log('클릭됨'); location.href='/reservationCheck?resiNum=${reservation.resiNum}'">
 		      <td>${reservation.resiNum}</td>
-		      <td>${reservation.flightInfo.departureDate}</td>
+		      <!-- <td>${reservation.flightInfo.departureDate}</td>
+			  날짜: YYYY-MM-DD -->
+			  <td><fmt:formatDate value="${reservation.flightInfo.departureDate}" pattern="yyyy-MM-dd"/></td>
+
 		      <td>${reservation.flightInfo.departure}</td>
 		      <td>${reservation.flightInfo.arrival}</td>
-		      <td>${reservation.flightInfo.departureTime}</td>
-		      <td>${reservation.flightInfo.arrivalTime}</td>
+		      <!-- <td>${reservation.flightInfo.departureTime}</td>
+			  출발 시간: HH:mm:ss -->
+			  <td><fmt:formatDate value="${reservation.flightInfo.departureTime}" pattern="HH:mm"/></td>
+
+		      <!-- <td>${reservation.flightInfo.arrivalTime}</td>
+			  도착 시간: HH:mm:ss -->
+			  <td><fmt:formatDate value="${reservation.flightInfo.arrivalTime}" pattern="HH:mm"/></td>
 		      <td>${reservation.flightInfo.flightNo}</td>
 		    </tr>
 		  </c:forEach>
@@ -44,6 +53,7 @@
         <a href="https://www.airport.kr/ap_ko/892/subview.do" target="_blank">チェックイン</a>
       </div>
     </div>
+	
 	<script>
 	  document.addEventListener("DOMContentLoaded", () => {
 	    const tbody = document.querySelector("tbody");

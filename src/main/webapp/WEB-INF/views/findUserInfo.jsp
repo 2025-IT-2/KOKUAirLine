@@ -57,8 +57,8 @@
 
 	        <c:if test="${not empty userId}">
 	            <div class="result">
-	                <p><strong>아이디:</strong> ${userId}</p>
-	                <p><strong>비밀번호:</strong> ${password}</p>
+	                <p><strong>ID:</strong> ${userId}</p>
+	                <p><strong>PW:</strong> ${password}</p>
 	            </div>
 	        </c:if>
 
@@ -69,5 +69,8 @@
 	        </c:if>
 	    </div>
 
+
 </body>
+
+
 </html>
