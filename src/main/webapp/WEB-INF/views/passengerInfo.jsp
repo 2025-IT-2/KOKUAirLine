@@ -101,201 +101,149 @@
         </div>          
       </div>
     </form>
-       
+
 	<script>
-	  document.addEventListener("DOMContentLoaded", function () {
-	    const form = document.querySelector("form");
-	    const today = new Date();
-	
-	    if (!form) {
-	      console.error("❌ <form> 태그를 찾을 수 없습니다。");
-	      return;
-	    }
-	
-	    // ✅ 운임 값 설정
-	    const urlParams = new URLSearchParams(window.location.search);
-	    const depAirFare = Math.floor(parseFloat(urlParams.get("depAirFare") || "0"));
-	    const arrAirFare = Math.floor(parseFloat(urlParams.get("arrAirFare") || "0"));
-	    const totalPrice = depAirFare + arrAirFare;
-	
-	    const depAirFareInput = document.getElementById("depAirFare");
-	    const arrAirFareInput = document.getElementById("arrAirFare");
-	    const totalPriceInput = document.getElementById("totalPrice");
-	
-	    if (depAirFareInput) depAirFareInput.value = depAirFare;
-	    if (arrAirFareInput) arrAirFareInput.value = arrAirFare;
-	    if (totalPriceInput) totalPriceInput.value = totalPrice;
-	
-	    console.log("📦 passengerInfo.jsp loaded fares:");
-	    console.log("depAirFare =", depAirFare);
-	    console.log("arrAirFare =", arrAirFare);
-	    console.log("totalPrice =", totalPrice);
-	
-	    // ✅ 날짜 관련 계산
-	    const maxBirthDate = new Date(today); maxBirthDate.setDate(today.getDate() - 1);
-	    const minAdultBirth = new Date(today); minAdultBirth.setFullYear(today.getFullYear() - 13);
-	    const minChildBirth = new Date(today); minChildBirth.setFullYear(today.getFullYear() - 13);
-	    const maxChildBirth = new Date(today); maxChildBirth.setFullYear(today.getFullYear() - 2);
-	    const maxInfantBirth = new Date(today); maxInfantBirth.setFullYear(today.getFullYear() - 2);
-	
-	    function stripTime(date) {
-	      return new Date(date.getFullYear(), date.getMonth(), date.getDate());
-	    }
-	
-	    const minExpiry = stripTime(new Date(today));
-	    minExpiry.setMonth(minExpiry.getMonth() + 3);
-	    const maxExpiry = stripTime(new Date(today));
-	    maxExpiry.setFullYear(today.getFullYear() + 10);
-	
-	    const minExpiryStr = minExpiry.toISOString().split("T")[0];
-	    const maxExpiryStr = maxExpiry.toISOString().split("T")[0];
-	    const maxBirthStr = maxBirthDate.toISOString().split("T")[0];
-	
-	    // ✅ 여권 유효기간 제한 적용
-	    document.querySelectorAll("input[type='date'][id*='passportExpiry']").forEach(input => {
-	      input.min = minExpiryStr;
-	      input.max = maxExpiryStr;
-	      if (!input.value) input.value = minExpiryStr;
-	    });
-	
-	    document.querySelectorAll("input[type='date'][id*='birthdate']").forEach(input => {
-	      input.max = maxBirthStr;
-	    });
-	
-	    // ✅ 입력 필터링
-	    document.querySelectorAll("input[id*='passportNumber']").forEach(input => {
-	      input.addEventListener("input", () => {
-	        input.value = input.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 9);
-	      });
-	    });
-	
-	    document.querySelectorAll("input[id*='engFirstName'], input[id*='engLastName']").forEach(input => {
-	      input.addEventListener("input", () => {
-	        input.value = input.value.toUpperCase().replace(/[^A-Z]/g, "");
-	      });
-	    });
-	
-	    // ✅ 유효성 검사
-	    form.addEventListener("submit", function (e) {
-	    	  const inputs = form.querySelectorAll("input, select");
-	    	  for (const input of inputs) {
-	    	    const inputName = input.getAttribute("name");
-	    	    if (!inputName) continue;
-
-	    	    const value = input.value.trim();
-
-	    	    if (!/^(大人|小児|幼児)_(\w+)(\d+)$/.test(inputName)) {
-	    	      continue;
-	    	    }
-
-	    	    // 디버깅 로그
-	    	    console.log("🕵️‍♀️ 검사 중인 필드:", input);
-	    	    console.log("🔎 name =", inputName);
-	    	    console.log("✏️ value =", value);
-	    	    console.log("📛 name: " + inputName + ", value: " + value);
-
-	    	    // 💡 라벨 변환
-	    	    let label = inputName;
-	    	    const match = inputName.match(/^(大人|小児|幼児)_(\w+)(\d+)$/);
-	    	    if (match) {
-	    	      const type = match[1]; // 대인/소아/유아
-	    	      const field = match[2]; // engFirstName 등
-	    	      const index = match[3]; // 1, 2 등
-
-	    	      const typeMap = {
-	    	        "大人": "大人",
-	    	        "小児": "小児",
-	    	        "幼児": "幼児"
-	    	      };
-
-	    	      const fieldMap = {
-	    	        engFirstName: "名前",
-	    	        engLastName: "苗字",
-	    	        birthdate: "生年月日",
-	    	        gender: "性別",
-	    	        passportNumber: "パスポート番号",
-	    	        passportExpiry: "パスポート有効期限",
-	    	        nationality: "国籍",
-	    	        passportCountry: "発行国"
-	    	      };
-
-	    	      const typeLabel = typeMap[type] || type;
-	    	      const fieldLabel = fieldMap[field] || field;
-	    	      label = typeLabel + index + "の" + fieldLabel;
-	    	    }
-
-	    	    // 공백 검사
-	    	    if (!value) {
-	    	      alert(label + " は必須項目です。");
-	    	      input.focus();
-	    	      e.preventDefault();
-	    	      return false;
-	    	    }
-
-	    	    // 영어 이름 검사
-	    	    if (inputName.includes("engFirstName") || inputName.includes("engLastName")) {
-	    	      if (!/^[A-Z]+$/.test(value)) {
-	    	        alert(label + " は英大文字のみ入力可能です。");
-	    	        input.focus();
-	    	        e.preventDefault();
-	    	        return false;
-	    	      }
-	    	    }
-
-	    	    // 생년월일 검사
-	    	    if (inputName.includes("birthdate")) {
-	    	      const birthDate = new Date(value);
-	    	      if (birthDate > maxBirthDate) {
-	    	        alert(label + " は本日以前の日付を入力してください。");
-	    	        input.focus();
-	    	        e.preventDefault();
-	    	        return false;
-	    	      }
-
-	    	      if (inputName.startsWith("大人") && birthDate > minAdultBirth) {
-	    	        alert(label + " は満13歳以上のみ搭乗可能です。");
-	    	        input.focus();
-	    	        e.preventDefault();
-	    	        return false;
-	    	      }
-
-	    	      if (inputName.startsWith("小児") && (birthDate < minChildBirth || birthDate > maxChildBirth)) {
-	    	        alert(label + " は満2歳以上13歳未満のみです。");
-	    	        input.focus();
-	    	        e.preventDefault();
-	    	        return false;
-	    	      }
-
-	    	      if (inputName.startsWith("幼児") && birthDate < maxInfantBirth) {
-	    	        alert(label + " は満2歳未満のみです。");
-	    	        input.focus();
-	    	        e.preventDefault();
-	    	        return false;
-	    	      }
-	    	    }
-
-	    	    // 여권번호 검사
-	    	    if (inputName.includes("passportNumber")) {
-	    	      if (!/^[A-Z0-9]{9}$/.test(value)) {
-	    	        alert(label + " は英大文字と数字で9桁入力してください。");
-	    	        input.focus();
-	    	        e.preventDefault();
-	    	        return false;
-	    	      }
-	    	    }
-
-	    	    // 셀렉트박스 검사
-	    	    if (inputName.includes("nationality") || inputName.includes("passportCountry")) {
-	    	      if (value === "") {
-	    	        alert(label + " を選択してください。");
-	    	        input.focus();
-	    	        e.preventDefault();
-	    	        return false;
-	    	      }
-	    	    }
-	    	  }
-	    	});
-	  });
+		document.addEventListener("DOMContentLoaded", function () {
+		  const form = document.querySelector("form");
+		  const today = new Date();
+		
+		  // ✅ 운임 값: URL 쿼리 스트링에서 받아와 hidden input 설정
+		  const urlParams = new URLSearchParams(window.location.search);
+		  const depAirFare = Math.floor(parseFloat(urlParams.get("depAirFare") || "0"));
+		  const arrAirFare = Math.floor(parseFloat(urlParams.get("arrAirFare") || "0"));
+		  const totalPrice = depAirFare + arrAirFare;
+		
+		  const depAirFareInput = document.getElementById("depAirFare");
+		  const arrAirFareInput = document.getElementById("arrAirFare");
+		  const totalPriceInput = document.getElementById("totalPrice");
+		
+		  if (depAirFareInput) depAirFareInput.value = depAirFare;
+		  if (arrAirFareInput) arrAirFareInput.value = arrAirFare;
+		  if (totalPriceInput) totalPriceInput.value = totalPrice;
+		
+		  console.log("📦 passengerInfo.jsp loaded fares:");
+		  console.log("depAirFare =", depAirFare);
+		  console.log("arrAirFare =", arrAirFare);
+		  console.log("totalPrice =", totalPrice);
+		
+		  // ✅ 날짜 관련 제한 설정
+		  const maxBirthDate = new Date(today);
+		  maxBirthDate.setDate(today.getDate() - 1);
+		
+		  const minAdultBirth = new Date(today);
+		  minAdultBirth.setFullYear(today.getFullYear() - 13);
+		
+		  const minChildBirth = new Date(today);
+		  minChildBirth.setFullYear(today.getFullYear() - 13);
+		
+		  const maxChildBirth = new Date(today);
+		  maxChildBirth.setFullYear(today.getFullYear() - 2);
+		
+		  const maxInfantBirth = new Date(today);
+		  maxInfantBirth.setFullYear(today.getFullYear() - 2);
+		
+		  function stripTime(date) {
+		    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+		  }
+		
+		  const minExpiry = stripTime(new Date(today));
+		  minExpiry.setMonth(minExpiry.getMonth() + 3);
+		
+		  const maxExpiry = stripTime(new Date(today));
+		  maxExpiry.setFullYear(maxExpiry.getFullYear() + 10);
+		
+		  const minExpiryStr = minExpiry.toISOString().split("T")[0];
+		  const maxExpiryStr = maxExpiry.toISOString().split("T")[0];
+		  const maxBirthStr = maxBirthDate.toISOString().split("T")[0];
+		
+		  // ✅ 날짜 및 input 필드 제한 적용
+		  document.querySelectorAll("input[type='date'][id*='passportExpiry']").forEach(input => {
+		    input.min = minExpiryStr;
+		    input.max = maxExpiryStr;
+		    if (!input.value) input.value = minExpiryStr;
+		  });
+		
+		  document.querySelectorAll("input[type='date'][id*='birthdate']").forEach(input => {
+		    input.max = maxBirthStr;
+		  });
+		
+		  // ✅ 여권번호 필터링
+		  document.querySelectorAll("input[id*='passportNumber']").forEach(input => {
+		    input.addEventListener("input", () => {
+		      input.value = input.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 9);
+		    });
+		  });
+		
+		  // ✅ 영문 이름 필터링
+		  document.querySelectorAll("input[id*='engFirstName'], input[id*='engLastName']").forEach(input => {
+		    input.addEventListener("input", () => {
+		      input.value = input.value.toUpperCase().replace(/[^A-Z]/g, "");
+		    });
+		  });
+		
+		  // ✅ 유효성 검사
+		  form.addEventListener("submit", function (e) {
+		    const inputs = form.querySelectorAll("input");
+		
+		    for (const input of inputs) {
+		      const value = input.value.trim();
+		      const name = input.name;
+		
+		      if (!value) {
+		        alert(`${name} は必須項目です。`);
+		        input.focus();
+		        e.preventDefault();
+		        return false;
+		      }
+		
+		      if (name.includes("engFirstName") || name.includes("engLastName")) {
+		        if (!/^[A-Z]+$/.test(value)) {
+		          alert(`${name} は英大文字のみ入力可能です。`);
+		          input.focus();
+		          e.preventDefault();
+		          return false;
+		        }
+		      }
+		
+		      if (name.includes("birthdate")) {
+		        const birthDate = new Date(value);
+		        if (birthDate > maxBirthDate) {
+		          alert(`${name} は本日以前の日付を入力してください。`);
+		          input.focus();
+		          e.preventDefault();
+		          return false;
+		        }
+		        if (name.startsWith("大人") && birthDate > minAdultBirth) {
+		          alert(`${name} は満13歳以上のみ搭乗可能です。`);
+		          input.focus();
+		          e.preventDefault();
+		          return false;
+		        }
+		        if (name.startsWith("小児") && (birthDate < minChildBirth || birthDate > maxChildBirth)) {
+		          alert(`${name} は満2歳以上13歳未満のみです。`);
+		          input.focus();
+		          e.preventDefault();
+		          return false;
+		        }
+		        if (name.startsWith("幼児") && birthDate < maxInfantBirth) {
+		          alert(`${name} は満2歳未満のみです。`);
+		          input.focus();
+		          e.preventDefault();
+		          return false;
+		        }
+		      }
+		
+		      if (name.includes("passportNumber")) {
+		        if (!/^[A-Z0-9]{9}$/.test(value)) {
+		          alert(`${name} は英大文字と数字で9桁入力してください。`);
+		          input.focus();
+		          e.preventDefault();
+		          return false;
+		        }
+		      }
+		    }
+		  });
+		});
 	</script>
 
 
