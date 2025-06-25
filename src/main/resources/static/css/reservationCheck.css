@@ -4,6 +4,7 @@ body {
   padding: 0;
   background-color: #f4f6f8;
   width: 100%;
+  overflow:hidden;
 }
 
 .screen {
@@ -22,6 +23,7 @@ body {
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   overflow: hidden;
   margin-top:15px;
+  overflow:hidden;
 }
 
 .view {
@@ -33,6 +35,7 @@ body {
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow:hidden;
 }
 
 .title {
@@ -97,6 +100,7 @@ body {
   display: flex;
   gap: 20px;
   margin-top: 30px;
+  overflow:hidden;
 }
 
 .left-panel {
@@ -109,7 +113,8 @@ body {
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  overflow-x: hidden
+  overflow-x: hidden;
+  overflow:hidden;
 }
 
 .right-panel {
@@ -128,6 +133,7 @@ body {
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+	overflow:hidden;
 }
 
 .confirm-button{

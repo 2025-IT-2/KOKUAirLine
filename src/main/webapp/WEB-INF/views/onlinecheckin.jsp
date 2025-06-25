@@ -13,9 +13,10 @@
     <%@ include file="header.jsp" %>
     <div class="checkin-container">
       <div class="checkin-header">オンライン・チェックイン</div>
-      <table class="checkin-table">
+	  <div class="checkin-infno"></div>
+      <table class="checkin-table" id="reservationTable">
         <thead>
-          <tr>
+          <tr class="reservationN">
             <th><ruby><rb>予約番号</rb><rt>よやくばんごう</rt></ruby></th>
             <th><ruby><rb>出発日</rb><rt>しゅっぱつび</rt></ruby></th>
             <th><ruby><rb>出発地</rb><rt>しゅっぱつち</rt></ruby></th>
@@ -27,7 +28,7 @@
         </thead>
         <tbody>
 		  <c:forEach var="reservation" items="${resList}">
-		    <tr>
+			<tr class="reservationS" onclick="console.log('클릭됨'); location.href='/reservationCheck?resiNum=${reservation.resiNum}'">
 		      <td>${reservation.resiNum}</td>
 		      <td>${reservation.flightInfo.departureDate}</td>
 		      <td>${reservation.flightInfo.departure}</td>
@@ -43,5 +44,21 @@
         <a href="https://www.airport.kr/ap_ko/892/subview.do" target="_blank">チェックイン</a>
       </div>
     </div>
+	<script>
+	  document.addEventListener("DOMContentLoaded", () => {
+	    const tbody = document.querySelector("tbody");
+	    const rows = Array.from(tbody.querySelectorAll("tr"));
+
+	    rows.sort((a, b) => {
+	      const aVal = parseInt(a.children[0].textContent.trim());
+	      const bVal = parseInt(b.children[0].textContent.trim());
+	      return aVal - bVal; // 오름차순 정렬
+	    });
+
+	    // 기존 내용 제거 후 정렬된 순서대로 다시 추가
+	    tbody.innerHTML = "";
+	    rows.forEach(row => tbody.appendChild(row));
+	  });
+	</script>
   </body>
 </html>
