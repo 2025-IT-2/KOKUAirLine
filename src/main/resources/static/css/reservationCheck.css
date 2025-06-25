@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f6f8;
+  width: 100%;
 }
 
 .screen {
@@ -20,6 +21,7 @@ body {
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
   overflow: hidden;
+  margin-top:15px;
 }
 
 .view {
@@ -99,6 +101,7 @@ body {
 
 .left-panel {
   flex: 1;
+  float:left;
   overflow-y: auto;
   max-height: 800px;
   width: 600px;
@@ -106,6 +109,7 @@ body {
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow-x: hidden
 }
 
 .right-panel {
@@ -116,6 +120,7 @@ body {
   width: 100%;
   */
     flex: 1;
+	float: right;
     overflow-y: auto;
     max-height: 800px;
     width: 600px;

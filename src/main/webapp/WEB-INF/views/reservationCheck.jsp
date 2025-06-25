@@ -69,15 +69,19 @@
       </div>
     </div>
 
-    <!-- 오른쪽: 탑승권 표시 iframe -->
+    <!-- 오른쪽: 탑승권 표시 iframe //해당 부분 팝업으로 분리	-->
     <div class="right-panel">
       <iframe id="boardingFrame" src="" width="100%" height="100%" style="border:none; margin-bottom: 20px;"></iframe>
     </div>
-	
+
   </div>
 </div>
 
 <script>
+	/*function openWindow () { //보딩패스 팝업용
+	  const options = 'width=600, height=800, top=400, left=100, resizable=no, scrollbars=no'
+	  window.open('/boardingPassInfo','boardingPassInfo',options)
+	}*/
  /* function showBoardingPass(reservationNumber) {
     const frame = document.getElementById("boardingFrame");
     frame.src = "<c:url value='/boardingPassInfo'/>?reservationNumber=" + encodeURIComponent(reservationNumber);
