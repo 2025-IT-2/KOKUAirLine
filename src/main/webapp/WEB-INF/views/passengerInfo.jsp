@@ -13,7 +13,7 @@
   </head>
   <body>
     <%@ include file="header.jsp" %>  
-    <form action="/submitPassengerInfo" method="post">     
+         
       <div class="screen">
         <!-- 제목 -->        
         <h2 class="title"><ruby><rb>搭乗者情報</rb><rt>とうじょうしゃじょうほう</rt></ruby></h2>
@@ -93,14 +93,21 @@
               </div>
 
               <!-- 결정 버튼 -->
-			  <div id=finishbtn>
+			  <!--  <div id=finishbtn>
               <button type="submit" class="text-wrapper-15"><ruby><rb>決定</rb><rt>けってい</rt></ruby></button>                
-            </div>
+            </div>-->
+            <form action="/reservationComplete" method="get">
+            	<div id="finishbtn">
+				  <button type="button" class="text-wrapper-15" onclick="openWindow()">
+				    <ruby><rb>予約完了</rb><rt>よやくかんりょう</rt></ruby>
+				  </button>             
+				</div>
+				</form>
             </div>
           </div>
         </div>          
       </div>
-    </form>
+    
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
@@ -180,6 +187,14 @@
 		      input.value = input.value.toUpperCase().replace(/[^A-Z]/g, "");
 		    });
 		  });
+		  
+		  // ✅ 예약 완료 팝업창
+		  document.getElementById("finishBtn").addEventListener("click", () => {
+			  window.open('/reservationComplete', 'reservationPopup', 'width=500,height=500');
+			});
+		  //function openPopup() {
+			//  window.open('/reservationComplete.jsp', 'reservationPopup', 'width=400,height=300');
+			//}
 		
 		  // ✅ 유효성 검사
 		  form.addEventListener("submit", function (e) {
@@ -245,7 +260,8 @@
 		  });
 		});
 	</script>
-
+	<script src="<c:url value='/js/reservationComplete.js' />"></script>
+	
 
   </body>      
 </html>
