@@ -14,6 +14,7 @@ import com.KOKUAirLine.project.model.FlightInfo;
 import com.KOKUAirLine.project.model.PaymentInfo;
 import com.KOKUAirLine.project.model.Reservation;
 import com.KOKUAirLine.project.model.UserInfo;
+import com.KOKUAirLine.project.model.Reservation.CancelStatus;
 import com.KOKUAirLine.project.repo.FlightInfoRepository;
 import com.KOKUAirLine.project.repo.PaymentInfoRepo;
 import com.KOKUAirLine.project.repo.ReservationRepo;
@@ -48,9 +49,9 @@ public class ReservationDataTest {
 
         // 1. 예약 저장
         Reservation res1 = new Reservation(null, flight1, user1, 
-                1, 0, 0, LocalDate.now(), "Y", "eco-spec", "완료");
+                1, 0, 0, LocalDate.now(), "Y", "eco-spec", CancelStatus.예약완료);
         Reservation res2 = new Reservation(null, flight2, user2, 
-                2, 1, 0, LocalDate.now(), "N", "buis", "완료");
+                2, 1, 0, LocalDate.now(), "N", "buis", CancelStatus.예약완료);
 
         reservationRepo.save(res1);
         reservationRepo.save(res2);
