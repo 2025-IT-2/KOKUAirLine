@@ -1,9 +1,13 @@
 package com.KOKUAirLine.project.service;
 
 import java.time.LocalDate;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.KOKUAirLine.project.model.FlightInfo;
 import com.KOKUAirLine.project.model.PassportInfo;
@@ -79,14 +83,12 @@ public class PassengerInfoService {
             }
         }
     }
-
-    
     
     @Transactional
     public ReservationPair saveReservationInfo(HttpServletRequest request, String userId) {
     	
-    	System.out.println("🔍 depAirFare param: " + request.getParameter("depAirFare"));
-    	System.out.println("🔍 arrAirFare param: " + request.getParameter("arrAirFare"));
+//    	System.out.println("🔍 depAirFare param: " + request.getParameter("depAirFare"));
+//    	System.out.println("🔍 arrAirFare param: " + request.getParameter("arrAirFare"));
     	
         UserInfo user = userInfoRepo.searchUserById(userId);
 
@@ -179,4 +181,5 @@ public class PassengerInfoService {
             return 0;
         }
     }
+
 }
