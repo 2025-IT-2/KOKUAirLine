@@ -43,4 +43,11 @@ public class CheckReservationService {
 			return false;
 		}
 	}
+	public List<Reservation> getUserReservations(HttpSession session) {
+		String userId = (String) session.getAttribute("loginUserId");
+		if (userId != null) {
+			return resrevationRepo.findByReservationHolder(userId);
+		}
+		return new ArrayList<>();
+	}
 }
