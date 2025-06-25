@@ -13,7 +13,7 @@
   <body>
     <%@ include file="header.jsp" %>
     <div class="checkin-container">
-      <div class="checkin-header">オンライン・チェックイン</div>
+      <div class="checkin-header"><ruby><rb>予約確認</rb><rt>よやくかくにん</rt></ruby></div>
 	  <div class="checkin-infno"></div>
       <table class="checkin-table" id="reservationTable">
         <thead>
@@ -30,21 +30,21 @@
         <tbody>
 		  <c:forEach var="reservation" items="${resList}">
 			<tr class="reservationS" onclick="console.log('클릭됨'); location.href='/reservationCheck?resiNum=${reservation.resiNum}'">
-		      <td>${reservation.resiNum}</td>
+		      <td id="resiNum">${reservation.resiNum}</td>
 		      <!-- <td>${reservation.flightInfo.departureDate}</td>
 			  날짜: YYYY-MM-DD -->
-			  <td><fmt:formatDate value="${reservation.flightInfo.departureDate}" pattern="yyyy-MM-dd"/></td>
+			  <td id="date"><fmt:formatDate value="${reservation.flightInfo.departureDate}" pattern="yyyy-MM-dd"/></td>
 
-		      <td>${reservation.flightInfo.departure}</td>
-		      <td>${reservation.flightInfo.arrival}</td>
+		      <td class="airport">${reservation.flightInfo.departure}</td>
+		      <td class="airport">${reservation.flightInfo.arrival}</td>
 		      <!-- <td>${reservation.flightInfo.departureTime}</td>
 			  출발 시간: HH:mm:ss -->
-			  <td><fmt:formatDate value="${reservation.flightInfo.departureTime}" pattern="HH:mm"/></td>
+			  <td class="time"><fmt:formatDate value="${reservation.flightInfo.departureTime}" pattern="HH:mm"/></td>
 
 		      <!-- <td>${reservation.flightInfo.arrivalTime}</td>
 			  도착 시간: HH:mm:ss -->
-			  <td><fmt:formatDate value="${reservation.flightInfo.arrivalTime}" pattern="HH:mm"/></td>
-		      <td>${reservation.flightInfo.flightNo}</td>
+			  <td class="time"><fmt:formatDate value="${reservation.flightInfo.arrivalTime}" pattern="HH:mm"/></td>
+		      <td id="flightNo">${reservation.flightInfo.flightNo}</td>
 		    </tr>
 		  </c:forEach>
 		</tbody>
