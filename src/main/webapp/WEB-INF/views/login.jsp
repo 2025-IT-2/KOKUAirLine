@@ -39,6 +39,7 @@
         <div class="form-options">
           <label>
             <input id="autoLoginCheckBox" type="checkbox" name="autoLogin" />自動ログイン
+            <checkbox id="autoLoginCheckBox" />
           </label>
         </div>
 
