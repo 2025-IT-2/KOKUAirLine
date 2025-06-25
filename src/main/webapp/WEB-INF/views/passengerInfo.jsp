@@ -190,8 +190,8 @@
 		  
 		  // ✅ 예약 완료 팝업창
 		  document.getElementById("finishBtn").addEventListener("click", () => {
-			  window.open('/reservationComplete', 'reservationPopup', 'width=500,height=500');
-			});
+		  window.open('/reservationComplete', 'reservationPopup', 'width=500,height=500');
+		});
 		  //function openPopup() {
 			//  window.open('/reservationComplete.jsp', 'reservationPopup', 'width=400,height=300');
 			//}
