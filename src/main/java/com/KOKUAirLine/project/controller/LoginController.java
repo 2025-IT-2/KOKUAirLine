@@ -66,7 +66,7 @@ public class LoginController {
     	else {
     		//리다이렉트 된 주소로 attribute를 추가해 보내줌
     		redirectAttributes.addFlashAttribute("loginError", "아이디 또는 비밀번호가 틀렸습니다.");
-            return "redirect:/login";  // 스프링부트에서 지원하는 get 방식 redirect 호출문
+        return "redirect:/login";
     	}
     }
     
