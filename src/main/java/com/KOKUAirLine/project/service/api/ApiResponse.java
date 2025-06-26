@@ -9,5 +9,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JacksonXmlRootElement(localName = "response")
 public class ApiResponse {
+	
     private ApiBody body;
+    
 }
