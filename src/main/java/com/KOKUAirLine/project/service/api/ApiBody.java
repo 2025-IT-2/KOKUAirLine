@@ -7,5 +7,7 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ApiBody {
+	
     private Items items;
+    
 }

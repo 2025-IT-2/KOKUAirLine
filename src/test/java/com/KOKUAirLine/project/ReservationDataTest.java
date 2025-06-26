@@ -49,9 +49,9 @@ public class ReservationDataTest {
 
         // 1. 예약 저장
         Reservation res1 = new Reservation(null, flight1, user1, 
-                1, 0, 0, LocalDate.now(), "Y", "eco-spec", CancelStatus.예약완료);
+                1, 0, 0, LocalDate.now(), "Y", "eco-spec", CancelStatus.予約完了);
         Reservation res2 = new Reservation(null, flight2, user2, 
-                2, 1, 0, LocalDate.now(), "N", "buis", CancelStatus.예약완료);
+                2, 1, 0, LocalDate.now(), "N", "buis", CancelStatus.予約完了);
 
         reservationRepo.save(res1);
         reservationRepo.save(res2);
