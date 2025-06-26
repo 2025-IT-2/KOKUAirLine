@@ -34,7 +34,8 @@
 				<input type="hidden" name="flightMealYN" value="Y" />
 				<input type="hidden" name="depAirFare" id="depAirFare" value="${param.depAirFare}" />
 				<input type="hidden" name="arrAirFare" id="arrAirFare" value="${param.arrAirFare}" />    
-
+				<input type="hidden" id="depResiNum" value="${depResiNum}" />
+				<input type="hidden" id="arrResiNum" value="${arrResiNum}" />
 				
 				<div class="overlap-wrapper">
 					<div class="overlap">
@@ -93,6 +94,7 @@
 							</div>
 
 							<!-- 결정 버튼 -->
+							
 							<div id="finishbtn">
 							  <button type="button" onclick="openWindow()" class="text-wrapper-15" id="finishBtn">
 							    <ruby><rb>予約完了</rb><rt>よやくかんりょう</rt></ruby>
@@ -103,7 +105,7 @@
 				</div>          
 			</div>
 		</form>
-
+		
 		<script>
 			document.addEventListener("DOMContentLoaded", function () {
 				const form = document.querySelector("form");
@@ -305,5 +307,6 @@
 				});
 			});
 		</script>
+		<script src="js/reservationComplete.js"></script>
 	</body>      
 </html>

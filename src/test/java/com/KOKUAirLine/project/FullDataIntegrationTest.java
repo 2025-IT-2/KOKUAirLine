@@ -146,8 +146,8 @@ public class FullDataIntegrationTest {
         flightInfoRepo.saveAll(List.of(f7, f8));
 
         // 예약
-        Reservation r1 = new Reservation(null, f1, user1, 1, 0, 0, LocalDate.now(), "Y", "eco-spec", CancelStatus.예약완료);
-        Reservation r2 = new Reservation(null, f2, user2, 2, 1, 0, LocalDate.now(), "N", "buis", CancelStatus.예약완료);
+        Reservation r1 = new Reservation(null, f1, user1, 1, 0, 0, LocalDate.now(), "Y", "eco-spec", CancelStatus.予約完了);
+        Reservation r2 = new Reservation(null, f2, user2, 2, 1, 0, LocalDate.now(), "N", "buis", CancelStatus.予約完了);
         reservationRepo.saveAll(List.of(r1, r2));
 
         // 결제
