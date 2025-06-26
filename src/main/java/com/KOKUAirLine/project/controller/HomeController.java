@@ -28,6 +28,8 @@ public class HomeController {
     	// 상품 이미지 전달
     	service.loadTaxFreeItems(model);
     	
+    	
+    	
         return "home"; // -> /WEB-INF/views/home.jsp 로 이동
     }
 }
