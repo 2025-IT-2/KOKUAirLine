@@ -16,8 +16,9 @@
 	    <div class="nav">
 	    <!-- 각 상단 버튼을 누르면 해당 화면으로 이동 -->
 		<button class="menubtn" onclick="location.href='<c:url value='/reservation' />'"><span><ruby><rb>予約</rb><rt>よやく</rt></ruby></span></button>
-		<button class="menubtn" onclick="location.href='<c:url value='/onlinecheckin' />'"><span>オンライン・チェックイン</span></button>
+<!--		<button class="menubtn" onclick="location.href='<c:url value='/onlinecheckin' />'"><span>オンライン・チェックイン</span></button>
 		<button class="menubtn" onclick="location.href='<c:url value='/reservationCheck' />'"><span><ruby><rb>予約確認</rb><rt>よやくかくにん</rt></ruby></span></button>
+-->		<button class="menubtn" onclick="location.href='<c:url value='/onlinecheckin' />'"><span><ruby><rb>予約確認</rb><rt>よやくかくにん</rt></ruby></span></button>
 
 	    </div>
 	    <c:choose>

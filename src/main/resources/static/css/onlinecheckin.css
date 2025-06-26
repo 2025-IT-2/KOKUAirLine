@@ -4,6 +4,7 @@ body{
 }
 
 .checkin-container {
+	min-width: 680px;
   max-width: 900px;
   margin: 30px auto;
   padding: 20px;
@@ -17,6 +18,7 @@ body{
   font-size: 24px;
   text-align: center;
   margin-bottom: 20px;
+  font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック"; font-weight: bold;
 }
 
 .checkin-table {
@@ -54,12 +56,42 @@ tr th {
 
 .reservationN{
 	background-color: lightblue;	
+	font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック"; font-weight: bold;
 }
 
 .reservationS{
-	cursor: default;
+	cursor: pointer;
+	font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック";
 }
 
 .reservationS:hover{
 	background-color: lightskyblue;
+	 font-weight: bold;
 }
+
+#resiNum{
+	width: 100px;
+	height: 35px;
+}
+
+#date{
+	width: 130px;
+	height: 35px;
+}
+
+.airport{
+	width: 80px;
+	height: 35px;
+}
+
+.time{
+	width: 90px;
+	height: 35px;
+}
+
+#flightNo{
+	width: 108px;
+	height: 35px;
+}
+
+
