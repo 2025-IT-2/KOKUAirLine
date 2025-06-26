@@ -11,31 +11,15 @@ import lombok.Data;
 @JacksonXmlRootElement(localName = "item")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ApiInfo {
-//    private String aircraftRegNo;
-//    private String aircraftSubtype;
-//    private String airline;
+
     private String airport;
-//    private String depTime;
     private String airportCode;
-//    private String chkinRange;
-//    private String codeshare;
-//    private String estimatedDatetime;
-//    private String fid;
-//    private String flightId;
-//    private String fstandPosition;
-//    private String arrTime;
-//    private String gateNumber;
-//    private String masterFlightId;
-//    private String passengerOrCargo;
-//    private String remark;
-//    private String scheduleDatetime;
-//    private String terminalId;
-//    private String typeOfFlight;
     @JsonIgnoreProperties(ignoreUnknown = true)
     private String airportJp;
     
     @Override
     public boolean equals(Object o) {
+    	
         if (this == o) return true;
         if (!(o instanceof ApiInfo)) return false;
         ApiInfo other = (ApiInfo) o;
@@ -44,14 +28,9 @@ public class ApiInfo {
 
     @Override
     public int hashCode() {
+    	
         return Objects.hash(airport);
+        
     }
     
-//    public String AircraftRegNo() {
-//        return aircraftRegNo;
-//    }
-//
-//    public void setDepAirport(String aircraftRegNo) {
-//        this.aircraftRegNo = aircraftRegNo;
-//    }
 }
