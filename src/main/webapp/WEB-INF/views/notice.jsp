@@ -17,11 +17,11 @@
 <table class="flight-table">
   <thead>
     <tr>
-      <th>노선</th>
-      <th>편명</th>
-      <th>운항 요일</th>
-      <th>출발</th>
-      <th>도착</th>
+      <th>路線</th>
+      <th>便名</th>
+      <th>運航曜日</th>
+      <th>出発</th>
+      <th>到着</th>
     </tr>
   </thead>
   <tbody>
@@ -45,7 +45,7 @@
   </tbody>
 </table>
 
-<div style="margin-top: 20px; font-size: 20px; font-weight: bold; text-align: center;">
+<div style="margin-top: 20px; margin-bottom: 30px; font-size: 20px; font-weight: bold; text-align: center;">
   ▼ 마닐라 인기 관광지 ▼<br>
   (사실 마닐라 아님)
 </div>
