@@ -59,7 +59,8 @@ public class Reservation {
 	private CancelStatus cancelStep;		// 취소진행상태
 	
 	public enum CancelStatus {
-	    예약완료, 취소요청, 취소완료
+		予約完了, 払い戻し要請, 払い戻し完了
+//	    예약완료, 취소요청, 취소완료
 	}	
 	
     // Getters and Setters 생략 가능 (Lombok @Data 사용 가능)	

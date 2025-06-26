@@ -1,5 +1,5 @@
 body {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック", 'Noto Sans KR', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f6f8;
@@ -143,21 +143,45 @@ font-family: "UD デジタル 教科書体 N-B","UD Digi Kyokasho N-B";
 	display: flex;
 }
 
-#toboarding{
-	    text-align: center;
-		justify-content: center;
-        background: #007bff;
-        color: white;
+.bottombtns{
+	margin-top: 10px;
+	margin-left: 50px;
+	width: 400px;
+}
+
+.bottombtn{
+		font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック";
+		font-weight: bold;	
         padding: 10px;
         border-radius: 10px;
-		border: 0px #007bff;
         text-decoration: none;
         font-size: 14px;
+}
+
+#goback{
+		width: 100px;
+	    text-align: center;
+        background: #007bff;
+        color: white;
+		border: 0px #007bff;
         transition: background 0.2s;
-		margin:30px auto;
-		margin-left:85px;
+		float: left;
+      }
+
+#toboarding{
+		width: 174px;
+	    text-align: center;
+        background: #007bff;
+        color: white;
+		border: 0px #007bff;
+        transition: background 0.2s;
+		float: right;
       }
 
 #toboarding:hover {
+        background: #0056b3;
+      }
+
+#goback:hover {
         background: #0056b3;
       }

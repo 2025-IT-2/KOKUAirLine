@@ -105,7 +105,7 @@ public class PassengerInfoService {
         String depFlightNo = request.getParameter("selectedFlightNo");
         if (depFlightNo != null && !depFlightNo.isBlank()) {
             FlightInfo depFlight = flightInfoRepo.findFlightInfoByFlightNo(depFlightNo)
-                .orElseThrow(() -> new IllegalArgumentException("출발 항공편을 찾을 수 없습니다: " + depFlightNo));
+                .orElseThrow(() -> new IllegalArgumentException("出発便が見つかりません:: " + depFlightNo));
 
             depReservation = new Reservation();
             depReservation.setFlightInfo(depFlight);
@@ -116,7 +116,7 @@ public class PassengerInfoService {
             depReservation.setResDate(LocalDate.now());
             depReservation.setFlightMealYN(meal);
             depReservation.setClassType(classType);
-            depReservation.setCancelStep(Reservation.CancelStatus.예약완료);
+            depReservation.setCancelStep(Reservation.CancelStatus.予約完了);
 
             reservationRepo.save(depReservation);
         }
@@ -125,7 +125,7 @@ public class PassengerInfoService {
         String arrFlightNo = request.getParameter("arrivalFlightNo");
         if (arrFlightNo != null && !arrFlightNo.isBlank()) {
             FlightInfo arrFlight = flightInfoRepo.findFlightInfoByFlightNo(arrFlightNo)
-                .orElseThrow(() -> new IllegalArgumentException("도착 항공편을 찾을 수 없습니다: " + arrFlightNo));
+                .orElseThrow(() -> new IllegalArgumentException("到着便が見つかりません:: " + arrFlightNo));
 
             arrReservation = new Reservation();
             arrReservation.setFlightInfo(arrFlight);
@@ -136,7 +136,7 @@ public class PassengerInfoService {
             arrReservation.setResDate(LocalDate.now());
             arrReservation.setFlightMealYN(meal);
             arrReservation.setClassType(classType);
-            arrReservation.setCancelStep(Reservation.CancelStatus.예약완료);
+            arrReservation.setCancelStep(Reservation.CancelStatus.予約完了);
 
             reservationRepo.save(arrReservation);
         }

@@ -24,7 +24,7 @@
             <th><ruby><rb>到着地</rb><rt>とうちゃくち</rt></ruby></th>
             <th><ruby><rb>出発時間</rb><rt>しゅっぱつじかん</rt></ruby></th>
             <th><ruby><rb>到着時間</rb><rt>とうちゃくじかん</rt></ruby></th>
-            <th><ruby><rb>航空編</rb><rt>こうくうへん</rt></ruby></th>
+            <th><ruby><rb>航空便</rb><rt>こうくうへん</rt></ruby></th>
           </tr>
         </thead>
         <tbody>
