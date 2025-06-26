@@ -15,16 +15,16 @@ public class NoticetestService {
 	@Bean
     public CommandLineRunner initData(NoticeRepository noticeRepository) {
         return args -> {
-            // 이미 ID 1번이 있으면 삽입 안함
-            if (!noticeRepository.existsById(1L)) {
+
+
                 NoticeDTO notice = new NoticeDTO();
                 notice.setId(1L);
                 notice.setTitle("ナリタ - マニラ線新規就航のお知らせ");
-                notice.setContent("ナリタ→マニラは03:30、マニラ→ナリタは13:30に毎日運航いたします。");
+                notice.setContent("7월1일부 나리타-마닐라 노선을 매일 운행합니다!\n동남아 필리핀 최고의 휴양지 마닐라! 지금 바로 예약하세요!");
                 notice.setRegDate(new Date());
                 noticeRepository.save(notice);
                 System.out.println("★ 테스트 공지사항 등록 완료");
-            }
+            
         };
     }
 

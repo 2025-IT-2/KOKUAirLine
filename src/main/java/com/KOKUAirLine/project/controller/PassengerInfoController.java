@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.KOKUAirLine.project.service.PassengerInfoService;
 import com.KOKUAirLine.project.service.PassengerInfoService.ReservationPair;
@@ -96,6 +97,15 @@ public class PassengerInfoController {
             passengerInfoService.savePassengerInfo(request, "小児", childCount, reservationPair.getArrReservation());
             passengerInfoService.savePassengerInfo(request, "幼児", infantCount, reservationPair.getArrReservation());
         }
+        // 🔥 세션에 예약 번호 저장
+        
+     // 예약번호 꺼내기
+        Long depResiNum = reservationPair.getDepReservation().getResiNum();
+        Long arrResiNum = reservationPair.getArrReservation() != null ? reservationPair.getArrReservation().getResiNum() : null;
+
+        // 세션에 저장하기
+        session.setAttribute("depResiNum", depResiNum);
+        session.setAttribute("arrResiNum", arrResiNum);
 
         return "redirect:/home";
     }
@@ -109,6 +119,7 @@ public class PassengerInfoController {
 	        Locale locale = new Locale("", code);
 	        countryMap.put(code, locale.getDisplayCountry(Locale.JAPAN));
 	    }
+	    
 	    return countryMap;
 	}        
     

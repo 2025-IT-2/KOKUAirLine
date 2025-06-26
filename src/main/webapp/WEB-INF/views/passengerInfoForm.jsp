@@ -58,10 +58,10 @@
       <div class="card-title"><ruby><rb>生年月日</rb><rt>せいねんがっぴ</rt></ruby></div>
       <div class="birth">
         <input 
-          type="date" 
+          type="text" 
           id="${param.type}_birthdate${param.index}" 
           name="${param.type}_birthdate${param.index}" 
-          value="1990-01-01"
+          placeholder="生年月日を選択してください"
         >
       </div>
     </div>
@@ -111,9 +111,10 @@
         <label>
           <ruby><rb>有効期間</rb><rt>ゆうこうきかん</rt></ruby>
           <input 
-            type="date" 
+            type="text" 
             id="${param.type}_passportExpiry${param.index}" 
             name="${param.type}_passportExpiry${param.index}"
+            placeholder="日付を選択してください"
           >
         </label>
 

@@ -40,13 +40,27 @@
       <td>17:15</td>
     </tr>
     <tr>
-      <td colspan="5">${notice.content}</td>
+      <td colspan="5"><pre>${notice.content}</pre></td>
     </tr>
   </tbody>
 </table>
 
+<div style="margin-top: 20px; font-size: 20px; font-weight: bold; text-align: center;">
+  ▼ 마닐라 인기 관광지 ▼<br>
+  (사실 마닐라 아님)
+</div>
+
+	<div style="text-align:center; margin-bottom: 20px;">
+		<img src="<c:url value='/img/homepageImage1.png' />" alt="Main Visual" style="margin: 0 10px 20px 10px;" />
+		<img src="<c:url value='/img/homepageImage2.png' />" alt="Main Visual" style="margin: 0 10px 20px 10px;" />
+		<img src="<c:url value='/img/homepageImage3.png' />" alt="Main Visual" style="margin: 0 10px 20px 10px;" />
+		<img src="<c:url value='/img/homepageImage4.png' />" alt="Main Visual" style="margin: 0 10px 20px 10px;" />
+		<img src="<c:url value='/img/homepageImage5.png' />" alt="Main Visual" style="margin: 0 10px 20px 10px;" /> 
+		<img src="<c:url value='/img/homepageImage6.png' />" alt="Main Visual" style="margin: 0 10px 20px 10px;" />
+	</div>
+
 <form action="/reservation" method="get">
-  <button type="submit" class="notice-button">予約する</button>
+  <button type="submit" class="notice-button">最安値の予約</button>
 </form>
 
 </body>

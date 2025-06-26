@@ -9,6 +9,11 @@
 	<link rel="stylesheet" href="<c:url value='/css/global.css' />" />
 	<link rel="stylesheet" href="<c:url value='/css/passengerInfo.css'/>"/>
 
+	<!-- Flatpickr & 일본어 로케일 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
+
 	<title>搭乗者情報入力</title>
 	</head>
 	<body>
@@ -34,7 +39,8 @@
 				<input type="hidden" name="flightMealYN" value="Y" />
 				<input type="hidden" name="depAirFare" id="depAirFare" value="${param.depAirFare}" />
 				<input type="hidden" name="arrAirFare" id="arrAirFare" value="${param.arrAirFare}" />    
-
+				<input type="hidden" id="depResiNum" value="${depResiNum}" />
+				<input type="hidden" id="arrResiNum" value="${arrResiNum}" />
 				
 				<div class="overlap-wrapper">
 					<div class="overlap">
@@ -91,15 +97,18 @@
 							</div>
 
 							<!-- 결정 버튼 -->
-							<div id=finishbtn>
-							<button type="submit" class="text-wrapper-15"><ruby><rb>決定</rb><rt>けってい</rt></ruby></button>                
-						</div>
+							
+							<div id="finishbtn">
+							  <button type="button" onclick="openWindow()" class="text-wrapper-15" id="finishBtn">
+							    <ruby><rb>予約完了</rb><rt>よやくかんりょう</rt></ruby>
+							  </button>             
+							</div>
 						</div>
 					</div>
 				</div>          
 			</div>
 		</form>
-
+		
 		<script>
 			document.addEventListener("DOMContentLoaded", function () {
 				const form = document.querySelector("form");
@@ -155,15 +164,23 @@
 				const maxExpiryStr = maxExpiry.toISOString().split("T")[0];
 				const maxBirthStr = maxBirthDate.toISOString().split("T")[0];
 			
-				// ✅ 날짜 및 input 필드 제한 적용
-				document.querySelectorAll("input[type='date'][id*='passportExpiry']").forEach(input => {
-					input.min = minExpiryStr;
-					input.max = maxExpiryStr;
-					if (!input.value) input.value = minExpiryStr;
+				// ✅ flatpickr 적용 - 생년월일
+				flatpickr("input[id*='birthdate']", {
+					locale: "ja",
+					dateFormat: "Y-m-d",
+					maxDate: maxBirthStr,
+					defaultDate: "1990-01-01",
+					disableMobile: true,
 				});
 
-				document.querySelectorAll("input[type='date'][id*='birthdate']").forEach(input => {
-					input.max = maxBirthStr;
+				// ✅ flatpickr 적용 - 여권 만료일
+				flatpickr("input[id*='passportExpiry']", {
+					locale: "ja",
+					dateFormat: "Y-m-d",
+					minDate: minExpiryStr,
+					maxDate: maxExpiryStr,
+					defaultDate: minExpiryStr,
+					disableMobile: true,
 				});
 			
 				// ✅ 여권번호 필터링
@@ -201,11 +218,11 @@
 							continue;
 						}
 
-						// 디버깅 로그
-						console.log("🕵️‍♀️ 검사 중인 필드:", input);
-						console.log("🔎 name =", inputName);
-						console.log("✏️ value =", value);
-						console.log("📛 name: " + inputName + ", value: " + value);
+						//// 디버깅 로그
+						// console.log("🕵️‍♀️ 검사 중인 필드:", input);
+						// console.log("🔎 name =", inputName);
+						// console.log("✏️ value =", value);
+						// console.log("📛 name: " + inputName + ", value: " + value);
 
 						// 💡 라벨 변환
 						let label = inputName;
@@ -297,7 +314,7 @@
 							}
 						}
 
-						// 셀렉트박스 검사
+						// 국적과 여권발행국 검사
 						if (inputName.includes("nationality") || inputName.includes("passportCountry")) {
 							if (value === "") {
 								alert(label + " を選択してください。");
@@ -307,7 +324,7 @@
 							}
 						}	
 					}
-					
+
 					// ✅ 전화번호 유효성 검사
 					if (phoneInput) {
 						const phoneValue = phoneInput.value.trim();
@@ -330,5 +347,6 @@
 				});
 			});
 		</script>
+		<script src="js/reservationComplete.js"></script>
 	</body>      
 </html>
