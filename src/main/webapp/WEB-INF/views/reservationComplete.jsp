@@ -41,17 +41,10 @@
   <script>
   
   function closePopup() {
-    if (window.opener && !window.opener.closed) {
-		      window.opener.location.href = "/home";  // 🔥 부모창 이동
-		    }
 		    window.close(); // 🔥 팝업창 닫기
 		  }
 
-         window.addEventListener('beforeunload', function () {
-           if (window.opener && !window.opener.closed) {
-             window.opener.location.href = 'http://localhost:8080/home';
-           }
-         });
+
          </script>
          
 </body>
