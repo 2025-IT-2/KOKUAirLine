@@ -93,9 +93,11 @@
 							</div>
 
 							<!-- 결정 버튼 -->
-							<div id=finishbtn>
-							<button type="submit" class="text-wrapper-15"><ruby><rb>決定</rb><rt>けってい</rt></ruby></button>                
-						</div>
+							<div id="finishbtn">
+							  <button type="button" onclick="openWindow()" class="text-wrapper-15" id="finishBtn">
+							    <ruby><rb>予約完了</rb><rt>よやくかんりょう</rt></ruby>
+							  </button>             
+							</div>
 						</div>
 					</div>
 				</div>          
