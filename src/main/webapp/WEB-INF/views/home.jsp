@@ -26,6 +26,7 @@
 	</div>
 
     <!-- 상품 리스트 영역 -->
+    <!-- 
     <div>
 	  <h2 class="product-title"><ruby class="taxfree-t"><rb>免税品</rb><rt>めんぜいひん</rt><rb>販売</rb><rt>はんばい</rt>リスト</h2>
 	</div>
@@ -62,7 +63,7 @@
 	    </div>
 	  </div>
 	</div>
-    
+     -->
     <script src="/js/home.js"></script>
 	
 	<!--홈 슬라이드용-->

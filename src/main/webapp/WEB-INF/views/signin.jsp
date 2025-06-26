@@ -19,7 +19,11 @@
 <body>
   <%@ include file="header.jsp" %>
   <%@ page import="java.util.*" %>
-
+  
+  <c:if test="${not empty error}">
+    <input type="hidden" id="SigninErrorMessage" value="${error}" />
+  </c:if>
+  
   <div class="form-container">
   <form:form modelAttribute="userInfo" method="post" action="/signin">
 
@@ -80,31 +84,50 @@
 		</div>
 
       <!-- 약관 동의 자리 -->
-      <div class="terms-section">
-		  <label><ruby><rb>利用規約</rb><rt>りようきやく</rt></ruby></label>
-        <div class="terms-box" id="terms-content-1">読み込み中...</div>
-		    <input type="checkbox" name="terms1" id="terms1" class="terms-checkbox"> <ruby><rb>利用規約</rb><rt>りようきやく</rt></ruby>に<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
+      <!-- 전체 동의 영역 -->
+<div class="terms-section">
 
-        <label>キャンセルポリシー</label>
-        <div class="terms-box" id="terms-content-2">読み込み中...</div>
-        <label><input type="checkbox" name="terms2" id="terms2" class="terms-checkbox"> キャンセルポリシーに<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
+  <!-- 전체 동의 체크박스 -->
+  <label>
+    <input type="checkbox" id="agreeAll" class="terms-checkbox">
+    全ての約款に同意します（すべてチェック）
+  </label>
 
-        <label><ruby><rb>特定商取引法</rb><rt>とくていしょうとりひきほう</rt></ruby>に<ruby><rb>基</rb><rt>もと</rt></ruby>づく<ruby><rb>表記</rb><rt>ひょうき</rt></ruby></label>
-        <div class="terms-box" id="terms-content-3">読み込み中...</div>
-        <label><input type="checkbox" name="terms3" id="terms3" class="terms-checkbox"> <ruby><rb>特定商取引法</rb><rt>とくていしょうとりひきほう</rt></ruby>に<ruby><rb>基</rb><rt>もと</rt></ruby>づく<ruby><rb>表記</rb><rt>ひょうき</rt></ruby>に<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
-
-        <label>Cookieポリシー</label>
-        <div class="terms-box" id="terms-content-4">読み込み中...</div>
-        <label><input type="checkbox" name="terms4" id="terms4" class="terms-checkbox"> Cookieポリシーに<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
-
-        <label><ruby><rb>安全</rb><rt>あんぜん</rt></ruby>なご<ruby><rb>利用</rb><rt>りよう</rt></ruby>のために</label>
-        <div class="terms-box" id="terms-content-5">読み込み中...</div>
-        <label><input type="checkbox" name="terms5" id="terms5" class="terms-checkbox"> <ruby><rb>安全</rb><rt>あんぜん</rt></ruby>なご<ruby><rb>利用</rb><rt>りよう</rt></ruby>の<ruby><rb>規約</rb><rt>きやく</rt></ruby>に<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
-
-        <label>プライバシーポリシー</label>
-        <div class="terms-box" id="terms-content-6">読み込み中...</div>
-        <label><input type="checkbox" name="terms6" id="terms6" class="terms-checkbox"> プライバシーポリシーに<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
-      </div>
+  <!-- 전체 접기/펼치기 버튼 -->
+  <button type="button" id="toggleTermsView">すべての約款を表示</button>
+  
+  	<!-- 약관 전체 영역 (초기에는 접힘) -->
+	  <div id="allTermsContent" style="display: none; margin-top: 10px;">
+	
+	    <!-- 반복되는 약관 내용들 -->
+	    <label><ruby><rb>利用規約</rb><rt>りようきやく</rt></ruby></label>
+	    <div class="terms-box" id="terms-content-1">読み込み中...</div>
+	    <input type="checkbox" name="terms1" id="terms1" class="terms-checkbox"> 
+	    <ruby><rb>利用規約</rb><rt>りようきやく</rt></ruby>に<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
+	
+	    <label>キャンセルポリシー</label>
+	    <div class="terms-box" id="terms-content-2">読み込み中...</div>
+	    <input type="checkbox" name="terms2" id="terms2" class="terms-checkbox"> キャンセルポリシーに<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
+	
+	    <label><ruby><rb>特定商取引法</rb><rt>とくていしょうとりひきほう</rt></ruby>に<ruby><rb>基</rb><rt>もと</rt></ruby>づく<ruby><rb>表記</rb><rt>ひょうき</rt></ruby></label>
+	    <div class="terms-box" id="terms-content-3">読み込み中...</div>
+	    <input type="checkbox" name="terms3" id="terms3" class="terms-checkbox"> 
+	    <ruby><rb>特定商取引法</rb><rt>とくていしょうとりひきほう</rt></ruby>に<ruby><rb>基</rb><rt>もと</rt></ruby>づく<ruby><rb>表記</rb><rt>ひょうき</rt></ruby>に<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
+	
+	    <label>Cookieポリシー</label>
+	    <div class="terms-box" id="terms-content-4">読み込み中...</div>
+	    <input type="checkbox" name="terms4" id="terms4" class="terms-checkbox"> Cookieポリシーに<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
+	
+	    <label><ruby><rb>安全</rb><rt>あんぜん</rt></ruby>なご<ruby><rb>利用</rb><rt>りよう</rt></ruby>のために</label>
+	    <div class="terms-box" id="terms-content-5">読み込み中...</div>
+	    <input type="checkbox" name="terms5" id="terms5" class="terms-checkbox"> <ruby><rb>安全</rb><rt>あんぜん</rt></ruby>なご<ruby><rb>利用</rb><rt>りよう</rt></ruby>の<ruby><rb>規約</rb><rt>きやく</rt></ruby>に<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
+	
+	    <label>プライバシーポリシー</label>
+	    <div class="terms-box" id="terms-content-6">読み込み中...</div>
+	    <input type="checkbox" name="terms6" id="terms6" class="terms-checkbox"> プライバシーポリシーに<ruby><rb>同意</rb><rt>どうい</rt></ruby>します
+	
+	  </div>
+  </div>
 
       <div id="signinbutton">
         <button type="submit" class="signin"><span><ruby><rb>会員登録</rb><rt>かいいんとうろく</rt></ruby></span></button>
@@ -155,7 +178,9 @@
 	    $.datepicker.setDefaults($.datepicker.regional["ja"]);
 	  });
 	</script>
-  
+  	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 	<script src="/js/signin.js"></script>
 </body>
+	
 </html>
 

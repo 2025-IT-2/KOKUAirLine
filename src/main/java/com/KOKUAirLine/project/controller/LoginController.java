@@ -49,9 +49,7 @@ public class LoginController {
     	
     	// 유효성 검사 실패 시 다시 폼으로
     	if (bindingResult.hasErrors()) {
-	        bindingResult.getFieldErrors().forEach(error -> {
-	            System.out.println(error.getField() + ": " + error.getDefaultMessage());
-	        });
+    		
 	        return "login";
 	    }
 
