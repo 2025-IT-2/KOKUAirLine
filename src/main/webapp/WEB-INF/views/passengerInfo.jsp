@@ -99,9 +99,9 @@
 							<!-- 결정 버튼 -->
 							
 							<div id="finishbtn">
-							  <button type="button" onclick="openWindow()" class="text-wrapper-15" id="finishBtn">
-							    <ruby><rb>予約完了</rb><rt>よやくかんりょう</rt></ruby>
-							  </button>             
+								<button type="submit" class="text-wrapper-15" id="finishBtn">
+								<ruby><rb>予約完了</rb><rt>よやくかんりょう</rt></ruby>
+								</button>             
 							</div>
 						</div>
 					</div>
@@ -208,6 +208,8 @@
 				// ✅ 유효성 검사
 				form.addEventListener("submit", function (e) {
 					const inputs = form.querySelectorAll("input, select");
+					e.preventDefault();
+
 					for (const input of inputs) {
 						const inputName = input.getAttribute("name");
 						if (!inputName) continue;
@@ -344,6 +346,15 @@
 							return false;
 						}
 					}
+										
+					try {
+					openWindow();
+					} catch (err) {
+					console.warn("openWindow 함수 실행 실패:", err);
+					}
+
+					// ✅ 실제로 form 제출
+					form.submit();									
 				});
 			});
 		</script>
