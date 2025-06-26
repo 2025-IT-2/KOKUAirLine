@@ -33,3 +33,33 @@ p {
 .notice-button:hover {
   background-color: #1f3554;
 }
+
+.flight-table {
+  width: 80%;
+  margin: 30px auto;
+  border-collapse: collapse;
+  font-size: 17px;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.flight-table th,
+.flight-table td {
+  border: 1px solid #ccc; /* 표 테두리 */
+  padding: 12px;
+  text-align: center;
+}
+
+.flight-table th {
+  background-color: #2a4d69;
+  color: white;
+}
+
+.flight-table td {
+  color: #333;
+}
+
+.flight-table tr:last-child td {
+  background-color: #f0f0f0;
+  font-style: italic;
+}
