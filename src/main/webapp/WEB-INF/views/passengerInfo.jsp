@@ -72,9 +72,7 @@
 								id="phone"
 								name="phone"
 								value="${phone}"
-								placeholder="090-1234-5678"
-								pattern="[0-9\-]{10,13}"
-								required
+								placeholder="09012345678"
 								autocomplete="tel">
 							</div>
 							
@@ -105,6 +103,7 @@
 		<script>
 			document.addEventListener("DOMContentLoaded", function () {
 				const form = document.querySelector("form");
+				const phoneInput = form.querySelector("input[name='phone']");
 				const today = new Date();
 			
 				// ✅ 운임 값: URL 쿼리 스트링에서 받아와 hidden input 설정
@@ -181,6 +180,14 @@
 					});
 				});
 			
+  				// ✅ 전화번호 숫자만 입력 & 최대 11자리 제한 
+				if (phoneInput) {
+					phoneInput.addEventListener("input", () => {
+						phoneInput.value = phoneInput.value.replace(/[^0-9]/g, "").slice(0, 11);
+					});
+				}
+
+
 				// ✅ 유효성 검사
 				form.addEventListener("submit", function (e) {
 					const inputs = form.querySelectorAll("input, select");
@@ -299,6 +306,26 @@
 								return false;
 							}
 						}	
+					}
+					
+					// ✅ 전화번호 유효성 검사
+					if (phoneInput) {
+						const phoneValue = phoneInput.value.trim();
+						const phoneRegex = /^[0-9]{10,11}$/;
+
+						if (!phoneValue) {
+							alert("予約者の連絡先 は必須項目です。");
+							phoneInput.focus();
+							e.preventDefault();
+							return false;
+						}
+
+						if (!phoneRegex.test(phoneValue)) {
+							alert("予約者の連絡先 は10〜11桁の数字のみ入力してください。");
+							phoneInput.focus();
+							e.preventDefault();
+							return false;
+						}
 					}
 				});
 			});
