@@ -20,7 +20,7 @@ public class LoginService {
 	// 유저가 입력한 id, pw가 저장된 정보랑 같은지 확인
 	// userInfo를 못찾으면 false, 찾았고 id, pw가 같으면 성공!
 	public boolean loginCheck(String userId, String password, HttpSession session) {
-		UserInfo  userInfo = repo.searchUser(userId, password);
+		UserInfo userInfo = repo.searchUser(userId, password);
 		
 		if (userInfo == null) {
 			return false;

@@ -10,8 +10,6 @@
   <title>会員登録</title>
   <link rel="stylesheet" href="<c:url value='/css/global.css' />" />
   <link rel="stylesheet" href="<c:url value='/css/signin.css'/>">
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/i18n/datepicker-ja.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <!-- 생략된 head는 동일 -->
@@ -135,10 +133,9 @@
 
     </form:form>
   </div>
-
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-
+  <script src="/js/datepicker-ja.js"></script>
   <script>
     function loadSectionFromHTML(filePath, sectionId, targetElementId) {
       $.get(filePath, function(data) {
@@ -178,7 +175,6 @@
 	    $.datepicker.setDefaults($.datepicker.regional["ja"]);
 	  });
 	</script>
-  	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  	<script src="/js/signin.js"></script>
 </body>
 	

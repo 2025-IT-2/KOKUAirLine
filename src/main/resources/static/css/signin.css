@@ -73,7 +73,7 @@ rt{
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     padding: 1rem;
-    width: 300px;
+    width: 400px;
     font-family: 'Segoe UI', 'Noto Sans JP', sans-serif;
   }
 
@@ -83,6 +83,10 @@ rt{
     padding: 10px;
     border-radius: 10px 10px 0 0;
     font-weight: bold;
+  }
+  
+  .ui-datepicker-title{
+  	padding: 10px;
   }
 
   .ui-datepicker-prev, .ui-datepicker-next {
