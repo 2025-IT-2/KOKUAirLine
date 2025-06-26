@@ -32,17 +32,16 @@
 
   <h2>ご予約が完了しました！</h2>
   <p>ご利用いただきありがとうございます。予約確認メールをお送りしました。</p>
-  <p>予約番号: <strong>${resiNum.resiNum}</strong></p>
-
+  
   <button onclick="closePopup()">閉じる</button>
   <script>
   
   function closePopup() {
     if (window.opener && !window.opener.closed) {
-      window.opener.location.href = "/home";  // 🔥 부모창 이동
-    }
-    window.close(); // 🔥 팝업창 닫기
-  }
+		      window.opener.location.href = "/home";  // 🔥 부모창 이동
+		    }
+		    window.close(); // 🔥 팝업창 닫기
+		  }
 
          window.addEventListener('beforeunload', function () {
            if (window.opener && !window.opener.closed) {

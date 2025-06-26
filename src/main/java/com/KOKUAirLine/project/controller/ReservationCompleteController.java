@@ -12,7 +12,6 @@ public class ReservationCompleteController {
 
     @GetMapping("/reservationComplete")
     public String reservationComplete(Model model) {
-    	
     	model.addAttribute("resiNum", new Reservation());
         return "reservationComplete";  // 뷰 리졸버가 /WEB-INF/views/reservationComplete.jsp 찾음
     }

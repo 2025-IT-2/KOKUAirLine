@@ -96,13 +96,8 @@ public class PassengerInfoController {
             passengerInfoService.savePassengerInfo(request, "小児", childCount, reservationPair.getArrReservation());
             passengerInfoService.savePassengerInfo(request, "幼児", infantCount, reservationPair.getArrReservation());
         }
-     // ✅ 여기서 예약번호 추출 (편도 예약만 있다고 가정)
-        Long resiNum = reservationPair.getDepReservation().getResiNum();
 
-        // ✅ 예약완료 페이지로 redirect 하면서 예약번호 전달!
-        return "redirect:/reservationComplete?resiNum=" + resiNum;
-
-        //return "redirect:/home";
+        return "redirect:/home";
     }
     
     // 국적 & 발행국 선택
