@@ -71,6 +71,15 @@ public class ReservationCheckPriceController {
 
 	    Model model
 	) throws Exception {
+		
+		if (adultCount <= 0) {
+			return "redirect:/reservation";
+		}
+		
+		if (classType.isEmpty()) {
+			return "redirect:/reservation";
+		}
+		
 		session.setAttribute("departureAirport", dep);
 		
 		
