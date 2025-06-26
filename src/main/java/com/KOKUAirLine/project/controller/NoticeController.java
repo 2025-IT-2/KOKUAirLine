@@ -21,11 +21,9 @@ public class NoticeController {
 
     // /notice 로 접근하면 가장 최신 공지를 보여줌
     @GetMapping
-    public String showLatestNotice(Model model) {
-        // 예시: 가장 최신 공지 (regDate 기준)
-        List<NoticeDTO> notices = noticeService.getAllNotices();
-        NoticeDTO latest = notices.isEmpty() ? null : notices.get(0);  // 또는 ID=1로 고정해도 됨
-        model.addAttribute("notice", latest);
-        return "notice";  // /WEB-INF/views/notice.jsp
+    public String showNotice(Model model) {
+        NoticeDTO notice = noticeService.getNoticeById(1L); // ID 1 고정
+        model.addAttribute("notice", notice);
+        return "notice"; // /WEB-INF/views/notice.jsp
     }
 }
