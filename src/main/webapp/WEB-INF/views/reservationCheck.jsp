@@ -55,13 +55,16 @@
 	            </div>
 	            <div class="summary">
 	              <div><ruby><rb>総人数</rb><rt>そうにんず</rt></ruby>: ${reservation.resNumL + reservation.resNumM + reservation.resNumS}人</div>
-	              <div><ruby><rb>総額</rb><rt>そうがく</rt></ruby>: ${resPayMap[reservation.resiNum].totalFare}ウォン</div>
+	              <div><ruby><rb>総額</rb><rt>そうがく</rt></ruby>: ${resPayMap[reservation.resiNum].totalFare}えん</div>
 	              <div><ruby><rb>予約状態</rb><rt>よやくじょうたい</rt></ruby>: ${reservation.cancelStep}</div>
 	            </div>
+				<div class="bottombtns">
+	              <button class="bottombtn" id="goback" type="submit"  onclick="location.href='<c:url value='/onlinecheckin' />'"><ruby><rb>戻</rb><rt>もど</rt></ruby>る</button>
 	            <form onsubmit="return showBoardingPass('${reservation.resiNum}')">
-	              <button id="toboarding" type="submit">ボーディング・パス<ruby><rb>確認</rb><rt>かくにん</rt></ruby></button>
+	              <button class="bottombtn" id="toboarding" type="submit">ボーディング・パス<ruby><rb>確認</rb><rt>かくにん</rt></ruby></button>
 	            </form>
-            	<hr style="margin: 30px 0;" />
+				</div>
+            	<!--<hr style="margin: 30px 0;" />-->
           	</c:forEach>
           	</c:otherwise>
           </c:choose>
@@ -69,15 +72,19 @@
       </div>
     </div>
 
-    <!-- 오른쪽: 탑승권 표시 iframe -->
+    <!-- 오른쪽: 탑승권 표시 iframe //해당 부분 팝업으로 분리	-->
     <div class="right-panel">
       <iframe id="boardingFrame" src="" width="100%" height="100%" style="border:none; margin-bottom: 20px;"></iframe>
     </div>
-	
+
   </div>
 </div>
 
 <script>
+	/*function openWindow () { //보딩패스 팝업용
+	  const options = 'width=600, height=800, top=400, left=100, resizable=no, scrollbars=no'
+	  window.open('/boardingPassInfo','boardingPassInfo',options)
+	}*/
  /* function showBoardingPass(reservationNumber) {
     const frame = document.getElementById("boardingFrame");
     frame.src = "<c:url value='/boardingPassInfo'/>?reservationNumber=" + encodeURIComponent(reservationNumber);

@@ -9,7 +9,9 @@ import lombok.Data;
 
 @Data
 public class Items {
+	
     @JacksonXmlElementWrapper(useWrapping = false)
     @JacksonXmlProperty(localName = "item")
     private List<ApiInfo> item;
+    
 }

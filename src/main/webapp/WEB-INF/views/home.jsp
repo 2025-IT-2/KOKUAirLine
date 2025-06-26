@@ -15,13 +15,19 @@
 	<div class="parentbox">
 	<div class="background-overlay" id=backgroundOverlay></div>
     <div class="home-image-slide" id="makeImg">
-      <img src="<c:url value='/img/homepageImage.png' />" alt="Main Visual" />
+		    	
+  <%--<img src="<c:url value='/img/homepageImage.png' />" alt="Main Visual" />
       <img src="<c:url value='/img/homepageImage1.png' />" alt="Main Visual" />
       <img src="<c:url value='/img/homepageImage2.png' />" alt="Main Visual" />
       <img src="<c:url value='/img/homepageImage3.png' />" alt="Main Visual" />
       <img src="<c:url value='/img/homepageImage4.png' />" alt="Main Visual" />
-      <img src="<c:url value='/img/homepageImage5.png' />" alt="Main Visual" />
-      <img src="<c:url value='/img/homepageImage6.png' />" alt="Main Visual" />
+      <img src="<c:url value='/img/homepageImage5.png' />" alt="Main Visual" /> 
+      <img src="<c:url value='/img/homepageImage6.png' />" alt="Main Visual" /> --%>
+      
+      <a href="/notice">
+      <img src="<c:url value='/img/homepageimage7.png' />" alt="공지 사항" />
+      </a>
+      
     </div>
 	</div>
 

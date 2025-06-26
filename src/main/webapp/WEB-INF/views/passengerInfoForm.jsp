@@ -58,10 +58,10 @@
       <div class="card-title"><ruby><rb>生年月日</rb><rt>せいねんがっぴ</rt></ruby></div>
       <div class="birth">
         <input 
-          type="date" 
+          type="text" 
           id="${param.type}_birthdate${param.index}" 
           name="${param.type}_birthdate${param.index}" 
-          value="1990-01-01"
+          placeholder="生年月日を選択してください"
         >
       </div>
     </div>
@@ -111,30 +111,35 @@
         <label>
           <ruby><rb>有効期間</rb><rt>ゆうこうきかん</rt></ruby>
           <input 
-            type="date" 
+            type="text" 
             id="${param.type}_passportExpiry${param.index}" 
             name="${param.type}_passportExpiry${param.index}"
+            placeholder="日付を選択してください"
           >
         </label>
 
         <label>
           <ruby><rb>国籍</rb><rt>こくせき</rt></ruby>
-          <input 
-            type="text" 
+          <select 
             id="${param.type}_nationality${param.index}" 
-            name="${param.type}_nationality${param.index}" 
-            placeholder="国籍を入力してください"
-          >
+            name="${param.type}_nationality${param.index}">
+            <option value="">国籍を選択してください</option>
+            <c:forEach var="entry" items="${countryMap}">
+              <option value="${entry.key}">${entry.value}</option>
+            </c:forEach>
+          </select>
         </label>
 
         <label>
           <ruby><rb>発行局</rb><rt>はっこうきょく</rt></ruby>
-          <input 
-            type="text" 
+          <select 
             id="${param.type}_passportCountry${param.index}" 
-            name="${param.type}_passportCountry${param.index}" 
-            placeholder="発行国を入力してください"
-          >
+            name="${param.type}_passportCountry${param.index}">
+            <option value="">発行国を選択してください</option>
+            <c:forEach var="entry" items="${countryMap}">
+              <option value="${entry.key}">${entry.value}</option>
+            </c:forEach>
+          </select>
         </label>
       </div>
     </div>

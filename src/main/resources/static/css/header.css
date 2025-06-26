@@ -3,17 +3,17 @@
 
 body {
     margin: 0;
-    font-family: "Noto Sans JP", sans-serif;
+    font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック"; 
 }
 
 .header {
     font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック"; font-weight: bold;
+	background-color: #f4f6f8;
+    border-bottom: 1px solid #f4f6f8;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 20px;
-    border-bottom: 1px solid #f4f6f8;
-	background-color: #f4f6f8;
     /*background-color: #fff;*/
 }
 
@@ -97,10 +97,11 @@ body {
   font-weight: 300;
   font-size: 15px;
   background-color:#f4f6f8;
-  padding: 5px 10px;
+  padding: 10px 12px;
   margin: 0px 20px;
   width: 200px;
   font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック"; font-weight: bold;
+  border-radius: 10px;
 }
 
 .menubtn span {
@@ -115,7 +116,7 @@ body {
   top: 0;
   height: 500%;
   width: 140%;
-  background: #78c7d2;
+  background: rgb(204, 230, 255);
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
   -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);

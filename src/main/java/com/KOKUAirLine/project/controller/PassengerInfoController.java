@@ -1,12 +1,21 @@
 package com.KOKUAirLine.project.controller;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.KOKUAirLine.project.service.PassengerInfoService;
+import com.KOKUAirLine.project.service.PassengerInfoService.ReservationPair;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -16,9 +25,9 @@ public class PassengerInfoController {
 
     @Autowired
     private PassengerInfoService passengerInfoService;
-
+    
     // 1. 탑승자 정보 입력 페이지로 이동
-    @PostMapping("/passengerInfo")
+    @GetMapping("/passengerInfo")
     public String passengerInfo(
             @RequestParam("adultCount") int adultCount,
             @RequestParam("childCount") int childCount,
@@ -26,8 +35,9 @@ public class PassengerInfoController {
             @RequestParam(defaultValue = "0") int totalPrice,
             @RequestParam("selectedFlightNo") String selectedFlightNo,
             @RequestParam(required = false) String arrivalFlightNo,
-            @RequestParam(required = false) String depAirFare,
-            @RequestParam(required = false) String arrAirFare,
+            @RequestParam(defaultValue = "0") int depAirFare,
+            @RequestParam(defaultValue = "0") int arrAirFare,
+            HttpServletRequest request,
             HttpSession session,
             Model model) {
 
@@ -51,6 +61,10 @@ public class PassengerInfoController {
         model.addAttribute("depAirFare", depAirFare);
         model.addAttribute("arrAirFare", arrAirFare);
 
+//        System.out.println("✅ depAirFare: " + request.getParameter("depAirFare"));
+//        System.out.println("✅ arrAirFare: " + request.getParameter("arrAirFare"));
+//        System.out.println("✅ totalPrice: " + request.getParameter("totalPrice"));
+        
         return "passengerInfo";
     }
 
@@ -68,14 +82,45 @@ public class PassengerInfoController {
         int childCount = Integer.parseInt(request.getParameter("childCount"));
         int infantCount = Integer.parseInt(request.getParameter("infantCount"));
 
-        // 여권 정보 저장
-        passengerInfoService.savePassengerInfo(request, "大人", adultCount);
-        passengerInfoService.savePassengerInfo(request, "小児", childCount);
-        passengerInfoService.savePassengerInfo(request, "幼児", infantCount);
+        // 🔥 예약 먼저 저장
+        ReservationPair reservationPair = passengerInfoService.saveReservationInfo(request, loginUserId);
 
-        // 예약 + 결제 저장
-        passengerInfoService.saveReservationInfo(request, loginUserId);
+        // 🔥 예약 객체에 여권 연결 저장
+        if (reservationPair.getDepReservation() != null) {
+            passengerInfoService.savePassengerInfo(request, "大人", adultCount, reservationPair.getDepReservation());
+            passengerInfoService.savePassengerInfo(request, "小児", childCount, reservationPair.getDepReservation());
+            passengerInfoService.savePassengerInfo(request, "幼児", infantCount, reservationPair.getDepReservation());
+        }
+
+        if (reservationPair.getArrReservation() != null) {
+            passengerInfoService.savePassengerInfo(request, "大人", adultCount, reservationPair.getArrReservation());
+            passengerInfoService.savePassengerInfo(request, "小児", childCount, reservationPair.getArrReservation());
+            passengerInfoService.savePassengerInfo(request, "幼児", infantCount, reservationPair.getArrReservation());
+        }
+        // 🔥 세션에 예약 번호 저장
+        
+     // 예약번호 꺼내기
+        Long depResiNum = reservationPair.getDepReservation().getResiNum();
+        Long arrResiNum = reservationPair.getArrReservation() != null ? reservationPair.getArrReservation().getResiNum() : null;
+
+        // 세션에 저장하기
+        session.setAttribute("depResiNum", depResiNum);
+        session.setAttribute("arrResiNum", arrResiNum);
 
         return "redirect:/home";
     }
+    
+    // 국적 & 발행국 선택
+	@ModelAttribute("countryMap")
+	public Map<String, String> countryMap() {
+	    String[] countryCodes = Locale.getISOCountries();
+	    Map<String, String> countryMap = new LinkedHashMap<>();
+	    for (String code : countryCodes) {
+	        Locale locale = new Locale("", code);
+	        countryMap.put(code, locale.getDisplayCountry(Locale.JAPAN));
+	    }
+	    
+	    return countryMap;
+	}        
+    
 }
