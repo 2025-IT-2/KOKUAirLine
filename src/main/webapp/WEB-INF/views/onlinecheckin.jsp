@@ -53,7 +53,7 @@
         <a href="https://www.airport.kr/ap_ko/892/subview.do" target="_blank">チェックイン</a>
       </div>
     </div>
-	
+	<%@ include file="footer.jsp" %>
 	<script>
 	  document.addEventListener("DOMContentLoaded", () => {
 	    const tbody = document.querySelector("tbody");

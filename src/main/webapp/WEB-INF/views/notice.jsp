@@ -62,6 +62,6 @@
 <form action="/reservation" method="get">
   <button type="submit" class="notice-button">最安値の予約</button>
 </form>
-
+<%@ include file="footer.jsp" %>
 </body>
 </html>

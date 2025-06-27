@@ -32,9 +32,9 @@
 
   <h2>ご予約が完了しました！</h2>
   <p>ご利用いただきありがとうございます。予約確認メールをお送りしました。</p>
-  予約番号（出発便）: <strong><c:out value="${depResiNum}" /></strong><br/>
+  <!--予約番号（出発便）: <strong><c:out value="${depResiNum}" /></strong><br/>
 <c:if test="${not empty arrResiNum}">
-  予約番号（帰国便）: <strong><c:out value="${arrResiNum}" /></strong>
+  予約番号（帰国便）: <strong><c:out value="${arrResiNum}" /></strong>-->
 </c:if>
   <button onclick="closePopup()">閉じる</button>
   

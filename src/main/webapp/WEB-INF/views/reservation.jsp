@@ -123,5 +123,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/rangePlugin.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
 		<script src="/js/reservation.js"></script>
+		<%@ include file="footer.jsp" %>
 	</body>
 </html>

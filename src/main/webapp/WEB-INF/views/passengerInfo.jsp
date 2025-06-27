@@ -359,5 +359,7 @@
 			});
 		</script>
 		<script src="js/reservationComplete.js"></script>
+		
+		<%@ include file="footer.jsp" %>
 	</body>      
 </html>
