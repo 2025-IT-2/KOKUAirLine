@@ -50,20 +50,25 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 		    // 유효성 검사
 		    document.querySelector("form").addEventListener("submit", function (e) {
+	
+		        const adult = parseInt(document.getElementById("adultCount").value);
+		        const child = parseInt(document.getElementById("childCount").value);
+		        const infant = parseInt(document.getElementById("infantCount").value);
+				
+		        if (adult + child + infant === 0) {
+		            alert("搭乗人員を1人以上選択してください。");
+		            e.preventDefault();
+		        } else if (adult <= 0) {
+					alert("大人一人は必須です。")
+					e.preventDefault();
+				}
+				
 		        const classType = document.getElementById("classTypeInput").value;
 		        if (!classType) {
 		            alert("座席クラスを選択してください。");
 		            e.preventDefault();
 		        }
-	
-		        const adult = parseInt(document.getElementById("adultCount").value);
-		        const child = parseInt(document.getElementById("childCount").value);
-		        const infant = parseInt(document.getElementById("infantCount").value);
-	
-		        if (adult + child + infant === 0) {
-		            alert("搭乗人員を1人以上選択してください。");
-		            e.preventDefault();
-		        }
+				
 		    });
 	
 		    // 함수 정의들
