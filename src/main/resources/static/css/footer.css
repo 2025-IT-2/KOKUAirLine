@@ -1,40 +1,66 @@
 .footer{
+	margin-top: 5px;
 	width:100%;
-	height: 140px;
-	background-color : rgb(255,255,255,0.8);
+	height: 120px;
+	background-color: rgb(213, 234, 255);
 	text-align: center;
 	z-index: 0;
+	position: absolute;
 }
 
 .opp{
-	width:2000px;
-	height: 140px;
-	background-color: paleturquoise;
+	position: absolute;
+	background-color : rgb(255,255,255);
+	opacity : 0.5;
+	width:100%;
+	height: 100%;
 	text-align: center;
+	margin:0 auto;
 	z-index: 1;
-	
-}
-
-#mname{
-	height: 45px;
-	width: 530px;
-}
-
-.tname{
-	font-size: 50px;
-}
-
-.year{
-	font-size: 12px;
-	float: left;
+	padding:10px;
 }
 
 .center{
-	width:540px;
+	width:1200px;
 	margin: 0 auto;
 	display: inline-block;
 }
 
-.mname{
-	font-size:18px;
+#mname{
+	margin: 0 auto;
+	display: inline-block;
+	height: 45px;
+	width: 1000px;
+	text-align: center;
+	font-size:13px;
+}
+
+#tname{
+	font-size: 25px;
+	letter-spacing: 8px;
+}
+
+#bottom{
+	font-size: 12px;
+	position: absolute;
+	text-align: right;
+	bottom: 10px;
+	right: 15px;
+}
+
+.md{
+	font-size: 10px;
+	float: right;
+	text-align: right;
+}
+
+#year{
+	font-size: 8px;
+}
+
+.member, .leader{
+	margin-top:10px;
+	margin-bottom:-8px;
+	margin-left:25px;
+	margin-right: 25px;
 }

@@ -13,24 +13,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class ReservationCheckController {
-   
+public class ReservationCheckController {   
 	@Autowired
 	CheckReservationService service;
-	
-	/*
-   @GetMapping("/reservationCheck")
-   public String reservationCheck(Model model, HttpSession session) {
-	   boolean reservationValid = service.getReservationInfos(model, session);
-		
-	   	if (reservationValid) {
-	   		return "reservationCheck";
-	   	}
-	   	else {
-	   		return "redirect:/login";
-	   	}
-   }
-   */
    @GetMapping("/reservationCheck")
    public String reservationCheck(
        @RequestParam(value = "resiNum", required = false) String resiNum,
@@ -46,3 +31,18 @@ public class ReservationCheckController {
        }
    }
 }
+
+
+/*
+   @GetMapping("/reservationCheck")
+   public String reservationCheck(Model model, HttpSession session) {
+	   boolean reservationValid = service.getReservationInfos(model, session);
+		
+	   	if (reservationValid) {
+	   		return "reservationCheck";
+	   	}
+	   	else {
+	   		return "redirect:/login";
+	   	}
+   }
+ */
