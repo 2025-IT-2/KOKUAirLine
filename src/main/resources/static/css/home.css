@@ -39,7 +39,7 @@ font-family: "Tsukushi A Round Gothic","筑紫A丸ゴシック";
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* 모든 이미지 절대 위치로 겹치되 중앙 정렬 */

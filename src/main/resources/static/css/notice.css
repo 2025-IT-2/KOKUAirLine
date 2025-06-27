@@ -68,3 +68,31 @@ p {
   background-color: #f0f0f0;
   font-style: italic;
 }
+
+/* 사진위에 글씨 */
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container img {
+  display: block;
+  width: 100%; /* 필요에 따라 조절 */
+  height: auto;
+  z-index: 0;
+  position: relative;
+}
+
+.image-container .overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999; /* 충분히 크게 */
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 24px;
+  padding: 10px 20px;
+  font-weight: bold;
+  pointer-events: none;
+}

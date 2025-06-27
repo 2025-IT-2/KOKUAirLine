@@ -24,9 +24,12 @@
       <img src="<c:url value='/img/homepageImage5.png' />" alt="Main Visual" /> 
       <img src="<c:url value='/img/homepageImage6.png' />" alt="Main Visual" /> --%>
       
-      <a href="/notice">
-      <img src="<c:url value='/img/homepageimage7.png' />" alt="공지 사항" />
-      </a>
+		<div class="image-container">
+			<a href="/notice">
+				<img src="<c:url value='/img/homepageimage7.png' />" alt="공지 사항" />
+				<div class="overlay-text">まるで楽園！マニラの魅力スポット</div>
+			</a>
+		</div>
       
     </div>
 	</div>
