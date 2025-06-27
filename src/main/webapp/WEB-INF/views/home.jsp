@@ -68,7 +68,7 @@
 	    </div>
 	  </div>
 	</div>
-    
+	<%@ include file="footer.jsp" %>
     <script src="/js/home.js"></script>
 	
 	<!--홈 슬라이드용-->
@@ -99,6 +99,7 @@
 	  // 자동 슬라이드 시작
 	  setInterval(nextSlide, 4000); // 4초마다
 	</script>
+	
 	
   </body>
 </html>
