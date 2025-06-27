@@ -200,7 +200,7 @@
   				// ✅ 전화번호 숫자만 입력 & 최대 11자리 제한 
 				if (phoneInput) {
 					phoneInput.addEventListener("input", () => {
-						phoneInput.value = phoneInput.value.replace(/[^0-9]/g, "").slice(0, 11);
+						phoneInput.value = phoneInput.value.replace(/[^0-9/-]/g, "").slice(0, 13);
 					});
 				}
 
@@ -330,7 +330,7 @@
 					// ✅ 전화번호 유효성 검사
 					if (phoneInput) {
 						const phoneValue = phoneInput.value.trim();
-						const phoneRegex = /^[0-9]{10,11}$/;
+						const phoneRegex = /^[0-9\-]{10,13}$/;
 
 						if (!phoneValue) {
 							alert("予約者の連絡先 は必須項目です。");
@@ -340,7 +340,7 @@
 						}
 
 						if (!phoneRegex.test(phoneValue)) {
-							alert("予約者の連絡先 は10〜11桁の数字のみ入力してください。");
+							alert("予約者の連絡先 は10〜13桁の数字とハイフンで入力してください。");
 							phoneInput.focus();
 							e.preventDefault();
 							return false;

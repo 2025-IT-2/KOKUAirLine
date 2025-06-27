@@ -1,5 +1,6 @@
 package com.KOKUAirLine.project.controller;
 
+import java.net.http.HttpRequest;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.KOKUAirLine.project.model.UserInfo;
 import com.KOKUAirLine.project.repo.UserInfoRepo;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 @Controller
@@ -51,23 +53,37 @@ public class SigninControlller {
         @Valid @ModelAttribute("userInfo") UserInfo userInfo,
         BindingResult bindingResult,
         RedirectAttributes redirectAttributes,
-        Model model
+        Model model,
+        HttpServletRequest request
     ) {
-        // 유효성 검사 실패 시 다시 폼으로
-        if (bindingResult.hasErrors()) {
-        	
-            return "signin";
-        }
+    
+      // 유효성 검사 실패 시 다시 폼으로
+      if (bindingResult.hasErrors()) {
+      	System.out.println("유효성 검사 실패");
+          return "signin";
+      }
 
-        // ID 중복 확인
-        if (userInfoRepository.existsById(userInfo.getUserId())) {
-            redirectAttributes.addFlashAttribute("error", "すでに使用中のIDです。");
-            return "redirect:/signin";
-        }
+      // ID 중복 확인
+      if (userInfoRepository.existsById(userInfo.getUserId())) {
+          redirectAttributes.addFlashAttribute("error", "すでに使用中のIDです。");
+          return "redirect:/signin";
+      }
+      
+    	// 약관동의 확인
+    	if(request.getParameter("terms1") == null || 
+    			request.getParameter("terms2") == null ||
+    			request.getParameter("terms3") == null ||
+    			request.getParameter("terms4") == null ||
+    			request.getParameter("terms5") == null ||
+    			request.getParameter("terms6") == null) {
+    		
+    		redirectAttributes.addFlashAttribute("error", "約款に同意してください。");
+        return "redirect:/signin";
+    	}
 
-        userInfo.setCreateDate(LocalDateTime.now());
-        userInfoRepository.save(userInfo);
-        return "redirect:/home";
+      userInfo.setCreateDate(LocalDateTime.now());
+      userInfoRepository.save(userInfo);
+      return "redirect:/home";
     }
 
 }
