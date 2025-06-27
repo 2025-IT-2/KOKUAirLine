@@ -16,23 +16,31 @@
 	<div class="background-overlay" id=backgroundOverlay></div>
     <div class="home-image-slide" id="makeImg">
 		    	
-  <%--<img src="<c:url value='/img/homepageImage.png' />" alt="Main Visual" />
-      <img src="<c:url value='/img/homepageImage1.png' />" alt="Main Visual" />
-      <img src="<c:url value='/img/homepageImage2.png' />" alt="Main Visual" />
-      <img src="<c:url value='/img/homepageImage3.png' />" alt="Main Visual" />
-      <img src="<c:url value='/img/homepageImage4.png' />" alt="Main Visual" />
-      <img src="<c:url value='/img/homepageImage5.png' />" alt="Main Visual" /> 
-      <img src="<c:url value='/img/homepageImage6.png' />" alt="Main Visual" /> --%>
+
       
+	<!-- 이미지 1 -->
+    <div class="image-container active">
       <a href="/notice">
-      <img src="<c:url value='/img/homepageimage7.png' />" alt="공지 사항" />
+        <img src="<c:url value='/img/manila.png' />" alt="공지 사항" />
+        <div class="overlay-text">フィリピンの首都マニラへの新規就航<br>自然とともに旅するチャンス！</div>
       </a>
-      
     </div>
+
+    <!-- 이미지 2 -->
+    <div class="image-container active">
+      <img src="<c:url value='/img/homepageImage5.png' />" alt="Main Visual" />
+    </div>
+
+    <!-- 이미지 3 -->
+    <div class="image-container active">
+      <img src="<c:url value='/img/homepageImage6.png' />" alt="Main Visual" />
+    </div>
+
+	</div>
 	</div>
 
     <!-- 상품 리스트 영역 -->
-    <!-- 
+    <!--
     <div>
 	  <h2 class="product-title"><ruby class="taxfree-t"><rb>免税品</rb><rt>めんぜいひん</rt><rb>販売</rb><rt>はんばい</rt>リスト</h2>
 	</div>
@@ -69,25 +77,31 @@
 	    </div>
 	  </div>
 	</div>
-     -->
+	-->
+    
     <script src="/js/home.js"></script>
 	
 	<!--홈 슬라이드용-->
 	<script>
-	  const images = document.querySelectorAll('#makeImg img');
-	  const background = document.getElementById('backgroundOverlay');
-	  let current = 0;
-	  const total = images.length;
+	const slides = document.querySelectorAll('#makeImg .image-container');
+	const background = document.getElementById('backgroundOverlay');
+	let current = 0;
+	const total = slides.length;
 
-	  function showSlide(index) {
-	    images.forEach((img, i) => {
-	      img.classList.remove('active');
-	    });
+	function showSlide(index) {
+	  slides.forEach((slide, i) => {
+	    slide.classList.remove('active');
+	  });
 
-	    const currentImg = images[index];
-	    currentImg.classList.add('active');
-	    background.style.backgroundImage = `url(${currentImg.src})`;
+	  const currentSlide = slides[index];
+	  currentSlide.classList.add('active');
+
+	  // 현재 슬라이드 안의 img src로 배경 변경
+	  const img = currentSlide.querySelector('img');
+	  if (img) {
+	    background.style.backgroundImage = `url(${img.src})`;
 	  }
+	}
 
 	  function nextSlide() {
 	    current = (current + 1) % total;
