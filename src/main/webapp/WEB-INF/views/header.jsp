@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="<c:url value='/css/header.css'/>">
     <div class="header">
     <!-- 로고를 누르면 홈으로 이동 -->
-	<button class="homebtn" onclick="location.href='<c:url value='/home' />'"><span>空港団</span></button>    
+	<button class="homebtn" onclick="location.href='<c:url value='/home' />'"><span>航空団</span></button>    
 	<!--<a href="<c:url value='/home' />">空港団</a>-->
 	    <!-- 각 상단 버튼을 누르면 해당 화면으로 이동 -->
 <!--

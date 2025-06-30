@@ -41,22 +41,6 @@ public class ReservationCheckPriceController {
 
 	@GetMapping("/reservationCheckPrice")
     public String reservationCheckPrice(
-//    	HttpServletRequest request,
-//    	@RequestParam("departureAirport") String dep,
-//    	@RequestParam("arrivalAirport") String arr,
-//    	@RequestParam("departureDate") String dDateStr,
-//    	@RequestParam("arrivalDate") String aDateStr,
-//    	Model model) throws Exception {
-//		
-		
-//		
-//		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-//		Date dDate = formatter.parse(dDateStr);
-//		Date aDate = formatter.parse(aDateStr);
-//		
-//		List<FlightInfo> flights = flightService.searchFlights(dep, arr, dDate, aDate);
-//		model.addAttribute("flights", flights);
-		
 		@RequestParam("departureAirport") String dep,
 	    @RequestParam("arrivalAirport") String arr,
 	    @RequestParam("departureDate") String departureDate,
@@ -66,22 +50,17 @@ public class ReservationCheckPriceController {
 	    @RequestParam("adultCount") int adultCount,
 	    @RequestParam("childCount") int childCount,
 	    @RequestParam("infantCount") int infantCount,
-	    
-	    HttpSession session,
-
-	    Model model
-	) throws Exception {
+	    HttpSession session, Model model) throws Exception {
 		
-		if (adultCount <= 0) {
-			return "redirect:/reservation";
-		}
-		
-		if (classType.isEmpty()) {
-			return "redirect:/reservation";
+			if (adultCount <= 0) {
+				return "redirect:/reservation";
+			}
+			
+			if (classType.isEmpty()) {
+				return "redirect:/reservation";
 		}
 		
 		session.setAttribute("departureAirport", dep);
-		
 		
 		System.out.println(dep + "\n" + arr + "\n" + departureDate
 				+ "\n" + arrivalDate
@@ -103,10 +82,6 @@ public class ReservationCheckPriceController {
 	        cal.set(Calendar.MILLISECOND, 999);
 	        aDate = cal.getTime();
 	    }
-	
-
-//	    String airportDep = dep.substring(dep.lastIndexOf("/") + 2);
-//	    String airportArr = arr.substring(arr.lastIndexOf("/") + 2);
 	    
 	    String airportDep = dep.substring(dep.lastIndexOf("/") + 2);
 	    String airportArr = arr.substring(arr.lastIndexOf("/") + 2);
@@ -140,13 +115,7 @@ public class ReservationCheckPriceController {
 	    	cal.set(Calendar.MILLISECOND, 999);
 	    	aDate = cal.getTime();
 	    }
-	    
-	    
-//	    String airportDep = dep.substring(dep.lastIndexOf("/") + 2);
-//	    String airportArr = arr.substring(arr.lastIndexOf("/") + 2);
-	    
 
-	    
 	    List<FlightInfo> arrFlights = flightService.searchFlights(airportArr, airportDep, dDate, aDate);
 	    
 	    List<FlightWithPriceRate> aflightsWithPrice = new ArrayList<>();
@@ -171,10 +140,7 @@ public class ReservationCheckPriceController {
 	        // null 또는 빈 문자열일 때 기본값 설정 (예: 00:00) 또는 적절한 예외 처리
 	        departureTime = LocalTime.of(0, 0);
 	    }
-//	    LocalTime departureTime = LocalTime.parse(departureTimeStr, DateTimeFormatter.ofPattern("HH:mm"));
 	    String timeCategory = ticketPriceService.getTimeCategory(departureTime);
-
-	    // 최종 가격 계산
 	    
 	    int saverPrice = ticketPriceService.calculateFinalPrice(
 	    	    classType, adultCount, childCount, infantCount, timeCategory, "saver");
@@ -182,9 +148,7 @@ public class ReservationCheckPriceController {
 	    	    classType, adultCount, childCount, infantCount, timeCategory, "standard");
 	    int flexPrice = ticketPriceService.calculateFinalPrice(
 	    	    classType, adultCount, childCount, infantCount, timeCategory, "flex");
-
 	    // 모델에 값 전달
-
 	    model.addAttribute("adultCount", adultCount);
 	    model.addAttribute("childCount", childCount);
 	    model.addAttribute("infantCount", infantCount);
@@ -197,14 +161,5 @@ public class ReservationCheckPriceController {
 	    
     	return "reservationCheckPrice"; // => /WEB-INF/views/reservationCheckPrice.jsp
     }
-	
-	
-
-//	@PostMapping("/reservationCheckPrice")
-//	public String reservationCheckPricePost(
-//	    
-//
-//	    return "reservationCheckPrice";
-//	}
     
 }
